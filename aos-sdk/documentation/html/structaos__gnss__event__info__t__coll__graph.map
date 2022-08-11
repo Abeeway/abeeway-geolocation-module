@@ -1,0 +1,12 @@
+<map id="aos_gnss_event_info_t" name="aos_gnss_event_info_t">
+<area shape="rect" id="node2" href="$structaos__gnss__raw__data__t.html" title="Data in raw format (or pre&#45;parsed) of frames received by the GNSS chip. " alt="" coords="605,21,755,48"/>
+<area shape="rect" id="node3" href="$structnmea__parse__msg__t.html" title="NMEA pre&#45;parsed message. All fields are separated by a NULL byte. " alt="" coords="335,5,471,32"/>
+<area shape="rect" id="node4" href="$structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application. " alt="" coords="615,86,745,127"/>
+<area shape="rect" id="node5" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite. " alt="" coords="337,57,468,98"/>
+<area shape="rect" id="node6" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats. " alt="" coords="328,132,477,159"/>
+<area shape="rect" id="node9" href="$structaos__gnss__fix__info__t.html" title="GNSS fix information. " alt="" coords="611,152,749,179"/>
+<area shape="rect" id="node7" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW) " alt="" coords="5,95,181,137"/>
+<area shape="rect" id="node8" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format. " alt="" coords="20,161,167,188"/>
+<area shape="rect" id="node10" href="$structaos__gnss__track__data__t.html" title="Tracking data. " alt="" coords="601,203,759,229"/>
+<area shape="rect" id="node11" href="$structaos__gnss__satellite__info__t.html" title="Satellite information for tracking data. " alt="" coords="337,195,468,237"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="aos&#45;libs/aos&#45;core/aos/aos_system.h" name="aos&#45;libs/aos&#45;core/aos/aos_system.h">
+<area shape="rect" id="node2" href="$aos__gpio_8h.html" title="GPIO driver. " alt="" coords="193,95,340,136"/>
+<area shape="rect" id="node6" href="$aos__nmea__parser_8h.html" title="aos&#45;libs/aos&#45;core/aos\l/aos_nmea_parser.h" alt="" coords="373,95,520,136"/>
+<area shape="rect" id="node7" href="$aos__uart_8h.html" title="UART driver. " alt="" coords="619,95,765,136"/>
+<area shape="rect" id="node8" href="$aos__usb__cdc_8h.html" title="USB driver (serial communication support &#45; CDC&#45; only). " alt="" coords="517,184,664,225"/>
+<area shape="rect" id="node10" href="$srv__gnss_8h.html" title="GNSS service. " alt="" coords="790,95,935,136"/>
+<area shape="rect" id="node3" href="$aos__adc_8h.html" title="Analog to Digital Converter (ADC) " alt="" coords="5,184,152,225"/>
+<area shape="rect" id="node4" href="$aos__calib__hsi_8h.html" title="HSI calibration. " alt="" coords="176,184,323,225"/>
+<area shape="rect" id="node5" href="$aos__rf__switch_8h.html" title="RF switch driver. " alt="" coords="347,184,493,225"/>
+<area shape="rect" id="node9" href="$srv__cli_8h.html" title="Command Line Interface service. " alt="" coords="689,184,834,225"/>
+</map>

@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['calibrated_5ftx_5fpower',['calibrated_tx_power',['../structsrv__ble__beaconing__param__t.html#a58faa1ac6e3894a76f3661eda694f296',1,'srv_ble_beaconing_param_t']]],
+  ['cbarg',['cbarg',['../structaos__gnss__configuration__t.html#a97900ee05851c8ba27130a6c5d78e6cb',1,'aos_gnss_configuration_t']]],
+  ['cbfn',['cbfn',['../structaos__gnss__configuration__t.html#a801d66ca49885a0ae802ac3c009d090e',1,'aos_gnss_configuration_t']]],
+  ['channel_5fidx',['channel_idx',['../structble__dtm__param__t.html#a8f2cc35ded579069f3a4f9bf7101c3ce',1,'ble_dtm_param_t']]],
+  ['checksum',['checksum',['../structnmea__parse__msg__t.html#a4749baa75de77d4cf6afe4a754ca187e',1,'nmea_parse_msg_t']]],
+  ['close',['close',['../structaos__gnss__driver__t.html#aae65080231c0ee90a49e1a71aea9210e',1,'aos_gnss_driver_t::close()'],['../structaos__i2c__master__t.html#afbfea02a193b8a63eecd5c0813bbd0e3',1,'aos_i2c_master_t::close()'],['../structaos__uart__driver__t.html#a40d842c5e2d02e9f96175b6d1836d364',1,'aos_uart_driver_t::close()']]],
+  ['cn0',['cn0',['../structaos__gnss__satellite__info__t.html#ad5e4200fee5c36410238c84a82999c5b',1,'aos_gnss_satellite_info_t::cn0()'],['../structaos__gnss__satellite__prn__t.html#a7eee2644ce392650792b1bf88935a948',1,'aos_gnss_satellite_prn_t::cn0()']]],
+  ['code',['code',['../structaos__error__into__t.html#a030b1fee145779f29c2a1e45587c76dd',1,'aos_error_into_t']]],
+  ['cog',['cog',['../structaos__gnss__fix__info__t.html#ab04cdecbb181a15ce3dea56d20168ce7',1,'aos_gnss_fix_info_t']]],
+  ['command',['command',['../structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5',1,'cli_parser_cmd_s']]],
+  ['company_5fuuid',['company_uuid',['../structsrv__ble__beaconing__ibeacon__data__t.html#aab613efb3af2720de9b4f3dea9377ef3',1,'srv_ble_beaconing_ibeacon_data_t::company_uuid()'],['../structsrv__ble__scan__ibeacon__info__t.html#ad624593ec344caf85d66348a18cb3d2e',1,'srv_ble_scan_ibeacon_info_t::company_uuid()']]],
+  ['compensated_5ftx_5fpower',['compensated_tx_power',['../structsrv__ble__beaconing__quuppa__data__t.html#ab663bc79843ee70d51584613e1f2262d',1,'srv_ble_beaconing_quuppa_data_t']]],
+  ['constellation',['constellation',['../structaos__gnss__fix__info__t.html#ad8ed4be961e23693abfe45ffaccae79b',1,'aos_gnss_fix_info_t::constellation()'],['../structaos__gnss__track__data__t.html#ab079faad860eeeb192d66a116f58bc84',1,'aos_gnss_track_data_t::constellation()'],['../structaos__gnss__satellite__prn__t.html#ae9538c6d665dfef430cd9d60bcde14c0',1,'aos_gnss_satellite_prn_t::constellation()'],['../structaos__gnss__ioctl__t.html#ac8c9336bd34d3212c7bc1e2e2319d2e0',1,'aos_gnss_ioctl_t::constellation()']]],
+  ['constellations',['constellations',['../structaos__gnss__configuration__t.html#aa87913f1697e5617de082c02ec072e81',1,'aos_gnss_configuration_t']]],
+  ['corrected_5fhsi_5ffreq',['corrected_hsi_freq',['../structaos__calib__hsi__result__t.html#a228205dcb145c92cf1f85df8d2090873',1,'aos_calib_hsi_result_t']]],
+  ['corrected_5ftrimming_5fvalue',['corrected_trimming_value',['../structaos__calib__hsi__result__t.html#a9c97cc99f4784fe845827699fadd8591',1,'aos_calib_hsi_result_t']]],
+  ['counters',['counters',['../structaos__gnss__ioctl__t.html#ac53ea8952afa16d812e31e977270dd86',1,'aos_gnss_ioctl_t']]],
+  ['csfr',['csfr',['../structaos__error__reg__info__t.html#a971a7e287ad15c80ebd1710d4887e17a',1,'aos_error_reg_info_t']]],
+  ['custom',['custom',['../structsrv__ble__scan__beacon__info__t.html#a4a856f5a1f6ceff3a2553f7fdf02e4a7',1,'srv_ble_scan_beacon_info_t']]]
+];

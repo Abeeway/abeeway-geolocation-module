@@ -1,0 +1,17 @@
+<map id="aos&#45;libs/aos&#45;core/aos/aos_common.h" name="aos&#45;libs/aos&#45;core/aos/aos_common.h">
+<area shape="rect" id="node2" href="$aos__adc_8h.html" title="Analog to Digital Converter (ADC) " alt="" coords="5,273,152,315"/>
+<area shape="rect" id="node3" href="$aos__gpio_8h.html" title="GPIO driver. " alt="" coords="236,184,383,225"/>
+<area shape="rect" id="node4" href="$aos__calib__hsi_8h.html" title="HSI calibration. " alt="" coords="347,273,493,315"/>
+<area shape="rect" id="node6" href="$aos__system_8h.html" title="System management and ISR to background process deferring. " alt="" coords="457,95,604,136"/>
+<area shape="rect" id="node12" href="$aos__i2c_8h.html" title="I2C driver. " alt="" coords="628,95,775,136"/>
+<area shape="rect" id="node13" href="$aos__pwm_8h.html" title="PWM (Pulse Width Modulated) driver. " alt="" coords="799,95,945,136"/>
+<area shape="rect" id="node14" href="$aos__dis_8h.html" title="Device Information Service. " alt="" coords="969,95,1116,136"/>
+<area shape="rect" id="node15" href="$srv__ble__beaconing_8h.html" title="BLE beaconing service. " alt="" coords="1141,95,1307,136"/>
+<area shape="rect" id="node16" href="$srv__ble__scan_8h.html" title="BLE scan service. " alt="" coords="1331,95,1477,136"/>
+<area shape="rect" id="node5" href="$aos__rf__switch_8h.html" title="RF switch driver. " alt="" coords="176,273,323,315"/>
+<area shape="rect" id="node7" href="$aos__nmea__parser_8h.html" title="aos&#45;libs/aos&#45;core/aos\l/aos_nmea_parser.h" alt="" coords="859,184,1005,225"/>
+<area shape="rect" id="node8" href="$aos__uart_8h.html" title="UART driver. " alt="" coords="517,184,664,225"/>
+<area shape="rect" id="node9" href="$aos__usb__cdc_8h.html" title="USB driver (serial communication support &#45; CDC&#45; only). " alt="" coords="517,273,664,315"/>
+<area shape="rect" id="node11" href="$srv__gnss_8h.html" title="GNSS service. " alt="" coords="689,184,834,225"/>
+<area shape="rect" id="node10" href="$srv__cli_8h.html" title="Command Line Interface service. " alt="" coords="689,273,834,315"/>
+</map>

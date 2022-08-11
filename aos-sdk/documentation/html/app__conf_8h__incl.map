@@ -1,0 +1,8 @@
+<map id="aos&#45;libs/aos&#45;core/aos_ble/app_conf.h" name="aos&#45;libs/aos&#45;core/aos_ble/app_conf.h">
+<area shape="rect" id="node3" href="$hw__conf_8h.html" title="Configuration of hardware interface. " alt="" coords="197,95,280,121"/>
+<area shape="rect" id="node6" href="$aos__thread__priority_8h_source.html" title="aos_thread_priority.h" alt="" coords="255,244,398,271"/>
+<area shape="rect" id="node9" href="$hw__if_8h.html" title="Hardware Interface. " alt="" coords="1033,95,1097,121"/>
+<area shape="rect" id="node4" href="$FreeRTOSConfig_8h_source.html" title="FreeRTOSConfig.h" alt="" coords="137,169,271,196"/>
+<area shape="rect" id="node5" href="$aos__it__priority_8h.html" title="Interrupt priorities. " alt="" coords="5,244,120,271"/>
+<area shape="rect" id="node7" href="$aos__error_8h.html" title="Handle Hardware and firmware unrecoverable errors. " alt="" coords="145,244,231,271"/>
+</map>
