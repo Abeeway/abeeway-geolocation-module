@@ -16,6 +16,8 @@
 #include "aos_log.h"
 #include "srv_gnss.h"
 
+#include "lora-init.h"
+
 // General definitions
 #define APP_MAIN_LED_PERIOD			1000	//!< Main LED blink period in ms
 
@@ -59,12 +61,16 @@ static cli_config_param_t _cli_cfg = {
   */
 static void _application_task(void *argument)
 {
+
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting lora open procedure\n");
+	lorawan_init();
+
 	// Log an application message.
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting application thread\n");
 
 	for ( ; ; ) {
 		// Toggle the LED state
-		aos_board_led_toggle(aos_board_led_idx_led4);
+		aos_board_led_toggle(aos_board_led_idx_led3);
 		vTaskDelay(pdMS_TO_TICKS(APP_MAIN_LED_PERIOD));
 	}
 	vTaskDelete(NULL);
