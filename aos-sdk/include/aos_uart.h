@@ -301,7 +301,7 @@ typedef struct {
  *
  * \brief UART driver access
  */
-aos_uart_driver_t aos_uart_driver;
+extern aos_uart_driver_t aos_uart_driver;
 
 
 /*
