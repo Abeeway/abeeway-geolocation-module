@@ -77,6 +77,7 @@ The result of the project is a simple application that demonstrates the features
       ```
       lora open
       lora join 
+      lora status
       ```
    - Send a LoRaWAN test message (and chek in the logs of the network server if it has arrived there)
       ```
