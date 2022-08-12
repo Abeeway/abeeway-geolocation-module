@@ -82,6 +82,8 @@ The result of the project is a simple application that demonstrates the features
       ```
       lora send aabbcc
       ```
+## The Demo Application
+
 ### Test the Demo application
 1. Check if LED_3 is blinking with 1000ms prdiod
 2. Press the button of Switch #4 of the Evaluation Board and check on your Network Server that every push results in a new LoRaWAN uplink message
