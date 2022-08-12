@@ -5,11 +5,11 @@
 
 This project is built from the following components:
 - Abeeway Geolocation Module Evaluation Board 
-  - *Please see its user manual [here](./docs/UM-EVB-V2.3.pdf)*
+  - *Please see its user manual [here](./docs/)*
 - STM32CubeIDE development environment.
   - *Please download it from [here](https://www.st.com/en/development-tools/stm32cubeide.html)*
 - Abeeway Operating System SDK (aos-sdk)
-  - *Please check its source code [here](aos-sdk) and its documentation [here](aos-sdk/documentation/index.html).*
+  - *Please check its source code [here](aos-sdk) and its documentation [here](aos-sdk/documentation/).*
 
 ## The demo application
 
