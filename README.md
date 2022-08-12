@@ -82,7 +82,7 @@ The result of the project is a simple application that demonstrates the features
       ```
       lora send aabbcc
       ```
-## The Demo Application
+## Working with the Demo Application
 
 ### Test the Demo application
 1. Check if LED_3 is blinking with 1000ms prdiod
