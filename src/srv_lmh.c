@@ -6,18 +6,36 @@
  *  * \copyright (C) 2022, Abeeway (www.abeeway.com). All Rights Reserved.
  */
 
-
-#include "aos_board.h"
+#include "srv_lmh.h"
 
 #include "srv_cli.h"
-
+#include "aos_board.h"
 #include "srv_provisioning.h"
+
+#include "board.h"
 #include "LmHandler.h"
 #include "LmHandlerMsgDisplay.h"
-//#include "LoRaMAC.h"
-#include "board.h"
 
-#include "lora-init.h"
+
+uint8_t srv_lmh_buffer[255];
+
+LmHandlerParams_t srv_lmh_params = {
+	.Region = LORAMAC_REGION_EU868,
+	.AdrEnable = true,
+	.IsTxConfirmed = LORAMAC_HANDLER_UNCONFIRMED_MSG,
+	.TxDatarate = DEF_UPLINK_DR,
+	.PublicNetworkEnable = true,
+	.DutyCycleEnabled = true,
+	.DataBufferMaxSize = sizeof(srv_lmh_buffer),
+	.DataBuffer = srv_lmh_buffer,
+};
+
+uint8_t srv_lmh_uplink_port = DEF_UPLINK_PORT;
+
+lmh_state_t srv_lmh_state = lmh_state_closed;
+
+
+
 
 // LM handlers. Display the LmHandler debug messages people are familiar with
 // from the github examples. Handled using the stackforce demo code, modified
@@ -82,6 +100,7 @@ static void _lm_on_nvm_data_change(LmHandlerNvmContextStates_t state, uint16_t s
 	DisplayNvmDataChange(state, size);
 }
 
+/*
 static void _lm_on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
 {
 	DisplayRxUpdate(appData, params);
@@ -96,6 +115,7 @@ static void _lm_on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *par
 		break;
 	}
 }
+*/
 
 static void _lm_on_sys_time_update(bool isSynchronized, int32_t timeCorrection)
 {
@@ -107,23 +127,12 @@ static void _lm_on_tx_data(LmHandlerTxParams_t *params)
 	DisplayTxUpdate(params);
 }
 
-static uint8_t _lmhandler_buffer[255];
 
-LmHandlerErrorStatus_t lorawan_init()
+
+LmHandlerErrorStatus_t srv_lmh_open(  void ( *OnRxData )( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params )  )
 {
 
-	static LmHandlerParams_t _lmhandler_params = {
-			.Region = LORAMAC_REGION_EU868,
-			.AdrEnable = true,
-			.IsTxConfirmed = LORAMAC_HANDLER_UNCONFIRMED_MSG,
-			.TxDatarate = DR_0,
-			.PublicNetworkEnable = true,
-			.DutyCycleEnabled = true,
-			.DataBufferMaxSize = sizeof(_lmhandler_buffer),
-			.DataBuffer = _lmhandler_buffer,
-	};
-
-
+	static LmHandlerErrorStatus_t rc;
 	static LmHandlerCallbacks_t lc;
 
 	if (srv_provisioning_data_state() == srv_provisioning_data_state_invalid) {
@@ -143,25 +152,25 @@ LmHandlerErrorStatus_t lorawan_init()
 
 	switch(region) {
 	case srv_provisioning_mac_region_eu868:
-		_lmhandler_params.Region = LORAMAC_REGION_EU868;
+		srv_lmh_params.Region = LORAMAC_REGION_EU868;
 		break;
 	case srv_provisioning_mac_region_ru864:
-		_lmhandler_params.Region = LORAMAC_REGION_RU864;
+		srv_lmh_params.Region = LORAMAC_REGION_RU864;
 		break;
 	case srv_provisioning_mac_region_us915:
-		_lmhandler_params.Region = LORAMAC_REGION_US915;
+		srv_lmh_params.Region = LORAMAC_REGION_US915;
 		break;
 	case srv_provisioning_mac_region_as923:
-		_lmhandler_params.Region = LORAMAC_REGION_AS923;
+		srv_lmh_params.Region = LORAMAC_REGION_AS923;
 		break;
 	case srv_provisioning_mac_region_au915:
-		_lmhandler_params.Region = LORAMAC_REGION_AU915;
+		srv_lmh_params.Region = LORAMAC_REGION_AU915;
 		break;
 	case srv_provisioning_mac_region_kr920:
-		_lmhandler_params.Region = LORAMAC_REGION_KR920;
+		srv_lmh_params.Region = LORAMAC_REGION_KR920;
 		break;
 	case srv_provisioning_mac_region_in865:
-		_lmhandler_params.Region = LORAMAC_REGION_IN865;
+		srv_lmh_params.Region = LORAMAC_REGION_IN865;
 		break;
 	case srv_provisioning_mac_region_count:
 		cli_printf("Unknown provisioning region %u\n", region);
@@ -179,12 +188,42 @@ LmHandlerErrorStatus_t lorawan_init()
 	lc.OnMacProcess = _lm_on_mac_process;
 	lc.OnNetworkParametersChange = _lm_on_network_parameters_change;
 	lc.OnNvmDataChange = _lm_on_nvm_data_change;
-	lc.OnRxData = _lm_on_rx_data;
+	lc.OnRxData = OnRxData; //_lm_on_rx_data;
 	lc.OnSysTimeUpdate = _lm_on_sys_time_update;
 	lc.OnTxData = _lm_on_tx_data;
 
-	return LmHandlerInit(&lc, &_lmhandler_params);
+	rc = LmHandlerInit(&lc, &srv_lmh_params);
 
+	if (rc == LORAMAC_HANDLER_SUCCESS) {
+		srv_lmh_state = lmh_state_opened;
+	}
+
+	return rc;
 
 }
+
+LmHandlerErrorStatus_t srv_lmh_send(uint8_t *payload_buf, uint8_t payload_len)
+{
+	if (LmHandlerIsBusy() == true) {
+		cli_printf("LoRa is busy\n");
+		return LORAMAC_HANDLER_ERROR;
+	}
+
+	cli_xdump(payload_buf, payload_len); // XXX debug
+
+	LmHandlerAppData_t payload;
+
+	payload.Buffer = payload_buf;	// de-constify.
+	payload.BufferSize = payload_len;
+	payload.Port = srv_lmh_uplink_port;
+
+	LmHandlerErrorStatus_t rc;
+
+	rc = LmHandlerSend(&payload, srv_lmh_params.IsTxConfirmed);
+	if (rc != LORAMAC_HANDLER_SUCCESS) {
+		cli_printf("Send failed, status %d\n", rc);
+	}
+	return rc;
+}
+
 

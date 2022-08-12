@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <string.h>
-#include <stdio.h>
+// #include <stdio.h>
 #include "aos_rf_switch.h"
 #include "srv_cli.h"
 #include "radio_board.h"

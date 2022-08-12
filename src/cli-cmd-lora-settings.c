@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <string.h>
-#include <stdio.h>
+// #include <stdio.h>
 #include <stdlib.h> // strtoul
 #include "srv_provisioning.h"
 #include "srv_cli.h"
