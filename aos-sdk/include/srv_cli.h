@@ -8,6 +8,7 @@
  */
 #pragma once
 
+#include <stdio.h>
 #include <stdarg.h>
 #include "aos_uart.h"
 #include "aos_cli.h"

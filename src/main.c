@@ -16,6 +16,8 @@
 #include "aos_log.h"
 #include "srv_gnss.h"
 
+#include "srv_lmh.h"
+
 // General definitions
 #define APP_MAIN_LED_PERIOD			1000	//!< Main LED blink period in ms
 
@@ -53,18 +55,63 @@ static cli_config_param_t _cli_cfg = {
 		}
 };
 
+
+static void _on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
+{
+	DisplayRxUpdate(appData, params);
+
+	switch (appData->Port) {
+	case 1: // The application LED can be controlled on port 1 or 2
+	case 2:
+		cli_printf("Received request to turn the Application LED O%s\n", (appData->Buffer[0] & 0x01) ? "N":"FF");
+		aos_board_led_set(aos_board_led_idx_led4, appData->Buffer[0] & 0x01);
+		break;
+	default:
+		break;
+	}
+}
+
+static void _on_button_press(void *arg)
+{
+	// aos_log_msg(aos_log_module_app, aos_log_level_status, true, "BUTTON PRESSED!\n");
+	uint8_t payload[] = { 0xaa, 0xbb, 0xcc };
+	srv_lmh_send(payload, sizeof(payload));
+}
+
 /*!
   * \brief  Application main thread
   * \param argument User argument
   */
 static void _application_task(void *argument)
 {
-	// Log an application message.
+
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting application thread\n");
 
+
+	// Initiating LoRaMAC Handler service
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Initiating LoRaMAC Handler service\n");
+	srv_lmh_open(_on_rx_data);
+
+
+	// Button configuration
+	aos_gpio_id_t gpio = aos_gpio_id_7; // board switch 04
+	aos_gpio_config_t gpio_cfg;
+	gpio_cfg.mode = aos_gpio_mode_input;
+	gpio_cfg.pull = aos_gpio_pull_type_pulldown;
+	gpio_cfg.output_type = aos_gpio_output_type_last; // not applicable in input mode
+	gpio_cfg.irq_mode = aos_gpio_irq_mode_rising_edge;
+	gpio_cfg.irq_prio = aos_gpio_irq_priority_medium;
+	gpio_cfg.irq_servicing = aos_gpio_irq_service_type_int;
+	gpio_cfg.irq_handler = (aos_gpio_callback_t)_on_button_press;
+	gpio_cfg.user_arg = NULL;
+	aos_gpio_open_ext(gpio, &gpio_cfg);
+
+
+	// Start blinking LED3
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Start blinking LED3\n");
 	for ( ; ; ) {
 		// Toggle the LED state
-		aos_board_led_toggle(aos_board_led_idx_led4);
+		aos_board_led_toggle(aos_board_led_idx_led3);
 		vTaskDelay(pdMS_TO_TICKS(APP_MAIN_LED_PERIOD));
 	}
 	vTaskDelete(NULL);
