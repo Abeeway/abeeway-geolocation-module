@@ -5,7 +5,7 @@
 
 This project is built from the following components:
 - Abeeway Geolocation Module Evaluation Board 
-  - *Please see its user manual [here](./docs/)*
+  - *Please see its user manual [here](https://docs.thingpark.com/thingpark-location/B-Feature-Topics/GeolocModuleEVKIntro_C/#documentation)*
 - STM32CubeIDE development environment.
   - *Please download it from [here](https://www.st.com/en/development-tools/stm32cubeide.html)*
 - Abeeway Operating System SDK (aos-sdk)
