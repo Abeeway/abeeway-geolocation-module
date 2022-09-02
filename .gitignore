@@ -1,4 +1,15 @@
-/Debug
 *.launch
 .settings/
 .vscode/
+
+/apps/abeeway/*/Debug/*
+!/apps/abeeway/*/Debug/*.elf
+
+/apps/abeeway/*/Release/*
+!/apps/abeeway/*/Release/*.elf
+
+/apps/community/*/Debug/*
+!/apps/community/*/Debug/*.elf
+
+/apps/community/*/Release/*
+!/apps/community/*/Release/*.elf

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>aos-app-demo</name>
+	<name>app-cmty_cli</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -28,4 +28,17 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>aos-sdk</name>
+			<type>2</type>
+			<locationURI>AOS_SDK</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>AOS_SDK</name>
+			<value>$%7BPARENT-3-PROJECT_LOC%7D/aos-sdk</value>
+		</variable>
+	</variableList>
 </projectDescription>
