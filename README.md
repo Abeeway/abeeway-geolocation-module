@@ -1,4 +1,9 @@
 
+WARNING:
+
+This Readme file has not been updated for the new directory structure introduced by the "wip_new_directory_structure" branch!!!
+
+
 # Abeeway Geolocation Module example project
 
 ## Project components
