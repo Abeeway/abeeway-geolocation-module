@@ -51,11 +51,11 @@ The result of the project is a simple application that demonstrates the features
       settings erase
       settings factory
       ```
-   - Set the your LoRaWAN regio. (You see the possible regio options by the the `settings set region help` command)
+   - Set the your LoRaWAN region. (You see the possible regional options by the the `settings set region help` command)
       ```
       settings set region EU868
       ```
-   - Set the your selected activation type (`otaa` or `abp`)
+   - Set the your selected activation type (`OTAA` or `ABP`)
       ```
       settings set activation otaa
       ```
