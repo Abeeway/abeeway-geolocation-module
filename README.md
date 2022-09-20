@@ -9,7 +9,7 @@ This project is built from the following components:
 - STM32CubeIDE development environment.
   - *Please download it from [here](https://www.st.com/en/development-tools/stm32cubeide.html)*
 - Abeeway Operating System SDK (aos-sdk)
-  - *Please check its source code [here](aos-sdk) and its documentation [here](aos-sdk/documentation/html/).*
+  - *Please check its source code [here](aos-sdk) and its documentation [here](https://htmlpreview.github.io/?https://github.com/Abeeway/abeeway-geolocation-module/blob/master/aos-sdk/documentation/html/index.html).*
 
 ## The demo application
 
