@@ -38,6 +38,8 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 #if !defined(LR1110)
 #define LR1110		// The Abeeway module build only supports the LR1110
 #endif
@@ -45,6 +47,25 @@ extern "C" {
 #if defined(SX126X) || defined(SX127X)
 #error "Invalid radio conditionals, review your build environment"
 #endif
+
+/*
+ * Abeeway: Debug mode counters. Not necessarily compiled for production releases.
+ */
+typedef struct {
+	uint32_t interrupts_received;		// Count of hardware interrupts received
+	uint32_t interrupt_highwater;		// Highwater mark (max interrupts pending at any given time)
+	uint32_t interrupts_handled;		// Interrupt trampoline invocations
+	uint32_t interrupt_handler_errors;	// Error status returned by loramac_radio_irq_process
+} radio_board_counters_t;
+
+/*
+ *  radio_board_counters() - get a pointer to the radio_board counters.
+ *
+ * 	This function returns a pointer to the radio_board_counters_t structure,
+ * 	or NULL if no radio_board counters are being maintained.
+ */
+radio_board_counters_t *radio_board_counters(void);
+
 /*
  * -----------------------------------------------------------------------------
  * --- DEPENDENCIES ------------------------------------------------------------
@@ -100,7 +121,7 @@ typedef struct radio_params_s
     int8_t   tx_rf_pwr_in_dbm;
     bool     is_public_network;
     bool     is_image_calibrated;
-    bool     is_irq_fired;
+    volatile bool     is_irq_fired;
     bool     is_rx_continuous;
     uint8_t  max_payload_length;
     uint32_t tx_timeout_in_ms;

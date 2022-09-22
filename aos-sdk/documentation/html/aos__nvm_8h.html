@@ -83,9 +83,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad431ea4c20ebc59e6fe334e484c2c906"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aos__nvm_8h.html#ad431ea4c20ebc59e6fe334e484c2c906">aos_nvm_read</a> (unsigned address, uint32_t *ret_word)</td></tr>
 <tr class="memdesc:ad431ea4c20ebc59e6fe334e484c2c906"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a word (32-bit) value from the user non-volatile memory.  <a href="#ad431ea4c20ebc59e6fe334e484c2c906">More...</a><br /></td></tr>
 <tr class="separator:ad431ea4c20ebc59e6fe334e484c2c906"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a976792a15d8fb7a576938b200e6b69a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aos__nvm_8h.html#a976792a15d8fb7a576938b200e6b69a7">aos_nvm_write</a> (unsigned word_address, uint32_t word)</td></tr>
-<tr class="memdesc:a976792a15d8fb7a576938b200e6b69a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a word (32-bit) value to the user non-volatile memory.  <a href="#a976792a15d8fb7a576938b200e6b69a7">More...</a><br /></td></tr>
-<tr class="separator:a976792a15d8fb7a576938b200e6b69a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a020cda5570d6be2b898c864594630"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aos__nvm_8h.html#af8a020cda5570d6be2b898c864594630">aos_nvm_write</a> (unsigned address, uint32_t word)</td></tr>
+<tr class="memdesc:af8a020cda5570d6be2b898c864594630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a word (32-bit) value to the user non-volatile memory.  <a href="#af8a020cda5570d6be2b898c864594630">More...</a><br /></td></tr>
+<tr class="separator:af8a020cda5570d6be2b898c864594630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Non-volatile memory interface API. </p>
@@ -107,7 +107,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a> aos_nvm_read </td>
           <td>(</td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>word_address</em>, </td>
+          <td class="paramname"><em>address</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -126,8 +126,8 @@ Functions</h2></td></tr>
 <p>Reads a word (32-bit) value from the user non-volatile memory. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>address - zero-based address of the word in user nvm.</td></tr>
-    <tr><td class="paramname">[OUT]</td><td>ret_word - pointer to an uint32_t variable to receive the value.</td></tr>
+    <tr><td class="paramname">address</td><td>- zero-based address of the word in user nvm.</td></tr>
+    <tr><td class="paramname">ret_word</td><td>- pointer to an uint32_t variable to receive the value.</td></tr>
   </table>
   </dd>
 </dl>
@@ -166,8 +166,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a976792a15d8fb7a576938b200e6b69a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a976792a15d8fb7a576938b200e6b69a7">&#9670;&nbsp;</a></span>aos_nvm_write()</h2>
+<a id="af8a020cda5570d6be2b898c864594630"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8a020cda5570d6be2b898c864594630">&#9670;&nbsp;</a></span>aos_nvm_write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +176,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a> aos_nvm_write </td>
           <td>(</td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>word_address</em>, </td>
+          <td class="paramname"><em>address</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -195,8 +195,8 @@ Functions</h2></td></tr>
 <p>Writes a word (32-bit) value to the user non-volatile memory. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>address - zero-based address of the word in user nvm;</td></tr>
-    <tr><td class="paramname">[IN]</td><td>word - an uint32_t value to be written to nvm.</td></tr>
+    <tr><td class="paramname">address</td><td>- zero-based address of the word in user nvm;</td></tr>
+    <tr><td class="paramname">word</td><td>- an uint32_t value to be written to nvm.</td></tr>
   </table>
   </dd>
 </dl>

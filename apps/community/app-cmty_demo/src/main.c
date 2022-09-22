@@ -30,7 +30,10 @@ static StaticTask_t _app_task_info;
 static StackType_t _app_task_stack[APP_TASK_STACK_SIZE];
 
 
-// CLI definitions
+/***********************************
+ * CLI Configuration
+ ***********************************/
+
 #define SRV_CLI_UART_TX_BUFFER 1024
 #define SRV_CLI_UART_RX_BUFFER 1024
 
@@ -56,6 +59,33 @@ static cli_config_param_t _cli_cfg = {
 };
 
 
+/******************************************
+ * GPIO Configuration for Board Switch 04
+ ******************************************/
+
+// what happens if you push the button
+static void _on_button_press(void *arg)
+{
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true,
+		"BUTTON PRESSED!\n"
+	);
+	uint8_t payload[] = { 0xaa, 0xbb, 0xcc };
+	srv_lmh_send(payload, sizeof(payload));
+}
+static aos_gpio_config_t _gpio_cfg = {
+		.mode = aos_gpio_mode_input,
+		.pull = aos_gpio_pull_type_pulldown,
+		.output_type = aos_gpio_output_type_last, // not applicable in input mode
+		.irq_mode = aos_gpio_irq_mode_rising_edge,
+		.irq_prio = aos_gpio_irq_priority_medium,
+		.irq_servicing = aos_gpio_irq_service_type_int,
+		.irq_handler = (aos_gpio_callback_t)_on_button_press,
+		.user_arg = NULL
+};
+
+
+
+// what happens on receiving downlink message
 static void _on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
 {
 	DisplayRxUpdate(appData, params);
@@ -64,18 +94,11 @@ static void _on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params
 	case 1: // The application LED can be controlled on port 1 or 2
 	case 2:
 		cli_printf("Received request to turn the Application LED O%s\n", (appData->Buffer[0] & 0x01) ? "N":"FF");
-		aos_board_led_set(aos_board_led_idx_led4, appData->Buffer[0] & 0x01);
+		aos_board_led_set(aos_board_led_idx_led3, appData->Buffer[0] & 0x01);
 		break;
 	default:
 		break;
 	}
-}
-
-static void _on_button_press(void *arg)
-{
-	// aos_log_msg(aos_log_module_app, aos_log_level_status, true, "BUTTON PRESSED!\n");
-	uint8_t payload[] = { 0xaa, 0xbb, 0xcc };
-	srv_lmh_send(payload, sizeof(payload));
 }
 
 /*!
@@ -85,36 +108,29 @@ static void _on_button_press(void *arg)
 static void _application_task(void *argument)
 {
 
-	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting application thread\n");
-
-
 	// Initiating LoRaMAC Handler service
-	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Initiating LoRaMAC Handler service\n");
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true,
+			"Initiating LoRaMAC Handler service\n"
+	);
 	srv_lmh_open(_on_rx_data);
 
+	// Initiating GPIO of board switch 04
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true,
+			"Initiating GPIO of board switch 04 \n"
+	);
+	aos_gpio_open_ext(aos_gpio_id_7, &_gpio_cfg);       // gpio 7 -> board switch 04
 
-	// Button configuration
-	aos_gpio_id_t gpio = aos_gpio_id_7; // board switch 04
-	aos_gpio_config_t gpio_cfg;
-	gpio_cfg.mode = aos_gpio_mode_input;
-	gpio_cfg.pull = aos_gpio_pull_type_pulldown;
-	gpio_cfg.output_type = aos_gpio_output_type_last; // not applicable in input mode
-	gpio_cfg.irq_mode = aos_gpio_irq_mode_rising_edge;
-	gpio_cfg.irq_prio = aos_gpio_irq_priority_medium;
-	gpio_cfg.irq_servicing = aos_gpio_irq_service_type_int;
-	gpio_cfg.irq_handler = (aos_gpio_callback_t)_on_button_press;
-	gpio_cfg.user_arg = NULL;
-	aos_gpio_open_ext(gpio, &gpio_cfg);
-
-
-	// Start blinking LED3
-	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Start blinking LED3\n");
+	// Start blinking LED3 (application thread)
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true,
+			"Start blinking LED3 (application thread)\n"
+	);
 	for ( ; ; ) {
 		// Toggle the LED state
-		aos_board_led_toggle(aos_board_led_idx_led3);
+		aos_board_led_toggle(aos_board_led_idx_led4);
 		vTaskDelay(pdMS_TO_TICKS(APP_MAIN_LED_PERIOD));
 	}
 	vTaskDelete(NULL);
+
 }
 
 /*!

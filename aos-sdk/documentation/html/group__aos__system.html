@@ -92,9 +92,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaeebd194694f627fcff4e0babc3ffac9c"><td class="memItemLeft" align="right" valign="top"><a id="gaeebd194694f627fcff4e0babc3ffac9c"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>aos_gpio_isr_callback_t</b>) (void *user_arg)</td></tr>
-<tr class="separator:gaeebd194694f627fcff4e0babc3ffac9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4289c7283fb2d880443a450d9f5cc8da"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__system.html#ga4289c7283fb2d880443a450d9f5cc8da">aos_gpio_isr_callback_t</a>) (void *user_arg)</td></tr>
+<tr class="memdesc:ga4289c7283fb2d880443a450d9f5cc8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function triggered upon events reception.  <a href="#ga4289c7283fb2d880443a450d9f5cc8da">More...</a><br /></td></tr>
+<tr class="separator:ga4289c7283fb2d880443a450d9f5cc8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga97dab4b150358e9861a20430daeee534"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__system.html#ga97dab4b150358e9861a20430daeee534">aos_system_user_callback_t</a>) (uint8_t user_id, void *arg)</td></tr>
 <tr class="memdesc:ga97dab4b150358e9861a20430daeee534"><td class="mdescLeft">&#160;</td><td class="mdescRight">User callback function definition for ISR to background process deferring.  <a href="#ga97dab4b150358e9861a20430daeee534">More...</a><br /></td></tr>
 <tr class="separator:ga97dab4b150358e9861a20430daeee534"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -298,6 +298,29 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga4289c7283fb2d880443a450d9f5cc8da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4289c7283fb2d880443a450d9f5cc8da">&#9670;&nbsp;</a></span>aos_gpio_isr_callback_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">aos_gpio_isr_callback_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function triggered upon events reception. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_arg</td><td>user argument. Opaque for the driver</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Applicable for digital input only. </dd></dl>
+
+</div>
+</div>
 <a id="ga97dab4b150358e9861a20430daeee534"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga97dab4b150358e9861a20430daeee534">&#9670;&nbsp;</a></span>aos_system_user_callback_t</h2>
 

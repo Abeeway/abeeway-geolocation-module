@@ -113,11 +113,6 @@ void DisplayBeaconUpdate( LoRaMacHandlerBeaconParams_t* params );
  */
 void DisplayClassUpdate( DeviceClass_t deviceClass );
 
-/*!
- * \brief Displays application information
- */
-void DisplayAppInfo( const char* appName, const Version_t* appVersion, const Version_t* gitHubVersion );
-
 #ifdef __cplusplus
 }
 #endif

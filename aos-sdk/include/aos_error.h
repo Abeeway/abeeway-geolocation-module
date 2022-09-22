@@ -33,9 +33,6 @@ extern "C" {
  * \addtogroup aos_error
  * @{
  */
-#ifdef __cplusplus
-}
-#endif
 #define AOS_ERROR_MAX_FILE_NAME 32			//!< Max size of a file name. File name Sizes above this value are truncated.
 
 

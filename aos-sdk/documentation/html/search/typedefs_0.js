@@ -2,6 +2,7 @@ var searchData=
 [
   ['aos_5fble_5fcore_5fscan_5fcallback_5ft',['aos_ble_core_scan_callback_t',['../group__aos__ble__core.html#ga914ca2bcdef0ff0518b4f7643026af8e',1,'aos_ble_core.h']]],
   ['aos_5fgnss_5fcallback_5ft',['aos_gnss_callback_t',['../group__gnss__common.html#gab5fb524482a449505a058b23f23c6f12',1,'aos_gnss_common.h']]],
+  ['aos_5fgpio_5fisr_5fcallback_5ft',['aos_gpio_isr_callback_t',['../group__aos__system.html#ga4289c7283fb2d880443a450d9f5cc8da',1,'aos_gpio.h']]],
   ['aos_5fi2c_5fclose_5ffunc_5ft',['aos_i2c_close_func_t',['../group__aos__i2c.html#ga1bd7135f5571ca7335d8b57cfb50e416',1,'aos_i2c.h']]],
   ['aos_5fi2c_5fdevaddr_5ft',['aos_i2c_devaddr_t',['../group__aos__i2c.html#ga693400cf10e55e521e53b12f1c22b5c0',1,'aos_i2c.h']]],
   ['aos_5fi2c_5fhandle_5ft',['aos_i2c_handle_t',['../group__aos__i2c.html#ga0a40fe36a340b4c177c311405f19d1ea',1,'aos_i2c.h']]],

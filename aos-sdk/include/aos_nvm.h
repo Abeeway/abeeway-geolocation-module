@@ -53,13 +53,13 @@ unsigned aos_nvm_size(void);
 
 /*!
  *
- * \fn      aos_result_t aos_nvm_read(unsigned word_address, uint32_t *ret_word);
+ * \fn      aos_result_t aos_nvm_read(unsigned address, uint32_t *ret_word);
  *
  * \brief   Reads a word (32-bit) value from the user non-volatile memory.
  *
- * \param   [IN] address   - zero-based address of the word in user nvm.
+ * \param address   - zero-based address of the word in user nvm.
  *
- * \param   [OUT] ret_word - pointer to an uint32_t variable to receive the value.
+ * \param ret_word - pointer to an uint32_t variable to receive the value.
  *
  * \retval  aos_result_t Status of the operation. If the parameters are not
  *          valid, the function returns aos_result_param_error. Upon success,
@@ -69,17 +69,17 @@ aos_result_t aos_nvm_read(unsigned address, uint32_t *ret_word);
 
 /*!
  *
- * \fn      aos_result_t aos_nvm_write(unsigned word_address, uint32_t word);
+ * \fn      aos_result_t aos_nvm_write(unsigned address, uint32_t word);
  *
  * \brief   Writes a word (32-bit) value to the user non-volatile memory.
  *
- * \param   [IN] address   - zero-based address of the word in user nvm;
+ * \param address   - zero-based address of the word in user nvm;
  *
- * \param   [IN] word      - an uint32_t value to be written to nvm.
+ * \param word      - an uint32_t value to be written to nvm.
  *
  * \retval  aos_result_t Status of the operation. If the parameters are not
  *          valid, the function returns aos_result_param_error. Upon success,
  *          it returns aos_result_success.
  */
-aos_result_t aos_nvm_write(unsigned word_address, uint32_t word);
+aos_result_t aos_nvm_write(unsigned address, uint32_t word);
 
