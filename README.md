@@ -10,7 +10,7 @@ This project is built from the following components:
 - STM32CubeIDE development environment.
   - *Please download it from [here](https://www.st.com/en/development-tools/stm32cubeide.html)*
 - Abeeway Operating System SDK (aos-sdk)
-  - *Please check its source code [here](aos-sdk) and its documentation [here](aos-sdk/documentation/html/).*
+  - *Please check its source code [here](aos-sdk) and its documentation [here](https://htmlpreview.github.io/?https://github.com/Abeeway/abeeway-geolocation-module/blob/master/aos-sdk/documentation/html/index.html).*
 
 ## The demo application
 
@@ -56,8 +56,8 @@ The result of the project is a simple application that demonstrates the features
       settings erase
       settings factory
       ```
-
-   - Set the your LoRaWAN regio. (You see the possible regio options by the the `settings set region help` command)
+      
+   - Set your LoRaWAN region. (You can see the possible region options by the the `settings set region help` command)
 
       ```Shell
       settings set region EU868
