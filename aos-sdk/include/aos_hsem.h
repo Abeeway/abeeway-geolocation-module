@@ -21,14 +21,12 @@ extern "C" {
  * @{
  */
 
-/*
+/*!
  * \fn aos_hsem_init(void)
  *
  * \brief Initialize the HSEM subsystem
  *
  * \details This function is called as part of the aos system initialization.
- *
- * \param none
  *
  * \return none
  */

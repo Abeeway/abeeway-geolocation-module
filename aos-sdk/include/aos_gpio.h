@@ -131,7 +131,7 @@ typedef enum {
 	aos_gpio_irq_service_type_thread,		//!< IRQ serviced under the system thread context
 }aos_gpio_irq_service_type_t;
 
-/*
+/*!
  * \fn aos_gpio_isr_callback_t
  *
  * \brief Callback function triggered upon events reception

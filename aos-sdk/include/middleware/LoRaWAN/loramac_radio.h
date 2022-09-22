@@ -63,6 +63,35 @@ extern "C" {
  * --- PUBLIC TYPES ------------------------------------------------------------
  */
 
+/*
+ * Abeeway: Debug mode counters. Not necessarily compiled for production releases.
+ */
+typedef struct {
+	uint32_t handler_called;			// number of times the handler was called
+	uint32_t no_interrupt_fired;		// handler called but no interrupt was fired
+	uint32_t ral_irq_get_failure;		// ral_get_and_clear_irq_status() failed
+	uint32_t dio1_irq_fired;			// irq was re-signaled due to dio1
+	uint32_t tx_done;					// tx done processing
+	uint32_t rx_done_no_crc_error;		// rx done with good crc
+	uint32_t ral_no_pkt_payload;		// failed to get rx payload
+	uint32_t ral_no_pkt_type;			// failed to get packet type
+	uint32_t rx_pkt_type_lora;			// LoRa packet type received
+	uint32_t ral_no_rx_pkt_status_lora;	// Failed to get packet status
+	uint32_t rx_pkt_type_gfsk;			// GFSK packet type received
+	uint32_t ral_no_rx_pkt_status_gfsk;	// Failed to get packet status
+	uint32_t rx_crc_error;				// Receive CRC error count
+	uint32_t tx_timeouts;				// Transmit timeouts
+	uint32_t rx_timeouts;				// Receive timeouts
+} loramac_radio_counters_t;
+
+/*
+ *  radio_board_counters() - get a pointer to the radio_board counters.
+ *
+ * 	This function returns a pointer to the loramac_radio_counters_t structure,
+ * 	or NULL if no loramac_radio counters are being maintained.
+ */
+loramac_radio_counters_t *loramac_radio_counters(void);
+
 /*!
  * API return status
  */
