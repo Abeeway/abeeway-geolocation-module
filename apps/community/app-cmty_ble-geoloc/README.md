@@ -70,7 +70,7 @@ The result of the project is a simple application that demonstrates the features
      
      ```Shell
      settings set deveui 0000000000000000
-     
+     ```
    - Display your configuration and save it in the flash memory
 
       ```Shell
