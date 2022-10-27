@@ -25,4 +25,5 @@
 void btn_handling_config(aos_gpio_id_t gpio, aos_system_user_callback_t cb);
 void btn_handling_open();
 void btn_handling_close();
+void on_button_5_press(uint8_t user_id, void *arg);
 #endif /* BTN_HANDLING_H_ */

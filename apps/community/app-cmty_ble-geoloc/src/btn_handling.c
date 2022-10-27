@@ -4,19 +4,29 @@
  *  Created on: 13 oct. 2022
  *      Author: Jean-PierreTogbe
  */
+#include <stdio.h>
+
 #include "aos_system.h"
 #include "aos_board.h"
-#include "srv_cli.h"
-#include "srv_provisioning.h"
 #include "aos_lpm.h"
 #include "aos_dis.h"
-#include "srv_cli.h"
 #include "aos_rf_switch.h"
 #include "aos_ble_core.h"
+#include "aos_log.h"
+
+#include "ble_scan_handler.h"
+
+#include "srv_cli.h"
+#include "srv_provisioning.h"
+#include "srv_cli.h"
 #include "srv_ble_scan.h"
 #include "srv_ble_dtm.h"
 #include "srv_ble_beaconing.h"
-#include <stdio.h>
+
+
+
+
+
 
 struct {
 	bool    drv_open;
@@ -66,7 +76,6 @@ void btn_handling_close()
 		srv_ble_scan_stop();
 	}
 
-
 	btn_ctx.ble_role = GAP_NO_ROLE;
 
 //	aos_lpm_set_mode(aos_lpm_requester_application, aos_lpm_mode_stop2, NULL, NULL);
@@ -74,5 +83,12 @@ void btn_handling_close()
 			RF_SWITCH_OWNER_BLE);
 
 	cli_printf("BLE closed\n");
+}
+
+void on_button_5_press(uint8_t user_id, void *arg)
+{
+	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "BUTTON BLE SCAN SHUTDOWN PRESSED!\n");
+	btn_handling_close();
+
 }
 
