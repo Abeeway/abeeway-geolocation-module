@@ -86,8 +86,16 @@ The result of the project is a simple application that demonstrates the features
 on your Network Server that every push results in a new LoRaWAN uplink message
 3. Send a LoRaWAN dowlink message with payload : "0B026928" or "0B02693C"  to change the `repeat-delay` of the BLE scan (28 = 40s), (3C = 60s). The default delay is 30s.
 
-    - Please note that the downlink message can only be delivered as a response to an uplink message. The uplink message can be triggered by pressong the button of Switch #4.
-4. 
+    - Please note that the downlink message can only be delivered as a response to an uplink message.
+4. Press the button `Board switch 0` to stop BLE scan.
+5. 
 
 ### Modify the demo application
-
+Please check the content of the `abeeway-geolocation-module/apps/community/app-cmty_ble-geoloc/src/` 
+    `/main.c`
+    `/app_scan_report.c` 
+    `/ble_scan_handler.c`
+    `/btn_handling.c`
+    `/encode_handling.c`
+    `/lora_handler.c`
+     files of the source code and see how the demo application works. You can also check how the CLI commands are implemented in the `src/cli-cmd-*.c` files.
