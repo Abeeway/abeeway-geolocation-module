@@ -81,6 +81,13 @@ The result of the project is a simple application that demonstrates the features
 
 ### Test the Demo application
 
+1. Check if the LED4 is bliking with 1000ms period
+2. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
+on your Network Server that every push results in a new LoRaWAN uplink message
+3. Send a LoRaWAN dowlink message with payload : "0B026928" or "0B02693C"  to change the `repeat-delay` of the BLE scan (28 = 40s), (3C = 60s). The default delay is 30s.
+
+    - Please note that the downlink message can only be delivered as a response to an uplink message. The uplink message can be triggered by pressong the button of Switch #4.
+4. 
 
 ### Modify the demo application
 
