@@ -87,7 +87,7 @@ on your Network Server that every push results in a new LoRaWAN uplink message
 3. Send a LoRaWAN dowlink message with payload : "0B026928" or "0B02693C"  to change the `repeat-delay` of the BLE scan (28 = 40s), (3C = 60s). The default delay is 30s.
 
     - Please note that the downlink message can only be delivered as a response to an uplink message.
-4. Press the button `Board switch 0` to stop BLE scan.
+4. Press the button `Board switch 05` to stop BLE scan.
 5. 
 
 ### Modify the demo application

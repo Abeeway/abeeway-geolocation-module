@@ -76,7 +76,7 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 
 	switch (appData->Buffer[0]){
 	case 11 ://Update parameters
-		value = appData->Buffer[3];
+		value = appData->Buffer[3]+appData->Buffer[4]+appData->Buffer[5]+appData->Buffer[6];
 		id_value =appData->Buffer[2];
 
 		if (id_value == 105){// ble scan duration parameter
