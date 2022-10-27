@@ -92,10 +92,16 @@ on your Network Server that every push results in a new LoRaWAN uplink message
 
 ### Modify the demo application
 Please check the content of the `abeeway-geolocation-module/apps/community/app-cmty_ble-geoloc/src/` 
-    - `/main.c`
-    - `/app_scan_report.c` 
-    - `/ble_scan_handler.c`
-    - `/btn_handling.c`
-    - `/encode_handling.c`
-    - `/lora_handler.c`
+
+   - `/main.c`
+
+   - `/app_scan_report.c` 
+
+   - `/ble_scan_handler.c`
+
+   - `/btn_handling.c`
+
+   - `/encode_handling.c`
+
+   - `/lora_handler.c`
  files of the source code and see how the demo application works. You can also check how the CLI commands are implemented in the `src/cli-cmd-*.c` files.
