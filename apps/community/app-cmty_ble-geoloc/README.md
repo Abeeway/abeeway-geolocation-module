@@ -90,9 +90,7 @@ on your Network Server that every push results in a new LoRaWAN uplink message
     |      ID     |    Description   |
     | ----------- | ---------------- |
     |     0x0B    | Update parameter |
-    | ----------- | ---------------- |
     |     0x02    |     Ack Token    |
-    | ----------- | ---------------- |
     |     0x4E    | Filter Main 1 ID |
 
   - Please note that the downlink message can only be delivered as a response to an uplink message.
