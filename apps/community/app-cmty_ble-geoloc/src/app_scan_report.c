@@ -52,14 +52,12 @@
 #define APP_MAIN_LED_PERIOD			1000	//!< Main LED blink period in ms
 
 #define ABW_MAIN1_PREFIX "ABEE"
-#define ABW_MAIN2_PREFIX "WAY"
+#define ABW_MAIN2_PREFIX "WAY0"
 
 // Application parameters stored in Flash
 #define PARAM_ID_REPEAT_DELAY	0x69
 #define PARAM_ID_FILTER_MAIN1	0x4E
 #define PARAM_ID_FILTER_MAIN2	0x4F
-#define PARAM_ID_OFSET1			4
-#define PARAM_ID_OFSET2			5
 
 
 static uint8_t result;
@@ -103,6 +101,7 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 			ble_param->filters[0].value[2] = appData->Buffer[5];
 			ble_param->filters[0].value[3] = appData->Buffer[6];
 			value = __builtin_bswap32(*(uint32_t *)&ble_param->filters[0].value);
+			aos_nvm_write(PARAM_ID_FILTER_MAIN2, 0);
 			aos_nvm_write(PARAM_ID_FILTER_MAIN1, value);
 
 			cli_printf("FILTER 1 :  %x\n", value);
@@ -114,6 +113,7 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 			ble_param->filters[1].value[2] = appData->Buffer[5];
 			ble_param->filters[1].value[3] = appData->Buffer[6];
 			value = __builtin_bswap32(*(uint32_t *)&ble_param->filters[1].value);
+			aos_nvm_write(PARAM_ID_FILTER_MAIN2, 0);
 			aos_nvm_write(PARAM_ID_FILTER_MAIN2, value);
 
 			cli_printf("FILTER 2 :  %x\n", value);
@@ -144,6 +144,7 @@ void on_button_4_press(uint8_t user_id, void *arg)
 void application_task(void *argument)
 {
 	uint32_t value;
+	bool valid;
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting application thread\n");
 
 	// Initiating LoRaMAC Handler service
@@ -158,40 +159,42 @@ void application_task(void *argument)
 	// >Pre-initialze the BLE param
 	ble_param = srv_ble_scan_get_params();
 
-
 	if (aos_nvm_read(PARAM_ID_REPEAT_DELAY, &value)== aos_result_success) {
 		ble_param->repeat_delay =  value;
 	} else {
 		ble_param->repeat_delay =  30;
 	}
 
+	memset(&ble_param->filters[0], 0, sizeof(ble_param->filters));
+	ble_param->filters[0].start_offset = 13;
 	// FILTRE MAIN1
+	valid = false;
 	if(aos_nvm_read(PARAM_ID_FILTER_MAIN1, &value)==aos_result_success){
-		memset(&ble_param->filters[0], 0, sizeof(ble_param->filters));
-		ble_param->filters[0].start_offset = 13;
-		uint8_t val=(uint8_t)value;
-		baswap(ble_param->filters[0].value, &val, 4);
-		memset(ble_param->filters[0].mask, 0xFF , 4);
-	}else{
-		memset(&ble_param->filters[0], 0, sizeof(ble_param->filters));
-		ble_param->filters[0].start_offset = 13;
+		if (value) {
+			baswap(ble_param->filters[0].value, (uint8_t*)&value, sizeof(value));
+			memset(ble_param->filters[0].mask, 0xFF , sizeof(value));
+			valid = true;
+		}
+	}
+	if (!valid) {
 		memcpy(ble_param->filters[0].value, ABW_MAIN1_PREFIX, strlen(ABW_MAIN1_PREFIX));
 		memset(ble_param->filters[0].mask, 0xFF , strlen(ABW_MAIN1_PREFIX));
 	}
 
 	//FILTRE MAIN2
+	valid = false;
 	if(aos_nvm_read(PARAM_ID_FILTER_MAIN2, &value)==aos_result_success){
-			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
-			ble_param->filters[1].start_offset = 17;
-			uint8_t val=(uint8_t)value;
-			baswap(ble_param->filters[1].value, &val, 3);
-			memset(ble_param->filters[1].mask, 0xFF , 3);
-		}else{
-			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
-			ble_param->filters[0].start_offset = 17;
-			memcpy(ble_param->filters[1].value, ABW_MAIN2_PREFIX, strlen(ABW_MAIN2_PREFIX));
-			memset(ble_param->filters[1].mask, 0xFF , strlen(ABW_MAIN2_PREFIX));
+		if (value) {
+			baswap(&ble_param->filters[0].value[4], (uint8_t*)&value, sizeof(value));
+			memset(&ble_param->filters[0].mask[4], 0xFF , 3);
+			valid = true;
 		}
+	}
+	if (!value) {
+		memcpy(&ble_param->filters[0].value[4], ABW_MAIN2_PREFIX, strlen(ABW_MAIN2_PREFIX));
+		memset(&ble_param->filters[0].mask[4], 0xFF , strlen(ABW_MAIN2_PREFIX));
+	}
+
 	// Start blinking LED3
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Start blinking LED3\n");
 	for ( ; ; ) {

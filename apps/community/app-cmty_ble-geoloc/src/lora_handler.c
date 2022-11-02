@@ -48,7 +48,12 @@ void lora_ble_send(srv_ble_scan_result_t *scan_result) {
 			mac_addr3[0], mac_addr3[1], mac_addr3[2],mac_addr3[3], mac_addr3[4],mac_addr3[5], scan_result->entries[3].header.rssi};
 
 	loramac_set_datarate(4);
-	srv_lmh_send(payload, sizeof(payload));
+	if(mac_addr0 !=0 || mac_addr1!=0 || mac_addr2!=0 || mac_addr3!=0){
+		srv_lmh_send(payload, sizeof(payload));
+	}else{
+		cli_printf("No beacon detected\n");
+	}
+
 }
 
 
