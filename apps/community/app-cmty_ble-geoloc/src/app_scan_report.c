@@ -25,6 +25,7 @@
 
 #include "btn_handling.h"
 #include "ble_scan_handler.h"
+#include "encode_handling.h"
 //#include "ble_defs.h"
 //#include "app_conf.h"
 #include "srv_ble_dtm.h"
@@ -50,11 +51,13 @@
 // General definitions
 #define APP_MAIN_LED_PERIOD			1000	//!< Main LED blink period in ms
 
-#define ABW_PREFIX "ABEEWAY"
+#define ABW_MAIN1_PREFIX "ABEE"
+#define ABW_MAIN2_PREFIX "WAY"
 
-#define PARAM_ID_REPEAT_DELAY	1
-#define PARAM_ID_FILTER_MAIN1	2
-#define PARAM_ID_FILTER_MAIN2	3
+// Application parameters stored in Flash
+#define PARAM_ID_REPEAT_DELAY	0x69
+#define PARAM_ID_FILTER_MAIN1	0x4E
+#define PARAM_ID_FILTER_MAIN2	0x4F
 #define PARAM_ID_OFSET1			4
 #define PARAM_ID_OFSET2			5
 
@@ -67,19 +70,22 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 {
 
 
-	uint32_t value, id_value;
-	uint8_t* Buf=NULL;
+	uint32_t value;
+	//uint8_t *filter_value;
+	uint32_t id_value;
+	//uint8_t* Buf=NULL;
 	//uint8_t tab_value[SRV_BLE_SCAN_FILTER_MAX_SIZE]={0};
-	int j=0;
+	//int j=0;
 	DisplayRxUpdate(appData, params);
 
 
 	switch (appData->Buffer[0]){
 	case 11 ://Update parameters
-		value = appData->Buffer[3]+appData->Buffer[4]+appData->Buffer[5]+appData->Buffer[6];
+
 		id_value =appData->Buffer[2];
 
-		if (id_value == 105){// ble scan duration parameter
+		if (id_value == PARAM_ID_REPEAT_DELAY/*105*/){// ble scan duration parameter
+			value = appData->Buffer[3]|appData->Buffer[4]|appData->Buffer[5]|appData->Buffer[6];
 
 			if (value > 300) {
 				value = 300;
@@ -96,18 +102,28 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 			cli_printf("DURATION :  %d\n", ble_param->repeat_delay);
 
 		}
-		else if (id_value  == 78){//ble filter 1 parameter
-			for (int i = 4; i <= appData->BufferSize; i++) {
-				Buf[j] = appData->Buffer[i];
-				j++;
-			}
-			aos_nvm_write(PARAM_ID_REPEAT_DELAY, *Buf);
-			memcpy(ble_param->filters[0].value, Buf, 4);
+		else if (id_value  == PARAM_ID_FILTER_MAIN1/*78*/){//ble filter 1 parameter
 
-			cli_printf("FILTER 1 :  %d\n", ble_param->filters[0].value);
+			//cli_printf("Buf 1 :  %x\n", appData->Buffer[3]);
+			ble_param->filters[0].value[0] = appData->Buffer[3];
+			ble_param->filters[0].value[1] = appData->Buffer[4];
+			ble_param->filters[0].value[2] = appData->Buffer[5];
+			ble_param->filters[0].value[3] = appData->Buffer[6];
+			value = __builtin_bswap32(*(uint32_t *)&ble_param->filters[0].value);
+			aos_nvm_write(PARAM_ID_FILTER_MAIN1, value);
+
+			cli_printf("FILTER 1 :  %d\n", value);
 		}
-		else if (id_value  == 79){//ble filter 1 parameter
-			cli_printf("FILTER 2 :  %d\n", value);
+		else if (id_value  == PARAM_ID_FILTER_MAIN2/*79*/){//ble filter 2 parameter
+			cli_printf("FILTER 2 :  %x\n", ble_param->filters[1].value);
+			ble_param->filters[1].value[0] = appData->Buffer[3];
+			ble_param->filters[1].value[1] = appData->Buffer[4];
+			ble_param->filters[1].value[2] = appData->Buffer[5];
+			ble_param->filters[1].value[3] = appData->Buffer[6];
+			value = __builtin_bswap32(*(uint32_t *)&ble_param->filters[1].value);
+			aos_nvm_write(PARAM_ID_FILTER_MAIN2, value);
+
+			cli_printf("FILTER 2 :  %x\n", value);
 		}else{
 
 		}
@@ -129,12 +145,7 @@ void on_button_4_press(uint8_t user_id, void *arg)
 	ble_param->ble_scan_type = srv_ble_scan_beacon_type_eddy_uid;
 
 
-	memset(ble_param->filters, 0, sizeof(ble_param->filters));
 
-	ble_param->filters[0].start_offset = 13;
-
-	memcpy(ble_param->filters[0].value, ABW_PREFIX, strlen(ABW_PREFIX));
-	memset(ble_param->filters[0].mask, 0xFF , strlen(ABW_PREFIX));
 
 	result = srv_ble_scan_start(ble_scan_handler_callback, arg);
 	cli_printf("ble start scan result : %d\n", result);
@@ -167,6 +178,34 @@ void application_task(void *argument)
 		ble_param->repeat_delay =  30;
 	}
 
+
+	// FILTRE MAIN1
+	if(aos_nvm_read(PARAM_ID_FILTER_MAIN1, &value)==aos_result_success){
+		memset(&ble_param->filters[0], 0, sizeof(ble_param->filters));
+		ble_param->filters[0].start_offset = 13;
+		uint8_t val=(uint8_t)value;
+		baswap(ble_param->filters[0].value, &val, 4);
+		memset(ble_param->filters[0].mask, 0xFF , 4);
+	}else{
+		memset(&ble_param->filters[0], 0, sizeof(ble_param->filters));
+		ble_param->filters[0].start_offset = 13;
+		memcpy(ble_param->filters[0].value, ABW_MAIN1_PREFIX, strlen(ABW_MAIN1_PREFIX));
+		memset(ble_param->filters[0].mask, 0xFF , strlen(ABW_MAIN1_PREFIX));
+	}
+
+	//FILTRE MAIN2
+	if(aos_nvm_read(PARAM_ID_FILTER_MAIN2, &value)==aos_result_success){
+			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
+			ble_param->filters[1].start_offset = 17;
+			uint8_t val=(uint8_t)value;
+			baswap(ble_param->filters[1].value, &val, 4);
+			memset(ble_param->filters[1].mask, 0xFF , 4);
+		}else{
+			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
+			ble_param->filters[0].start_offset = 17;
+			memcpy(ble_param->filters[1].value, ABW_MAIN2_PREFIX, strlen(ABW_MAIN2_PREFIX));
+			memset(ble_param->filters[1].mask, 0xFF , strlen(ABW_MAIN2_PREFIX));
+		}
 	// Start blinking LED3
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Start blinking LED3\n");
 	for ( ; ; ) {

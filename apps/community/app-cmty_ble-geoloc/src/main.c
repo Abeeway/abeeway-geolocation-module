@@ -43,11 +43,12 @@ static StackType_t _app_task_stack[APP_TASK_STACK_SIZE];
 
 
 // Application parameters stored in Flash
+/*
 #define PARAM_ID_REPEAT_DELAY	1
 #define PARAM_ID_FILTER_MAIN1	2
 #define PARAM_ID_FILTER_MAIN2	3
 #define PARAM_ID_OFSET1			4
-#define PARAM_ID_OFSET2			5
+#define PARAM_ID_OFSET2			5*/
 
 
 

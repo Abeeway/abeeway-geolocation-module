@@ -46,3 +46,8 @@ void baswap(uint8_t *dest, uint8_t *src, uint8_t len)
 	}
 }
 
+/*
+uint32_t btol_endian(uint32_t value){
+
+}*/
+
