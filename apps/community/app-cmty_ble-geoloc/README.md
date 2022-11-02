@@ -89,9 +89,12 @@ on your Network Server that every push results in a new LoRaWAN uplink message
 
     |      ID     |    Description   |
     | ----------- | ---------------- |
-    |     0x0B    | Update parameter |
-    |     0x02    |     Ack Token    |
-    |     0x4E    | Filter Main 1 ID |
+    |  0x0B       | Update parameter |
+    |  0x02       | Ack Token        |
+    |  0x4E       | Filter Main 1 ID |
+    |  0x4F       | Filter Main 2 ID |
+    |  0x41424545 | A B E E          |
+    |  0x574159   | W A Y            |
 
   - Please note that the downlink message can only be delivered as a response to an uplink message.
 5. Press the button `Board switch 05` to stop BLE scan.
