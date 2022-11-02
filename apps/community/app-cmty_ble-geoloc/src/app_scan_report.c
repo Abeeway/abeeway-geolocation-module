@@ -68,16 +68,9 @@ static srv_ble_scan_param_t* ble_param;
 
 void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, srv_ble_scan_param_t* ble_param)
 {
-
-
 	uint32_t value;
-	//uint8_t *filter_value;
 	uint32_t id_value;
-	//uint8_t* Buf=NULL;
-	//uint8_t tab_value[SRV_BLE_SCAN_FILTER_MAX_SIZE]={0};
-	//int j=0;
 	DisplayRxUpdate(appData, params);
-
 
 	switch (appData->Buffer[0]){
 	case 11 ://Update parameters
@@ -112,10 +105,10 @@ void on_rx_data( LmHandlerAppData_t *appData, LmHandlerRxParams_t *params) //, s
 			value = __builtin_bswap32(*(uint32_t *)&ble_param->filters[0].value);
 			aos_nvm_write(PARAM_ID_FILTER_MAIN1, value);
 
-			cli_printf("FILTER 1 :  %d\n", value);
+			cli_printf("FILTER 1 :  %x\n", value);
 		}
 		else if (id_value  == PARAM_ID_FILTER_MAIN2/*79*/){//ble filter 2 parameter
-			cli_printf("FILTER 2 :  %x\n", ble_param->filters[1].value);
+
 			ble_param->filters[1].value[0] = appData->Buffer[3];
 			ble_param->filters[1].value[1] = appData->Buffer[4];
 			ble_param->filters[1].value[2] = appData->Buffer[5];
@@ -140,12 +133,8 @@ void on_button_4_press(uint8_t user_id, void *arg)
 	btn_handling_open();
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "BUTTON BLE SCAN ACTIVATE PRESSED!\n");
 
-
 	cli_printf("ble start scan result : %d\n",ble_param->repeat_delay );
 	ble_param->ble_scan_type = srv_ble_scan_beacon_type_eddy_uid;
-
-
-
 
 	result = srv_ble_scan_start(ble_scan_handler_callback, arg);
 	cli_printf("ble start scan result : %d\n", result);
@@ -157,11 +146,9 @@ void application_task(void *argument)
 	uint32_t value;
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Starting application thread\n");
 
-
 	// Initiating LoRaMAC Handler service
 	aos_log_msg(aos_log_module_app, aos_log_level_status, true, "Initiating LoRaMAC Handler service\n");
 	srv_lmh_open(on_rx_data);
-
 
 	// Button (Board switch 04) configuration
 	btn_handling_config(aos_gpio_id_7, on_button_4_press);
@@ -177,7 +164,6 @@ void application_task(void *argument)
 	} else {
 		ble_param->repeat_delay =  30;
 	}
-
 
 	// FILTRE MAIN1
 	if(aos_nvm_read(PARAM_ID_FILTER_MAIN1, &value)==aos_result_success){
@@ -198,8 +184,8 @@ void application_task(void *argument)
 			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
 			ble_param->filters[1].start_offset = 17;
 			uint8_t val=(uint8_t)value;
-			baswap(ble_param->filters[1].value, &val, 4);
-			memset(ble_param->filters[1].mask, 0xFF , 4);
+			baswap(ble_param->filters[1].value, &val, 3);
+			memset(ble_param->filters[1].mask, 0xFF , 3);
 		}else{
 			memset(&ble_param->filters[1], 0, sizeof(ble_param->filters));
 			ble_param->filters[0].start_offset = 17;

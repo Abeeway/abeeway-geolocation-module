@@ -33,22 +33,9 @@ static TaskHandle_t _app_task;
 static StaticTask_t _app_task_info;
 static StackType_t _app_task_stack[APP_TASK_STACK_SIZE];
 
-
 // CLI definitions
 #define SRV_CLI_UART_TX_BUFFER 1024
 #define SRV_CLI_UART_RX_BUFFER 1024
-
-//Filter definitions
-//#define ABW_PREFIX "ABEEWAY"
-
-
-// Application parameters stored in Flash
-/*
-#define PARAM_ID_REPEAT_DELAY	1
-#define PARAM_ID_FILTER_MAIN1	2
-#define PARAM_ID_FILTER_MAIN2	3
-#define PARAM_ID_OFSET1			4
-#define PARAM_ID_OFSET2			5*/
 
 
 
