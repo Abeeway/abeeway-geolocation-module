@@ -1,11 +1,14 @@
 /*
- * handling.c
+ * \file handling.c
+ *
+ * \brief somes encoding and swaping functions
  *
  *  Created on: 13 oct. 2022
  *      Author: Jean-PierreTogbe
+ *
+ *  copyright (C) 2022, Abeeway (www.abeeway.com). All Rights Reserved.
  */
 
-// new constant definitions
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -33,7 +36,6 @@ uint32_t mt_value_encode(float value, float lo, float hi, unsigned nbits,unsigne
 	return (nresv / 2) + ((value - lo) / _step_size(lo, hi, nbits, nresv));
 }
 
-
 void baswap(uint8_t *dest, uint8_t *src, uint8_t len)
 {
 	uint8_t i;
@@ -46,8 +48,4 @@ void baswap(uint8_t *dest, uint8_t *src, uint8_t len)
 	}
 }
 
-/*
-uint32_t btol_endian(uint32_t value){
-
-}*/
 

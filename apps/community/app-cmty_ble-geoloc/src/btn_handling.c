@@ -23,11 +23,6 @@
 #include "srv_ble_dtm.h"
 #include "srv_ble_beaconing.h"
 
-
-
-
-
-
 struct {
 	bool    drv_open;
 	uint8_t ble_role;

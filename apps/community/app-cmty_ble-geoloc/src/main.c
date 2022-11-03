@@ -9,22 +9,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "FreeRTOS.h"
-#include "task.h"
+#include "app_scan_report.h"
 
 #include "aos_board.h"
 #include "aos_system.h"
-
 #include "aos_ble_core.h"
 #include "aos_log.h"
 
+#include "FreeRTOS.h"
 
 #include "srv_cli.h"
 #include "srv_gnss.h"
 
-#include "app_scan_report.h"
-
-
+#include "task.h"
 
 // Application Thread
 #define APP_TASK_STACK_SIZE 		(2048/sizeof(StackType_t))
@@ -37,11 +34,8 @@ static StackType_t _app_task_stack[APP_TASK_STACK_SIZE];
 #define SRV_CLI_UART_TX_BUFFER 1024
 #define SRV_CLI_UART_RX_BUFFER 1024
 
-
-
 static uint8_t _srv_cli_tx_buffer[SRV_CLI_UART_TX_BUFFER];
 static uint8_t _srv_cli_rx_buffer[SRV_CLI_UART_RX_BUFFER];
-
 
 static cli_config_param_t _cli_cfg = {
 		123,		// User password -PIN code-
@@ -60,30 +54,22 @@ static cli_config_param_t _cli_cfg = {
 				.user_arg = NULL	 // Will be Fed by the CLI service
 		}
 };
-
-
 /*!
   * \brief  Application entry point.
   * \return unused returned value
   */
 int main(void)
 {
-
 	// Initialize the system
 	aos_system_init();
-
 	// Initialize the services
 	srv_cli_init(aos_uart_type_lpuart1, &_cli_cfg);		//!< Command Line Interface
-
 	// Open the log facility and redirect log message on the CLI.
 	aos_log_init(cli_log);
-
 	srv_gnss_init();									//!< GNSS service
-
 	// Create the system task. Since it is statically allocated. it should not fail
 	_app_task = xTaskCreateStatic(application_task, "Application", APP_TASK_STACK_SIZE, NULL,
 			APP_TASK_PRIORITY, _app_task_stack, &_app_task_info);
-
 	// Start scheduler
     vTaskStartScheduler();
 }

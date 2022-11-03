@@ -1,8 +1,14 @@
 /*
- * lora_handler.c
+ * \file lora_handler.c
+ *
+ * \brief This file contains
+ * 			- setup a loramac datarate function;
+ * 			- and a sending of a payload containing the information collected (MAC address + RSSI), function.
  *
  *  Created on: 21 oct. 2022
  *      Author: Jean-PierreTogbe
+ *
+ *  copyright (C) 2022, Abeeway (www.abeeway.com). All Rights Reserved.
  */
 #include <stdio.h>
 #include <string.h>
@@ -11,10 +17,6 @@
 #include "srv_lmh.h"
 #include "srv_ble_scan.h"
 #include "srv_cli.h"
-
-
-
-
 
 bool loramac_set_datarate(uint8_t datarate)
 {
@@ -32,7 +34,6 @@ bool loramac_set_datarate(uint8_t datarate)
 }
 
 void lora_ble_send(srv_ble_scan_result_t *scan_result) {
-
 	// Sending payload that contains message header, 4 BLE mac address and RSSI
 	uint8_t mac_addr0[SRV_BLE_GAP_ADDR_LEN], mac_addr1[SRV_BLE_GAP_ADDR_LEN], mac_addr2[SRV_BLE_GAP_ADDR_LEN], mac_addr3[SRV_BLE_GAP_ADDR_LEN];
 
@@ -48,12 +49,7 @@ void lora_ble_send(srv_ble_scan_result_t *scan_result) {
 			mac_addr3[0], mac_addr3[1], mac_addr3[2],mac_addr3[3], mac_addr3[4],mac_addr3[5], scan_result->entries[3].header.rssi};
 
 	loramac_set_datarate(4);
-	if(mac_addr0 !=0 || mac_addr1!=0 || mac_addr2!=0 || mac_addr3!=0){
-		srv_lmh_send(payload, sizeof(payload));
-	}else{
-		cli_printf("No beacon detected\n");
-	}
-
+	srv_lmh_send(payload, sizeof(payload));
 }
 
 

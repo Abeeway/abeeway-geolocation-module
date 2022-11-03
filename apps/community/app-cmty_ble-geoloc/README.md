@@ -81,6 +81,12 @@ The result of the project is a simple application that demonstrates the features
 
 ### Test the Demo application
 
+#### How to use CLI tool to set BLE Filter
+
+
+
+#### How to use the Downlink message to set BLE Filter
+
 1. Check if the LED4 is bliking with 1000ms period
 2. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
 on your Network Server that every push results in a new LoRaWAN uplink message
