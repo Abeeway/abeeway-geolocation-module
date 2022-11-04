@@ -82,16 +82,14 @@ The result of the project is a simple application that demonstrates the features
 ### Test the Demo application
 
 #### How to use CLI tool to set BLE Filter
-
-
+1. use the command `bleGeoloc filter` and `your filter` to set filter
+    Exp :  `0x4142454557455931` : ABEEWAY1
+2. use the command `bleGeoloc mask 0xFFFFFFFFFFFFFFFF` for the filter mask
 
 #### How to use the Downlink message to set BLE Filter
-
-1. Check if the LED4 is bliking with 1000ms period
-2. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
-on your Network Server that every push results in a new LoRaWAN uplink message
-3. Send a LoRaWAN dowlink message with payload : `"0B026928"` or `"0B02693C"`  to change the `repeat-delay` of the BLE scan `(28 = 40s)`, `(3C = 60s)`. The default delay is 30s.
-4. Send a LoRaWAN dowlink message with payload : `"0B024E41424545"` and `"0B024F574159"` to change the `Filter`
+It is also possible to set the BLE filter by a dowlink message.
+1. Send a LoRaWAN dowlink message with payload : `"0B026928"` or `"0B02693C"`  to change the `repeat-delay` of the BLE scan `(28 = 40s)`, `(3C = 60s)`. The default delay is 30s.
+2. Send a LoRaWAN dowlink message with payload : `"0B024E41424545"` and `"31"` to change the `Filter`
 
     |      ID     |    Description   |
     | ----------- | ---------------- |
@@ -100,17 +98,39 @@ on your Network Server that every push results in a new LoRaWAN uplink message
     |  0x4E       | Filter Main 1 ID |
     |  0x4F       | Filter Main 2 ID |
     |  0x41424545 | A B E E          |
-    |  0x574159   | W A Y            |
+    |  0x57415931 | W A Y 1          |
 
   - Please note that the downlink message can only be delivered as a response to an uplink message.
-5. Press the button `Board switch 05` to stop BLE scan.
 
+#### Launch the demo application
+1. Check if the LED4 is bliking with 1000ms period
+2. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
+on your Network Server that every push results in a new LoRaWAN uplink message
+3. Press the button `Board switch 05` to stop BLE scan.
 ### Modify the demo application
 Please check the content of the `abeeway-geolocation-module/apps/community/app-cmty_ble-geoloc/src/` 
-   - `/main.c`
-   - `/app_scan_report.c` 
-   - `/ble_scan_handler.c`
-   - `/btn_handling.c`
-   - `/encode_handling.c`
-   - `/lora_handler.c`
+   - `*/main.c*` : 
+      startup application, initialization of the system, the CLI services initialization
+        
+   - `*/app_scan_report.c*` :
+      This file contains
+  		the function that is execute when downlink message is received;
+ 		the function on press on button 4, that start BLE scan and print the result of scan;
+  		and the function application task that start the application.
+
+   - `*/ble_scan_handler.c*` :
+      scan and print the result of BLE scan function
+ 	  and the callback function when BLE scan is done
+
+   - `*/btn_handling.c*` :
+      the button configuration function,
+      the functions to open BLE and close it
+
+   - `*/encode_handling.c*` :
+        somes encoding and swaping functions
+
+   - `*/lora_handler.c*` :
+      setup a loramac datarate function;
+      and a sending of a payload containing the information collected (MAC address + RSSI), function.
+
  files of the source code and see how the demo application works. You can also check how the CLI commands are implemented in the `src/cli-cmd-*.c` files.
