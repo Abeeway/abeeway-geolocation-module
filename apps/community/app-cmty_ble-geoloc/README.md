@@ -90,27 +90,23 @@ Check if the LED4 is bliking with 1000ms period
    - Use the `help` command to see the available command/parameter options. Commands may be abbreviated as long as they remain unambiguous.
 
 2. Set the BLE parameters of the Module executing the following CLI commands:
-    - setup the scan repeat delay
+
+    - setup the scan repeat delay at 30s
 
         ```Shell
-        bleGeoloc  0x3C
+        geolocBle  -rep 30
         ```
     - setup filter *ABEEWAY1* 
 
         ```Shell
-        bleGeoloc filter 0x4142454557455931
-        ```
-    - setup mask 
-
-        ```Shell
-        bleGeoloc mask 0xFFFFFFFFFFFFFFFF
+        geolocBle -filter 4142454557455931
         ```
 
 #### How to use the Downlink message to set BLE Filter
 
 It is also possible to set the BLE filter by a dowlink message.
-1. Send a LoRaWAN dowlink message with payload : `"0B026928"` or `"0B02693C"`  to change the `repeat-delay` of the BLE scan `(28 = 40s)`, `(3C = 60s)`. The default delay is 30s.
-2. Send a LoRaWAN dowlink message with payload : `"0B024E41424545"` and `"31"` to change the `Filter`
+1. Send a LoRaWAN dowlink message with payload : `"0B026900000028"` or `"0B02690000003C"`  to change the `repeat-delay` of the BLE scan `(00000028 = 40s)`, `(0000003C = 60s)`. The default delay is 30s.
+2. Send a LoRaWAN dowlink message with payload : `"0B024E41424545"` and `"0B024F57415931"` to change the `Filter`
 
     |      ID     |    Description   |
     | ----------- | ---------------- |
@@ -127,7 +123,18 @@ It is also possible to set the BLE filter by a dowlink message.
 
 ##### In CLI
 
+Type in de CLI : 
 
+1. to start BLE eddystonne scan 
+
+    ```Shell
+     geolocBle  -start
+     ```
+2. to stop the BLE scan
+
+    ```Shell
+     geolocBle  -stop
+     ```
 ##### With Board button
 
 1. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
@@ -142,23 +149,23 @@ Please check the content of the `abeeway-geolocation-module/apps/community/app-c
         
    - `*/app_scan_report.c*` :
       This file contains
-  		the function that is execute when downlink message is received;
- 		the function on press on button 4, that start BLE scan and print the result of scan;
-  		and the function application task that start the application.
+  	    - the function that is execute when downlink message is received;
+ 		- the function on press on button 4, that start BLE scan and print the result of scan;
+  		- and the function application task that start the application.
 
    - `*/ble_scan_handler.c*` :
-      scan and print the result of BLE scan function
- 	  and the callback function when BLE scan is done
+        - scan and print the result of BLE scan function
+ 	    - and the callback function when BLE scan is done
 
    - `*/btn_handling.c*` :
-      the button configuration function,
-      the functions to open BLE and close it
+        - the button configuration function,
+        - the functions to open BLE and close it
 
    - `*/encode_handling.c*` :
-        somes encoding and swaping functions
+        - somes encoding and swaping functions
 
    - `*/lora_handler.c*` :
-      setup a loramac datarate function;
-      and a sending of a payload containing the information collected (MAC address + RSSI), function.
+        - setup a loramac datarate function;
+        - and a sending of a payload containing the information collected (MAC address + RSSI), function.
 
  files of the source code and see how the demo application works. You can also check how the CLI commands are implemented in the `src/cli-cmd-*.c` files.
