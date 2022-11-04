@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "srv_lmh.h"
 #include "srv_ble_scan.h"
+
 /*!
  *
  * \fn      uint32_t mt_value_encode(float value, float lo, float hi, unsigned nbits,unsigned nresv);
@@ -43,5 +44,7 @@ extern uint32_t mt_value_encode(float value, float lo, float hi, unsigned nbits,
  *
  */
 extern void baswap(uint8_t *dest, uint8_t *src, uint8_t len);
+
+extern bool _set_ble_scan_filter(uint8_t * dest, const char *src);
 
 #endif /* ENCODE_HANDLING_H_ */

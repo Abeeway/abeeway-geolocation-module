@@ -81,12 +81,33 @@ The result of the project is a simple application that demonstrates the features
 
 ### Test the Demo application
 
+Check if the LED4 is bliking with 1000ms period
+
 #### How to use CLI tool to set BLE Filter
-1. use the command `bleGeoloc filter` and `your filter` to set filter
-    Exp :  `0x4142454557455931` : ABEEWAY1
-2. use the command `bleGeoloc mask 0xFFFFFFFFFFFFFFFF` for the filter mask
+1. Use a Serial Terminal tool (e.g.: Teraterm, Putty, etc.) to connect your computer to the board and see the command line interface
+   - The serial port must be set to 57600 bauds, 8 data bits, no parity, one stop bit (8N1).
+   - The login pin is either `123` or `456`, The former provides normal user access, the latter provides super-user access, making different sets of CLI commands available.
+   - Use the `help` command to see the available command/parameter options. Commands may be abbreviated as long as they remain unambiguous.
+
+2. Set the BLE parameters of the Module executing the following CLI commands:
+    - setup the scan repeat delay
+
+        ```Shell
+        bleGeoloc  0x3C
+        ```
+    - setup filter *ABEEWAY1* 
+
+        ```Shell
+        bleGeoloc filter 0x4142454557455931
+        ```
+    - setup mask 
+
+        ```Shell
+        bleGeoloc mask 0xFFFFFFFFFFFFFFFF
+        ```
 
 #### How to use the Downlink message to set BLE Filter
+
 It is also possible to set the BLE filter by a dowlink message.
 1. Send a LoRaWAN dowlink message with payload : `"0B026928"` or `"0B02693C"`  to change the `repeat-delay` of the BLE scan `(28 = 40s)`, `(3C = 60s)`. The default delay is 30s.
 2. Send a LoRaWAN dowlink message with payload : `"0B024E41424545"` and `"31"` to change the `Filter`
@@ -103,11 +124,18 @@ It is also possible to set the BLE filter by a dowlink message.
   - Please note that the downlink message can only be delivered as a response to an uplink message.
 
 #### Launch the demo application
-1. Check if the LED4 is bliking with 1000ms period
-2. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
+
+##### In CLI
+
+
+##### With Board button
+
+1. Press the button `Board Swith 04` to start the BLE eddystonne scan. After the scan done, a payload that contains informations (MAC adress & RSSI) will be send via LoRa. Then check 
 on your Network Server that every push results in a new LoRaWAN uplink message
-3. Press the button `Board switch 05` to stop BLE scan.
+2. Press the button `Board switch 05` to stop BLE scan.
+
 ### Modify the demo application
+
 Please check the content of the `abeeway-geolocation-module/apps/community/app-cmty_ble-geoloc/src/` 
    - `*/main.c*` : 
       startup application, initialization of the system, the CLI services initialization

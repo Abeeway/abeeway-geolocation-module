@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include <strnhex.h>
 
 #include "encode_handling.h"
 #include "srv_lmh.h"
@@ -34,6 +36,19 @@ uint32_t mt_value_encode(float value, float lo, float hi, unsigned nbits,unsigne
 	value = MAXM(value, lo);
 	//return value offset by half the reserved value (the other half is at the end).
 	return (nresv / 2) + ((value - lo) / _step_size(lo, hi, nbits, nresv));
+}
+
+bool _set_ble_scan_filter(uint8_t * dest, const char *src)
+{
+    uint8_t temp[SRV_BLE_SCAN_FILTER_MAX_SIZE] = {0};
+    int count = strnhex(temp, SRV_BLE_SCAN_FILTER_MAX_SIZE, src);
+    if (count <= 0) {
+        cli_printf("Filter should be a hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
+        return false;
+    }
+
+   memcpy(dest, temp, SRV_BLE_SCAN_FILTER_MAX_SIZE);
+    return true;
 }
 
 void baswap(uint8_t *dest, uint8_t *src, uint8_t len)
