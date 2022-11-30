@@ -80,13 +80,17 @@ srv_provisioning_data_state_t srv_provisioning_data_state(void);
 
 
 typedef enum {
-	srv_provisioning_mac_region_eu868 = 0,	// Default region is EU868
-	srv_provisioning_mac_region_us915,
-	srv_provisioning_mac_region_ru864,
-	srv_provisioning_mac_region_as923,
-	srv_provisioning_mac_region_au915,
-	srv_provisioning_mac_region_kr920,
-	srv_provisioning_mac_region_in865,
+	srv_provisioning_mac_region_eu868      =  0,	// Default region is EU868
+	srv_provisioning_mac_region_us915      =  1,
+	srv_provisioning_mac_region_ru864      =  2,
+	srv_provisioning_mac_region_as923_1    =  3,
+	srv_provisioning_mac_region_au915      =  4,
+	srv_provisioning_mac_region_kr920      =  5,
+	srv_provisioning_mac_region_in865      =  6,
+	srv_provisioning_mac_region_as923_1_jp =  7,
+	srv_provisioning_mac_region_as923_2    =  8,
+	srv_provisioning_mac_region_as923_3    =  9,
+	srv_provisioning_mac_region_as923_4    = 10,
 	srv_provisioning_mac_region_count
 } srv_provisioning_mac_region_t;
 

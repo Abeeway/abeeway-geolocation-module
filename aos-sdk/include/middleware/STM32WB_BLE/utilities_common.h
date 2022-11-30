@@ -118,6 +118,29 @@ extern "C" {
 #undef BITNSET
 #define BITNSET( w, n, b )   M_BEGIN (w)[(n)/32] |= ((U32)(b))<<((n)%32); M_END
 
+/**@brief Function for decoding a uint16 value.
+ *
+ * @param[in]   p_encoded_data   Buffer where the encoded data is stored.
+ *
+ * @return      Decoded value.
+ */
+static __INLINE uint16_t uint16_decode(const uint8_t * p_encoded_data)
+{
+        return ( (((uint16_t)((uint8_t *)p_encoded_data)[0])) |
+                 (((uint16_t)((uint8_t *)p_encoded_data)[1]) << 8 ));
+}
+/**@brief Function for decoding a uint16 value in big-endian format.
+ *
+ * @param[in]   p_encoded_data   Buffer where the encoded data is stored.
+ *
+ * @return      Decoded value.
+ */
+static __INLINE uint16_t uint16_big_decode(const uint8_t * p_encoded_data)
+{
+        return ( (((uint16_t)((uint8_t *)p_encoded_data)[0]) << 8 ) |
+                 (((uint16_t)((uint8_t *)p_encoded_data)[1])) );
+}
+
 /* -------------------------------- *
  *  Section attribute               *
  * -------------------------------- */

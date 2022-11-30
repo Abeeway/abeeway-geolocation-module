@@ -18,5 +18,6 @@ var searchData=
   ['cli_5fstr_5fsuccess_5ffailure',['cli_str_success_failure',['../group__cli__srv.html#ga32486222067577a4e91aed976e1a9164',1,'srv_cli.h']]],
   ['cli_5fstr_5fyes_5fno',['cli_str_yes_no',['../group__cli__srv.html#ga86f3c4ef514174b77dfdbb1b46723dc4',1,'srv_cli.h']]],
   ['cli_5fstrcase_5fncmp',['cli_strcase_ncmp',['../group__cli__srv.html#ga0f03631179332084aa0bbb0b186bc82d',1,'srv_cli.h']]],
-  ['cli_5fxdump',['cli_xdump',['../group__cli__srv.html#ga143b9712d20d90a85264902f8d69ac8d',1,'srv_cli.h']]]
+  ['cli_5fxdump',['cli_xdump',['../group__cli__srv.html#ga143b9712d20d90a85264902f8d69ac8d',1,'srv_cli.h']]],
+  ['custom_5fevent_5fhandler',['custom_event_handler',['../group__aos__ble__services.html#ga30c6ec6a1ac51b594e0734521b38f9e7',1,'aos_ble_services.h']]]
 ];

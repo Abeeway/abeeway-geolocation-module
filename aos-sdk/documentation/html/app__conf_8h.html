@@ -77,8 +77,8 @@ $(function() {
 <code>#include &quot;<a class="el" href="hw__conf_8h_source.html">hw_conf.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hw__if_8h_source.html">hw_if.h</a>&quot;</code><br />
 <code>#include &quot;ble_bufsize.h&quot;</code><br />
-<code>#include &quot;dbg_trace.h&quot;</code><br />
 <code>#include &quot;aos_thread_priority.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="aos__log_8h_source.html">aos_log.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_conf.h:</div>
 <div class="dyncontent">
@@ -86,7 +86,8 @@ Include dependency graph for app_conf.h:</div>
 <map name="aos-libs_2aos-core_2aos__ble_2app__conf_8h" id="aos-libs_2aos-core_2aos__ble_2app__conf_8h">
 <area shape="rect" id="node3" href="hw__conf_8h.html" title="Configuration of hardware interface. " alt="" coords="197,95,280,121"/>
 <area shape="rect" id="node6" href="aos__thread__priority_8h_source.html" title="aos_thread_priority.h" alt="" coords="255,244,398,271"/>
-<area shape="rect" id="node9" href="hw__if_8h.html" title="Hardware Interface. " alt="" coords="1033,95,1097,121"/>
+<area shape="rect" id="node9" href="hw__if_8h.html" title="Hardware Interface. " alt="" coords="1116,95,1180,121"/>
+<area shape="rect" id="node23" href="aos__log_8h.html" title="log facility " alt="" coords="2337,95,2415,121"/>
 <area shape="rect" id="node4" href="FreeRTOSConfig_8h_source.html" title="FreeRTOSConfig.h" alt="" coords="137,169,271,196"/>
 <area shape="rect" id="node5" href="aos__it__priority_8h.html" title="Interrupt priorities. " alt="" coords="5,244,120,271"/>
 <area shape="rect" id="node7" href="aos__error_8h.html" title="Handle Hardware and firmware unrecoverable errors. " alt="" coords="145,244,231,271"/>
@@ -109,30 +110,34 @@ Macros</h2></td></tr>
 <tr class="memitem:gac644b14f0fc28d591f8cbbdc53a32fdd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gac644b14f0fc28d591f8cbbdc53a32fdd">CFG_TX_POWER</a>&#160;&#160;&#160;(0x18)</td></tr>
 <tr class="memdesc:gac644b14f0fc28d591f8cbbdc53a32fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE TX power -0.15dBm.  <a href="group__app__conf.html#gac644b14f0fc28d591f8cbbdc53a32fdd">More...</a><br /></td></tr>
 <tr class="separator:gac644b14f0fc28d591f8cbbdc53a32fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga762401f9dbfce20da2bd469c2c73c34d"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga762401f9dbfce20da2bd469c2c73c34d">MAX_BOUNDED_COUNT</a>&#160;&#160;&#160;(1)</td></tr>
+<tr class="memdesc:ga762401f9dbfce20da2bd469c2c73c34d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of devices that can create a bond with the device. <br /></td></tr>
+<tr class="separator:ga762401f9dbfce20da2bd469c2c73c34d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf3b052a0ad4ba695a386368310087ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabf3b052a0ad4ba695a386368310087ab">CFG_ADV_BD_ADDRESS</a>&#160;&#160;&#160;(0x000000000000)</td></tr>
 <tr class="memdesc:gabf3b052a0ad4ba695a386368310087ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE MAC ADDRESS.  <a href="group__app__conf.html#gabf3b052a0ad4ba695a386368310087ab">More...</a><br /></td></tr>
 <tr class="separator:gabf3b052a0ad4ba695a386368310087ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf53dcaed3668e4a7939ee025a1b5fb7"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gadf53dcaed3668e4a7939ee025a1b5fb7">CFG_BLE_ADDRESS_TYPE</a>&#160;&#160;&#160;PUBLIC_ADDR</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gadf53dcaed3668e4a7939ee025a1b5fb7">CFG_BLE_ADDRESS_TYPE</a>&#160;&#160;&#160;STATIC_RANDOM_ADDR</td></tr>
 <tr class="memdesc:gadf53dcaed3668e4a7939ee025a1b5fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth address types defined in ble_legacy.h. <br /></td></tr>
 <tr class="separator:gadf53dcaed3668e4a7939ee025a1b5fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9b9012d7591384f67782c922f39c617b"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga9b9012d7591384f67782c922f39c617b">CFG_FAST_CONN_ADV_INTERVAL_MIN</a>&#160;&#160;&#160;(0x80)</td></tr>
-<tr class="memdesc:ga9b9012d7591384f67782c922f39c617b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum fast advertisement interval 80ms. <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga9b9012d7591384f67782c922f39c617b">CFG_FAST_CONN_ADV_INTERVAL_MIN</a>&#160;&#160;&#160;(500)</td></tr>
+<tr class="memdesc:ga9b9012d7591384f67782c922f39c617b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum fast advertisement interval 500ms. <br /></td></tr>
 <tr class="separator:ga9b9012d7591384f67782c922f39c617b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f040288d382970d27a475076baf4005"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga4f040288d382970d27a475076baf4005">CFG_FAST_CONN_ADV_INTERVAL_MAX</a>&#160;&#160;&#160;(0xA0)</td></tr>
-<tr class="memdesc:ga4f040288d382970d27a475076baf4005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum fast advertisement interval 100ms. <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga4f040288d382970d27a475076baf4005">CFG_FAST_CONN_ADV_INTERVAL_MAX</a>&#160;&#160;&#160;(500)</td></tr>
+<tr class="memdesc:ga4f040288d382970d27a475076baf4005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum fast advertisement interval 500ms. <br /></td></tr>
 <tr class="separator:ga4f040288d382970d27a475076baf4005"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabfa30cc1be49966eda1ea455a16fa2e6"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabfa30cc1be49966eda1ea455a16fa2e6">CFG_LP_CONN_ADV_INTERVAL_MIN</a>&#160;&#160;&#160;(0x640)</td></tr>
-<tr class="memdesc:gabfa30cc1be49966eda1ea455a16fa2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum slow advertisement interval 1s. <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabfa30cc1be49966eda1ea455a16fa2e6">CFG_LP_CONN_ADV_INTERVAL_MIN</a>&#160;&#160;&#160;(2000)</td></tr>
+<tr class="memdesc:gabfa30cc1be49966eda1ea455a16fa2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum slow advertisement interval 2s. <br /></td></tr>
 <tr class="separator:gabfa30cc1be49966eda1ea455a16fa2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga98c896cee21940e82f9d3bb1abe434e4"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga98c896cee21940e82f9d3bb1abe434e4">CFG_LP_CONN_ADV_INTERVAL_MAX</a>&#160;&#160;&#160;(0xFA0)</td></tr>
-<tr class="memdesc:ga98c896cee21940e82f9d3bb1abe434e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum slow advertisement interval 2.5s. <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga98c896cee21940e82f9d3bb1abe434e4">CFG_LP_CONN_ADV_INTERVAL_MAX</a>&#160;&#160;&#160;(2000)</td></tr>
+<tr class="memdesc:ga98c896cee21940e82f9d3bb1abe434e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum slow advertisement interval 2s. <br /></td></tr>
 <tr class="separator:ga98c896cee21940e82f9d3bb1abe434e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabce23ea06b2c6715f93a5b102c248122"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabce23ea06b2c6715f93a5b102c248122">CFG_BONDING_MODE</a>&#160;&#160;&#160;(0)</td></tr>
+<tr class="memitem:gabce23ea06b2c6715f93a5b102c248122"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabce23ea06b2c6715f93a5b102c248122">CFG_BONDING_MODE</a>&#160;&#160;&#160;(1)</td></tr>
 <tr class="memdesc:gabce23ea06b2c6715f93a5b102c248122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bonding mode.  <a href="group__app__conf.html#gabce23ea06b2c6715f93a5b102c248122">More...</a><br /></td></tr>
 <tr class="separator:gabce23ea06b2c6715f93a5b102c248122"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaea3a0529877eac7ce6e6b5a166642863"><td class="memItemLeft" align="right" valign="top">
@@ -140,7 +145,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:gaea3a0529877eac7ce6e6b5a166642863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed pin to be used in the pairing process. <br /></td></tr>
 <tr class="separator:gaea3a0529877eac7ce6e6b5a166642863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8f01cb3619ed46e80590ef3322e11b54"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga8f01cb3619ed46e80590ef3322e11b54">CFG_USED_FIXED_PIN</a>&#160;&#160;&#160;(0)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga8f01cb3619ed46e80590ef3322e11b54">CFG_USED_FIXED_PIN</a>&#160;&#160;&#160;(1)</td></tr>
 <tr class="memdesc:ga8f01cb3619ed46e80590ef3322e11b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 implies use fixed pin and 1 implies request for passkey (during pairing request) <br /></td></tr>
 <tr class="separator:ga8f01cb3619ed46e80590ef3322e11b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5f119c4c356762a416e2e8bf82c293ca"><td class="memItemLeft" align="right" valign="top">
@@ -148,7 +153,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga5f119c4c356762a416e2e8bf82c293ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE encryption key max size. <br /></td></tr>
 <tr class="separator:ga5f119c4c356762a416e2e8bf82c293ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga16b045bb11e50135ab041f65f52c5a58"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga16b045bb11e50135ab041f65f52c5a58">CFG_ENCRYPTION_KEY_SIZE_MIN</a>&#160;&#160;&#160;(7)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga16b045bb11e50135ab041f65f52c5a58">CFG_ENCRYPTION_KEY_SIZE_MIN</a>&#160;&#160;&#160;(8)</td></tr>
 <tr class="memdesc:ga16b045bb11e50135ab041f65f52c5a58"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE encryption key min size. <br /></td></tr>
 <tr class="separator:ga16b045bb11e50135ab041f65f52c5a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac37a6f5b5a160addad67966b84ecdbbe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gac37a6f5b5a160addad67966b84ecdbbe">CFG_IO_CAPABILITY_DISPLAY_ONLY</a>&#160;&#160;&#160;(0x00)</td></tr>
@@ -197,7 +202,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga8a7afb5ef078bc57ea1ae0cdfecb1ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Secure Connections mandatory. <br /></td></tr>
 <tr class="separator:ga8a7afb5ef078bc57ea1ae0cdfecb1ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9275efb45dd0cd3c0a9209204de16a7b"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga9275efb45dd0cd3c0a9209204de16a7b">CFG_SC_SUPPORT</a>&#160;&#160;&#160;<a class="el" href="group__app__conf.html#gaae247814ceff1d3ebb03ca25fbb40e24">CFG_SECURE_NOT_SUPPORTED</a></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga9275efb45dd0cd3c0a9209204de16a7b">CFG_SC_SUPPORT</a>&#160;&#160;&#160;<a class="el" href="group__app__conf.html#ga8a7afb5ef078bc57ea1ae0cdfecb1ec6">CFG_SECURE_MANDATORY</a></td></tr>
 <tr class="memdesc:ga9275efb45dd0cd3c0a9209204de16a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default secure connections. <br /></td></tr>
 <tr class="separator:ga9275efb45dd0cd3c0a9209204de16a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga69320a660d2a1a9caa8b6c8aeb80d389"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga69320a660d2a1a9caa8b6c8aeb80d389">CFG_KEYPRESS_NOT_SUPPORTED</a>&#160;&#160;&#160;(0x00)</td></tr>
@@ -266,19 +271,40 @@ Macros</h2></td></tr>
 <tr class="memitem:gaaa4758c9e7d0b20d6e8f006ed0f59602"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaaa4758c9e7d0b20d6e8f006ed0f59602">CFG_FEATURE_OTA_REBOOT</a>&#160;&#160;&#160;(0x20)</td></tr>
 <tr class="memdesc:gaaa4758c9e7d0b20d6e8f006ed0f59602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support OTA Bit Mask.  <a href="group__app__conf.html#gaaa4758c9e7d0b20d6e8f006ed0f59602">More...</a><br /></td></tr>
 <tr class="separator:gaaa4758c9e7d0b20d6e8f006ed0f59602"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga228b02b463c4431e4968ac531864839a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga228b02b463c4431e4968ac531864839a">CFG_BLE_NUM_LINK</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:ga0e92686144c8e0557158f448370fe1bb"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONN_L</b>(x)&#160;&#160;&#160;((int)((x)/0.625f))</td></tr>
+<tr class="separator:ga0e92686144c8e0557158f448370fe1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga064fc4bcba96fc2f35eafa555407d88a"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONN_P</b>(x)&#160;&#160;&#160;((int)((x)/1.25f))</td></tr>
+<tr class="separator:ga064fc4bcba96fc2f35eafa555407d88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa54ab8baa8e90bf364159d15ca47fa52"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_REQUEST_NEW_CONN_PARAM</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:gaa54ab8baa8e90bf364159d15ca47fa52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ee88751ac89f23529321c3e868e769c"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_INTERVAL_MIN</b>&#160;&#160;&#160;CONN_P(1000) /* 1s */</td></tr>
+<tr class="separator:ga6ee88751ac89f23529321c3e868e769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5d8bed477f1311a5d9292a39f19b1bb"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_INTERVAL_MAX</b>&#160;&#160;&#160;CONN_P(1000) /* 1s */</td></tr>
+<tr class="separator:gaf5d8bed477f1311a5d9292a39f19b1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0e2765c57e828af7d099cb47b601b10"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_SLAVE_LATENCY</b>&#160;&#160;&#160;0x0000</td></tr>
+<tr class="separator:gae0e2765c57e828af7d099cb47b601b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa38925accee51c4cf5976825449bcc89"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_TIMEOUT_MULTIPLIER</b>&#160;&#160;&#160;600</td></tr>
+<tr class="separator:gaa38925accee51c4cf5976825449bcc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga228b02b463c4431e4968ac531864839a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga228b02b463c4431e4968ac531864839a">CFG_BLE_NUM_LINK</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:ga228b02b463c4431e4968ac531864839a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of simultaneous connections that the device will support.  <a href="group__app__conf.html#ga228b02b463c4431e4968ac531864839a">More...</a><br /></td></tr>
 <tr class="separator:ga228b02b463c4431e4968ac531864839a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga90bf8d853b18b376a12686672947293c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga90bf8d853b18b376a12686672947293c">CFG_BLE_NUM_GATT_SERVICES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:ga90bf8d853b18b376a12686672947293c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga90bf8d853b18b376a12686672947293c">CFG_BLE_NUM_GATT_SERVICES</a>&#160;&#160;&#160;18</td></tr>
 <tr class="memdesc:ga90bf8d853b18b376a12686672947293c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of Services that can be stored in the GATT database.  <a href="group__app__conf.html#ga90bf8d853b18b376a12686672947293c">More...</a><br /></td></tr>
 <tr class="separator:ga90bf8d853b18b376a12686672947293c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacbf1d7b4c629c1b759e5c857b9f251f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gacbf1d7b4c629c1b759e5c857b9f251f0">CFG_BLE_NUM_GATT_ATTRIBUTES</a>&#160;&#160;&#160;68</td></tr>
-<tr class="memdesc:gacbf1d7b4c629c1b759e5c857b9f251f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of Attributes that can be stored in the GATT database.  <a href="group__app__conf.html#gacbf1d7b4c629c1b759e5c857b9f251f0">More...</a><br /></td></tr>
+<tr class="memitem:gacbf1d7b4c629c1b759e5c857b9f251f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gacbf1d7b4c629c1b759e5c857b9f251f0">CFG_BLE_NUM_GATT_ATTRIBUTES</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:gacbf1d7b4c629c1b759e5c857b9f251f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of Attributes that can be stored in the GATT database (48 for standard services and 52 for custom services)  <a href="group__app__conf.html#gacbf1d7b4c629c1b759e5c857b9f251f0">More...</a><br /></td></tr>
 <tr class="separator:gacbf1d7b4c629c1b759e5c857b9f251f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f9a260234ebc5f95c2cdea4a09ead6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga2f9a260234ebc5f95c2cdea4a09ead6c">CFG_BLE_MAX_ATT_MTU</a>&#160;&#160;&#160;(156)</td></tr>
 <tr class="memdesc:ga2f9a260234ebc5f95c2cdea4a09ead6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum supported ATT_MTU size.  <a href="group__app__conf.html#ga2f9a260234ebc5f95c2cdea4a09ead6c">More...</a><br /></td></tr>
 <tr class="separator:ga2f9a260234ebc5f95c2cdea4a09ead6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf02e6e474b7b73496579a416cc27127a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaf02e6e474b7b73496579a416cc27127a">CFG_BLE_ATT_VALUE_ARRAY_SIZE</a>&#160;&#160;&#160;(1344)</td></tr>
+<tr class="memitem:gaf02e6e474b7b73496579a416cc27127a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaf02e6e474b7b73496579a416cc27127a">CFG_BLE_ATT_VALUE_ARRAY_SIZE</a>&#160;&#160;&#160;(1976)</td></tr>
 <tr class="memdesc:gaf02e6e474b7b73496579a416cc27127a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the storage area for Attribute values.  <a href="group__app__conf.html#gaf02e6e474b7b73496579a416cc27127a">More...</a><br /></td></tr>
 <tr class="separator:gaf02e6e474b7b73496579a416cc27127a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga00a3f3e7f9b7a6e1406b34c89da5fcb6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga00a3f3e7f9b7a6e1406b34c89da5fcb6">CFG_BLE_PREPARE_WRITE_LIST_SIZE</a>&#160;&#160;&#160;BLE_PREP_WRITE_X_ATT(<a class="el" href="group__app__conf.html#ga2f9a260234ebc5f95c2cdea4a09ead6c">CFG_BLE_MAX_ATT_MTU</a>)</td></tr>
@@ -297,7 +323,7 @@ Macros</h2></td></tr>
 <tr class="memitem:ga8b398aba4b09cdddfd4596eee3a003aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga8b398aba4b09cdddfd4596eee3a003aa">CFG_BLE_MASTER_SCA</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:ga8b398aba4b09cdddfd4596eee3a003aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep clock accuracy in Master mode.  <a href="group__app__conf.html#ga8b398aba4b09cdddfd4596eee3a003aa">More...</a><br /></td></tr>
 <tr class="separator:ga8b398aba4b09cdddfd4596eee3a003aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga536bfba31920a7c33766a92ec6871971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga536bfba31920a7c33766a92ec6871971">CFG_BLE_LSE_SOURCE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:ga536bfba31920a7c33766a92ec6871971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga536bfba31920a7c33766a92ec6871971">CFG_BLE_LSE_SOURCE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:ga536bfba31920a7c33766a92ec6871971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source for the low speed clock for RF wake-up.  <a href="group__app__conf.html#ga536bfba31920a7c33766a92ec6871971">More...</a><br /></td></tr>
 <tr class="separator:ga536bfba31920a7c33766a92ec6871971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6ae86cdec1dab70a1e58c2438c741571"><td class="memItemLeft" align="right" valign="top">
@@ -339,11 +365,11 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gab257ace8b747dccae819d58f2ede3979">TL_BLE_EVENT_FRAME_SIZE</a>&#160;&#160;&#160;( TL_EVT_HDR_SIZE + <a class="el" href="group__app__conf.html#gaedff8f1df2551377b61a4129c6e9c1c1">CFG_TLBLE_MOST_EVENT_PAYLOAD_SIZE</a> )</td></tr>
 <tr class="memdesc:gab257ace8b747dccae819d58f2ede3979"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE event frame size. <br /></td></tr>
 <tr class="separator:gab257ace8b747dccae819d58f2ede3979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga11c849ab8898b88263ff7f953d17124e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga11c849ab8898b88263ff7f953d17124e">CFG_DEBUG_TRACE_UART</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:ga11c849ab8898b88263ff7f953d17124e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga11c849ab8898b88263ff7f953d17124e">CFG_DEBUG_TRACE_UART</a>&#160;&#160;&#160;hw_uart1</td></tr>
 <tr class="memdesc:ga11c849ab8898b88263ff7f953d17124e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config debug on UART port.  <a href="group__app__conf.html#ga11c849ab8898b88263ff7f953d17124e">More...</a><br /></td></tr>
 <tr class="separator:ga11c849ab8898b88263ff7f953d17124e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga98343c75dd3eb41198788d488c15c38b"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga98343c75dd3eb41198788d488c15c38b">CFG_CONSOLE_MENU</a>&#160;&#160;&#160;0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga98343c75dd3eb41198788d488c15c38b">CFG_CONSOLE_MENU</a>&#160;&#160;&#160;hw_uart1</td></tr>
 <tr class="memdesc:ga98343c75dd3eb41198788d488c15c38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Console menu. <br /></td></tr>
 <tr class="separator:ga98343c75dd3eb41198788d488c15c38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga702994beacd62f09c1f86af57f2d516e"><td class="memItemLeft" align="right" valign="top">
@@ -411,6 +437,34 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga70b9c993c87eb9125e64ab3abf72922c">BLE_DBG_BAS_EN</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:ga70b9c993c87eb9125e64ab3abf72922c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display trace for BAS service. <br /></td></tr>
 <tr class="separator:ga70b9c993c87eb9125e64ab3abf72922c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5030d97b311c0b15a1dbcdd1b5f23ece"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga5030d97b311c0b15a1dbcdd1b5f23ece">BLE_DBG_ESS_EN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ga5030d97b311c0b15a1dbcdd1b5f23ece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display trace for ESS service. <br /></td></tr>
+<tr class="separator:ga5030d97b311c0b15a1dbcdd1b5f23ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeaa5293067022c2cfe7dcf92c7f30686"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaeaa5293067022c2cfe7dcf92c7f30686">BLE_DBG_IAS_EN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:gaeaa5293067022c2cfe7dcf92c7f30686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display trace for IAS service. <br /></td></tr>
+<tr class="separator:gaeaa5293067022c2cfe7dcf92c7f30686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafb64144f770697069e17d18a1a803366"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gafb64144f770697069e17d18a1a803366">BLE_DBG_LLS_EN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:gafb64144f770697069e17d18a1a803366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display trace for LLS service. <br /></td></tr>
+<tr class="separator:gafb64144f770697069e17d18a1a803366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77fdfb7afb7db9738ed9ae7186a0149b"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga77fdfb7afb7db9738ed9ae7186a0149b">BLE_DBG_TPS_EN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ga77fdfb7afb7db9738ed9ae7186a0149b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display trace for TPS service. <br /></td></tr>
+<tr class="separator:ga77fdfb7afb7db9738ed9ae7186a0149b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga509e4660c48c84475cb217c5f03e5c47"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_NO_MESG</b>(...)</td></tr>
+<tr class="separator:ga509e4660c48c84475cb217c5f03e5c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1f059cbaff55501d8f04de966986632"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_LOG_BUFF_DBG</b>(...)</td></tr>
+<tr class="separator:gac1f059cbaff55501d8f04de966986632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab02e83e4c4ddf0c614c5eb918e060df6"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_MESG_DBG</b>(...)</td></tr>
+<tr class="separator:gab02e83e4c4ddf0c614c5eb918e060df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba3a862a46d21a29fb21cd906d51a680"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_MESG_WARNING</b>(s...)</td></tr>
+<tr class="separator:gaba3a862a46d21a29fb21cd906d51a680"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga53165393a5000ce71667a09624a53c6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga53165393a5000ce71667a09624a53c6e">BLE_DBG_DIS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
 <tr class="memdesc:ga53165393a5000ce71667a09624a53c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for DIS.  <a href="group__app__conf.html#ga53165393a5000ce71667a09624a53c6e">More...</a><br /></td></tr>
 <tr class="separator:ga53165393a5000ce71667a09624a53c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -418,35 +472,30 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga49b90ceca8d2119d9974f3d851d2a82c">BLE_DBG_BAS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
 <tr class="memdesc:ga49b90ceca8d2119d9974f3d851d2a82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for BAS. <br /></td></tr>
 <tr class="separator:ga49b90ceca8d2119d9974f3d851d2a82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29955f3b7966c7215dd4c9e4f95011a8"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga29955f3b7966c7215dd4c9e4f95011a8">BLE_DBG_ESS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
+<tr class="memdesc:ga29955f3b7966c7215dd4c9e4f95011a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for ESS. <br /></td></tr>
+<tr class="separator:ga29955f3b7966c7215dd4c9e4f95011a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08919fcf71f9a44723393a37b09cedad"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga08919fcf71f9a44723393a37b09cedad">BLE_DBG_IAS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
+<tr class="memdesc:ga08919fcf71f9a44723393a37b09cedad"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for IAS. <br /></td></tr>
+<tr class="separator:ga08919fcf71f9a44723393a37b09cedad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga307d14d1711f0c42c310300f3336f9d5"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga307d14d1711f0c42c310300f3336f9d5">BLE_DBG_LLS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
+<tr class="memdesc:ga307d14d1711f0c42c310300f3336f9d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for LLS. <br /></td></tr>
+<tr class="separator:ga307d14d1711f0c42c310300f3336f9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf057857273e2d125afe8cf8202cfe08d"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaf057857273e2d125afe8cf8202cfe08d">BLE_DBG_TPS_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
+<tr class="memdesc:gaf057857273e2d125afe8cf8202cfe08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for TPS. <br /></td></tr>
+<tr class="separator:gaf057857273e2d125afe8cf8202cfe08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2b2c2d566c41f3c35985b3c52be418fb"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga2b2c2d566c41f3c35985b3c52be418fb">APP_DBG_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
 <tr class="memdesc:ga2b2c2d566c41f3c35985b3c52be418fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print debug messages for BLE APP. <br /></td></tr>
 <tr class="separator:ga2b2c2d566c41f3c35985b3c52be418fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga81a22ab97ffe1348b57eda5eb3cec1e8">CFG_DEBUG_TRACE_LIGHT</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print only debug message.  <a href="group__app__conf.html#ga81a22ab97ffe1348b57eda5eb3cec1e8">More...</a><br /></td></tr>
-<tr class="separator:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf8e9324cd39485d3d54f19d1a54467a"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gacf8e9324cd39485d3d54f19d1a54467a">CFG_DEBUG_TRACE_FULL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:gacf8e9324cd39485d3d54f19d1a54467a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print debug message plus API name, file name and Line number. <br /></td></tr>
-<tr class="separator:gacf8e9324cd39485d3d54f19d1a54467a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf8e9324cd39485d3d54f19d1a54467a"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gacf8e9324cd39485d3d54f19d1a54467a">CFG_DEBUG_TRACE_FULL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:gacf8e9324cd39485d3d54f19d1a54467a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print debug message plus API name, file name and Line number. <br /></td></tr>
-<tr class="separator:gacf8e9324cd39485d3d54f19d1a54467a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga81a22ab97ffe1348b57eda5eb3cec1e8">CFG_DEBUG_TRACE_LIGHT</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print only debug message.  <a href="group__app__conf.html#ga81a22ab97ffe1348b57eda5eb3cec1e8">More...</a><br /></td></tr>
-<tr class="separator:ga81a22ab97ffe1348b57eda5eb3cec1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga074e64073f50bffd0e4e8cbd1bef3868"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga074e64073f50bffd0e4e8cbd1bef3868">DBG_TRACE_USE_CIRCULAR_QUEUE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:ga074e64073f50bffd0e4e8cbd1bef3868"><td class="mdescLeft">&#160;</td><td class="mdescRight">When not set, the traces is looping on sending the trace over UART. <br /></td></tr>
-<tr class="separator:ga074e64073f50bffd0e4e8cbd1bef3868"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabfae08243d2da5b4acb67374e9c3d376"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gabfae08243d2da5b4acb67374e9c3d376">DBG_TRACE_MSG_QUEUE_SIZE</a>&#160;&#160;&#160;4096</td></tr>
-<tr class="memdesc:gabfae08243d2da5b4acb67374e9c3d376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max buffer Size to queue data traces.  <a href="group__app__conf.html#gabfae08243d2da5b4acb67374e9c3d376">More...</a><br /></td></tr>
-<tr class="separator:gabfae08243d2da5b4acb67374e9c3d376"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab39688147caf150a3af14e698c16da8"><td class="memItemLeft" align="right" valign="top">
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#gaab39688147caf150a3af14e698c16da8">MAX_DBG_TRACE_MSG_SIZE</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="memdesc:gaab39688147caf150a3af14e698c16da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max data trace allowed. <br /></td></tr>
-<tr class="separator:gaab39688147caf150a3af14e698c16da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b5dc558c6e57fa28935b5d58c34b10f"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga5b5dc558c6e57fa28935b5d58c34b10f">APP_WRNG_MSG</a>&#160;&#160;&#160;PRINT_NO_MESG</td></tr>
+<tr class="memdesc:ga5b5dc558c6e57fa28935b5d58c34b10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">No print warning messages for BLE APP. <br /></td></tr>
+<tr class="separator:ga5b5dc558c6e57fa28935b5d58c34b10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga20fd5809548623a24270011a718576f5"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__app__conf.html#ga20fd5809548623a24270011a718576f5">CFG_OTP_BASE_ADDRESS</a>&#160;&#160;&#160;OTP_AREA_BASE</td></tr>
 <tr class="memdesc:ga20fd5809548623a24270011a718576f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">OTP BASE address. <br /></td></tr>

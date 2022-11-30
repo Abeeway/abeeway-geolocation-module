@@ -132,6 +132,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaos__gnss__counters__t.html">aos_gnss_counters_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GNSS Statistics.  <a href="structaos__gnss__counters__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaos__gnss__request__info__t.html">aos_gnss_request_info_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Information related to a request.  <a href="structaos__gnss__request__info__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaos__gnss__event__info__t.html">aos_gnss_event_info_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event structure sent to the application via its callback.  <a href="structaos__gnss__event__info__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,7 +291,8 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr class="separator:ga026c42de4c1ffd1fb8a2a32b6b774a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9d82b81abeea6794d28649bf5e4a4d16"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gnss__common.html#ga9d82b81abeea6794d28649bf5e4a4d16">aos_gnss_rqst_type_t</a> { <a class="el" href="group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16aae4968fcdd23eecb54afe55b8a7f57b7">aos_gnss_rqst_type_msg</a>, 
-<a class="el" href="group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16a848d6531aa09602bd5b4b2dbabe410ce">aos_gnss_rqst_type_cmd</a>
+<a class="el" href="group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16a848d6531aa09602bd5b4b2dbabe410ce">aos_gnss_rqst_type_cmd</a>, 
+<a class="el" href="group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16a326227ff85d7b85e7d8b139df97602b6">aos_gnss_rqst_type_query</a>
  }<tr class="memdesc:ga9d82b81abeea6794d28649bf5e4a4d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of request when sending a message to the GNSS chip.  <a href="group__gnss__common.html#ga9d82b81abeea6794d28649bf5e4a4d16">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga9d82b81abeea6794d28649bf5e4a4d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -298,7 +302,14 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901affc81d553e2d4c155ea8b31b8a8289f5">aos_gnss_request_status_nack</a>, 
 <a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a289cdc0ee880bbdac71ae134b1507d40">aos_gnss_request_status_timeout</a>, 
 <br />
-&#160;&#160;<a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a020f9bc00aa8899609034925d19a8379">aos_gnss_request_status_failure</a>
+&#160;&#160;<a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a020f9bc00aa8899609034925d19a8379">aos_gnss_request_status_failure</a>, 
+<a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a1d73f1d8d24fa652fa840a454043549c">aos_gnss_request_status_ack_base</a>, 
+<a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a02b2ecb8956ac22b8d4fd1794afc35c7">aos_gnss_request_status_ack_cmd_error</a>, 
+<b>aos_gnss_request_status_ack_cmd_unknown</b>, 
+<br />
+&#160;&#160;<b>aos_gnss_request_status_ack_ok_no_action</b>, 
+<b>aos_gnss_request_status_ack_ok_action_ok</b>, 
+<a class="el" href="group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a6a5bf06f76e02ec468da3ff0eafe5d85">aos_gnss_request_status_ack_last</a>
 <br />
  }<tr class="memdesc:ga5fa783bdff53fc0cc9fb1c70b4d76901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status of a request.  <a href="group__gnss__common.html#ga5fa783bdff53fc0cc9fb1c70b4d76901">More...</a><br /></td></tr>
 </td></tr>

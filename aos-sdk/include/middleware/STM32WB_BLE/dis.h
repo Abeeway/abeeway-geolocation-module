@@ -28,40 +28,54 @@ extern "C"
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+
+
+/*!
+ * \defgroup DIS DIS Service
+ *
+ * \addtogroup DIS
+ * @{
+ */
+
 /* Exported types ------------------------------------------------------------*/
-typedef struct
-{
-  uint8_t     *pPayload;
-  uint8_t     Length;
-}DIS_Data_t;
+
+/*!
+ * \struct DIS_Data_t
+ *
+ * \brief Data to update to the DIS characteristics
+ */
+typedef struct {
+	uint8_t     *pPayload;  //!< Characteristic data
+	uint8_t     Length;     //!< Characteristic data length
+} DIS_Data_t;
 
 
 /* Exported constants --------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-/*!
- * \fn void DIS_Init(void)
- *
- * \brief Initialize Device Information Service
- *
- */
-void DIS_Init(void);
 
 /*!
- * \fn tBleStatus DIS_UpdateChar(uint16_t uuid, DIS_Data_t *p_data)
+ * \fn void dis_init(void)
+ *
+ * \brief Initialize Device Information Service
+ */
+tBleStatus dis_init(void);
+
+/*!
+ * \fn tBleStatus dis_update_char(uint16_t uuid, DIS_Data_t *data)
  *
  * \brief Update DIS characteristic
  *
  * \param uuid Characteristic to update UUID
  *
- * \param p_data Pointer to the data
+ * \param data Pointer to the data
  *
  * \return result status
- *
  */
-tBleStatus DIS_UpdateChar(uint16_t uuid, DIS_Data_t *p_data);
+tBleStatus dis_update_char(uint16_t uuid, DIS_Data_t *data);
 
+/*! @}*/
 #ifdef __cplusplus
 }
 #endif

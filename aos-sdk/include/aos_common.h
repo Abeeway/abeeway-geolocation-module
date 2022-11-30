@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+#include "stdint.h"
+
 /*!
  * \defgroup aos_common Common definitions
  *
@@ -44,6 +46,15 @@ typedef enum {
 	aos_result_last						//<! Last item in the enum. Not an actual error
 } aos_result_t;
 
+/*!
+ * \struct buffer_t
+ *
+ * \brief Buffer data type
+ */
+typedef struct {
+	uint8_t len;                        //!< Buffer length
+	uint8_t *data;                      //!< Buffer address
+} buffer_t;
 
 /*! @}*/
 #ifdef __cplusplus

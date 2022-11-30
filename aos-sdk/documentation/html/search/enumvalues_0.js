@@ -1,5 +1,13 @@
 var searchData=
 [
+  ['aos_5fble_5fcore_5fconnected_5fbonded',['aos_ble_core_connected_bonded',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1a46e88830d3412d3dfce2d58a8685d521',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5fconnected_5fclient',['aos_ble_core_connected_client',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1a5b8bbe8df8043442592ee31b13e18669',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5fconnected_5fserver',['aos_ble_core_connected_server',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1a53d14a16558e04cfef538fd2e9eb2a09',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5ffast_5fadv',['aos_ble_core_fast_adv',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1ad6d6dcf978d221831947b255ed838295',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5fidle',['aos_ble_core_idle',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1ae0b77c319bf2d9ef2bba65173c59aceb',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5flp_5fadv',['aos_ble_core_lp_adv',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1a9ed185bcd4c7f18a59f27197b451e6c8',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5flp_5fconnecting',['aos_ble_core_lp_connecting',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1a1c1a6da3290a106c4206280f4cb2ad84',1,'aos_ble_core.h']]],
+  ['aos_5fble_5fcore_5fscan',['aos_ble_core_scan',['../group__aos__ble__core.html#gga3caf4a97361e5f3470ce599637f60dd1aaf5eac701997c3cba2d3dff2fe7cb719',1,'aos_ble_core.h']]],
   ['aos_5ferror_5fhw_5fbus',['AOS_ERROR_HW_BUS',['../group__aos__error.html#gga006eeb258e7fbd4d7c481e474de64e96add1a284597954a1de5c5819a60ffcdf8',1,'aos_error.h']]],
   ['aos_5ferror_5fhw_5ffault',['AOS_ERROR_HW_FAULT',['../group__aos__error.html#gga006eeb258e7fbd4d7c481e474de64e96a7d2a4cedd17e2e95b016cdd4af44ca4c',1,'aos_error.h']]],
   ['aos_5ferror_5fhw_5firq',['AOS_ERROR_HW_IRQ',['../group__aos__error.html#gga006eeb258e7fbd4d7c481e474de64e96a3ef8e631ba495407a1a6582e74144da5',1,'aos_error.h']]],
@@ -60,6 +68,9 @@ var searchData=
   ['aos_5fgnss_5fpower_5foff',['aos_gnss_power_off',['../group__gnss__common.html#ggaad9775fa2cbc5e7cff49dbe0f3a3ab07aa09e59c9b45495c42272bb7bc54f17ef',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5fpower_5fon',['aos_gnss_power_on',['../group__gnss__common.html#ggaad9775fa2cbc5e7cff49dbe0f3a3ab07a71861e57a99cf82f31f5bda51d3b6c0b',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5fpower_5fstandby',['aos_gnss_power_standby',['../group__gnss__common.html#ggaad9775fa2cbc5e7cff49dbe0f3a3ab07a045d561e47300b3c06b4b5e5df1f42e5',1,'aos_gnss_common.h']]],
+  ['aos_5fgnss_5frequest_5fstatus_5fack_5fbase',['aos_gnss_request_status_ack_base',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a1d73f1d8d24fa652fa840a454043549c',1,'aos_gnss_common.h']]],
+  ['aos_5fgnss_5frequest_5fstatus_5fack_5fcmd_5ferror',['aos_gnss_request_status_ack_cmd_error',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a02b2ecb8956ac22b8d4fd1794afc35c7',1,'aos_gnss_common.h']]],
+  ['aos_5fgnss_5frequest_5fstatus_5fack_5flast',['aos_gnss_request_status_ack_last',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a6a5bf06f76e02ec468da3ff0eafe5d85',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5frequest_5fstatus_5fanswer',['aos_gnss_request_status_answer',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901aa5cb35eb9072e84dae1c76f7982c2286',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5frequest_5fstatus_5ffailure',['aos_gnss_request_status_failure',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a020f9bc00aa8899609034925d19a8379',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5frequest_5fstatus_5fnack',['aos_gnss_request_status_nack',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901affc81d553e2d4c155ea8b31b8a8289f5',1,'aos_gnss_common.h']]],
@@ -67,6 +78,7 @@ var searchData=
   ['aos_5fgnss_5frequest_5fstatus_5ftimeout',['aos_gnss_request_status_timeout',['../group__gnss__common.html#gga5fa783bdff53fc0cc9fb1c70b4d76901a289cdc0ee880bbdac71ae134b1507d40',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5frqst_5ftype_5fcmd',['aos_gnss_rqst_type_cmd',['../group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16a848d6531aa09602bd5b4b2dbabe410ce',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5frqst_5ftype_5fmsg',['aos_gnss_rqst_type_msg',['../group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16aae4968fcdd23eecb54afe55b8a7f57b7',1,'aos_gnss_common.h']]],
+  ['aos_5fgnss_5frqst_5ftype_5fquery',['aos_gnss_rqst_type_query',['../group__gnss__common.html#gga9d82b81abeea6794d28649bf5e4a4d16a326227ff85d7b85e7d8b139df97602b6',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5ftime_5ftype_5fsoftware',['aos_gnss_time_type_software',['../group__gnss__common.html#ggad55d2d5539efee78ec0f6f1d43b70816ae5c8c1c1d851b06ebc6a15ac597ba1d7',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5ftime_5ftype_5futc',['aos_gnss_time_type_utc',['../group__gnss__common.html#ggad55d2d5539efee78ec0f6f1d43b70816a8fbe2e8c39036eec02941ae841d309e8',1,'aos_gnss_common.h']]],
   ['aos_5fgnss_5ftime_5ftype_5fweek_5ftow',['aos_gnss_time_type_week_tow',['../group__gnss__common.html#ggad55d2d5539efee78ec0f6f1d43b70816a3cb2c4e040738bb88afbafd15d4501e1',1,'aos_gnss_common.h']]],
@@ -148,6 +160,7 @@ var searchData=
   ['aos_5flpm_5fmode_5fstop1',['aos_lpm_mode_stop1',['../group__aos__lpm.html#ggad19d1197befd701115cbfe818783be37a5230845dafbe1817d1bac82e56e41bde',1,'aos_lpm.h']]],
   ['aos_5flpm_5fmode_5fstop2',['aos_lpm_mode_stop2',['../group__aos__lpm.html#ggad19d1197befd701115cbfe818783be37a3a9ae8b5c0408f838f1742a8533f039b',1,'aos_lpm.h']]],
   ['aos_5flpm_5frequester_5fapplication',['aos_lpm_requester_application',['../group__aos__lpm.html#gga7d44fadef00c619cdbf34c39205dd0e8affe1a4dd23bbeea44cef28c3e78625e1',1,'aos_lpm.h']]],
+  ['aos_5flpm_5frequester_5fble',['aos_lpm_requester_ble',['../group__aos__lpm.html#gga7d44fadef00c619cdbf34c39205dd0e8a21443507e9976c845bf88400de9f6ba2',1,'aos_lpm.h']]],
   ['aos_5flpm_5frequester_5fcli',['aos_lpm_requester_cli',['../group__aos__lpm.html#gga7d44fadef00c619cdbf34c39205dd0e8a5fd9e8814c84853e1ec637f5b42607c1',1,'aos_lpm.h']]],
   ['aos_5flpm_5frequester_5fflash',['aos_lpm_requester_flash',['../group__aos__lpm.html#gga7d44fadef00c619cdbf34c39205dd0e8add5b8b59aac98c5139351456f87aed10',1,'aos_lpm.h']]],
   ['aos_5flpm_5frequester_5fi2c_5fexternal',['aos_lpm_requester_i2c_external',['../group__aos__lpm.html#gga7d44fadef00c619cdbf34c39205dd0e8add523498ce9ad31e68aa1360eab691ba',1,'aos_lpm.h']]],
@@ -223,12 +236,5 @@ var searchData=
   ['aos_5fuart_5ftype_5flast',['aos_uart_type_last',['../group__aos__uart.html#gga4501960d05b8223a480dbd632a8e6da5abc7201407a8103f60d9bbeadd55d7340',1,'aos_uart.h']]],
   ['aos_5fuart_5ftype_5flpuart1',['aos_uart_type_lpuart1',['../group__aos__uart.html#gga4501960d05b8223a480dbd632a8e6da5a41dbc63c0d9ebfbb23c0356a90e2f205',1,'aos_uart.h']]],
   ['aos_5fuart_5ftype_5fusart1',['aos_uart_type_usart1',['../group__aos__uart.html#gga4501960d05b8223a480dbd632a8e6da5a5f648fc4cca3ec2d5012b7f7e5390e29',1,'aos_uart.h']]],
-  ['aos_5fuart_5ftype_5fusb',['aos_uart_type_usb',['../group__aos__uart.html#gga4501960d05b8223a480dbd632a8e6da5a6565ffd65b9cc0c3fd3ac5395d6cc47f',1,'aos_uart.h']]],
-  ['app_5fble_5fconnected_5fclient',['APP_BLE_CONNECTED_CLIENT',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a028daf868789dc38b40665c1b3feb729',1,'aos_ble_core.h']]],
-  ['app_5fble_5fconnected_5fserver',['APP_BLE_CONNECTED_SERVER',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a13994280ab9868b63e344b475e1b3a96',1,'aos_ble_core.h']]],
-  ['app_5fble_5ffast_5fadv',['APP_BLE_FAST_ADV',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a3e937d9e1d72be3c7752f1030ffefe22',1,'aos_ble_core.h']]],
-  ['app_5fble_5fidle',['APP_BLE_IDLE',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528adac4ff4feeee8b5b887cb2249c8f1c69',1,'aos_ble_core.h']]],
-  ['app_5fble_5flp_5fadv',['APP_BLE_LP_ADV',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a8dc9a4f1638a2e50d78033aa70738340',1,'aos_ble_core.h']]],
-  ['app_5fble_5flp_5fconnecting',['APP_BLE_LP_CONNECTING',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a83cc0627a2ece179a1940b594397dc1a',1,'aos_ble_core.h']]],
-  ['app_5fble_5fscan',['APP_BLE_SCAN',['../group__aos__ble__core.html#gga37d5ee55761f10b83d1caea6523c7528a7a940a6b0a1bb920120d42caf2adc39c',1,'aos_ble_core.h']]]
+  ['aos_5fuart_5ftype_5fusb',['aos_uart_type_usb',['../group__aos__uart.html#gga4501960d05b8223a480dbd632a8e6da5a6565ffd65b9cc0c3fd3ac5395d6cc47f',1,'aos_uart.h']]]
 ];

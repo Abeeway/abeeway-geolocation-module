@@ -16,9 +16,11 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "hci_tl.h"
-#include "ble_common.h"
 #include "ble_types.h"
 #include "stdbool.h"
+#include "aos_common.h"
+#include "aos_ble_common.h"
+#include "aos_lpm.h"
 
 
 /*!
@@ -31,25 +33,29 @@ extern "C" {
 #define AOS_BLE_CORE_TX_POWER_LEVEL_MIN 0			//!< Min index of tx power level
 #define AOS_BLE_CORE_TX_POWER_LEVEL_MAX 31			//!< Max index of tx power level
 
+#define RESTART_ADV     true
+#define STOP_ADV        false
+
 //TODO find a better place for this:
-#define ABS(x) ((x)>0? (x):-(x))		//!< Macro to get the absolute value of the input parameter
+#define ABS(x) ((x)>0? (x):-(x))		            //!< Macro to get the absolute value of the input parameter
 
 /* Exported types ------------------------------------------------------------*/
 
 /*!
- * \enum APP_BLE_ConnStatus_t
+ * \enum aos_ble_core_conn_status_t
  *
  * \brief BLE connection state.
  */
 typedef enum {
-	APP_BLE_IDLE,				//!< BLE in idle state
-	APP_BLE_FAST_ADV,			//!< BLE in fast advertisement state
-	APP_BLE_LP_ADV,				//!< BLE in slow advertisement state
-	APP_BLE_SCAN,				//!< BLE in scan state
-	APP_BLE_LP_CONNECTING,		//!< BLE is connecting as client
-	APP_BLE_CONNECTED_SERVER,	//!< BLE connected as server
-	APP_BLE_CONNECTED_CLIENT	//!< BLE connected as client
-} APP_BLE_ConnStatus_t;
+	aos_ble_core_idle,              //!< BLE in idle state
+	aos_ble_core_fast_adv,          //!< BLE in fast advertisement state
+	aos_ble_core_lp_adv,            //!< BLE in slow advertisement state
+	aos_ble_core_scan,              //!< BLE in scan state
+	aos_ble_core_lp_connecting,     //!< BLE is connecting as client
+	aos_ble_core_connected_server,  //!< BLE connected as server
+	aos_ble_core_connected_client,  //!< BLE connected as client
+	aos_ble_core_connected_bonded   //!< BLE connected as client
+} aos_ble_core_conn_status_t;
 
 /*!
  * \typedef void aos_ble_core_scan_callback_t(const Advertising_Report_t *par)
@@ -63,43 +69,41 @@ typedef void aos_ble_core_scan_callback_t(const Advertising_Report_t *par);
 /* Exported functions ---------------------------------------------*/
 
 /*!
- * \fn void APP_BLE_Init(uint8_t role)
+ * \fn void aos_ble_core_app_init(uint8_t role)
  *
  * \brief BLE Initialization API
  *
- * \param role the role to be initialized for (peripheral, central, observer or broadcaster)
- *
+ * \param app_info BLE application initialization data
  */
-void APP_BLE_Init(uint8_t role);
+void aos_ble_core_app_init(aos_ble_app_data_t *app_info);
 
 /*!
- * \fn APP_BLE_ConnStatus_t APP_BLE_Get_Server_Connection_Status(void);
+ * \fn aos_ble_core_conn_status_t aos_ble_core_get_connection_status(void);
  *
  * \brief Get BLE connection status
  *
  * \return BLE connection status
- *
  */
-APP_BLE_ConnStatus_t APP_BLE_Get_Server_Connection_Status(void);
+aos_ble_core_conn_status_t aos_ble_core_get_connection_status(void);
 
 /*!
- * \fn const uint8_t* BleGetBdAddress( void )
+ * \fn const uint8_t* aos_ble_core_get_bd_address( void )
  *
- * \brief Get BLE MAC address
+ * \brief Get BLE Device address
  *
  * \return pointer to the BLE MAC address
  */
-const uint8_t* BleGetBdAddress(void);
+const uint8_t* aos_ble_core_get_bd_address(void);
 
 
 /*!
- * \fn void aos_ble_core_avertise(APP_BLE_ConnStatus_t New_Status)
+ * \fn void aos_ble_core_advertise(aos_ble_core_conn_status_t New_Status)
  *
  * \brief Start connectivity advertisement
  *
  * \param New_Status Start fast/slow advertisement
  */
-void aos_ble_core_avertise(APP_BLE_ConnStatus_t New_Status);
+void aos_ble_core_advertise(aos_ble_core_conn_status_t new_status);
 
 /*!
  * \fn void aos_ble_core_set_scan_callback(aos_ble_core_scan_callback_t* cb)
@@ -151,6 +155,105 @@ uint8_t aos_ble_core_get_tx_power_level(void);
  * \return status success/fail
  */
 bool aos_ble_core_get_tx_power_dbm(uint8_t pow_level, int16_t * pow_dbm);
+
+/*!
+ * \fn void hci_notify_asynch_evt(void* pdata)
+ *
+ * \brief  This callback is called from either
+ *          - IPCC RX interrupt context
+ *          - hci_user_evt_proc() context.
+ *          - hci_resume_flow() context
+ *         It requests hci_user_evt_proc() to be executed.
+ *
+ * \param  pdata Packet or event pointer
+ *
+ * \return None
+ */
+void hci_notify_asynch_evt(void* pdata);
+
+/*!
+ * \fn void hci_cmd_resp_release(uint32_t flag)
+ *
+ * \brief  This function is called when an ACI/HCI command response is received from the CPU2.
+ *         A weak implementation is available in hci_tl.c based on polling mechanism
+ *         The user may re-implement this function in the application to improve performance :
+ *         - It may use UTIL_SEQ_SetEvt() API when using the Sequencer
+ *         - It may use a semaphore when using cmsis_os interface
+ *
+ * \param  flag: Release flag
+ *
+ * \return None
+ */
+void hci_cmd_resp_release(uint32_t flag);
+
+/*!
+ * \fn void hci_cmd_resp_wait(uint32_t timeout)
+ *
+ * \brief  This function is called when an ACI/HCI command is sent to the CPU2 and the response is waited.
+ *         It is called from the same context the HCI command has been sent.
+ *         It shall not return until the command response notified by hci_cmd_resp_release() is received.
+ *         A weak implementation is available in hci_tl.c based on polling mechanism
+ *         The user may re-implement this function in the application to improve performance :
+ *         - It may use UTIL_SEQ_WaitEvt() API when using the Sequencer
+ *         - It may use a semaphore when using cmsis_os interface
+ *
+ * \param  timeout: Waiting timeout
+ *
+ * \return None
+ */
+void hci_cmd_resp_wait(uint32_t timeout);
+
+/*!
+ * \fn bool aos_ble_core_get_adv_status(void)
+ *
+ * \brief  This function return the advertisement status (ON/OFF)
+ *
+ * \return bool return the advertisement status (advertising or no)
+ */
+bool aos_ble_core_get_adv_status(void);
+
+/*!
+ * \fn bool aos_ble_core_remove_bond(void)
+ *
+ * \brief  This function remove all bonded devices
+ *
+ * \return bool return success/fail
+ */
+bool aos_ble_core_remove_bond(void);
+
+/*!
+ * \fn bool aos_ble_core_stop_connectivity(bool restart_adv)
+ *
+ * \brief This function stop connectivity, stop advertisement
+ *
+ * \param restart_adv restart or not the advertisement after disconnection
+ *
+ * \return bool return success/fail
+ */
+bool aos_ble_core_stop_connectivity(bool restart_adv);
+
+/*!
+ * \fn void aos_ble_core_get_firmware_version(aos_ble_core_fw_version_t *ble_version)
+ *
+ * \brief get stack and FUS firmware version,
+ *
+ * \param ble_version output the stack and fus version
+ *
+ */
+void aos_ble_core_get_firmware_version(aos_ble_core_fw_version_t *ble_version);
+
+/*!
+ * \fn void aos_ble_core_set_lpm_mode(aos_lpm_mode_t mode, bool delayed)
+ *
+ * \brief Disable/enable the low power mode of the BLE requester, the request
+ *  could be delayed by 100ms if the param "delayed" is set to true
+ *
+ * \param mode The desired LPM mode
+ *
+ * \param delayed delay the request if set to True
+ *
+ */
+void aos_ble_core_set_lpm_mode(aos_lpm_mode_t mode, bool delayed);
 
 /* USER CODE END EF */
 

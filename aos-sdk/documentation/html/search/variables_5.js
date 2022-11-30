@@ -10,5 +10,8 @@ var searchData=
   ['fix_5fsatellites',['fix_satellites',['../structaos__gnss__fix__info__t.html#a3962be0320a2f4f99a9e6e797bcb5e73',1,'aos_gnss_fix_info_t']]],
   ['fnct',['fnct',['../structnmea__dictionary__word__t.html#af21b3afc1b6791b4fe2c0d93c9da56cf',1,'nmea_dictionary_word_t']]],
   ['framing_5ferrors',['framing_errors',['../structaos__uart__stats__t.html#a6e3bc09e9f2fc7fb5796e62ae93dfd3d',1,'aos_uart_stats_t']]],
-  ['func',['func',['../structcli__parser__cmd__s.html#a657be1306e0b6f50257aba1f487dd7a4',1,'cli_parser_cmd_s']]]
+  ['func',['func',['../structcli__parser__cmd__s.html#a657be1306e0b6f50257aba1f487dd7a4',1,'cli_parser_cmd_s']]],
+  ['fus_5fmajor',['fus_major',['../structaos__ble__core__fw__version__t.html#acdebd8108dee2d32a6381519ccefd978',1,'aos_ble_core_fw_version_t']]],
+  ['fus_5fminor',['fus_minor',['../structaos__ble__core__fw__version__t.html#a6c1368749292daa18faefe4bd5cc4109',1,'aos_ble_core_fw_version_t']]],
+  ['fus_5fsub',['fus_sub',['../structaos__ble__core__fw__version__t.html#a87e4f7184256cc1709c57e94dcda9097',1,'aos_ble_core_fw_version_t']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blegetbdaddress',['BleGetBdAddress',['../group__aos__ble__core.html#ga8bd9b4e006d3aeb98fbadb3e6ea443e7',1,'aos_ble_core.h']]]
+  ['bas_5fchar_5fvalue_5finit',['bas_char_value_init',['../group__aos__ble__services.html#ga226a9d511820b787fc5fa5ab0133e84d',1,'aos_ble_services.h']]]
 ];

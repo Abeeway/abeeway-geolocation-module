@@ -30,29 +30,75 @@ extern "C"
 
 /* Includes ------------------------------------------------------------------*/
 
+
+/*!
+ * \defgroup IAS BLE Immediate Alert Service
+ *
+ * \addtogroup IAS
+ * @{
+ */
+
 /* Exported types ------------------------------------------------------------*/
-typedef enum
-{
-  IAS_NO_ALERT_EVT,
-  IAS_MID_ALERT_EVT,
-  IAS_HIGH_ALERT_EVT
+
+/*!
+ * \enum IAS_App_Opcode_Notification_evt_t
+ *
+ * \brief Immediate Alert service event
+ */
+typedef enum {
+	IAS_NO_ALERT_EVT,      //!< No Alert event
+	IAS_MID_ALERT_EVT,     //!< MID Alert event
+	IAS_HIGH_ALERT_EVT     //!< HIGH Alert event
 } IAS_App_Opcode_Notification_evt_t;
 
-typedef struct
-{
-  IAS_App_Opcode_Notification_evt_t  IAS_Evt_Opcode;
-}IAS_App_Notification_evt_t;
+/*!
+ * \struct IAS_App_Notification_evt_t
+ *
+ * \brief Immediate Alert service event struct
+ */
+typedef struct {
+	IAS_App_Opcode_Notification_evt_t  IAS_Evt_Opcode;  //!< IAS notification event code
+} IAS_App_Notification_evt_t;
 
 
 /* Exported constants --------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void IAS_Init(void);
-tBleStatus IAS_Update_Char(uint16_t UUID, uint8_t *pPayload);
-void IAS_App_Notification(IAS_App_Notification_evt_t *pNotification);
+
+/*!
+ * \fn tBleStatus ias_init(void)
+ *
+ * \brief Immediate Alert service Initialization
+ *
+ * \return tBleStatus status
+ */
+tBleStatus ias_init(void);
+
+/*!
+ * \fn tBleStatus ias_update_char(uint16_t uuid, uint8_t *payload)
+ *
+ * \brief Update the data of the characteristic UUID with pPayload data
+ *
+ * \param UUID battery characteristic to update
+ *
+ * \param pPayload data to update
+ *
+ * \return tBleStatus status
+ */
+tBleStatus ias_update_char(uint16_t uuid, uint8_t *payload);
+
+/*!
+ * \fn void ias_app_notification(BAS_Notification_evt_t * pNotification)
+ *
+ * \brief Immediate Alert service notification function
+ *
+ * \param pNotification notification event
+ */
+void ias_app_notification(IAS_App_Notification_evt_t *pNotification);
 
 
+/*! @}*/
 #ifdef __cplusplus
 }
 #endif

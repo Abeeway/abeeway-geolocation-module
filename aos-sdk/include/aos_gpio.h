@@ -204,7 +204,7 @@ void aos_gpio_init(void);
  * \note The vbat parameters are used to read the battery level via the function aos_gpio_read_battery_level
  */
 void aos_gpio_bat_setup(aos_gpio_id_t gpio_vbat_ctrl, aos_gpio_id_t gpio_vbat_analog,
-		uint8_t vbat_ctrl_ratio, uint16_t vbat_ctrl_setup_delay, uint16_t vbat_offset);
+		uint8_t vbat_ctrl_ratio, uint16_t vbat_ctrl_setup_delay, int16_t vbat_offset);
 /*!
  * \fn aos_result_t aos_gpio_open(aos_gpio_id_t id, aos_gpio_mode_t mode)
  *

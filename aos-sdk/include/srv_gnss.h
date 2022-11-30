@@ -95,7 +95,8 @@ aos_result_t srv_gnss_close(void);
  *
  * \param msg Message to send. Must comply with the GNSS device protocol
  * \param length message length
- * \param mtype Type of the request. Refer the associated enumerate.
+ * \param mtype Type of the request. Refer the associated enumerated except aos_gnss_rqst_type_query.
+ *        If you wish to send a query, use the function aos_gnss_send_query instead.
  *
  * \return   success , failure or tx_busy.
  *
@@ -103,6 +104,23 @@ aos_result_t srv_gnss_close(void);
  *
  */
 aos_result_t srv_gnss_send_msg(const uint8_t* msg, uint16_t length, aos_gnss_rqst_type_t mtype);
+
+
+/*!
+ * \fn srv_gnss_send_query() - send a query
+ *
+ * \param guery Query to send
+ * \param length Query length
+ * \param answer_id Expected identifier for the answer. Must be populated (not null) if the answer is not carried thru an ack
+ * \return   success , failure or tx_busy.
+ *
+ * \note
+ *    The NMEA parser is able to process once request at a time. So the user has to wait for the event
+ *     aos_gnss_event_req_status before sending another command. If a new command is issued while the previous
+ *     one is not complete, the function will return busy.
+ *
+ */
+aos_result_t srv_gnss_send_query(const uint8_t* query, uint16_t length, uint32_t answer_id);
 
 
 /*!

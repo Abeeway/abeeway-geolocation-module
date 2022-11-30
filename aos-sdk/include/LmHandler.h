@@ -43,6 +43,7 @@ extern "C"
 {
 #endif
 
+#include "LmhPackage.h"
 #include "LmHandlerTypes.h"
 
 typedef struct LmHandlerJoinParams_s
@@ -358,6 +359,55 @@ LmHandlerErrorStatus_t LmHandlerDeviceTimeReq( void );
  *=============================================================================
  * PACKAGES HANDLING
  *=============================================================================
+ */
+/*!
+ * Register a user provided package.
+ *
+ * This function allows registering a user provided package, either to replace
+ * one of the known package IDs with a different implementation, or to register
+ * a new package ID with new functionality.
+ *
+ * \param [IN] id  Package ID. Must be less than PKG_MAX_NUMBER.
+ * \param [IN] package Address of a static LmhPackage_t structure.
+ * \param [IN] params Package-specific parameters
+ *
+ * \retval status Returns \ref LORAMAC_HANDLER_SUCCESS if request has been
+ *                processed else \ref LORAMAC_HANDLER_ERROR
+ *
+ * \example
+ *
+ * 		status = LmHandlerPackageRegisterPackage( PACKAGE_ID_COMPLIANCE,
+ * 		                                          LmphCompliancePackageFactory(),
+ * 		                                          compliance_params );
+ *
+ * 		status = LmHandlerPackageRegisterPackage( PACKAGE_ID_USER,
+ * 		                                          user_package,
+ * 		                                          user_params );
+ */
+LmHandlerErrorStatus_t LmHandlerPackageRegisterPackage( uint8_t id, LmhPackage_t *package, void *params );
+
+/*!
+ * Register a factory default package.
+ *
+ * This is essentially a wrapper to LmHandlerPackageRegisterPackage(), passing
+ * the factory default packages for the know package IDs. As of today, these
+ * IDs are defined in the individual package header files, and are:
+ *
+ *  - PACKAGE_ID_COMPLIANCE
+ *  - PACKAGE_ID_CLOCK_SYNC
+ *  - PACKAGE_ID_REMOTE_MCAST_SETUP
+ *  - PACKAGE_ID_FRAGMENTATION
+ *
+ * \param [IN] id  Package ID. Must be a known package, less than PKG_MAX_NUMBER.
+ * \param [IN] package Address of a static LmhPackage_t structure.
+ * \param [IN] params Package-specific parameters
+ *
+ * \retval status Returns \ref LORAMAC_HANDLER_SUCCESS if request has been
+ *                processed else \ref LORAMAC_HANDLER_ERROR
+ *
+ * \example
+ * 		status = LmHandlerPackageRegister( PACKAGE_ID_COMPLIANCE,
+ * 		                                   compliance_params );
  */
 LmHandlerErrorStatus_t LmHandlerPackageRegister( uint8_t id, void *params );
 bool LmHandlerPackageIsInitialized( uint8_t id );

@@ -6,5 +6,6 @@ var searchData=
   ['nb_5fsat',['nb_sat',['../structaos__gnss__track__data__t.html#abf6e52f4e1ea6e1429713c798581b5c8',1,'aos_gnss_track_data_t::nb_sat()'],['../structaos__gnss__satellite__prn__report__t.html#a0654c4a41b01bc42402ab11573291ae1',1,'aos_gnss_satellite_prn_report_t::nb_sat()']]],
   ['no_5fbuffer',['no_buffer',['../structaos__gnss__counters__t.html#a5413c1b5cc7072246acd8ebd45203a12',1,'aos_gnss_counters_t']]],
   ['noise_5ferrors',['noise_errors',['../structaos__uart__stats__t.html#aeb92dd2fa751093ecd6587cc993d403a',1,'aos_uart_stats_t']]],
-  ['non_5fdigit_5fbytes',['non_digit_bytes',['../structaos__gnss__counters__t.html#aa12bb82592112db0364455db9c29e02a',1,'aos_gnss_counters_t']]]
+  ['non_5fdigit_5fbytes',['non_digit_bytes',['../structaos__gnss__counters__t.html#aa12bb82592112db0364455db9c29e02a',1,'aos_gnss_counters_t']]],
+  ['num_5fattr_5frec',['num_attr_rec',['../structble__service__init__data__t.html#ac9e49220c8120f6faf8d54066149a266',1,'ble_service_init_data_t']]]
 ];

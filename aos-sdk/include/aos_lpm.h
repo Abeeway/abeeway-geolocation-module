@@ -53,6 +53,7 @@ typedef enum {
 	aos_lpm_requester_application,		//!< The requester is the user application
 	aos_lpm_requester_cli,				//!< The requester is the CLI
 	aos_lpm_requester_flash,			//!< The requester is the Flash (EEPROM Emulation)
+	aos_lpm_requester_ble,				//!< The requester is the BLE application
 	aos_lpm_requester_last				//!< Last entry in the enumerated
 } aos_lpm_requester_t;
 

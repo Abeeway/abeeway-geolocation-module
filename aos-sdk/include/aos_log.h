@@ -37,6 +37,8 @@
  */
 #pragma once
 
+#include "stdio.h"
+#include "stdbool.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -405,7 +405,8 @@ typedef struct {
  */
 typedef enum {
 	aos_gnss_rqst_type_msg,          //!< Message: Just send the message. Neither ack, nor answer expected
-	aos_gnss_rqst_type_cmd           //!< Command:  The request will be sent and we wait for an ack
+	aos_gnss_rqst_type_cmd,          //!< Command:  The request will be sent and we wait for an ack
+	aos_gnss_rqst_type_query         //!< Query:  The request will be sent and we wait for an eventual ack and and answer
 } aos_gnss_rqst_type_t;
 
 
@@ -419,7 +420,14 @@ typedef enum {
 	aos_gnss_request_status_answer,			//!< An answer has been received
 	aos_gnss_request_status_nack,			//!< The request has been nack'ed
 	aos_gnss_request_status_timeout,		//!< Timeout occurred while waiting for an ack or an answer
-	aos_gnss_request_status_failure			//!< Request failure
+	aos_gnss_request_status_failure,			//!< Request failure
+	aos_gnss_request_status_ack_base,			//!< Base for NMEA statuses
+	aos_gnss_request_status_ack_cmd_error =		//!< Invalid command
+			aos_gnss_request_status_ack_base,
+	aos_gnss_request_status_ack_cmd_unknown,	//<! unsupported command
+	aos_gnss_request_status_ack_ok_no_action,	//<! Command success but no action taken (or no answer)
+	aos_gnss_request_status_ack_ok_action_ok,	//<! Command success and action taken
+	aos_gnss_request_status_ack_last			//!< last status of the ack} aos_gnss_request_status_t;
 } aos_gnss_request_status_t;
 
 /*!
@@ -527,6 +535,16 @@ typedef enum {
     aos_gnss_event_count             	//!< Must be the last
 } aos_gnss_event_t;
 
+/*!
+ * \struct aos_gnss_request_info_t
+ *
+ * \brief Information related to a request
+ */
+typedef struct {
+	aos_gnss_request_status_t status;		//!< Status of the request/query
+	aos_gnss_raw_data_t raw;				//!< pre-parsed raw data belonging to the answer
+} aos_gnss_request_info_t;
+
 
 /*!
  * \struct aos_gnss_event_info_t
@@ -536,10 +554,10 @@ typedef enum {
 typedef struct {
     aos_gnss_event_t event;						//!< Event type
     union {
-    	aos_gnss_request_status_t req_status;	//!< Status of a request (belong to aos_gnss_event_req_status)
+    	aos_gnss_request_info_t req_info;		//!< Information/status of a request
     	aos_gnss_raw_data_t raw;				//!< Raw message (belong to aos_gnss_event_raw_nmea_sentence)
     	aos_gnss_fix_info_t* fix;				//!< fix information (belong to aos_gnss_event_fix)
-    	aos_gnss_track_data_t* track;			//<! tacking information (belong to aos_gnss_event_track_data)
+    	aos_gnss_track_data_t* track;			//<! tracking information (belong to aos_gnss_event_track_data)
     	aos_gnss_satellite_prn_report_t* prn_report;//<! Pseudo range report (belong to aos_gnss_event_pseudo_range)
     };
 } aos_gnss_event_info_t;

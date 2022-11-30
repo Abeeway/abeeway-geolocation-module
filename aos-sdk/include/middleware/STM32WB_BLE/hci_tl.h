@@ -90,18 +90,6 @@ typedef struct
 void hci_register_io_bus(tHciIO* fops);
 
 /**
- * @brief  This callback is called from either
- *          - IPCC RX interrupt context
- *          - hci_user_evt_proc() context.
- *          - hci_resume_flow() context
- *         It requests hci_user_evt_proc() to be executed.
- *
- * @param  pdata Packet or event pointer
- * @retval None
- */
-void hci_notify_asynch_evt(void* pdata);
-
-/**
  * @brief  This function resume the User Event Flow which has been stopped on return 
  *         from UserEvtRx() when the User Event has not been processed.
  *
@@ -110,32 +98,6 @@ void hci_notify_asynch_evt(void* pdata);
  */
 void hci_resume_flow(void);
 
-
-/**
- * @brief  This function is called when an ACI/HCI command is sent to the CPU2 and the response is waited.
- *         It is called from the same context the HCI command has been sent.
- *         It shall not return until the command response notified by hci_cmd_resp_release() is received.
- *         A weak implementation is available in hci_tl.c based on polling mechanism
- *         The user may re-implement this function in the application to improve performance :
- *         - It may use UTIL_SEQ_WaitEvt() API when using the Sequencer
- *         - It may use a semaphore when using cmsis_os interface
- *
- * @param  timeout: Waiting timeout
- * @retval None
- */
-void hci_cmd_resp_wait(uint32_t timeout);
-
-/**
- * @brief  This function is called when an ACI/HCI command response is received from the CPU2.
- *         A weak implementation is available in hci_tl.c based on polling mechanism
- *         The user may re-implement this function in the application to improve performance :
- *         - It may use UTIL_SEQ_SetEvt() API when using the Sequencer
- *         - It may use a semaphore when using cmsis_os interface
- *
- * @param  flag: Release flag
- * @retval None
- */
-void hci_cmd_resp_release(uint32_t flag);
 
 
 

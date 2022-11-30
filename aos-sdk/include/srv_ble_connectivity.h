@@ -9,7 +9,7 @@
 #define ABEEWAY_SERVICES_SRV_BLE_CONNECTIVITY_H_
 
 aos_result_t srv_ble_connectivity_start(void);
-uint8_t srv_ble_connectivity_stop(void);
+aos_result_t srv_ble_connectivity_stop(void);
 
 
 #endif /* ABEEWAY_SERVICES_SRV_BLE_CONNECTIVITY_H_ */

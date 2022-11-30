@@ -72,9 +72,15 @@ typedef enum {
  */
 typedef enum {
 	nmea_parsing_res_success,		//!< Success
-	nmea_parsing_res_discard,		//!< Discard sentence
+	nmea_parsing_res_discard,		//!< Not processed sentence
 	nmea_parsing_res_error,			//!< Error
 	nmea_parsing_res_not_populated,	//!< An cycle has not been fully populated.
+	nmea_parsing_ack_base_status,								//<! Base for NMEA statuses
+	nmea_parsing_ack_cmd_error = nmea_parsing_ack_base_status,	//<! Invalid command (0)
+	nmea_parsing_ack_cmd_unknown,								//<! unsupported command
+	nmea_parsing_ack_cmd_ok_no_action,							//!< Command success but no action taken (or no answer)
+	nmea_parsing_ack_cmd_ok_action_ok,							//!< Command success and action taken
+	nmea_parsing_ack_cmd_last									//<! last status of the ack
 } nmea_parsing_res_t;
 
 
@@ -137,6 +143,21 @@ typedef struct {
 
 
 //  API
+/*!
+ * \fn char* nmea_extract_hex(char* str, int8_t nb_digits, uint32_t* value)
+ *
+ * \brief Extracts a hexadecimal integer
+ *
+ * \param str - Input string (null terminated)
+ * \param nb_digits: Number of digits to read. Passing -1 forces the function to read all digits
+ * \param value: output value
+ *
+ * \return The position of the first unread bytes. NULL if error.
+ *
+ * \note: lower/upper cases hexa supported.
+ */
+char* nmea_extract_hex(char* str, int8_t nb_digits, uint32_t* value);
+
 /*!
  * \fn char* nmea_extract_uint(char* str, int8_t nb_digits, uint32_t* value)
  *
@@ -247,6 +268,19 @@ void nmea_delayed_rx_process(void);
  */
 nmea_msg_type_t nmea_get_msg_type(nmea_parse_msg_t* info, aos_gnss_constellation_t *constellation);
 
+
+/*!
+ * \fn  bool nmea_get_hex(nmea_parse_msg_t* info, uint8_t field_idx, uint32_t* value)
+ *
+ * \brief extract an unsigned hexadecimal number at given field index
+ *
+ * \param info - parsed message information
+ * \param field_idx - field index
+ * \param value: output value
+ *
+ * \return true if success
+ */
+bool nmea_get_hex(nmea_parse_msg_t* info, uint8_t field_idx, uint32_t* value);
 
 /*!
  * \fn bool nmea_get_uint32(nmea_parse_msg_t* info, uint8_t field_idx, uint32_t* value)

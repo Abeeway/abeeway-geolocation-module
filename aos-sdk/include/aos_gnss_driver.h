@@ -62,13 +62,15 @@ typedef struct {
 	 * \brief Sends a message to the GNSS chip. It up to the caller to use the correct data.
 	 * The NMEA encapsulation will be added by the driver.
 	 *
-	 * \param msg Message to send
+	 * \param msg Message/query to send
 	 * \param length Message length
 	 * \param type Request type. Refer the enumerated definition.
+	 * \param answer_id Expected identifier for the answer. Must be populated (not null) if the answer is not carried thru an ack
 	 *
 	 * \return The return value is a aos_result_t indicating success or failure.
 	 */
-	aos_result_t (*send_msg)(const uint8_t* msg, uint16_t length, aos_gnss_rqst_type_t type);
+	aos_result_t (*send_msg)(const uint8_t* msg, uint16_t length, aos_gnss_rqst_type_t type, uint32_t answer_id);
+
 
 	/*!
 	 * \fn void (*delayed_rx_process)(void)
