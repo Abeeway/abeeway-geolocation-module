@@ -27,8 +27,12 @@
 /*
  * enum / name mapping tables
  */
-static const cli_cmd_option_t _mac_region_map[] = {
-		{ "AS923", srv_provisioning_mac_region_as923 },
+static const cli_cmd_option_t _mac_region_map[srv_provisioning_mac_region_count] = {
+		{ "AS923-1", srv_provisioning_mac_region_as923_1 },
+		{ "AS923-2", srv_provisioning_mac_region_as923_2 },
+		{ "AS923-3", srv_provisioning_mac_region_as923_3 },
+		{ "AS923-4", srv_provisioning_mac_region_as923_4 },
+		{ "AS923-JP", srv_provisioning_mac_region_as923_1_jp },
 		{ "AU915", srv_provisioning_mac_region_au915},
 		{ "EU868", srv_provisioning_mac_region_eu868 },
 		{ "IN865", srv_provisioning_mac_region_in865 },

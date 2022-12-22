@@ -192,6 +192,7 @@ static const char *_mlme_type_name(Mlme_t type)
 		KASE(MLME_JOIN);
 		KASE(MLME_REJOIN_0);
 		KASE(MLME_REJOIN_1);
+		KASE(MLME_REJOIN_2);
 		KASE(MLME_LINK_CHECK);
 		KASE(MLME_TXCW);
 		KASE(MLME_DERIVE_MC_KE_KEY);
@@ -297,7 +298,11 @@ void DisplayTxUpdate( LmHandlerTxParams_t *params )
         printf("CHANNEL MASK: ");
         switch( LmHandlerGetActiveRegion( ) )
         {
-            case LORAMAC_REGION_AS923:
+            case LORAMAC_REGION_AS923_1:
+            case LORAMAC_REGION_AS923_1_JP:
+            case LORAMAC_REGION_AS923_2:
+            case LORAMAC_REGION_AS923_3:
+            case LORAMAC_REGION_AS923_4:
             case LORAMAC_REGION_CN779:
             case LORAMAC_REGION_EU868:
             case LORAMAC_REGION_IN865:
@@ -404,4 +409,9 @@ void DisplayBeaconUpdate( LoRaMacHandlerBeaconParams_t *params )
 void DisplayClassUpdate( DeviceClass_t deviceClass )
 {
     printf( "\n\n###### ===== Switch to Class %c done.  ===== ######\n\n", "ABC"[deviceClass] );
+}
+
+void DisplayTimeUpdate( bool isSynchronized, uint32_t timeCorrection )
+{
+	printf("%s(%d, %lu)\n", isSynchronized, timeCorrection);
 }
