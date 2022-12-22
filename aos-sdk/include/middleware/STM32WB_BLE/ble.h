@@ -38,22 +38,16 @@ extern "C" {
 
 /**< blesvc (svc/Inc) */
 #include "bas.h"
-#include "bls.h"
-#include "crs_stm.h"
+#include "ess.h"
 #include "dis.h"
-#include "eds_stm.h"
-#include "hids.h"
-#include "hts.h"
 #include "ias.h"
 #include "lls.h"
 #include "tps.h"
-#include "motenv_stm.h"
-#include "p2p_stm.h"
-#include "zdd_stm.h"
 #include "otas_stm.h"
-#include "mesh.h"
 #include "template_stm.h"
   
+#include "aos_ble_common.h"
+#include "custom_srvc.h"
 #include "svc_ctl.h"
 
 #include "uuid.h"

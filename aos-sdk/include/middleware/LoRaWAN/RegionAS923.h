@@ -67,28 +67,16 @@ extern "C"
 #define CHANNEL_PLAN_GROUP_AS923_3                  3
 
 /*!
- * Channel plan group AS923-1
- * AS923_FREQ_OFFSET = 0
+ * Channel plan group AS923-4
+ * AS923_FREQ_OFFSET = -5.90MHz
  */
-#define CHANNEL_PLAN_GROUP_AS923_1                  1
-
-/*!
- * Channel plan group AS923-2
- * AS923_FREQ_OFFSET = -1.8MHz
- */
-#define CHANNEL_PLAN_GROUP_AS923_2                  2
-
-/*!
- * Channel plan group AS923-3
- * AS923_FREQ_OFFSET = -6.6MHz
- */
-#define CHANNEL_PLAN_GROUP_AS923_3                  3
+#define CHANNEL_PLAN_GROUP_AS923_4                  4
 
 /*!
  * Channel plan group AS923-1 for Japan
  * AS923_FREQ_OFFSET = 0
  */
-#define CHANNEL_PLAN_GROUP_AS923_1_JP               4
+#define CHANNEL_PLAN_GROUP_AS923_1_JP               5
 
 /*!
  * LoRaMac maximum number of channels
@@ -272,16 +260,6 @@ extern "C"
 #define AS923_JOIN_CHANNELS                         ( uint16_t )( LC( 1 ) | LC( 2 ) )
 
 /*!
- * RSSI threshold for a free channel [dBm]
- */
-#define AS923_RSSI_FREE_TH                          -80
-
-/*!
- * Specifies the time the node performs a carrier sense
- */
-#define AS923_CARRIER_SENSE_TIME                    5
-
-/*!
  * Data rates table definition
  */
 static const uint8_t DataratesAS923[]  = { 12, 11, 10,  9,  8,  7, 7, 50 };
@@ -354,7 +332,7 @@ void RegionAS923SetBandTxDone( SetBandTxDoneParams_t* txDone );
  *
  * \param [IN] type Sets the initialization type.
  */
-void RegionAS923InitDefaults( InitDefaultsParams_t* params );
+void RegionAS923InitDefaults( LoRaMacRegion_t region, InitDefaultsParams_t* params );
 
 /*!
  * \brief Verifies a parameter.

@@ -33,26 +33,26 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 typedef enum
 {
-  TEMPLATE_STM_NOTIFY_ENABLED_EVT,
-  TEMPLATE_STM_NOTIFY_DISABLED_EVT,
-  TEMPLATE_STM_READ_EVT,
-  TEMPLATE_STM_WRITE_EVT,
-  TEMPLATE_STM_BOOT_REQUEST_EVT,
+	TEMPLATE_STM_NOTIFY_ENABLED_EVT,
+	TEMPLATE_STM_NOTIFY_DISABLED_EVT,
+	TEMPLATE_STM_READ_EVT,
+	TEMPLATE_STM_WRITE_EVT,
+	TEMPLATE_STM_BOOT_REQUEST_EVT,
 } TEMPLATE_STM_Opcode_evt_t;
 
 typedef struct
 {
-  uint8_t * pPayload;
-  uint8_t     Length;
-}TEMPLATE_STM_Data_t;  
+	uint8_t * pPayload;
+	uint8_t     Length;
+} TEMPLATE_STM_Data_t;
 
 typedef struct
 {
-  TEMPLATE_STM_Opcode_evt_t     Template_Evt_Opcode;
-  TEMPLATE_STM_Data_t           DataTransfered;
-  uint16_t                  ConnectionHandle;
-  uint8_t                   ServiceInstance;
-}TEMPLATE_STM_App_Notification_evt_t;
+	TEMPLATE_STM_Opcode_evt_t     Template_Evt_Opcode;
+	TEMPLATE_STM_Data_t           DataTransfered;
+	uint16_t                  ConnectionHandle;
+	uint8_t                   ServiceInstance;
+} TEMPLATE_STM_App_Notification_evt_t;
 
 
 /* Exported constants --------------------------------------------------------*/
@@ -61,7 +61,7 @@ typedef struct
 /* Exported functions ------------------------------------------------------- */
 void TEMPLATE_STM_Init( void );
 void TEMPLATE_STM_App_Notification(TEMPLATE_STM_App_Notification_evt_t *pNotification);
-tBleStatus TEMPLATE_STM_App_Update_Char(uint16_t UUID,  uint8_t *pPayload);
+tBleStatus TEMPLATE_STM_App_Update_Char(uint16_t UUID,  TEMPLATE_STM_Data_t *p_data);
 
 
 #ifdef __cplusplus

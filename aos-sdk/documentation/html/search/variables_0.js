@@ -11,6 +11,8 @@ var searchData=
   ['alt_5fbeacon',['alt_beacon',['../structsrv__ble__beaconing__param__t.html#ad31643592a6d6ed8154bda320e9c2436',1,'srv_ble_beaconing_param_t']]],
   ['aos_5fuart_5fdriver',['aos_uart_driver',['../group__aos__uart.html#ga205744945c87dc96ca0c1d0fb25d972c',1,'aos_uart.h']]],
   ['aos_5fuart_5fusb_5fcdc_5fdriver',['aos_uart_usb_cdc_driver',['../aos__usb__cdc_8h.html#a56755ed2934427c02ff73ec1c082fda0',1,'aos_usb_cdc.h']]],
+  ['app_5finit_5fchar_5fcb',['app_init_char_cb',['../structaos__ble__app__data__t.html#a39286a553d2faa1219e33e27741f3c43',1,'aos_ble_app_data_t']]],
+  ['app_5fversion',['app_version',['../structaos__ble__app__data__t.html#a103ce275e52064b20cd1018288d0f123',1,'aos_ble_app_data_t']]],
   ['asfr',['asfr',['../structaos__error__reg__info__t.html#a4e6405ccffffebf5375e1327ff5775b7',1,'aos_error_reg_info_t']]],
   ['authorized',['authorized',['../structcli__t.html#af4f2548c872a1de29cb50667c4aaf80d',1,'cli_t']]],
   ['azimuth',['azimuth',['../structaos__gnss__satellite__info__t.html#ac3e7713d7f27941a93b0cd464aa8077e',1,'aos_gnss_satellite_info_t']]]

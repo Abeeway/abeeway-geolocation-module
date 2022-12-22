@@ -67,10 +67,10 @@ extern "C" {
    * @brief  It initializes the BLE core Driver and sends some commands to initialize the BLE core device
    *         It shall be called before any BLE operation
    *
-   * @param  None
+   * @param  app_info pointer to application BLE data
    * @retval None
    */
-  void SVCCTL_Init( void );
+  void SVCCTL_Init( aos_ble_app_data_t *app_info );
 
   /**
    * @brief  This API registers a handler to be called when a GATT user event is received from the BLE core device. When
@@ -157,10 +157,10 @@ extern "C" {
    *        If it is required to initialize only limited part of the BLE service available in the application,
    *        this API may be used to call the initialization API of the subset of needed services at run time.
    *
-   * @param  None
+   * @param  app_info pointer to application BLE data
    * @retval None
    */
-  void SVCCTL_SvcInit( void );
+  void SVCCTL_SvcInit( aos_ble_app_data_t *app_info );
 
 #ifdef __cplusplus
 }

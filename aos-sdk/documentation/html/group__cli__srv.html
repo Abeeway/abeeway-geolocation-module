@@ -97,10 +97,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gaf715e26dfffd1f8de1c18449e2770cff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="group__cli__srv.html#ggaf715e26dfffd1f8de1c18449e2770cffa7ec9e838bb87278f077485131f3a36da">cli_cmd_option_index_ambiguous</a> = -2, 
-<a class="el" href="group__cli__srv.html#ggaf715e26dfffd1f8de1c18449e2770cffa2e3333b6b26a7da02070b95c71c2b386">cli_cmd_option_index_not_found</a> = -1
+<tr class="memitem:gafb730582952b7ceec73d7dc9bf7bef39"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="group__cli__srv.html#ggafb730582952b7ceec73d7dc9bf7bef39a7ec9e838bb87278f077485131f3a36da">cli_cmd_option_index_ambiguous</a> = -2, 
+<a class="el" href="group__cli__srv.html#ggafb730582952b7ceec73d7dc9bf7bef39a2e3333b6b26a7da02070b95c71c2b386">cli_cmd_option_index_not_found</a> = -1
  }</td></tr>
-<tr class="separator:gaf715e26dfffd1f8de1c18449e2770cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gafb730582952b7ceec73d7dc9bf7bef39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fe290e0f7d6cab8903a74b5f17113e6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cli__srv.html#ga1fe290e0f7d6cab8903a74b5f17113e6">cli_access_mask_t</a> { <a class="el" href="group__cli__srv.html#gga1fe290e0f7d6cab8903a74b5f17113e6aab30c7d95c452cff267d9ff233894f4f">cli_access_mask_none</a> = 0x00, 
 <a class="el" href="group__cli__srv.html#gga1fe290e0f7d6cab8903a74b5f17113e6a2771f4519c7165553e441169673e26d9">cli_access_mask_user</a> = 0x01, 
 <a class="el" href="group__cli__srv.html#gga1fe290e0f7d6cab8903a74b5f17113e6af3f9a4c52d4edcb2ccf5eb484c538ae3">cli_access_mask_super</a> = 0x02
@@ -224,9 +224,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">__attribute__((section(<span class="stringliteral">&quot;.commands.&quot;</span>#cmd_s),used))  \</div><div class="line">        static <span class="keyword">const</span> <a class="code" href="structcli__parser__cmd__s.html">cli_parser_cmd_t</a> __cmdfun_##cmd_s = { \</div><div class="line">                .<a class="code" href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">command</a> = #cmd_s, .help = (help_s), \</div><div class="line">                { .func = (function_p) }, \</div><div class="line">                .action = <a class="code" href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a8606fb139cbb5c665e3a4940d3e3b094">cli_parser_action_execute</a>, \</div><div class="line">                .access = (access_u8) }</div><div class="ttc" id="structcli__parser__cmd__s_html_a631f8e9351fc69d478d96c1a00e809b5"><div class="ttname"><a href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">cli_parser_cmd_s::command</a></div><div class="ttdeci">const char * command</div><div class="ttdoc">Command string (NULL terminated) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:105</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="union____attribute____.html">__attribute__</a>((section(<span class="stringliteral">&quot;.commands.&quot;</span>#cmd_s),used))  \</div><div class="line">        static <span class="keyword">const</span> <a class="code" href="structcli__parser__cmd__s.html">cli_parser_cmd_t</a> __cmdfun_##cmd_s = { \</div><div class="line">                .<a class="code" href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">command</a> = #cmd_s, .help = (help_s), \</div><div class="line">                { .func = (function_p) }, \</div><div class="line">                .action = <a class="code" href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a8606fb139cbb5c665e3a4940d3e3b094">cli_parser_action_execute</a>, \</div><div class="line">                .access = (access_u8) }</div><div class="ttc" id="structcli__parser__cmd__s_html_a631f8e9351fc69d478d96c1a00e809b5"><div class="ttname"><a href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">cli_parser_cmd_s::command</a></div><div class="ttdeci">const char * command</div><div class="ttdoc">Command string (NULL terminated) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:105</div></div>
 <div class="ttc" id="structcli__parser__cmd__s_html"><div class="ttname"><a href="structcli__parser__cmd__s.html">cli_parser_cmd_s</a></div><div class="ttdoc">The cli parser command table entry. Use the macros below to set it up, so that you do not need to rev...</div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:104</div></div>
 <div class="ttc" id="group__cli__driver_html_gga9327ec4e25ed8a86eb2736805edc2f42a8606fb139cbb5c665e3a4940d3e3b094"><div class="ttname"><a href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a8606fb139cbb5c665e3a4940d3e3b094">cli_parser_action_execute</a></div><div class="ttdoc">Execute the command function (.func) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:44</div></div>
+<div class="ttc" id="union____attribute_____html"><div class="ttname"><a href="union____attribute____.html">__attribute__</a></div><div class="ttdef"><b>Definition:</b> aos_ble_common.h:88</div></div>
 </div><!-- fragment -->
 <p>Register a main command against the CLI manager. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -285,8 +286,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">__attribute__((section(<span class="stringliteral">&quot;.commands.&quot;</span>#cmd_s),used))  \</div><div class="line">        static <span class="keyword">const</span> <a class="code" href="structcli__parser__cmd__s.html">cli_parser_cmd_t</a> __cmdtab_##cmd_s = { \</div><div class="line">                .<a class="code" href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">command</a> = #cmd_s, .help = (help_s), \</div><div class="line">                { .table = (table_p) }, \</div><div class="line">                .action = <a class="code" href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a16782ca369684da0fa130b1df11480e7">cli_parser_action_recurse</a>, \</div><div class="line">                .access = (access_u8) }</div><div class="ttc" id="structcli__parser__cmd__s_html_a631f8e9351fc69d478d96c1a00e809b5"><div class="ttname"><a href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">cli_parser_cmd_s::command</a></div><div class="ttdeci">const char * command</div><div class="ttdoc">Command string (NULL terminated) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:105</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="union____attribute____.html">__attribute__</a>((section(<span class="stringliteral">&quot;.commands.&quot;</span>#cmd_s),used))  \</div><div class="line">        static <span class="keyword">const</span> <a class="code" href="structcli__parser__cmd__s.html">cli_parser_cmd_t</a> __cmdtab_##cmd_s = { \</div><div class="line">                .<a class="code" href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">command</a> = #cmd_s, .help = (help_s), \</div><div class="line">                { .table = (table_p) }, \</div><div class="line">                .action = <a class="code" href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a16782ca369684da0fa130b1df11480e7">cli_parser_action_recurse</a>, \</div><div class="line">                .access = (access_u8) }</div><div class="ttc" id="structcli__parser__cmd__s_html_a631f8e9351fc69d478d96c1a00e809b5"><div class="ttname"><a href="structcli__parser__cmd__s.html#a631f8e9351fc69d478d96c1a00e809b5">cli_parser_cmd_s::command</a></div><div class="ttdeci">const char * command</div><div class="ttdoc">Command string (NULL terminated) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:105</div></div>
 <div class="ttc" id="structcli__parser__cmd__s_html"><div class="ttname"><a href="structcli__parser__cmd__s.html">cli_parser_cmd_s</a></div><div class="ttdoc">The cli parser command table entry. Use the macros below to set it up, so that you do not need to rev...</div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:104</div></div>
+<div class="ttc" id="union____attribute_____html"><div class="ttname"><a href="union____attribute____.html">__attribute__</a></div><div class="ttdef"><b>Definition:</b> aos_ble_common.h:88</div></div>
 <div class="ttc" id="group__cli__driver_html_gga9327ec4e25ed8a86eb2736805edc2f42a16782ca369684da0fa130b1df11480e7"><div class="ttname"><a href="group__cli__driver.html#gga9327ec4e25ed8a86eb2736805edc2f42a16782ca369684da0fa130b1df11480e7">cli_parser_action_recurse</a></div><div class="ttdoc">Recurse into command table (.table) </div><div class="ttdef"><b>Definition:</b> aos_cli_parser.h:45</div></div>
 </div><!-- fragment -->
 <p>Register a CLI sub-command table. </p>
@@ -303,8 +305,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="gaf715e26dfffd1f8de1c18449e2770cff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf715e26dfffd1f8de1c18449e2770cff">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="gafb730582952b7ceec73d7dc9bf7bef39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafb730582952b7ceec73d7dc9bf7bef39">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,9 +317,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf715e26dfffd1f8de1c18449e2770cffa7ec9e838bb87278f077485131f3a36da"></a>cli_cmd_option_index_ambiguous&#160;</td><td class="fielddoc"><p><a class="el" href="group__cli__srv.html#ga5f35e050895717f37c014fe7ec7dbe95" title="Return the index of an option. ">cli_get_option_index()</a> return value: error, the option is ambiguous </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggafb730582952b7ceec73d7dc9bf7bef39a7ec9e838bb87278f077485131f3a36da"></a>cli_cmd_option_index_ambiguous&#160;</td><td class="fielddoc"><p><a class="el" href="group__cli__srv.html#ga5f35e050895717f37c014fe7ec7dbe95" title="Return the index of an option. ">cli_get_option_index()</a> return value: error, the option is ambiguous </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaf715e26dfffd1f8de1c18449e2770cffa2e3333b6b26a7da02070b95c71c2b386"></a>cli_cmd_option_index_not_found&#160;</td><td class="fielddoc"><p><a class="el" href="group__cli__srv.html#ga5f35e050895717f37c014fe7ec7dbe95" title="Return the index of an option. ">cli_get_option_index()</a> return value: error, The option is not found </p>
+<tr><td class="fieldname"><a id="ggafb730582952b7ceec73d7dc9bf7bef39a2e3333b6b26a7da02070b95c71c2b386"></a>cli_cmd_option_index_not_found&#160;</td><td class="fielddoc"><p><a class="el" href="group__cli__srv.html#ga5f35e050895717f37c014fe7ec7dbe95" title="Return the index of an option. ">cli_get_option_index()</a> return value: error, The option is not found </p>
 </td></tr>
 </table>
 

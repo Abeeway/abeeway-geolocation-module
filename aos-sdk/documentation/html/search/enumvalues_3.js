@@ -1,24 +1,4 @@
 var searchData=
 [
-  ['srv_5fble_5fbeacon_5ftype_5faltbeacon',['srv_ble_beacon_type_altbeacon',['../group__srv__ble__beaconing.html#gga448cc9e90fe9ba9d6b18f484c617882aa47c4a0151418f8f5ebf39ede33e2c94e',1,'srv_ble_beaconing.h']]],
-  ['srv_5fble_5fbeacon_5ftype_5feddy_5fuuid',['srv_ble_beacon_type_eddy_uuid',['../group__srv__ble__beaconing.html#gga448cc9e90fe9ba9d6b18f484c617882aa58ffc5b33806bbd5efe8c33bf7404e2a',1,'srv_ble_beaconing.h']]],
-  ['srv_5fble_5fbeacon_5ftype_5fexposure',['srv_ble_beacon_type_exposure',['../group__srv__ble__beaconing.html#gga448cc9e90fe9ba9d6b18f484c617882aa1576c19e8a26d58110e8addeb816654f',1,'srv_ble_beaconing.h']]],
-  ['srv_5fble_5fbeacon_5ftype_5fibeacon',['srv_ble_beacon_type_ibeacon',['../group__srv__ble__beaconing.html#gga448cc9e90fe9ba9d6b18f484c617882aa6f7595086c853313f50d03e147aa1f22',1,'srv_ble_beaconing.h']]],
-  ['srv_5fble_5fbeacon_5ftype_5fquuppa',['srv_ble_beacon_type_quuppa',['../group__srv__ble__beaconing.html#gga448cc9e90fe9ba9d6b18f484c617882aa332dbde44144e8821ad5b9c1df0d7604',1,'srv_ble_beaconing.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5fall',['srv_ble_scan_beacon_type_all',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea6be787610da4fc01eaec28fb7f6f7264',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5faltbeacon',['srv_ble_scan_beacon_type_altbeacon',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea04568b3c35b99704500bbeb50f5d6200',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5fcustom',['srv_ble_scan_beacon_type_custom',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23eadb93f8110102847ad997ba3d4c6b09a5',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5feddy_5fall',['srv_ble_scan_beacon_type_eddy_all',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea54e3b3c74a843cf4dc0858af3a69d9e7',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5feddy_5fuid',['srv_ble_scan_beacon_type_eddy_uid',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea7119193445fe79e750f5b084219dee6a',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5feddy_5furl',['srv_ble_scan_beacon_type_eddy_url',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea75e4cf78af638aba5017b8698a1dfb5e',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5fexposure',['srv_ble_scan_beacon_type_exposure',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea11ed7cf1c3a902c3891722d1abed6584',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5fbeacon_5ftype_5fibeacon',['srv_ble_scan_beacon_type_ibeacon',['../group__srv__ble__scan.html#gga8c41252284ef577848739f4c3249a23ea30e39534f062dcf3b56e86fa5df7aaa5',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5feddystone_5ftype_5feid',['srv_ble_scan_eddystone_type_eid',['../group__srv__ble__scan.html#gga541801f9d734c70e5fd457facd36db92a8889ae087db4edff149d415ddc4164c3',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5feddystone_5ftype_5ftlm',['srv_ble_scan_eddystone_type_tlm',['../group__srv__ble__scan.html#gga541801f9d734c70e5fd457facd36db92a48137b920a381e34a4024c2b123b3ede',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5feddystone_5ftype_5fuid',['srv_ble_scan_eddystone_type_uid',['../group__srv__ble__scan.html#gga541801f9d734c70e5fd457facd36db92a29c775c59803f0c0230a003cf637d44a',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5feddystone_5ftype_5funknown',['srv_ble_scan_eddystone_type_unknown',['../group__srv__ble__scan.html#gga541801f9d734c70e5fd457facd36db92a573924f3c42fa97df07e9099a93e7e54',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5feddystone_5ftype_5furl',['srv_ble_scan_eddystone_type_url',['../group__srv__ble__scan.html#gga541801f9d734c70e5fd457facd36db92a91fb3d5ec08a652df72600ecac3242f6',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5freport_5ftype_5flong_5fid',['srv_ble_scan_report_type_long_id',['../group__srv__ble__scan.html#gga0d0f1b62ff20e6768a494af1b85acabca96ead5ddd50fff8a652af1909575f956',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5freport_5ftype_5fmac_5faddress',['srv_ble_scan_report_type_mac_address',['../group__srv__ble__scan.html#gga0d0f1b62ff20e6768a494af1b85acabca39d9ebd082fb0fb3a75ed1fc0e5420a5',1,'srv_ble_scan.h']]],
-  ['srv_5fble_5fscan_5freport_5ftype_5fshort_5fid',['srv_ble_scan_report_type_short_id',['../group__srv__ble__scan.html#gga0d0f1b62ff20e6768a494af1b85acabca5dc2860c0c5603b4bbe3db3976b959ba',1,'srv_ble_scan.h']]]
+  ['device_5finformation_5fservice',['DEVICE_INFORMATION_SERVICE',['../group__aos__ble__common.html#gga4caf8d8f829279fba122163d961608a4a4b24d0c1452deba2168eef78266c0a79',1,'aos_ble_common.h']]]
 ];

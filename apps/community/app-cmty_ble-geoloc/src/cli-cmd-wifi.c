@@ -7,22 +7,22 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <string.h>
-// #include <stdio.h>
+#include <stdio.h>
 #include "aos_rf_switch.h"
 #include "srv_cli.h"
 #include "radio_board.h"
-#include "lr1110_radio.h"
-#include "lr1110_wifi.h"
+#include "lr11xx_radio.h"
+#include "lr11xx_wifi.h"
 
 const radio_context_t *radio = NULL;
 
 __attribute__((constructor))
-static void _lr1110_command_init(void)
+static void _lr11xx_command_init(void)
 {
 	radio = radio_board_get_radio_context_reference();
 }
 
-#define LR1110_CMD_ACCESS (CLI_ACCESS_ALL_LEVELS)
+#define LR11XX_CMD_ACCESS (CLI_ACCESS_ALL_LEVELS)
 
 /*
  *
@@ -48,9 +48,9 @@ static cli_parser_status_t _incorrect_parameters(const char *s, const char *e)
 #define IN_RANGE(p,mi,ma) ((p >= mi) && (p <= ma))
 
 
-#define DEFAULT_WIFI_SIGNAL_TYPE LR1110_WIFI_TYPE_SCAN_B_G_N
+#define DEFAULT_WIFI_SIGNAL_TYPE LR11XX_WIFI_TYPE_SCAN_B_G_N
 #define DEFAULT_WIFI_CHANNELS 0x3fff	// Channels 14 to 1 (bit 0 = channel #1)
-#define DEFAULT_WIFI_SCAN_MODE LR1110_WIFI_SCAN_MODE_BEACON
+#define DEFAULT_WIFI_SCAN_MODE LR11XX_WIFI_SCAN_MODE_BEACON
 #define DEFAULT_WIFI_MAX_RESULTS 20
 #define DEFAULT_WIFI_NB_SCAN_PER_CHANNEL 3
 #define DEFAULT_WIFI_TIMEOUT_IN_MS 110	// preamble search timeout
@@ -58,17 +58,17 @@ static cli_parser_status_t _incorrect_parameters(const char *s, const char *e)
 
 typedef struct {
 	struct {
-		lr1110_wifi_signal_type_scan_t	signal_type;
-		lr1110_wifi_channel_mask_t		channels;
-		lr1110_wifi_mode_t				scan_mode;
+		lr11xx_wifi_signal_type_scan_t	signal_type;
+		lr11xx_wifi_channel_mask_t		channels;
+		lr11xx_wifi_mode_t				scan_mode;
 		uint8_t							max_results;
 		uint8_t							nb_scan_per_channel;
 		uint16_t						timeout_in_ms;
 		bool							abort_on_timeout;
 	} settings;
-} cli_lr1110_wifi_params_t;
+} cli_lr11xx_wifi_params_t;
 
-static cli_lr1110_wifi_params_t _wifi = {
+static cli_lr11xx_wifi_params_t _wifi = {
 	.settings = {
 		.signal_type = 	DEFAULT_WIFI_SIGNAL_TYPE,
 		.channels = DEFAULT_WIFI_CHANNELS,
@@ -80,9 +80,9 @@ static cli_lr1110_wifi_params_t _wifi = {
 	},
 };
 
-static cli_parser_status_t _cmd_lr1110_wifi_scan(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_scan(void *arg, int argc, char *argv[])
 {
-	lr1110_status_t rc;
+	lr11xx_status_t rc;
 	uint8_t nb_results = 0;
 
 	if (aos_rf_switch_get_owner(aos_rf_switch_type_ble_wifi) != aos_rf_switch_owner_none) {
@@ -97,7 +97,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_scan(void *arg, int argc, char *argv
 
 	cli_printf("Scan start\n");
 
-	rc = lr1110_wifi_scan(radio, _wifi.settings.signal_type,
+	rc = lr11xx_wifi_scan(radio, _wifi.settings.signal_type,
 			_wifi.settings.channels,
 			_wifi.settings.scan_mode,
 			_wifi.settings.max_results,
@@ -108,22 +108,22 @@ static cli_parser_status_t _cmd_lr1110_wifi_scan(void *arg, int argc, char *argv
 	aos_rf_switch_release_antenna(aos_rf_switch_type_ble_wifi, RF_SWITCH_OWNER_WIFI);
 
 
-	if (rc != LR1110_STATUS_OK) {
+	if (rc != LR11XX_STATUS_OK) {
 		cli_printf("Failed to initiate wifi scan, status %d\n", rc);
 		return cli_parser_status_error;
 	}
 
-	rc = lr1110_wifi_get_nb_results(radio, &nb_results);
-	if (rc != LR1110_STATUS_OK) {
+	rc = lr11xx_wifi_get_nb_results(radio, &nb_results);
+	if (rc != LR11XX_STATUS_OK) {
 		cli_printf("Failed to get scan result count, status %d\n", rc);
 		return cli_parser_status_error;
 	}
 
 	cli_printf("Number of results: %u\n", nb_results);
 	for (unsigned i = 0; i < nb_results; ++i) {
-		lr1110_wifi_basic_complete_result_t r;
+		lr11xx_wifi_basic_complete_result_t r;
 
-		rc = lr1110_wifi_read_basic_complete_results(radio, i, 1, &r);
+		rc = lr11xx_wifi_read_basic_complete_results(radio, i, 1, &r);
 
 		cli_printf(" MAC Address: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x, RSSI: %d\n",
 				r.mac_address[0], r.mac_address[1],r.mac_address[2],
@@ -132,13 +132,13 @@ static cli_parser_status_t _cmd_lr1110_wifi_scan(void *arg, int argc, char *argv
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_info(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_info(void *arg, int argc, char *argv[])
 {
-	lr1110_wifi_version_t wifi_version;
-	lr1110_status_t rc;
+	lr11xx_wifi_version_t wifi_version;
+	lr11xx_status_t rc;
 
-	rc = lr1110_wifi_read_version(radio, &wifi_version);
-	if (rc != LR1110_STATUS_OK) {
+	rc = lr11xx_wifi_read_version(radio, &wifi_version);
+	if (rc != LR11XX_STATUS_OK) {
 		cli_printf("Failed to read wifi version, status %d\n", rc);
 		return cli_parser_status_error;
 	}
@@ -149,29 +149,29 @@ static cli_parser_status_t _cmd_lr1110_wifi_info(void *arg, int argc, char *argv
 }
 
 static const cli_cmd_option_t mac_origin_estimation_map[] = {
-		{ "beacon, fixed AP", LR1110_WIFI_ORIGIN_BEACON_FIX_AP },
-		{ "beacon, mobile AP", LR1110_WIFI_ORIGIN_BEACON_MOBILE_AP },
-		{ "unknown", LR1110_WIFI_ORIGIN_UNKNOWN }
+		{ "beacon, fixed AP", LR11XX_WIFI_ORIGIN_BEACON_FIX_AP },
+		{ "beacon, mobile AP", LR11XX_WIFI_ORIGIN_BEACON_MOBILE_AP },
+		{ "unknown", LR11XX_WIFI_ORIGIN_UNKNOWN }
 };
 static const unsigned mac_origin_estimation_map_count = sizeof(mac_origin_estimation_map) / sizeof(*mac_origin_estimation_map);
 
-static cli_parser_status_t _cmd_lr1110_wifi_results(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_results(void *arg, int argc, char *argv[])
 {
 	uint8_t nb_results = 0;
-	lr1110_status_t rc;
+	lr11xx_status_t rc;
 
-	rc = lr1110_wifi_get_nb_results(radio, &nb_results);
-	if (rc != LR1110_STATUS_OK) {
+	rc = lr11xx_wifi_get_nb_results(radio, &nb_results);
+	if (rc != LR11XX_STATUS_OK) {
 		cli_printf("Failed to get scan result count, status %d\n", rc);
 		return cli_parser_status_error;
 	}
 
 	cli_printf("Number of results: %u\n", nb_results);
 	for (unsigned i = 0; i < nb_results; ++i) {
-		lr1110_wifi_basic_complete_result_t r;
+		lr11xx_wifi_basic_complete_result_t r;
 
-		rc = lr1110_wifi_read_basic_complete_results(radio, i, 1, &r);
-		if (rc != LR1110_STATUS_OK) {
+		rc = lr11xx_wifi_read_basic_complete_results(radio, i, 1, &r);
+		if (rc != LR11XX_STATUS_OK) {
 			cli_printf("Failed to get scan results[%u], status %d\n", i, rc);
 			return cli_parser_status_error;
 		}
@@ -182,11 +182,11 @@ static cli_parser_status_t _cmd_lr1110_wifi_results(void *arg, int argc, char *a
 				r.mac_address[3], r.mac_address[4], r.mac_address[4]);
 		cli_printf(" RSSI: %d\n", r.rssi);
 
-		lr1110_wifi_channel_t channel;
+		lr11xx_wifi_channel_t channel;
 		bool rssi_validity;
-		lr1110_wifi_mac_origin_t mac_origin_estimation;
+		lr11xx_wifi_mac_origin_t mac_origin_estimation;
 
-		lr1110_wifi_parse_channel_info(r.channel_info_byte, &channel, &rssi_validity, &mac_origin_estimation);
+		lr11xx_wifi_parse_channel_info(r.channel_info_byte, &channel, &rssi_validity, &mac_origin_estimation);
 
 		cli_printf(" Channel: %d\n", channel);
 		cli_printf(" MAC origin (est.): %s\n",
@@ -196,22 +196,22 @@ static cli_parser_status_t _cmd_lr1110_wifi_results(void *arg, int argc, char *a
 }
 
 static const cli_cmd_option_t scan_mode_map[] = {
-		{ "beacon-only", LR1110_WIFI_SCAN_MODE_BEACON },
-		{ "beacon-and-packet", LR1110_WIFI_SCAN_MODE_BEACON_AND_PKT },
-		{ "full-beacon", LR1110_WIFI_SCAN_MODE_FULL_BEACON },
-		{ "until-ssid", LR1110_WIFI_SCAN_MODE_UNTIL_SSID },
+		{ "beacon-only", LR11XX_WIFI_SCAN_MODE_BEACON },
+		{ "beacon-and-packet", LR11XX_WIFI_SCAN_MODE_BEACON_AND_PKT },
+		{ "full-beacon", LR11XX_WIFI_SCAN_MODE_FULL_BEACON },
+		{ "until-ssid", LR11XX_WIFI_SCAN_MODE_UNTIL_SSID },
 };
 static const unsigned scan_mode_map_count = sizeof(scan_mode_map) / sizeof(*scan_mode_map);
 
 static const cli_cmd_option_t signal_type_map[] = {
-		{ "b-only", LR1110_WIFI_TYPE_SCAN_B },
-		{ "g-only", LR1110_WIFI_TYPE_SCAN_G },
-		{ "n-only", LR1110_WIFI_TYPE_SCAN_N },
-		{ "bgn", LR1110_WIFI_TYPE_SCAN_B_G_N },
+		{ "b-only", LR11XX_WIFI_TYPE_SCAN_B },
+		{ "g-only", LR11XX_WIFI_TYPE_SCAN_G },
+		{ "n-only", LR11XX_WIFI_TYPE_SCAN_N },
+		{ "bgn", LR11XX_WIFI_TYPE_SCAN_B_G_N },
 };
 static const unsigned signal_type_map_count = sizeof(signal_type_map) / sizeof(*signal_type_map);
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_display(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_display(void *arg, int argc, char *argv[])
 {
 	cli_printf("Parameters\n");
 	cli_printf(" channel-mask: 0x%02x\n", _wifi.settings.channels);
@@ -227,7 +227,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_display(void *arg, int ar
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_abort_on_timeout(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_abort_on_timeout(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -245,7 +245,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_abort_on_timeout(void
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_scan_mode(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_scan_mode(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -264,7 +264,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_scan_mode(void *arg, 
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_channel_mask(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_channel_mask(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -281,7 +281,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_channel_mask(void *ar
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_signal_type(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_signal_type(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -300,7 +300,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_signal_type(void *arg
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_max_results(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_max_results(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -317,7 +317,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_max_results(void *arg
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_nb_scans_per_channel(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_nb_scans_per_channel(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -334,7 +334,7 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_nb_scans_per_channel(
 	return cli_parser_status_ok;
 }
 
-static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_timeout(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_lr11xx_wifi_parameters_set_timeout(void *arg, int argc, char *argv[])
 {
 	int32_t value;
 
@@ -351,31 +351,31 @@ static cli_parser_status_t _cmd_lr1110_wifi_parameters_set_timeout(void *arg, in
 	return cli_parser_status_ok;
 }
 
-static const cli_parser_cmd_t _cli_lr1110_wifi_parameters_set_command_table[] = {
-	PARSER_CMD_FUNC("abort-on-timeout", "abort on preamble timeout", _cmd_lr1110_wifi_parameters_set_abort_on_timeout, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("channel-mask", "channel mask (bit 0 = channel 1)", _cmd_lr1110_wifi_parameters_set_channel_mask, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("max-results", "max results", _cmd_lr1110_wifi_parameters_set_max_results, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("nb-scans", "number of scans per channel", _cmd_lr1110_wifi_parameters_set_nb_scans_per_channel, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("scan-mode", "(beacon-only, beacon-and-packet)", _cmd_lr1110_wifi_parameters_set_scan_mode, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("signal-type", "signal type (b-only, g-only, n-only, bgn)", _cmd_lr1110_wifi_parameters_set_signal_type, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("timeout", "preamble search timeout (ms)", _cmd_lr1110_wifi_parameters_set_timeout, LR1110_CMD_ACCESS),
+static const cli_parser_cmd_t _cli_lr11xx_wifi_parameters_set_command_table[] = {
+	PARSER_CMD_FUNC("abort-on-timeout", "abort on preamble timeout", _cmd_lr11xx_wifi_parameters_set_abort_on_timeout, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("channel-mask", "channel mask (bit 0 = channel 1)", _cmd_lr11xx_wifi_parameters_set_channel_mask, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("max-results", "max results", _cmd_lr11xx_wifi_parameters_set_max_results, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("nb-scans", "number of scans per channel", _cmd_lr11xx_wifi_parameters_set_nb_scans_per_channel, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("scan-mode", "(beacon-only, beacon-and-packet)", _cmd_lr11xx_wifi_parameters_set_scan_mode, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("signal-type", "signal type (b-only, g-only, n-only, bgn)", _cmd_lr11xx_wifi_parameters_set_signal_type, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("timeout", "preamble search timeout (ms)", _cmd_lr11xx_wifi_parameters_set_timeout, LR11XX_CMD_ACCESS),
 	PARSER_CMD_END
 };
 
 
-static const cli_parser_cmd_t _cli_lr1110_wifi_parameters_command_table[] = {
-	PARSER_CMD_FUNC("display", "display wifi scan parameters", _cmd_lr1110_wifi_parameters_display, LR1110_CMD_ACCESS),
-	PARSER_CMD_TAB("set", "set wifi scan parameters", _cli_lr1110_wifi_parameters_set_command_table, LR1110_CMD_ACCESS),
+static const cli_parser_cmd_t _cli_lr11xx_wifi_parameters_command_table[] = {
+	PARSER_CMD_FUNC("display", "display wifi scan parameters", _cmd_lr11xx_wifi_parameters_display, LR11XX_CMD_ACCESS),
+	PARSER_CMD_TAB("set", "set wifi scan parameters", _cli_lr11xx_wifi_parameters_set_command_table, LR11XX_CMD_ACCESS),
 	PARSER_CMD_END
 };
 
-static const cli_parser_cmd_t _cli_lr1110_wifi_command_table[] = {
-	PARSER_CMD_FUNC("scan", "Perform a WIFI scan", _cmd_lr1110_wifi_scan, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("info", "Display WIFI information", _cmd_lr1110_wifi_info, LR1110_CMD_ACCESS),
-	PARSER_CMD_FUNC("results", "Show WIFI scan results", _cmd_lr1110_wifi_results, LR1110_CMD_ACCESS),
-	PARSER_CMD_TAB("parameters", "parameter related commands", _cli_lr1110_wifi_parameters_command_table, LR1110_CMD_ACCESS),
+static const cli_parser_cmd_t _cli_lr11xx_wifi_command_table[] = {
+	PARSER_CMD_FUNC("scan", "Perform a WIFI scan", _cmd_lr11xx_wifi_scan, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("info", "Display WIFI information", _cmd_lr11xx_wifi_info, LR11XX_CMD_ACCESS),
+	PARSER_CMD_FUNC("results", "Show WIFI scan results", _cmd_lr11xx_wifi_results, LR11XX_CMD_ACCESS),
+	PARSER_CMD_TAB("parameters", "parameter related commands", _cli_lr11xx_wifi_parameters_command_table, LR11XX_CMD_ACCESS),
 	PARSER_CMD_END
 };
 
 
-CLI_COMMAND_TAB_REGISTER(wifi, "WIFI related commands", _cli_lr1110_wifi_command_table, LR1110_CMD_ACCESS);
+CLI_COMMAND_TAB_REGISTER(wifi, "WIFI related commands", _cli_lr11xx_wifi_command_table, LR11XX_CMD_ACCESS);

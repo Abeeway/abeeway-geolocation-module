@@ -151,30 +151,42 @@ LmHandlerErrorStatus_t srv_lmh_open(  void ( *OnRxData )( LmHandlerAppData_t *ap
 	}
 
 	switch(region) {
-	case srv_provisioning_mac_region_eu868:
-		srv_lmh_params.Region = LORAMAC_REGION_EU868;
-		break;
-	case srv_provisioning_mac_region_ru864:
-		srv_lmh_params.Region = LORAMAC_REGION_RU864;
-		break;
-	case srv_provisioning_mac_region_us915:
-		srv_lmh_params.Region = LORAMAC_REGION_US915;
-		break;
-	case srv_provisioning_mac_region_as923:
-		srv_lmh_params.Region = LORAMAC_REGION_AS923;
-		break;
-	case srv_provisioning_mac_region_au915:
-		srv_lmh_params.Region = LORAMAC_REGION_AU915;
-		break;
-	case srv_provisioning_mac_region_kr920:
-		srv_lmh_params.Region = LORAMAC_REGION_KR920;
-		break;
-	case srv_provisioning_mac_region_in865:
-		srv_lmh_params.Region = LORAMAC_REGION_IN865;
-		break;
-	case srv_provisioning_mac_region_count:
-		cli_printf("Unknown provisioning region %u\n", region);
-		return LORAMAC_HANDLER_ERROR;
+		case srv_provisioning_mac_region_eu868:
+			srv_lmh_params.Region = LORAMAC_REGION_EU868;
+			break;
+		case srv_provisioning_mac_region_ru864:
+			srv_lmh_params.Region = LORAMAC_REGION_RU864;
+			break;
+		case srv_provisioning_mac_region_us915:
+			srv_lmh_params.Region = LORAMAC_REGION_US915;
+			break;
+		case srv_provisioning_mac_region_as923_1:
+			srv_lmh_params.Region = LORAMAC_REGION_AS923_1;
+			break;
+		case srv_provisioning_mac_region_au915:
+			srv_lmh_params.Region = LORAMAC_REGION_AU915;
+			break;
+		case srv_provisioning_mac_region_kr920:
+			srv_lmh_params.Region = LORAMAC_REGION_KR920;
+			break;
+		case srv_provisioning_mac_region_in865:
+			srv_lmh_params.Region = LORAMAC_REGION_IN865;
+			break;
+		case srv_provisioning_mac_region_as923_1_jp :
+			srv_lmh_params.Region = LORAMAC_REGION_AS923_1_JP;
+			break;
+		case srv_provisioning_mac_region_as923_2 :
+			srv_lmh_params.Region = LORAMAC_REGION_AS923_2;
+			break;
+		case srv_provisioning_mac_region_as923_3 :
+			srv_lmh_params.Region = LORAMAC_REGION_AS923_3;
+			break;
+		case srv_provisioning_mac_region_as923_4 :
+			srv_lmh_params.Region = LORAMAC_REGION_AS923_4;
+			break;
+		case srv_provisioning_mac_region_count:
+			cli_printf("Unknown provisioning region %u\n", region);
+			return LORAMAC_HANDLER_ERROR;
 	}
 
 	lc.GetBatteryLevel = BoardGetBatteryLevel;

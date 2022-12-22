@@ -15,8 +15,8 @@
 #include "hw_conf.h"
 #include "hw_if.h"
 #include "ble_bufsize.h"
-#include "dbg_trace.h"
 #include "aos_thread_priority.h"
+#include "aos_log.h"
 
 
 #ifdef __cplusplus
@@ -37,26 +37,32 @@ extern "C" {
 /**< generic parameters ******************************************************/
 
 #define CFG_TX_POWER                      (0x18)             //!< BLE TX power -0.15dBm
+#define MAX_BOUNDED_COUNT                 (1)                //!< Maximum number of devices that can create a bond with the device
 
 /**
  * Define Advertising parameters
  */
 #define CFG_ADV_BD_ADDRESS                (0x000000000000)   //!< BLE MAC ADDRESS
-#define CFG_BLE_ADDRESS_TYPE              PUBLIC_ADDR        //!< Bluetooth address types defined in ble_legacy.h
-
+#define CFG_BLE_ADDRESS_TYPE              STATIC_RANDOM_ADDR //!< Bluetooth address types defined in ble_legacy.h
+#if 0
 #define CFG_FAST_CONN_ADV_INTERVAL_MIN    (0x80)             //!< Minimum fast advertisement interval 80ms
 #define CFG_FAST_CONN_ADV_INTERVAL_MAX    (0xA0)             //!< Maximum fast advertisement interval 100ms
 #define CFG_LP_CONN_ADV_INTERVAL_MIN      (0x640)            //!< Minimum slow advertisement interval 1s
 #define CFG_LP_CONN_ADV_INTERVAL_MAX      (0xFA0)            //!< Maximum slow advertisement interval 2.5s
-
+#else
+#define CFG_FAST_CONN_ADV_INTERVAL_MIN    (500)             //!< Minimum fast advertisement interval 500ms
+#define CFG_FAST_CONN_ADV_INTERVAL_MAX    (500)             //!< Maximum fast advertisement interval 500ms
+#define CFG_LP_CONN_ADV_INTERVAL_MIN      (2000)            //!< Minimum slow advertisement interval 2s
+#define CFG_LP_CONN_ADV_INTERVAL_MAX      (2000)            //!< Maximum slow advertisement interval 2s
+#endif
 /**
  * Define IO Authentication
  */
-#define CFG_BONDING_MODE                 (0)                 //!< Bonding mode
+#define CFG_BONDING_MODE                 (1)                 //!< Bonding mode
 #define CFG_FIXED_PIN                    (111111)            //!< Fixed pin to be used in the pairing process
-#define CFG_USED_FIXED_PIN               (0)                 //!< 0 implies use fixed pin and 1 implies request for passkey (during pairing request)
+#define CFG_USED_FIXED_PIN               (1)                 //!< 0 implies use fixed pin and 1 implies request for passkey (during pairing request)
 #define CFG_ENCRYPTION_KEY_SIZE_MAX      (16)                //!< BLE encryption key max size
-#define CFG_ENCRYPTION_KEY_SIZE_MIN      (7)                 //!< BLE encryption key min size
+#define CFG_ENCRYPTION_KEY_SIZE_MIN      (8)                 //!< BLE encryption key min size
 
 /**
  * Define IO capabilities
@@ -84,7 +90,7 @@ extern "C" {
 #define CFG_SECURE_OPTIONAL                  (0x01)          //!< Secure Connections optional
 #define CFG_SECURE_MANDATORY                 (0x02)          //!< Secure Connections mandatory
 
-#define CFG_SC_SUPPORT                 CFG_SECURE_NOT_SUPPORTED              //!< Default secure connections
+#define CFG_SC_SUPPORT                 CFG_SECURE_MANDATORY   //!< Default secure connections
 
 /**
  * Define Keypress Notification Support
@@ -137,6 +143,20 @@ extern "C" {
 */
 /* LSB - Second Byte */
 #define CFG_FEATURE_OTA_REBOOT                  (0x20)   //!< Support OTA Bit Mask
+/* USER CODE BEGIN Specific_Parameters */
+
+#define CONN_L(x) ((int)((x)/0.625f))
+#define CONN_P(x) ((int)((x)/1.25f))
+
+/*  L2CAP Connection Update request parameters used for test only with smart Phone */
+#define L2CAP_REQUEST_NEW_CONN_PARAM             0
+
+#define L2CAP_INTERVAL_MIN              CONN_P(1000) /* 1s */
+#define L2CAP_INTERVAL_MAX              CONN_P(1000) /* 1s */
+#define L2CAP_SLAVE_LATENCY             0x0000
+#define L2CAP_TIMEOUT_MULTIPLIER        600 // 0x1F4
+
+/* USER CODE END Specific_Parameters */
 
 /******************************************************************************
  * BLE Stack
@@ -145,13 +165,13 @@ extern "C" {
  * Maximum number of simultaneous connections that the device will support.
  * Valid values are from 1 to 8
  */
-#define CFG_BLE_NUM_LINK            2   //!< Maximum number of simultaneous connections that the device will support
+#define CFG_BLE_NUM_LINK            1   //!< Maximum number of simultaneous connections that the device will support
 
 /**
  * Maximum number of Services that can be stored in the GATT database.
  * Note that the GAP and GATT services are automatically added so this parameter should be 2 plus the number of user services
  */
-#define CFG_BLE_NUM_GATT_SERVICES   8   //!< Maximum number of Services that can be stored in the GATT database
+#define CFG_BLE_NUM_GATT_SERVICES   18   //!< Maximum number of Services that can be stored in the GATT database
 
 /**
  * Maximum number of Attributes
@@ -160,7 +180,7 @@ extern "C" {
  * Note that certain characteristics and relative descriptors are added automatically during device initialization
  * so this parameters should be 9 plus the number of user Attributes
  */
-#define CFG_BLE_NUM_GATT_ATTRIBUTES 68   //!< Maximum number of Attributes that can be stored in the GATT database
+#define CFG_BLE_NUM_GATT_ATTRIBUTES 100   //!< Maximum number of Attributes that can be stored in the GATT database (48 for standard services and 52 for custom services)
 
 /**
  * Maximum supported ATT_MTU size
@@ -179,7 +199,7 @@ extern "C" {
  *  The total amount of memory needed is the sum of the above quantities for each attribute.
  * This parameter is ignored by the CPU2 when CFG_BLE_OPTIONS is set to 1"
  */
-#define CFG_BLE_ATT_VALUE_ARRAY_SIZE    (1344)   //!< Size of the storage area for Attribute values
+#define CFG_BLE_ATT_VALUE_ARRAY_SIZE    (1976)   //!< Size of the storage area for Attribute values
 
 /**
  * Prepare Write List size in terms of number of packet
@@ -219,7 +239,7 @@ extern "C" {
  *  1 : external high speed crystal HSE/32/32
  *  0 : external low speed crystal ( no calibration )
  */
-#define CFG_BLE_LSE_SOURCE  0               //!< Source for the low speed clock for RF wake-up
+#define CFG_BLE_LSE_SOURCE  1               //!< Source for the low speed clock for RF wake-up
 
 
 #define CFG_BLE_HSE_STARTUP_TIME  0x148     //!< Start up time of the high speed (16 or 32 MHz) crystal oscillator in units of 625/256 us (~2.44 us)
@@ -324,8 +344,8 @@ extern "C" {
 /**
  * Select UART interfaces
  */
-#define CFG_DEBUG_TRACE_UART        0    //!< Config debug on UART port
-#define CFG_CONSOLE_MENU            0    //!< Console menu
+#define CFG_DEBUG_TRACE_UART        hw_uart1    //!< Config debug on UART port
+#define CFG_CONSOLE_MENU            hw_uart1    //!< Console menu
 /******************************************************************************
  * USB interface
  ******************************************************************************/
@@ -473,6 +493,25 @@ typedef enum
 #define CFG_DEBUG_APP_TRACE        0    //!< Enable or Disable traces in BLE application
 #define BLE_DBG_DIS_EN             0    //!< Display trace for DIS service
 #define BLE_DBG_BAS_EN             0    //!< Display trace for BAS service
+#define BLE_DBG_ESS_EN             0    //!< Display trace for ESS service
+#define BLE_DBG_IAS_EN             0    //!< Display trace for IAS service
+#define BLE_DBG_LLS_EN             0    //!< Display trace for LLS service
+#define BLE_DBG_TPS_EN             0    //!< Display trace for TPS service
+
+#define PRINT_NO_MESG(...)
+
+#if (CFG_DEBUG_BLE_TRACE != 0)
+#undef PRINT_MESG_DBG
+#undef PRINT_LOG_BUFF_DBG
+
+#define PRINT_LOG_BUFF_DBG(...)      do { aos_log_msg(aos_log_module_ble, aos_log_level_debug, false, s); } while (0);
+#define PRINT_MESG_DBG(s...)         do { aos_log_msg(aos_log_module_ble, aos_log_level_debug, false, s); } while (0);
+#define PRINT_MESG_WARNING(s...)     do { aos_log_msg(aos_log_module_ble, aos_log_level_warning, false, s); } while (0);
+#else
+#define PRINT_LOG_BUFF_DBG(...)
+#define PRINT_MESG_DBG(...)
+#define PRINT_MESG_WARNING(s...)
+#endif
 
 /**
  * Macro definition
@@ -489,56 +528,44 @@ typedef enum
 #define BLE_DBG_BAS_MSG             PRINT_NO_MESG     //!< No print debug messages for BAS
 #endif
 
+#if (BLE_DBG_ESS_EN != 0)
+#define BLE_DBG_ESS_MSG             PRINT_MESG_DBG    //!< Print debug messages for ESS
+#else
+#define BLE_DBG_ESS_MSG             PRINT_NO_MESG     //!< No print debug messages for ESS
+#endif
+
+#if (BLE_DBG_IAS_EN != 0)
+#define BLE_DBG_IAS_MSG             PRINT_MESG_DBG    //!< Print debug messages for IAS
+#else
+#define BLE_DBG_IAS_MSG             PRINT_NO_MESG     //!< No print debug messages for IAS
+#endif
+
+#if (BLE_DBG_LLS_EN != 0)
+#define BLE_DBG_LLS_MSG             PRINT_MESG_DBG    //!< Print debug messages for LLS
+#else
+#define BLE_DBG_LLS_MSG             PRINT_NO_MESG     //!< No print debug messages for LLS
+#endif
+
+#if (BLE_DBG_TPS_EN != 0)
+#define BLE_DBG_TPS_MSG             PRINT_MESG_DBG    //!< Print debug messages for TPS
+#else
+#define BLE_DBG_TPS_MSG             PRINT_NO_MESG     //!< No print debug messages for TPS
+#endif
+
 #if (CFG_DEBUG_APP_TRACE != 0)
 #define APP_DBG_MSG                 PRINT_MESG_DBG    //!< Print debug messages for BLE APP
+#define APP_WRNG_MSG                PRINT_MESG_WARNING//!< Print warning messages for BLE APP
 #else
 #define APP_DBG_MSG                 PRINT_NO_MESG     //!< No print debug messages for BLE APP
+#define APP_WRNG_MSG                PRINT_NO_MESG     //!< No print warning messages for BLE APP
 #endif
 
 #if ( (CFG_DEBUG_BLE_TRACE != 0) || (CFG_DEBUG_APP_TRACE != 0) )
-#define CFG_DEBUG_TRACE             1                 //!< Enable debug tracing
+#define CFG_DEBUG_TRACE             0                 //!< Enable debug tracing
+#define CFG_DEBUG_BLE_TRACE         1                 //!< Enable debug tracing
+
 #endif
 
-#if (CFG_DEBUG_TRACE != 0)
-#undef CFG_LPM_SUPPORTED
-#undef CFG_DEBUGGER_SUPPORTED
-#define CFG_LPM_SUPPORTED         0                   //!< Low power Mode support
-#define CFG_DEBUGGER_SUPPORTED    1                   //!< Debugger support
-#endif
-
-/**
- * When CFG_DEBUG_TRACE_FULL is set to 1, the trace are output with the API name, the file name and the line number
- * When CFG_DEBUG_TRACE_LIGHT is set to 1, only the debug message is output
- *
- * When both are set to 0, no trace are output
- * When both are set to 1,  CFG_DEBUG_TRACE_FULL is selected
- */
-#define CFG_DEBUG_TRACE_LIGHT     0                   //!< Print only debug message
-#define CFG_DEBUG_TRACE_FULL      0                   //!< Print debug message plus API name, file name and Line number
-
-#if (( CFG_DEBUG_TRACE != 0 ) && ( CFG_DEBUG_TRACE_LIGHT == 0 ) && (CFG_DEBUG_TRACE_FULL == 0))
-#undef CFG_DEBUG_TRACE_FULL
-#undef CFG_DEBUG_TRACE_LIGHT
-#define CFG_DEBUG_TRACE_FULL      0                   //!<  Print debug message plus API name, file name and Line number
-#define CFG_DEBUG_TRACE_LIGHT     1                   //!< Print only debug message
-#endif
-
-#if ( CFG_DEBUG_TRACE == 0 )
-#undef CFG_DEBUG_TRACE_FULL
-#undef CFG_DEBUG_TRACE_LIGHT
-#define CFG_DEBUG_TRACE_FULL      0                   //!< Print debug message plus API name, file name and Line number
-#define CFG_DEBUG_TRACE_LIGHT     0                   //!< Print only debug message
-#endif
-
-
-#define DBG_TRACE_USE_CIRCULAR_QUEUE 1                //!< When not set, the traces is looping on sending the trace over UART
-
-/**
- * max buffer Size to queue data traces and max data trace allowed.
- * Only Used if DBG_TRACE_USE_CIRCULAR_QUEUE is defined
- */
-#define DBG_TRACE_MSG_QUEUE_SIZE 4096                 //!< Max buffer Size to queue data traces
-#define MAX_DBG_TRACE_MSG_SIZE 1024                   //!< Max data trace allowed
 
 /******************************************************************************
  * OTP manager

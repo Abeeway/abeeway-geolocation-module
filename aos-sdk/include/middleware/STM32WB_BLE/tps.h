@@ -27,16 +27,45 @@ extern "C"
 {
 #endif
 
-  /* Includes ------------------------------------------------------------------*/
+/* Includes ------------------------------------------------------------------*/
+
+
+/*!
+ * \defgroup TPS BLE TX power service
+ *
+ * \addtogroup TPS
+ * @{
+ */
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void TPS_Init(void);
-tBleStatus TPS_Update_Char(uint16_t UUID, uint8_t *pPayload);
 
+/*!
+ * \fn tBleStatus tps_init(void)
+ *
+ * \brief TX power service Initialization
+ *
+ * \return tBleStatus status
+ */
+tBleStatus tps_init(void);
+
+/*!
+ * \fn tBleStatus tps_update_char(uint16_t uuid, uint8_t *payload)
+ *
+ * \brief Update the data of the characteristic UUID with pPayload data
+ *
+ * \param UUID TX power characteristic to update
+ *
+ * \param pPayload data to update
+ *
+ * \return tBleStatus status
+ */
+tBleStatus tps_update_char(uint16_t uuid, uint8_t *payload);
+
+/*! @}*/
 #ifdef __cplusplus
 }
 #endif

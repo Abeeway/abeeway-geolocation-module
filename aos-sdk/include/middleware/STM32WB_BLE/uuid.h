@@ -112,6 +112,7 @@
 /* UUIDs for battery service */ 
 #define BATTERY_SERVICE_UUID                                           (0x180F)
 #define BATTERY_LEVEL_CHAR_UUID                                        (0x2A19)
+#define BATTERY_POWER_STATE_CHAR_UUID                                  (0x2A1A)
 
 /* UUIDs for Blood Pressure profile */
 #define BLOOD_PRESSURE_SERVICE_UUID                                    (0x1810)
@@ -175,6 +176,7 @@
 
 /* UUIDs for environmental sensing profile */
 #define ENVIRONMENTAL_SENSING_SERVICE_UUID                             (0x181A)
+#define TEMPERATURE_CELSIUS_UUID                                       (0x2A1F)
 #define DESCRIPTOR_VALUE_CHANGED_UUID                                  (0x2A7D)
 #define APPARENT_WIND_DIRECTION_UUID                                   (0x2A73)
 #define APPARENT_WIND_SPEED_UUID                                       (0x2A72)

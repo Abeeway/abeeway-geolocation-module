@@ -63,7 +63,7 @@ int main(void)
 	// Initialize the system
 	aos_system_init();
 	// Initialize the services
-	srv_cli_init(aos_uart_type_lpuart1, &_cli_cfg);		//!< Command Line Interface
+	srv_cli_init(aos_uart_type_usb, &_cli_cfg);		//!< Command Line Interface
 	// Open the log facility and redirect log message on the CLI.
 	aos_log_init(cli_log);
 	srv_gnss_init();									//!< GNSS service

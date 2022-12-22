@@ -148,16 +148,29 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:ga88d38de8a4cd82c9e76777ad92882e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usual NME Message type.  <a href="group__aos__nmea__parser.html#ga88d38de8a4cd82c9e76777ad92882e2b">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga88d38de8a4cd82c9e76777ad92882e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c569df8093efb3d3445f178fd2907c3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#ga7c569df8093efb3d3445f178fd2907c3">nmea_parsing_res_t</a> { <a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3a8bdaf35f2a2e5a706a1b6ef4293f7a98">nmea_parsing_res_success</a>, 
+<tr class="memitem:ga7c569df8093efb3d3445f178fd2907c3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#ga7c569df8093efb3d3445f178fd2907c3">nmea_parsing_res_t</a> { <br />
+&#160;&#160;<a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3a8bdaf35f2a2e5a706a1b6ef4293f7a98">nmea_parsing_res_success</a>, 
 <a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3aa21c4a87919b9355c157a8deacba256f">nmea_parsing_res_discard</a>, 
 <a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3ade3f905f713f60c49298e59c689b9495">nmea_parsing_res_error</a>, 
-<a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3a59dda01437ddb1e2d01837fe582a62da">nmea_parsing_res_not_populated</a>
+<a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3a59dda01437ddb1e2d01837fe582a62da">nmea_parsing_res_not_populated</a>, 
+<br />
+&#160;&#160;<b>nmea_parsing_ack_base_status</b>, 
+<b>nmea_parsing_ack_cmd_error</b> = nmea_parsing_ack_base_status, 
+<b>nmea_parsing_ack_cmd_unknown</b>, 
+<a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3a96a1ceb189839bd55a7b3fd60667e10c">nmea_parsing_ack_cmd_ok_no_action</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__aos__nmea__parser.html#gga7c569df8093efb3d3445f178fd2907c3ae4cecd482528646bd4bc607bb428c5b7">nmea_parsing_ack_cmd_ok_action_ok</a>, 
+<b>nmea_parsing_ack_cmd_last</b>
+<br />
  }<tr class="memdesc:ga7c569df8093efb3d3445f178fd2907c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">NMEA parser result.  <a href="group__aos__nmea__parser.html#ga7c569df8093efb3d3445f178fd2907c3">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga7c569df8093efb3d3445f178fd2907c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga4e68b1f3abaf64e0ab6d147aa8ffcea5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#ga4e68b1f3abaf64e0ab6d147aa8ffcea5">nmea_extract_hex</a> (char *str, int8_t nb_digits, uint32_t *value)</td></tr>
+<tr class="memdesc:ga4e68b1f3abaf64e0ab6d147aa8ffcea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts a hexadecimal integer.  <a href="group__aos__nmea__parser.html#ga4e68b1f3abaf64e0ab6d147aa8ffcea5">More...</a><br /></td></tr>
+<tr class="separator:ga4e68b1f3abaf64e0ab6d147aa8ffcea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga27082770f1ec0880b3bb9dcc674e9e04"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#ga27082770f1ec0880b3bb9dcc674e9e04">nmea_extract_uint</a> (char *str, int8_t nb_digits, uint32_t *value)</td></tr>
 <tr class="memdesc:ga27082770f1ec0880b3bb9dcc674e9e04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract an unsigned decimal integer.  <a href="group__aos__nmea__parser.html#ga27082770f1ec0880b3bb9dcc674e9e04">More...</a><br /></td></tr>
 <tr class="separator:ga27082770f1ec0880b3bb9dcc674e9e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,6 +196,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:gaa25f87b3645d961bd5528d5f70ed5827"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__nmea__parser.html#ga88d38de8a4cd82c9e76777ad92882e2b">nmea_msg_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#gaa25f87b3645d961bd5528d5f70ed5827">nmea_get_msg_type</a> (<a class="el" href="structnmea__parse__msg__t.html">nmea_parse_msg_t</a> *info, <a class="el" href="group__gnss__common.html#ga81322cda8167dab78a55ecf91e916ca1">aos_gnss_constellation_t</a> *constellation)</td></tr>
 <tr class="memdesc:gaa25f87b3645d961bd5528d5f70ed5827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the type of the NMEA sentence and the type of constellation.  <a href="group__aos__nmea__parser.html#gaa25f87b3645d961bd5528d5f70ed5827">More...</a><br /></td></tr>
 <tr class="separator:gaa25f87b3645d961bd5528d5f70ed5827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga156cb99ce678be8cc25c6d30fad50d11"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#ga156cb99ce678be8cc25c6d30fad50d11">nmea_get_hex</a> (<a class="el" href="structnmea__parse__msg__t.html">nmea_parse_msg_t</a> *info, uint8_t field_idx, uint32_t *value)</td></tr>
+<tr class="memdesc:ga156cb99ce678be8cc25c6d30fad50d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">extract an unsigned hexadecimal number at given field index  <a href="group__aos__nmea__parser.html#ga156cb99ce678be8cc25c6d30fad50d11">More...</a><br /></td></tr>
+<tr class="separator:ga156cb99ce678be8cc25c6d30fad50d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabdfe378b4edf3959be6938aa9f2dd995"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__nmea__parser.html#gabdfe378b4edf3959be6938aa9f2dd995">nmea_get_uint32</a> (<a class="el" href="structnmea__parse__msg__t.html">nmea_parse_msg_t</a> *info, uint8_t field_idx, uint32_t *value)</td></tr>
 <tr class="memdesc:gabdfe378b4edf3959be6938aa9f2dd995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract an unsigned decimal integer at given field index.  <a href="group__aos__nmea__parser.html#gabdfe378b4edf3959be6938aa9f2dd995">More...</a><br /></td></tr>
 <tr class="separator:gabdfe378b4edf3959be6938aa9f2dd995"><td class="memSeparator" colspan="2">&#160;</td></tr>

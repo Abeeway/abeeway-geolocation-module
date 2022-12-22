@@ -93,6 +93,22 @@ typedef struct {
 loramac_radio_counters_t *loramac_radio_counters(void);
 
 /*!
+ * \brief Abeeway specific function to enable or disable boosted receive.
+ *
+ * This function sets an internal parameter to enable or disable boosted
+ * receive mode when using loramac_radio_set_rx().
+ *
+ * Boosted RX increases radio sensitivity at the expense of higher power
+ * consumption.
+ *
+ * \param [in] choice	boolean value indicating whether or not to enable rx boost.
+ *
+ * \returns nothing
+ */
+void loramac_radio_enable_rx_boost(bool choice);
+
+
+/*!
  * API return status
  */
 typedef enum loramac_radio_status_e

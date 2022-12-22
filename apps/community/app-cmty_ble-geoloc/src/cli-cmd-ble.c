@@ -21,7 +21,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <stdlib.h>
-// #include <stdio.h>
+#include <stdio.h>
 
 #include "FreeRTOSConfig.h"
 #include "FreeRTOS.h"
@@ -34,13 +34,13 @@
 #include "aos_rf_switch.h"
 #include "aos_lpm.h"
 #include "aos_ble_core.h"
-#include "aos_dis.h"
-#include "strnhex.h"
 
 #include "srv_ble_dtm.h"
 #include "srv_ble_scan.h"
 #include "srv_ble_beaconing.h"
 #include "srv_provisioning.h"
+
+#include "app_custom_srvc.h"
 
 #define COMMAND_ABORTED_NOT_OPEN "Command aborted: driver not open with the correct role\n"
 
@@ -48,12 +48,15 @@
 #define CALIBRATED_TX_POWER_AT_0_M  ((uint8_t) (-22))
 #define CALIBRATED_TX_POWER_AT_1_M  ((uint8_t) (-42))
 #define CFG_TX_POWER                (0x18)
-
+#define BLE_SRVC_ENABLE_ALL         (0xFFFF)
 
 static struct {
 	bool    drv_open;
-	uint8_t ble_role;
-} cli_ble_ctx = {0};
+	aos_ble_app_data_t app_info;
+	uint8_t deveui[AOS_PROVISIONING_EUI_SIZE];
+} cli_ble_ctx = {
+		.app_info.ble_srvc_mask = BLE_SRVC_ENABLE_ALL
+	};
 
 
 
@@ -67,19 +70,25 @@ static const uint8_t _default_adv_identifier[] = {
 		0x01, 0x02, 0x03, 0x04, 0x05, 0x06
 };
 
-
-static bool _set_ble_scan_filter(uint8_t * dest, const char *src)
+static bool _strtohex_table(const char * hex, uint8_t *table, uint8_t table_len)
 {
-    uint8_t temp[SRV_BLE_SCAN_FILTER_MAX_SIZE] = {0};
-    int count = strnhex(temp, SRV_BLE_SCAN_FILTER_MAX_SIZE, src);
-    if (count <= 0) {
-        cli_printf("Filter should be a hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
-        return false;
+    uint8_t len = strlen(hex);
+    uint8_t base;
+
+    len = (len < (2 * table_len)) ? len : (2 * table_len);
+    for (int i = 0; i < len; ++i) {
+    	base = (i%2) ? 1 : 16;
+
+        if (hex[i] >= '0' && hex[i] <= '9') {
+            table[i/2] += (hex[i] - 48) * base;
+        } else if (hex[i] >= 'A' && hex[i] <= 'F') {
+        	table[i/2] += (hex[i] - 55) * base;
+        } else if (hex[i] >= 'a' && hex[i] <= 'f') {
+        	table[i/2] += (hex[i] - 87) * base;
+        } else {
+        	return false;
+        }
     }
-
-
-
-   memcpy(dest, temp, SRV_BLE_SCAN_FILTER_MAX_SIZE);
     return true;
 }
 
@@ -262,7 +271,7 @@ bool _ble_scan_set_params(int argc, char *argv[])
 
 		case opt_filter_1_mask:
 			if (++argn < argc) {
-				if (!_set_ble_scan_filter( params->filters[0].mask, argv[argn])) {
+				if (!_strtohex_table(argv[argn], params->filters[0].mask, SRV_BLE_SCAN_FILTER_MAX_SIZE)) {
 					cli_printf("Filter mask should be an hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
 				}
 			} else {
@@ -273,7 +282,7 @@ bool _ble_scan_set_params(int argc, char *argv[])
 
 		case opt_filter_1_value:
 			if (++argn < argc) {
-				if (!_set_ble_scan_filter( params->filters[0].value, argv[argn])) {
+				if (!_strtohex_table(argv[argn], params->filters[0].value, SRV_BLE_SCAN_FILTER_MAX_SIZE)) {
 					cli_printf("Filter value should be an hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
 				}
 			} else {
@@ -294,7 +303,7 @@ bool _ble_scan_set_params(int argc, char *argv[])
 
 		case opt_filter_2_mask:
 			if (++argn < argc) {
-				if (!_set_ble_scan_filter(params->filters[1].mask, argv[argn])) {
+				if (!_strtohex_table(argv[argn], params->filters[1].mask, SRV_BLE_SCAN_FILTER_MAX_SIZE)) {
 					cli_printf("Filter mask should be an hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
 				}
 			} else {
@@ -305,7 +314,7 @@ bool _ble_scan_set_params(int argc, char *argv[])
 
 		case opt_filter_2_value:
 			if (++argn < argc) {
-				if (!_set_ble_scan_filter( params->filters[1].value, argv[argn])) {
+				if (!_strtohex_table(argv[argn], params->filters[1].value, SRV_BLE_SCAN_FILTER_MAX_SIZE)) {
 					cli_printf("Filter value should be an hex value of max %d bytes\n", SRV_BLE_SCAN_FILTER_MAX_SIZE);
 				}
 			} else {
@@ -593,7 +602,7 @@ static void _ble_scan_display_params(void)
 static bool _is_ble_open(uint8_t role)
 {
 	if (role != GAP_NO_ROLE) {
-		return ((cli_ble_ctx.drv_open) && (cli_ble_ctx.ble_role & role));
+		return ((cli_ble_ctx.drv_open) && (cli_ble_ctx.app_info.ble_role & role));
 	} else {
 		return (cli_ble_ctx.drv_open);
 	}
@@ -602,7 +611,7 @@ static bool _is_ble_open(uint8_t role)
 static cli_parser_status_t _cmd_ble_address(void* arg, int argc, char *argv[])
 {
 	const uint8_t *bd_addr;
-	bd_addr = BleGetBdAddress();
+	bd_addr = aos_ble_core_get_bd_address();
 
 	cli_printf("BLE ADDR: ");
 	cli_print_hex(bd_addr, SRV_BLE_GAP_ADDR_LEN, true);
@@ -617,6 +626,18 @@ static void _display_open_help(void)
 	cli_printf("    both       	   Open BLE in observer and peripheral mode (scan and advertiser)\n");
 }
 
+static void _init_ble_app_info(aos_ble_app_data_t *app_info)
+{
+	srv_provisioning_get_lora_device_eui(cli_ble_ctx.deveui);
+	app_info->serial_number.data = cli_ble_ctx.deveui;
+	app_info->serial_number.len = AOS_PROVISIONING_EUI_SIZE;
+	app_info->app_version = 0;
+	aos_ble_core_get_firmware_version(&app_info->ble_version);
+	app_info->custom_srvc_count = (custom_service_count > MAX_CUSTOM_SERVICES_COUNT)? MAX_CUSTOM_SERVICES_COUNT:custom_service_count;
+	app_info->app_init_char_cb = app_custom_srvc_data_init;
+
+	app_custom_srvc_conf_set(app_info->custom_srvc_init_data);
+}
 
 static cli_parser_status_t _cmd_ble_open(void* arg, int argc, char *argv[])
 {
@@ -655,15 +676,15 @@ static cli_parser_status_t _cmd_ble_open(void* arg, int argc, char *argv[])
 			return cli_parser_status_error;
 
 		case opt_obs:
-			cli_ble_ctx.ble_role |= GAP_OBSERVER_ROLE;
+			cli_ble_ctx.app_info.ble_role |= GAP_OBSERVER_ROLE;
 			break;
 
 		case opt_periph:
-			cli_ble_ctx.ble_role |= GAP_PERIPHERAL_ROLE;
+			cli_ble_ctx.app_info.ble_role |= GAP_PERIPHERAL_ROLE;
 			break;
 
 		case opt_both:
-			cli_ble_ctx.ble_role = GAP_PERIPHERAL_ROLE | GAP_OBSERVER_ROLE;
+			cli_ble_ctx.app_info.ble_role = GAP_PERIPHERAL_ROLE | GAP_OBSERVER_ROLE;
 			break;
 
 		case opt_short_help:
@@ -687,12 +708,10 @@ static cli_parser_status_t _cmd_ble_open(void* arg, int argc, char *argv[])
 		cli_printf("Fail to acquire the antenna\n");
 		return cli_parser_status_error;
 	}
-	// Set deveui value needed by DIS service
-	uint8_t deveui[PROVISIONING_EUI_SIZE];
-	srv_provisioning_get_lora_device_eui(deveui);
-	aos_dis_set_dev_eui(deveui);
 
-	APP_BLE_Init(cli_ble_ctx.ble_role);
+	_init_ble_app_info(&cli_ble_ctx.app_info);
+	aos_ble_core_app_init(&cli_ble_ctx.app_info);
+
 	aos_lpm_set_mode(aos_lpm_requester_application, aos_lpm_mode_no_sleep, NULL, NULL);
 
 	cli_ble_ctx.drv_open = true;
@@ -713,7 +732,7 @@ static cli_parser_status_t _cmd_ble_close(void* arg, int argc, char *argv[])
 		srv_ble_beaconing_stop();
 	}
 
-	cli_ble_ctx.ble_role = GAP_NO_ROLE;
+	cli_ble_ctx.app_info.ble_role = GAP_NO_ROLE;
 
 	aos_lpm_set_mode(aos_lpm_requester_application, aos_lpm_mode_stop2, NULL, NULL);
 	aos_rf_switch_release_antenna(aos_rf_switch_type_ble_wifi, RF_SWITCH_OWNER_BLE);

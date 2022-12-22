@@ -114,9 +114,12 @@ void DisplayBeaconUpdate( LoRaMacHandlerBeaconParams_t* params );
 void DisplayClassUpdate( DeviceClass_t deviceClass );
 
 /*!
- * \brief Displays application information
+ * \brief Displays time update
+ *
+ * \param [IN] isSynchronized flag
+ * \param [IN] timeCorrection value
  */
-void DisplayAppInfo( const char* appName, const Version_t* appVersion, const Version_t* gitHubVersion );
+void DisplayTimeUpdate( bool isSynchronized, uint32_t timeCorrection );
 
 #ifdef __cplusplus
 }

@@ -29,31 +29,77 @@ extern "C"
 
 /* Includes ------------------------------------------------------------------*/
 
+
+/*!
+ * \defgroup LLS BLE Link Loss Service
+ *
+ * \addtogroup LLS
+ * @{
+ */
+
 /* Exported types ------------------------------------------------------------*/
-typedef enum
-{
-  LLS_NO_ALERT_EVT,
-  LLS_MID_ALERT_EVT,
-  LLS_HIGH_ALERT_EVT,
-  LLS_DISCONNECT_EVT,
-  LLS_CONNECT_EVT
+
+/*!
+ * \enum LLS_App_Opcode_Notification_evt_t
+ *
+ * \brief Link Loss service event
+ */
+typedef enum {
+	LLS_NO_ALERT_EVT,      //!< No Alert event
+	LLS_MID_ALERT_EVT,     //!< MID Alert event
+	LLS_HIGH_ALERT_EVT,    //!< HIGH Alert event
+	LLS_DISCONNECT_EVT,    //!< Disconnect event
+	LLS_CONNECT_EVT        //!< Connect event
 } LLS_App_Opcode_Notification_evt_t;
 
-typedef struct
-{
-  LLS_App_Opcode_Notification_evt_t  LLS_Evt_Opcode;
-}LLS_App_Notification_evt_t;
+/*!
+ * \struct LLS_App_Notification_evt_t
+ *
+ * \brief Link Loss service event struct
+ */
+typedef struct {
+	LLS_App_Opcode_Notification_evt_t  LLS_Evt_Opcode;  //!< LLS notification event code
+} LLS_App_Notification_evt_t;
 
 
 /* Exported constants --------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void LLS_Init(void);
-tBleStatus LLS_Update_Char(uint16_t UUID, uint8_t *pPayload);
-void LLS_App_Notification(LLS_App_Notification_evt_t *pNotification);
+
+/*!
+ * \fn tBleStatus lls_init(void)
+ *
+ * \brief Link Loss service Initialization
+ *
+ * \return tBleStatus status
+ */
+tBleStatus lls_init(void);
+
+/*!
+ * \fn tBleStatus lls_update_char(uint16_t uuid, uint8_t *payload)
+ *
+ * \brief Update the data of the characteristic UUID with pPayload data
+ *
+ * \param UUID battery characteristic to update
+ *
+ * \param pPayload data to update
+ *
+ * \return tBleStatus status
+ */
+tBleStatus lls_update_char(uint16_t uuid, uint8_t *payload);
+
+/*!
+ * \fn void lls_app_notification(BAS_Notification_evt_t * pNotification)
+ *
+ * \brief Link Loss service notification function
+ *
+ * \param pNotification notification event
+ */
+void lls_app_notification(LLS_App_Notification_evt_t *pNotification);
 
 
+/*! @}*/
 #ifdef __cplusplus
 }
 #endif

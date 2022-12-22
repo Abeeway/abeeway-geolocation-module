@@ -87,6 +87,16 @@ extern "C"
 #include "LoRaMacClassBNvm.h"
 
 /*!
+ * LoRaWAN version definition.
+ */
+#define LORAMAC_VERSION                             0x01010100
+
+/*!
+ * LoRaWAN fallback version definition.
+ */
+#define LORAMAC_FALLBACK_VERSION                    0x01000400
+
+/*!
  * Maximum number of times the MAC layer tries to get an acknowledge.
  */
 #define MAX_ACK_RETRIES                             8
@@ -305,6 +315,16 @@ typedef struct sLoRaMacParams
      * Antenna gain of the node
      */
     float AntennaGain;
+    /*!
+     * Limit of uplinks without any donwlink response before the ADRACKReq bit
+     * will be set.
+     */
+    uint16_t AdrAckLimit;
+    /*!
+     * Limit of uplinks without any donwlink response after a the first frame
+     * with set ADRACKReq bit before the trying to regain the connectivity.
+     */
+    uint16_t AdrAckDelay;
 }LoRaMacParams_t;
 
 /*!
@@ -512,9 +532,13 @@ typedef union eLoRaMacFlags_t
 typedef enum eLoRaMacRegion
 {
     /*!
-     * AS band on 923MHz
+     * AS band (and sub-bands) on 923MHz.
      */
-    LORAMAC_REGION_AS923,
+    LORAMAC_REGION_AS923_1,
+    LORAMAC_REGION_AS923_1_JP,
+    LORAMAC_REGION_AS923_2,
+    LORAMAC_REGION_AS923_3,
+    LORAMAC_REGION_AS923_4,
     /*!
      * Australian band on 915MHz
      */
@@ -718,14 +742,22 @@ typedef struct sLoRaMacNvmDataGroup2
      */
     uint32_t Rejoin1CycleInSec;
     /*!
-     * Time in seconds between cyclic transmission of Type 2 Rejoin requests.
-     */
-    uint32_t Rejoin2CycleInSec;
-    /*!
      * Indicates if a Rejoin request was sent and no join-accept or any downlink
      * has been received yet.
      */
     bool IsRejoinAcceptPending;
+    /*!
+     * Indicates if a reqjoin request 0 is in the queue to send.
+     */
+    bool IsRejoin0RequestQueued;
+    /*!
+     * Indicates if a reqjoin request 1 is in the queue to send.
+     */
+    bool IsRejoin1RequestQueued;
+    /*!
+     * Indicates if a reqjoin request 2 is in the queue to send.
+     */
+    bool IsRejoin2RequestQueued;
     /*!
      * CRC32 value of the MacGroup2 data structure.
      */
@@ -1106,6 +1138,12 @@ typedef enum eMlme
      */
     MLME_REJOIN_1,
     /*!
+     * Initiates sending a ReJoin-request type 2
+     *
+     * LoRaWAN Specification V1.1.0, chapter 6.2.4.2
+     */
+    MLME_REJOIN_2,
+    /*!
      * LinkCheckReq - Connectivity validation
      *
      * LoRaWAN Specification V1.0.2, chapter 5, table 4
@@ -1430,6 +1468,12 @@ typedef struct sMlmeIndication
  * \ref MIB_REJOIN_0_CYCLE                       | YES | YES
  * \ref MIB_REJOIN_1_CYCLE                       | YES | YES
  * \ref MIB_REJOIN_2_CYCLE                       | YES | NO
+ * \ref MIB_ADR_ACK_LIMIT                        | YES | YES
+ * \ref MIB_ADR_ACK_DELAY                        | YES | YES
+ * \ref MIB_ADR_ACK_DEFAULT_LIMIT                | YES | YES
+ * \ref MIB_ADR_ACK_DEFAULT_DELAY                | YES | YES
+ * \ref MIB_RSSI_FREE_THRESHOLD                  | YES | YES
+ * \ref MIB_CARRIER_SENSE_TIME                   | YES | YES
  *
  * The following table provides links to the function implementations of the
  * related MIB primitives:
@@ -1797,10 +1841,6 @@ typedef enum eMib
      */
     MIB_REJOIN_1_CYCLE,
     /*!
-     * Time between periodic transmission of a Type 2 Rejoin request.
-     */
-    MIB_REJOIN_2_CYCLE,
-    /*!
      * Beacon interval in ms
      */
     MIB_BEACON_INTERVAL,
@@ -1862,6 +1902,30 @@ typedef enum eMib
       * LoRaWAN certification FPort handling state (ON/OFF)
       */
      MIB_IS_CERT_FPORT_ON,
+     /*!
+      * ADR ack limit value
+      */
+     MIB_ADR_ACK_LIMIT,
+     /*!
+      * ADR ack delay value
+      */
+     MIB_ADR_ACK_DELAY,
+     /*!
+      * ADR ack default limit value
+      */
+     MIB_ADR_ACK_DEFAULT_LIMIT,
+     /*!
+      * ADR ack default delay value
+      */
+     MIB_ADR_ACK_DEFAULT_DELAY,
+     /*!
+      * RSSI free channel threshold value (KR920 and AS923 only)
+      */
+     MIB_RSSI_FREE_THRESHOLD,
+     /*!
+      * Carrier sense time value (KR920 and AS923 only)
+      */
+     MIB_CARRIER_SENSE_TIME
 }Mib_t;
 
 /*!
@@ -2308,6 +2372,30 @@ typedef union uMibParam
      * Related MIB type: \ref MIB_IS_CERT_FPORT_ON
      */
     bool IsCertPortOn;
+    /*!
+     * ADR ack limit value
+     *
+     * Related MIB types: \ref MIB_ADR_ACK_LIMIT, MIB_ADR_ACK_DEFAULT_LIMIT
+     */
+    uint16_t AdrAckLimit;
+    /*!
+     * ADR ack delay value
+     *
+     * Related MIB types: \ref MIB_ADR_ACK_DELAY, MIB_ADR_ACK_DEFAULT_DELAY
+     */
+    uint16_t AdrAckDelay;
+    /*!
+     * RSSI free channel threshold (KR920 and AS923 only)
+     *
+     * Related MIB type: \ref MIB_RSSI_FREE_THRESHOLD
+     */
+    int16_t RssiFreeThreshold;
+    /*!
+     * Carrier sense time (KR920 and AS923 only)
+     *
+     * Related MIB type: \ref MIB_CARRIER_SENSE_TIME
+     */
+    uint32_t CarrierSenseTime;
 }MibParam_t;
 
 /*!

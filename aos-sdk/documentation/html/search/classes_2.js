@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['cli_5fcmd_5foption_5ft',['cli_cmd_option_t',['../structcli__cmd__option__t.html',1,'']]],
-  ['cli_5fconfig_5fparam_5ft',['cli_config_param_t',['../structcli__config__param__t.html',1,'']]],
-  ['cli_5fioctl_5ft',['cli_ioctl_t',['../structcli__ioctl__t.html',1,'']]],
-  ['cli_5fnotification_5ft',['cli_notification_t',['../structcli__notification__t.html',1,'']]],
-  ['cli_5fparser_5fcmd_5fs',['cli_parser_cmd_s',['../structcli__parser__cmd__s.html',1,'']]],
-  ['cli_5fparser_5fioctl_5ft',['cli_parser_ioctl_t',['../structcli__parser__ioctl__t.html',1,'']]],
-  ['cli_5fparser_5fnotification_5ft',['cli_parser_notification_t',['../structcli__parser__notification__t.html',1,'']]],
-  ['cli_5ft',['cli_t',['../structcli__t.html',1,'']]]
+  ['ble_5fchar_5finit_5fdata_5ft',['ble_char_init_data_t',['../structble__char__init__data__t.html',1,'']]],
+  ['ble_5fchar_5fupdate_5fdata_5ft',['ble_char_update_data_t',['../structble__char__update__data__t.html',1,'']]],
+  ['ble_5fcustom_5fsrvc_5finit_5fdata_5ft',['ble_custom_srvc_init_data_t',['../structble__custom__srvc__init__data__t.html',1,'']]],
+  ['ble_5fdtm_5fparam_5ft',['ble_dtm_param_t',['../structble__dtm__param__t.html',1,'']]],
+  ['ble_5fservice_5finit_5fdata_5ft',['ble_service_init_data_t',['../structble__service__init__data__t.html',1,'']]],
+  ['buffer_5ft',['buffer_t',['../structbuffer__t.html',1,'']]]
 ];

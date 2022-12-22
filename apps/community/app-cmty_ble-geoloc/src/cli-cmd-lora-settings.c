@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <string.h>
-// #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h> // strtoul
 #include "srv_provisioning.h"
 #include "srv_cli.h"
@@ -27,8 +27,12 @@
 /*
  * enum / name mapping tables
  */
-static const cli_cmd_option_t _mac_region_map[] = {
-		{ "AS923", srv_provisioning_mac_region_as923 },
+static const cli_cmd_option_t _mac_region_map[srv_provisioning_mac_region_count] = {
+		{ "AS923-1", srv_provisioning_mac_region_as923_1 },
+		{ "AS923-2", srv_provisioning_mac_region_as923_2 },
+		{ "AS923-3", srv_provisioning_mac_region_as923_3 },
+		{ "AS923-4", srv_provisioning_mac_region_as923_4 },
+		{ "AS923-JP", srv_provisioning_mac_region_as923_1_jp },
 		{ "AU915", srv_provisioning_mac_region_au915},
 		{ "EU868", srv_provisioning_mac_region_eu868 },
 		{ "IN865", srv_provisioning_mac_region_in865 },
@@ -157,7 +161,7 @@ static cli_parser_status_t _cmd_settings_display(void *arg, int argc, char *argv
 	srv_provisioning_eui_t eui;
 	srv_provisioning_activation_t activation;
 	srv_provisioning_mac_region_t region;
-	uint32_t devadr;
+	uint32_t devaddr;
 
 	srv_provisioning_data_state_t dstate = srv_provisioning_data_state();
 
@@ -198,8 +202,8 @@ static cli_parser_status_t _cmd_settings_display(void *arg, int argc, char *argv
 		break;
 
 	case srv_provisioning_activation_abp:
-		RETURN_ON_PROVISIONING_ERROR(srv_provisioning_get_lora_devaddr(&devadr), "Get devaddr");
-		cli_printf(" ABP devaddr: 0x%08x\n", devadr);
+		RETURN_ON_PROVISIONING_ERROR(srv_provisioning_get_lora_devaddr(&devaddr), "Get devaddr");
+		cli_printf(" ABP devaddr: 0x%08x\n", devaddr);
 		cli_printf(" appskey defined: %s\n", srv_provisioning_key_is_set(srv_provisioning_key_id_app_s_key)?"yes":"no");
 		cli_printf(" nwkskey defined: %s \n", srv_provisioning_key_is_set(srv_provisioning_key_id_nwk_s_key)?"yes":"no");
 		break;
@@ -258,14 +262,14 @@ static bool _read_uint32(const char *cp, uint32_t *retval)
 	return ((*cp != '\0') && (*eptr == '\0'));
 }
 
-static cli_parser_status_t _cmd_settings_set_devadr(void *arg, int argc, char *argv[])
+static cli_parser_status_t _cmd_settings_set_devaddr(void *arg, int argc, char *argv[])
 {
-	uint32_t devadr;
+	uint32_t devaddr;
 
 	if ((argc > 1)
-		&& (_read_uint32(argv[1], &devadr))) {
+		&& (_read_uint32(argv[1], &devaddr))) {
 
-		RETURN_ON_PROVISIONING_ERROR(srv_provisioning_set_lora_devaddr(devadr), "Set devaddr");
+		RETURN_ON_PROVISIONING_ERROR(srv_provisioning_set_lora_devaddr(devaddr), "Set devaddr");
 		return cli_parser_status_ok;
 	}
 	return cli_parser_status_error;
@@ -333,7 +337,7 @@ static const cli_parser_cmd_t _cli_settings_set_command_table[] = {
 	PARSER_CMD_TAB("activation", "Set activation {abp|otaa}", _cli_settings_set_activation_command_table, CLI_CMD_ACCESS),
 	PARSER_CMD_FUNC("appkey", "Set OTAA appkey",_cmd_settings_set_appkey, CLI_CMD_ACCESS),
 	PARSER_CMD_FUNC("appskey", "Set ABP appskey",_cmd_settings_set_appskey, CLI_CMD_ACCESS),
-	PARSER_CMD_FUNC("devadr", "Set ABP devadr",_cmd_settings_set_devadr, CLI_CMD_ACCESS),
+	PARSER_CMD_FUNC("devaddr", "Set ABP devaddr",_cmd_settings_set_devaddr, CLI_CMD_ACCESS),
 	PARSER_CMD_FUNC("deveui", "Set Device EUI",_cmd_settings_set_device_eui, CLI_CMD_ACCESS),
 	PARSER_CMD_FUNC("joineui", "Set OTAA Join (Application) EUI",_cmd_settings_set_join_eui, CLI_CMD_ACCESS),
 	PARSER_CMD_FUNC("nwkkey", "Set OTAA nwkkey",_cmd_settings_set_nwkkey, CLI_CMD_ACCESS),

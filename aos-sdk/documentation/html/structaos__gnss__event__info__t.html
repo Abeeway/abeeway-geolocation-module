@@ -76,16 +76,17 @@ Collaboration diagram for aos_gnss_event_info_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structaos__gnss__event__info__t__coll__graph.png" border="0" usemap="#aos__gnss__event__info__t_coll__map" alt="Collaboration graph"/></div>
 <map name="aos__gnss__event__info__t_coll__map" id="aos__gnss__event__info__t_coll__map">
-<area shape="rect" id="node2" href="structaos__gnss__raw__data__t.html" title="Data in raw format (or pre&#45;parsed) of frames received by the GNSS chip. " alt="" coords="605,21,755,48"/>
-<area shape="rect" id="node3" href="structnmea__parse__msg__t.html" title="NMEA pre&#45;parsed message. All fields are separated by a NULL byte. " alt="" coords="335,5,471,32"/>
-<area shape="rect" id="node4" href="structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application. " alt="" coords="615,86,745,127"/>
-<area shape="rect" id="node5" href="structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite. " alt="" coords="337,57,468,98"/>
-<area shape="rect" id="node6" href="structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats. " alt="" coords="328,132,477,159"/>
-<area shape="rect" id="node9" href="structaos__gnss__fix__info__t.html" title="GNSS fix information. " alt="" coords="611,152,749,179"/>
-<area shape="rect" id="node7" href="structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW) " alt="" coords="5,95,181,137"/>
-<area shape="rect" id="node8" href="structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format. " alt="" coords="20,161,167,188"/>
-<area shape="rect" id="node10" href="structaos__gnss__track__data__t.html" title="Tracking data. " alt="" coords="601,203,759,229"/>
-<area shape="rect" id="node11" href="structaos__gnss__satellite__info__t.html" title="Satellite information for tracking data. " alt="" coords="337,195,468,237"/>
+<area shape="rect" id="node2" href="structaos__gnss__raw__data__t.html" title="Data in raw format (or pre&#45;parsed) of frames received by the GNSS chip. " alt="" coords="328,7,477,33"/>
+<area shape="rect" id="node4" href="structaos__gnss__request__info__t.html" title="Information related to a request. " alt="" coords="591,53,757,80"/>
+<area shape="rect" id="node3" href="structnmea__parse__msg__t.html" title="NMEA pre&#45;parsed message. All fields are separated by a NULL byte. " alt="" coords="25,7,161,33"/>
+<area shape="rect" id="node5" href="structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application. " alt="" coords="609,105,739,146"/>
+<area shape="rect" id="node6" href="structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite. " alt="" coords="337,73,468,114"/>
+<area shape="rect" id="node7" href="structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats. " alt="" coords="328,151,477,177"/>
+<area shape="rect" id="node10" href="structaos__gnss__fix__info__t.html" title="GNSS fix information. " alt="" coords="605,171,743,197"/>
+<area shape="rect" id="node8" href="structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW) " alt="" coords="5,114,181,155"/>
+<area shape="rect" id="node9" href="structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format. " alt="" coords="20,180,167,207"/>
+<area shape="rect" id="node11" href="structaos__gnss__track__data__t.html" title="Tracking data. " alt="" coords="595,221,753,248"/>
+<area shape="rect" id="node12" href="structaos__gnss__satellite__info__t.html" title="Satellite information for tracking data. " alt="" coords="337,214,468,255"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -97,10 +98,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a76facf1a4d41a39e1b48295a9146485e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37e499ca16a20ae328a2c6fbb6eaed46"><td class="memItemLeft" ><a id="a37e499ca16a20ae328a2c6fbb6eaed46"></a>
 union {</td></tr>
-<tr class="memitem:ad2ba0d6341bb09151caa5c6dfa1d70c5"><td class="memItemLeft" >
-&#160;&#160;&#160;<a class="el" href="group__gnss__common.html#ga5fa783bdff53fc0cc9fb1c70b4d76901">aos_gnss_request_status_t</a>&#160;&#160;&#160;<a class="el" href="structaos__gnss__event__info__t.html#a2d9e06bb496c3073a4ff41569fe56fbc">req_status</a></td></tr>
-<tr class="memdesc:ad2ba0d6341bb09151caa5c6dfa1d70c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status of a request (belong to aos_gnss_event_req_status) <br /></td></tr>
-<tr class="separator:ad2ba0d6341bb09151caa5c6dfa1d70c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5903e80ea175725efbc175e6e9dab95b"><td class="memItemLeft" >
+&#160;&#160;&#160;<a class="el" href="structaos__gnss__request__info__t.html">aos_gnss_request_info_t</a>&#160;&#160;&#160;<a class="el" href="structaos__gnss__event__info__t.html#a3b7149367bb369036190c39239262741">req_info</a></td></tr>
+<tr class="memdesc:a5903e80ea175725efbc175e6e9dab95b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Information/status of a request. <br /></td></tr>
+<tr class="separator:a5903e80ea175725efbc175e6e9dab95b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8282ae77ee50e6ff6ab29e696707131"><td class="memItemLeft" >
 &#160;&#160;&#160;<a class="el" href="structaos__gnss__raw__data__t.html">aos_gnss_raw_data_t</a>&#160;&#160;&#160;<a class="el" href="structaos__gnss__event__info__t.html#a0eb003eb6791d8f5e9d0cec4a2feabe3">raw</a></td></tr>
 <tr class="memdesc:ac8282ae77ee50e6ff6ab29e696707131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw message (belong to aos_gnss_event_raw_nmea_sentence) <br /></td></tr>

@@ -4,21 +4,50 @@
  * \brief LORA CLI commands
  *
  */
-
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdarg.h>
 #include <string.h>
-// #include <stdio.h>
+#include <stdio.h>
 #include "srv_cli.h"
 #include "srv_provisioning.h"
 #include "aos_board.h"
 
-#include "srv_lmh.h"
+#include "board.h"
+#include "LmHandler.h"
+#include "LmHandlerMsgDisplay.h"
+#include "lmhandler-common.h"
 
+
+#define DEF_UPLINK_DR DR_0
+#define DEF_UPLINK_PORT 100
+#define MIN_UPLINK_PORT 1
+#define MAX_UPLINK_PORT 223	// Port values 1-223 are application specific
+
+static uint8_t _lmhandler_buffer[255];
+
+static LmHandlerParams_t _lmhandler_params = {
+		.Region = LORAMAC_REGION_EU868,
+		.AdrEnable = true,
+		.IsTxConfirmed = LORAMAC_HANDLER_UNCONFIRMED_MSG,
+		.TxDatarate = DEF_UPLINK_DR,
+		.PublicNetworkEnable = true,
+		.DutyCycleEnabled = true,
+		.DataBufferMaxSize = sizeof(_lmhandler_buffer),
+		.DataBuffer = _lmhandler_buffer,
+};
+
+static uint8_t _lmh_uplink_port = DEF_UPLINK_PORT;
+
+// Remember the state, as e.g. trying a join before initializing the handler crashes.
+static enum { lmh_state_closed, lmh_state_opened } _lmh_state = lmh_state_closed;
 
 static const cli_cmd_option_t _loramac_region_map[] = {
-		{ "AS923", LORAMAC_REGION_AS923 },
+		{ "AS923-1", LORAMAC_REGION_AS923_1 },
+		{ "AS923-JP", LORAMAC_REGION_AS923_1_JP },
+		{ "AS923-2", LORAMAC_REGION_AS923_2 },
+		{ "AS923-3", LORAMAC_REGION_AS923_3 },
+		{ "AS923-4", LORAMAC_REGION_AS923_4 },
 		{ "AU915", LORAMAC_REGION_AU915 },
 		{ "EU868", LORAMAC_REGION_EU868 },
 		{ "IN865", LORAMAC_REGION_IN865 },
@@ -55,7 +84,7 @@ static cli_parser_status_t _must_open_lmh_first(void)
 
 static cli_parser_status_t _cmd_lmhandler_device_time(void *arg, int argc, char *argv[])
 {
-	if (srv_lmh_state != lmh_state_opened) {
+	if (_lmh_state != lmh_state_opened) {
 		return _must_open_lmh_first();
 	}
 
@@ -67,7 +96,7 @@ static cli_parser_status_t _cmd_lmhandler_device_time(void *arg, int argc, char 
 
 static cli_parser_status_t _cmd_lmhandler_join(void *arg, int argc, char *argv[])
 {
-	if (srv_lmh_state != lmh_state_opened) {
+	if (_lmh_state != lmh_state_opened) {
 		return _must_open_lmh_first();
 	}
 
@@ -76,19 +105,67 @@ static cli_parser_status_t _cmd_lmhandler_join(void *arg, int argc, char *argv[]
 	return cli_parser_status_ok;
 }
 
+static void _lm_on_rx_data(LmHandlerAppData_t *appData, LmHandlerRxParams_t *params)
+{
+	DisplayRxUpdate(appData, params);
+
+	switch (appData->Port) {
+	case 1: // The application LED can be controlled on port 1 or 2
+	case 2:
+		cli_printf("Received request to turn the Application LED O%s\n", (appData->Buffer[0] & 0x01) ? "N":"FF");
+		aos_board_led_set(aos_board_led_idx_led4, appData->Buffer[0] & 0x01);
+		break;
+	default:
+		break;
+	}
+}
+
 static cli_parser_status_t _cmd_lmhandler_open(void *arg, int argc, char *argv[])
 {
-
 	LmHandlerErrorStatus_t rc;
-	rc = srv_lmh_open(NULL);
-	return (rc == LORAMAC_HANDLER_SUCCESS) ? cli_parser_status_ok : cli_parser_status_error;
+	static LmHandlerCallbacks_t lc;
 
+	if (srv_provisioning_data_state() == srv_provisioning_data_state_invalid) {
+		cli_printf("Restoring provisioning settings...\n");
+
+		if (srv_provisioning_read() != srv_provisioning_status_success) {
+			cli_printf("No provisioning settings found\n");
+			return cli_parser_status_error;
+		}
+	}
+
+	srv_provisioning_mac_region_t region;
+
+	if (srv_provisioning_get_lora_mac_region(&region) != srv_provisioning_status_success) {
+		cli_printf("Failed to get provisioned region\n");
+		return cli_parser_status_error;
+	}
+
+	if (!lmhandler_map_mac_region(region, &_lmhandler_params.Region)) {
+		cli_printf("Unknown provisioning region %u\n", region);
+		return cli_parser_status_error;
+	}
+
+	lmhandler_set_default_callbacks(&lc);	// Set up all default LMHandler callbacks
+
+	lc.OnRxData = _lm_on_rx_data;	// Override the default receive callback with ours
+
+	rc = LmHandlerInit(&lc, &_lmhandler_params);
+
+	if (rc == LORAMAC_HANDLER_SUCCESS) {
+		_lmh_state = lmh_state_opened;
+	}
+	return (rc == LORAMAC_HANDLER_SUCCESS) ? cli_parser_status_ok : cli_parser_status_error;
 }
 
 #include "strnhex.h"
 
 static cli_parser_status_t _cmd_lmhandler_send(void *arg, int argc, char *argv[])
 {
+	if (LmHandlerIsBusy() == true) {
+		cli_printf("LoRa is busy\n");
+		return cli_parser_status_error;
+	}
 
 #define HEX_BUFLEN 64
 
@@ -112,10 +189,19 @@ static cli_parser_status_t _cmd_lmhandler_send(void *arg, int argc, char *argv[]
 		payload_len = sizeof(default_payload);
 	}
 
-	LmHandlerErrorStatus_t rc;
-	rc = srv_lmh_send(payload_buf, payload_len);
+	cli_xdump(payload_buf, payload_len); // XXX debug
 
+	LmHandlerAppData_t payload;
+
+	payload.Buffer = payload_buf;	// de-constify.
+	payload.BufferSize = payload_len;
+	payload.Port = _lmh_uplink_port;
+
+	LmHandlerErrorStatus_t rc;
+
+	rc = LmHandlerSend(&payload, _lmhandler_params.IsTxConfirmed);
 	if (rc != LORAMAC_HANDLER_SUCCESS) {
+		cli_printf("Send failed, status %d\n", rc);
 		return cli_parser_status_error;
 	}
 	return cli_parser_status_ok;
@@ -133,13 +219,13 @@ static cli_parser_status_t _cmd_lmhandler_status(void *arg, int argc, char *argv
 
 static cli_parser_status_t _cmd_lmhandler_params_display(void *arg, int argc, char *argv[])
 {
-	LmHandlerParams_t *p = &srv_lmh_params;
+	LmHandlerParams_t *p = &_lmhandler_params;
 
 	cli_printf(" ADR Enabled: %s\n", p->AdrEnable?"yes":"no");
 	cli_printf(" Duty Cycle Enabled: %s\n", p->DutyCycleEnabled?"yes":"no");
 	cli_printf(" Confirmed Uplinks: %s\n", p->IsTxConfirmed?"yes":"no");
 	cli_printf(" Public Network: %s\n", p->PublicNetworkEnable?"yes":"no");
-	cli_printf(" Uplink Port: %u \n", srv_lmh_uplink_port);
+	cli_printf(" Uplink Port: %u \n", _lmh_uplink_port);
 	cli_printf(" Uplink Datarate: %u\n", p->TxDatarate);
 	return cli_parser_status_void;
 }
@@ -157,7 +243,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_adr(void *arg, int argc, ch
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_params.AdrEnable = !!value;
+	_lmhandler_params.AdrEnable = !!value;
 
 	return cli_parser_status_ok;
 }
@@ -175,7 +261,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_duty_cycle(void *arg, int a
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_params.DutyCycleEnabled = !!value;
+	_lmhandler_params.DutyCycleEnabled = !!value;
 
 	return cli_parser_status_ok;
 }
@@ -193,7 +279,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_confirmed_tx(void *arg, int
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_params.IsTxConfirmed = !!value;
+	_lmhandler_params.IsTxConfirmed = !!value;
 
 	return cli_parser_status_ok;
 }
@@ -211,7 +297,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_public_network(void *arg, i
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_params.PublicNetworkEnable = !!value;
+	_lmhandler_params.PublicNetworkEnable = !!value;
 
 	return cli_parser_status_ok;
 }
@@ -232,7 +318,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_ul_port(void *arg, int argc
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_uplink_port = value;
+	_lmh_uplink_port = value;
 
 	return cli_parser_status_ok;
 }
@@ -253,7 +339,7 @@ static cli_parser_status_t _cmd_lmhandler_params_set_tx_datarate(void *arg, int 
 		return _incorrect_parameters(argv[0], argv[1]);
 	}
 
-	srv_lmh_params.TxDatarate = value;
+	_lmhandler_params.TxDatarate = value;
 
 	return cli_parser_status_ok;
 }

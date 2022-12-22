@@ -72,6 +72,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbuffer__t.html">buffer_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer data type.  <a href="structbuffer__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionaos__gpio__callback__t.html">aos_gpio_callback_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO Callback function.  <a href="unionaos__gpio__callback__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,9 +241,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga421aeff6ed9029b242b8ae8aab2f3669"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__system.html#ga421aeff6ed9029b242b8ae8aab2f3669">aos_gpio_init</a> (void)</td></tr>
 <tr class="memdesc:ga421aeff6ed9029b242b8ae8aab2f3669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the GPIO driver.  <a href="#ga421aeff6ed9029b242b8ae8aab2f3669">More...</a><br /></td></tr>
 <tr class="separator:ga421aeff6ed9029b242b8ae8aab2f3669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05f49fe0a0ef9103e1bceba8dd528d9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__system.html#ga05f49fe0a0ef9103e1bceba8dd528d9e">aos_gpio_bat_setup</a> (<a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a> gpio_vbat_ctrl, <a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a> gpio_vbat_analog, uint8_t vbat_ctrl_ratio, uint16_t vbat_ctrl_setup_delay, uint16_t vbat_offset)</td></tr>
-<tr class="memdesc:ga05f49fe0a0ef9103e1bceba8dd528d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the battery monitoring setting.  <a href="#ga05f49fe0a0ef9103e1bceba8dd528d9e">More...</a><br /></td></tr>
-<tr class="separator:ga05f49fe0a0ef9103e1bceba8dd528d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28906bc4be714744441c5a73c2d7a584"><td class="memItemLeft" align="right" valign="top"><a id="ga28906bc4be714744441c5a73c2d7a584"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>aos_gpio_bat_setup</b> (<a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a> gpio_vbat_ctrl, <a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a> gpio_vbat_analog, uint8_t vbat_ctrl_ratio, uint16_t vbat_ctrl_setup_delay, int16_t vbat_offset)</td></tr>
+<tr class="separator:ga28906bc4be714744441c5a73c2d7a584"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafdcfbc125511d8f9bd39d50b539a8e4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aos__system.html#gafdcfbc125511d8f9bd39d50b539a8e4a">aos_gpio_open</a> (<a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a> id, <a class="el" href="group__aos__system.html#ga1706cf323201f43f2099d770821a3e79">aos_gpio_mode_t</a> mode)</td></tr>
 <tr class="memdesc:gafdcfbc125511d8f9bd39d50b539a8e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open and simply configure a GPIO as either a digital input or output, no pullup and push-pull in case of output.  <a href="#gafdcfbc125511d8f9bd39d50b539a8e4a">More...</a><br /></td></tr>
 <tr class="separator:gafdcfbc125511d8f9bd39d50b539a8e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -653,65 +656,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga05f49fe0a0ef9103e1bceba8dd528d9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga05f49fe0a0ef9103e1bceba8dd528d9e">&#9670;&nbsp;</a></span>aos_gpio_bat_setup()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void aos_gpio_bat_setup </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a>&#160;</td>
-          <td class="paramname"><em>gpio_vbat_ctrl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__aos__system.html#gae1d8f4305ee1f2bc8f9012f3aae32090">aos_gpio_id_t</a>&#160;</td>
-          <td class="paramname"><em>gpio_vbat_analog</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>vbat_ctrl_ratio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>vbat_ctrl_setup_delay</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>vbat_offset</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the battery monitoring setting. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gpio_vbat_ctrl</td><td>Battery monitoring. Voltage bridge control. If no voltage divider bridge, pass aos_gpio_id_last. </td></tr>
-    <tr><td class="paramname">gpio_vbat_analog</td><td>Analog pin for which we want to read the battery level value. </td></tr>
-    <tr><td class="paramname">vbat_ctrl_ratio</td><td>Voltage bridge control ratio. E.g if the bridge divides by 2 then ctrl_ratio = 2. Value 0 is forbidden. If there is no bridge, the ctrl_ration equals 1. </td></tr>
-    <tr><td class="paramname">vbat_ctrl_setup_delay</td><td>Time in ms to stabilize the voltage divider bridge. </td></tr>
-    <tr><td class="paramname">vbat_offset</td><td>voltage offset introduced by the voltage divider bridge .</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>The vbat parameters are used to read the battery level via the function aos_gpio_read_battery_level </dd></dl>
-
-</div>
-</div>
 <a id="ga93836b88f5f4b692db99991e9d29d9da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga93836b88f5f4b692db99991e9d29d9da">&#9670;&nbsp;</a></span>aos_gpio_close()</h2>
 

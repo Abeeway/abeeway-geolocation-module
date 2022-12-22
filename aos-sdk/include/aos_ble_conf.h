@@ -50,9 +50,9 @@ extern "C" {
  * This shall take into account all registered handlers
  * (from either the provided services or the custom services)
  */
-#define BLE_CFG_SVC_MAX_NBR_CB                                                 7   //!< Max number of services Handler to register
+#define BLE_CFG_SVC_MAX_NBR_CB                                                 16   //!< Max number of services Handler to register
 
-#define BLE_CFG_CLT_MAX_NBR_CB                                                 0   //!< Max number of client Handler to register
+#define BLE_CFG_CLT_MAX_NBR_CB                                                 0    //!< Max number of client Handler to register
 
 /******************************************************************************
  * Device Information Service (DIS)
@@ -68,6 +68,11 @@ extern "C" {
 #define BLE_CFG_DIS_IEEE_CERTIFICATION                                         0   //!< DIS_IEEE_CERTIFICATION support
 #define BLE_CFG_DIS_PNP_ID                                                     0   //!< DIS_PNP_ID support
 
+/******************************************************************************
+ * Battery Service (BAS)
+ ******************************************************************************/
+#define BLE_CFG_BAS_LEVEL_NOT_PROP                                             1   //!< Battery Level characteristic Notification property
+#define BLE_CFG_BAS_POWER_NOT_PROP                                             1   //!< Battery Power characteristic Notification property
 /**
  * device information service characteristic lengths
  */
@@ -80,6 +85,7 @@ extern "C" {
 #define BLE_CFG_DIS_MANUFACTURER_NAME_STRING_LEN_MAX                         (32)  //!< DIS manufacturer name string max length
 #define BLE_CFG_DIS_IEEE_CERTIFICATION_LEN_MAX                               (32)  //!< DIS IEEE certification ID information max length
 #define BLE_CFG_DIS_PNP_ID_LEN_MAX                                           (7)   //!< DIS PNP ID information max length
+#define BLE_CFG_DIS_DATA_LEN_MAX                                             (32)  //!< DIS data max length
 
 /******************************************************************************
  * GAP Service - Appearance

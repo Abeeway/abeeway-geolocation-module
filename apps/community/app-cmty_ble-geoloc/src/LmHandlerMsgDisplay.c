@@ -39,10 +39,8 @@
 #include "utilities.h"
 #include "timer.h"
 
-#if (ABEEWAY)
 #include "srv_cli.h"	// This component requires CLI services.
-#define printf(s...) cli_printf(s)
-#endif // ABEEWAY
+#define printf(s...) cli_printf(s)	// ABEEWAY change to original code
 
 #include "LmHandlerMsgDisplay.h"
 
@@ -155,50 +153,30 @@ void DisplayNetworkParametersUpdate( CommissioningParams_t *commissioningParams 
     {
         printf( "-%02X", commissioningParams->JoinEui[i] );
     }
-#if (!ABEEWAY) // We have no use for the PIN
-    printf( "\n" );
-    printf( "Pin         : %02X", commissioningParams->SePin[0] );
-    for( int i = 1; i < 4; i++ )
-    {
-        printf( "-%02X", commissioningParams->SePin[i] );
-    }
-#endif // !ABEEWAY
     printf( "\n\n" );
+}
+
+static const char *_mcps_type_name(Mcps_t type)
+{
+#define KASE(s) case s: return #s
+	switch(type) {
+	KASE(MCPS_CONFIRMED);
+	KASE(MCPS_UNCONFIRMED);
+	KASE(MCPS_PROPRIETARY);
+	KASE(MCPS_MULTICAST);
+	}
+#undef KASE
+
+	static char unkbuf[6];
+	snprintf(unkbuf, sizeof(unkbuf), "?%u", type);
+	return unkbuf;
 }
 
 void DisplayMacMcpsRequestUpdate( LoRaMacStatus_t status, McpsReq_t *mcpsReq, TimerTime_t nextTxIn )
 {
-    switch( mcpsReq->Type )
-    {
-        case MCPS_CONFIRMED:
-        {
-            printf( "\n###### =========== MCPS-Request ============ ######\n" );
-            printf( "######            MCPS_CONFIRMED             ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        case MCPS_UNCONFIRMED:
-        {
-            printf( "\n###### =========== MCPS-Request ============ ######\n" );
-            printf( "######           MCPS_UNCONFIRMED            ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        case MCPS_PROPRIETARY:
-        {
-            printf( "\n###### =========== MCPS-Request ============ ######\n" );
-            printf( "######           MCPS_PROPRIETARY            ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        default:
-        {
-            printf( "\n###### =========== MCPS-Request ============ ######\n" );
-            printf( "######                MCPS_ERROR             ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-    }
+    printf( "\n###### =========== MCPS-Request ============ ######\n" );
+    printf( "######           %-16s            ######\n", _mcps_type_name(mcpsReq->Type));
+	printf( "###### ===================================== ######\n");
     printf( "STATUS      : %s\n", MacStatusStrings[status] );
     if( status == LORAMAC_STATUS_DUTYCYCLE_RESTRICTED )
     {
@@ -206,46 +184,39 @@ void DisplayMacMcpsRequestUpdate( LoRaMacStatus_t status, McpsReq_t *mcpsReq, Ti
     }
 }
 
+static const char *_mlme_type_name(Mlme_t type)
+{
+#define KASE(s) case s: return #s
+	switch(type) {
+		KASE(MLME_UNKNOWN);
+		KASE(MLME_JOIN);
+		KASE(MLME_REJOIN_0);
+		KASE(MLME_REJOIN_1);
+		KASE(MLME_REJOIN_2);
+		KASE(MLME_LINK_CHECK);
+		KASE(MLME_TXCW);
+		KASE(MLME_DERIVE_MC_KE_KEY);
+		KASE(MLME_DERIVE_MC_KEY_PAIR);
+		KASE(MLME_DEVICE_TIME);
+		KASE(MLME_BEACON);
+		KASE(MLME_BEACON_ACQUISITION);
+		KASE(MLME_PING_SLOT_INFO);
+		KASE(MLME_BEACON_TIMING);
+		KASE(MLME_BEACON_LOST);
+		KASE(MLME_REVERT_JOIN);
+	}
+#undef KASE
+
+	static char unkbuf[6];
+	snprintf(unkbuf, sizeof(unkbuf), "?%u", type);
+	return unkbuf;
+}
+
 void DisplayMacMlmeRequestUpdate( LoRaMacStatus_t status, MlmeReq_t *mlmeReq, TimerTime_t nextTxIn )
 {
-    switch( mlmeReq->Type )
-    {
-        case MLME_JOIN:
-        {
-            printf( "\n###### =========== MLME-Request ============ ######\n" );
-            printf( "######               MLME_JOIN               ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        case MLME_LINK_CHECK:
-        {
-            printf( "\n###### =========== MLME-Request ============ ######\n" );
-            printf( "######            MLME_LINK_CHECK            ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        case MLME_DEVICE_TIME:
-        {
-            printf( "\n###### =========== MLME-Request ============ ######\n" );
-            printf( "######            MLME_DEVICE_TIME           ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        case MLME_TXCW:
-        {
-            printf( "\n###### =========== MLME-Request ============ ######\n" );
-            printf( "######               MLME_TXCW               ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-        default:
-        {
-            printf( "\n###### =========== MLME-Request ============ ######\n" );
-            printf( "######              MLME_UNKNOWN             ######\n");
-            printf( "###### ===================================== ######\n");
-            break;
-        }
-    }
+    printf( "\n###### =========== MLME-Request ============ ######\n" );
+    printf(   "######     %-24s          ######\n", _mlme_type_name(mlmeReq->Type));
+    printf( "###### ===================================== ######\n");
     printf( "STATUS      : %s\n", MacStatusStrings[status] );
     if( status == LORAMAC_STATUS_DUTYCYCLE_RESTRICTED )
     {
@@ -266,7 +237,6 @@ void DisplayJoinRequestUpdate( LmHandlerJoinParams_t *params )
             printf( "DATA RATE   : DR_%d\n\n", params->Datarate );
         }
     }
-#if ( OVER_THE_AIR_ACTIVATION == 0 )
     else
     {
         printf( "###### ===========   JOINED     ============ ######\n" );
@@ -274,7 +244,6 @@ void DisplayJoinRequestUpdate( LmHandlerJoinParams_t *params )
         printf( "DevAddr     : %08lX\n", params->CommissioningParams->DevAddr );
         printf( "\n\n" );
     }
-#endif
 }
 
 void DisplayTxUpdate( LmHandlerTxParams_t *params )
@@ -329,7 +298,11 @@ void DisplayTxUpdate( LmHandlerTxParams_t *params )
         printf("CHANNEL MASK: ");
         switch( LmHandlerGetActiveRegion( ) )
         {
-            case LORAMAC_REGION_AS923:
+            case LORAMAC_REGION_AS923_1:
+            case LORAMAC_REGION_AS923_1_JP:
+            case LORAMAC_REGION_AS923_2:
+            case LORAMAC_REGION_AS923_3:
+            case LORAMAC_REGION_AS923_4:
             case LORAMAC_REGION_CN779:
             case LORAMAC_REGION_EU868:
             case LORAMAC_REGION_IN865:
@@ -438,11 +411,7 @@ void DisplayClassUpdate( DeviceClass_t deviceClass )
     printf( "\n\n###### ===== Switch to Class %c done.  ===== ######\n\n", "ABC"[deviceClass] );
 }
 
-void DisplayAppInfo( const char* appName, const Version_t* appVersion, const Version_t* gitHubVersion )
+void DisplayTimeUpdate( bool isSynchronized, uint32_t timeCorrection )
 {
-    printf( "\n###### ===================================== ######\n\n" );
-    printf( "Application name   : %s\n", appName );
-    printf( "Application version: %d.%d.%d\n", appVersion->Fields.Major, appVersion->Fields.Minor, appVersion->Fields.Patch );
-    printf( "GitHub base version: %d.%d.%d\n", gitHubVersion->Fields.Major, gitHubVersion->Fields.Minor, gitHubVersion->Fields.Patch );
-    printf( "\n###### ===================================== ######\n\n" );
+	printf("%s(%d, %lu)\n", isSynchronized, timeCorrection);
 }
