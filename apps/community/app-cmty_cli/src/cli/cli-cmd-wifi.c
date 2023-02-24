@@ -127,7 +127,7 @@ static cli_parser_status_t _cmd_lr11xx_wifi_scan(void *arg, int argc, char *argv
 
 		cli_printf(" MAC Address: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x, RSSI: %d\n",
 				r.mac_address[0], r.mac_address[1],r.mac_address[2],
-				r.mac_address[3], r.mac_address[4], r.mac_address[4], r.rssi);
+				r.mac_address[3], r.mac_address[4], r.mac_address[5], r.rssi);
 	}
 	return cli_parser_status_ok;
 }
@@ -179,7 +179,7 @@ static cli_parser_status_t _cmd_lr11xx_wifi_results(void *arg, int argc, char *a
 		cli_printf("Entry %d\n", i);
 		cli_printf(" MAC Address: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n",
 				r.mac_address[0], r.mac_address[1],r.mac_address[2],
-				r.mac_address[3], r.mac_address[4], r.mac_address[4]);
+				r.mac_address[3], r.mac_address[4], r.mac_address[5]);
 		cli_printf(" RSSI: %d\n", r.rssi);
 
 		lr11xx_wifi_channel_t channel;
