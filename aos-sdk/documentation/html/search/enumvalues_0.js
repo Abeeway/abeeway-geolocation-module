@@ -145,6 +145,7 @@ var searchData=
   ['aos_5flog_5flevel_5flast',['aos_log_level_last',['../group__aos__log.html#ggab5415466dbe3b11b98f39d2c428bac16a9472019523c54d5e6c55ad5d4938ff35',1,'aos_log.h']]],
   ['aos_5flog_5flevel_5fstatus',['aos_log_level_status',['../group__aos__log.html#ggab5415466dbe3b11b98f39d2c428bac16a4e884b6cce579aaf51eb5c9354621919',1,'aos_log.h']]],
   ['aos_5flog_5flevel_5fwarning',['aos_log_level_warning',['../group__aos__log.html#ggab5415466dbe3b11b98f39d2c428bac16a20c0d58bee709dbec137825c2fd70ab7',1,'aos_log.h']]],
+  ['aos_5flog_5fmodule_5faccelero',['aos_log_module_accelero',['../group__aos__log.html#gga8ae6dd04ed3626f94e58a26bc380ac90a3deba405a1ede6415142851716cc25ab',1,'aos_log.h']]],
   ['aos_5flog_5fmodule_5fall',['aos_log_module_all',['../group__aos__log.html#gga8ae6dd04ed3626f94e58a26bc380ac90ad8d1cc9ecd0f7ecc6b567b923dee7a67',1,'aos_log.h']]],
   ['aos_5flog_5fmodule_5fapp',['aos_log_module_app',['../group__aos__log.html#gga8ae6dd04ed3626f94e58a26bc380ac90a34d8a31225bf19671e3e9c1d892ffd39',1,'aos_log.h']]],
   ['aos_5flog_5fmodule_5fble',['aos_log_module_ble',['../group__aos__log.html#gga8ae6dd04ed3626f94e58a26bc380ac90a5cab34e5ed3d19321d761f3b9b8b9ca2',1,'aos_log.h']]],

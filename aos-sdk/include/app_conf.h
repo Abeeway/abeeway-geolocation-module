@@ -165,7 +165,7 @@ extern "C" {
  * Maximum number of simultaneous connections that the device will support.
  * Valid values are from 1 to 8
  */
-#define CFG_BLE_NUM_LINK            1   //!< Maximum number of simultaneous connections that the device will support
+#define CFG_BLE_NUM_LINK            2   //!< Maximum number of simultaneous connections that the device will support
 
 /**
  * Maximum number of Services that can be stored in the GATT database.

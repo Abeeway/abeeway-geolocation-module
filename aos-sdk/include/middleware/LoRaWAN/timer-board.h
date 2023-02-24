@@ -74,6 +74,12 @@ typedef struct {
 	timer_ticks_t	(*get_context)(void);		// Get the laps start time
 	timer_ticks_t	(*get_elapsed_time)(void);	// Get the elapsed time, in ticks
 
+	/*
+	 * Temperature compensation. Used in class B calculations. Part of the timer
+	 * abstraction as the compensation may differ depending on the peripheral.
+	 */
+	timer_ticks_t	(*temp_compensation)(timer_ticks_t period, float temperature);
+
 } timer_implementation_t;
 
 extern const timer_implementation_t aos_mac_timer;
