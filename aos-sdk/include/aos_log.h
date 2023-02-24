@@ -61,6 +61,7 @@ typedef enum {
 	aos_log_module_system = 0,		//!< Trace the system
 	aos_log_module_config,			//!< Trace the config manager
 	aos_log_module_ble,				//!< Trace the module BLE
+	aos_log_module_accelero,		//!< Trace the accelerometer
 	aos_log_module_app,				//!< Trace the application
 	aos_log_module_last,			//!< Last module registered for tracing
 	aos_log_module_all = aos_log_module_last //!< Access all module at once
