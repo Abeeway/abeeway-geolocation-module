@@ -6,7 +6,7 @@
  *  Created on: 13 oct. 2022
  *      Author: Jean-PierreTogbe
  *
- *  copyright (C) 2022, Abeeway (www.abeeway.com). All Rights Reserved.
+ *  copyright (C) 2023, Abeeway (www.abeeway.com). All Rights Reserved.
  */
 
 #include <stdio.h>
@@ -62,5 +62,4 @@ void baswap(uint8_t *dest, uint8_t *src, uint8_t len)
 		dest[i] = src[len - 1 - i];
 	}
 }
-
 

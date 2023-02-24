@@ -4,6 +4,7 @@
  *  Created on: 13 oct. 2022
  *      Author: Jean-PierreTogbe
  */
+
 #include <stdio.h>
 
 #include "aos_system.h"
@@ -46,6 +47,8 @@ static void _init_ble_app_info(aos_ble_app_data_t *app_info)
 
 	app_custom_srvc_conf_set(app_info->custom_srvc_init_data);
 }
+
+
 
 void btn_handling_config(aos_gpio_id_t gpio, aos_system_user_callback_t cb)
 {

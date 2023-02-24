@@ -135,4 +135,4 @@ static const cli_parser_cmd_t _geoloc_ble_demo[] = {
  * ----------------------------------------------------------------------------
  */
 // Register main commands against the CLI parser
-CLI_COMMAND_TAB_REGISTER(geolocBle,"Padawan commands", _geoloc_ble_demo, CLI_ACCESS_ALL_LEVELS );
+CLI_COMMAND_TAB_REGISTER(geolocBle,"Padawan commands BLE", _geoloc_ble_demo, CLI_ACCESS_ALL_LEVELS );
