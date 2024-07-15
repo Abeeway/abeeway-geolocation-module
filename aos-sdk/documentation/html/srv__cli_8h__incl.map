@@ -1,7 +1,0 @@
-<map id="aos&#45;libs/aos&#45;services/src/srv_cli.h" name="aos&#45;libs/aos&#45;services/src/srv_cli.h">
-<area shape="rect" id="node4" href="$aos__uart_8h.html" title="UART driver. " alt="" coords="184,95,267,121"/>
-<area shape="rect" id="node9" href="$aos__cli_8h.html" title="Common Line Interface low layer. " alt="" coords="291,95,365,121"/>
-<area shape="rect" id="node10" href="$aos__cli__parser_8h.html" title="Command Line Interface parser module. Parse commands and call associated user callbacks. " alt="" coords="365,169,483,196"/>
-<area shape="rect" id="node7" href="$aos__system_8h.html" title="System management and ISR to background process deferring. " alt="" coords="88,169,192,196"/>
-<area shape="rect" id="node8" href="$aos__common_8h.html" title="Common definitions. " alt="" coords="158,244,269,271"/>
-</map>
