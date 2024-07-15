@@ -1,0 +1,7 @@
+<map id="aos_gnss_satellite_prn_report_t" name="aos_gnss_satellite_prn_report_t">
+<area shape="rect" id="node1" title="Pseudo range report sent to the application." alt="" coords="67,213,197,255"/>
+<area shape="rect" id="node2" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite." alt="" coords="5,109,136,151"/>
+<area shape="rect" id="node3" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats." alt="" coords="160,117,309,143"/>
+<area shape="rect" id="node4" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="53,5,229,47"/>
+<area shape="rect" id="node5" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="253,13,400,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="aos_spi_master_t" name="aos_spi_master_t">
+<area shape="rect" id="node1" title="Structure describing a SPI bus acting as master." alt="" coords="5,95,131,121"/>
+<area shape="rect" id="node2" href="$structaos__spi__ioctl__t.html" title="IO control request and data." alt="" coords="13,5,123,32"/>
+</map>

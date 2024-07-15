@@ -1,0 +1,4 @@
+<map id="nmea_dictionary_word_t" name="nmea_dictionary_word_t">
+<area shape="rect" id="node1" title="Word definition entry used by the NMEA dictionary." alt="" coords="5,95,168,121"/>
+<area shape="rect" id="node2" href="$structnmea__parse__msg__t.html" title="NMEA pre&#45;parsed message. All fields are separated by a NULL byte." alt="" coords="19,5,155,32"/>
+</map>

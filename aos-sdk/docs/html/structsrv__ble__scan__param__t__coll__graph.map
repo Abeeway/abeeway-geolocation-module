@@ -1,0 +1,5 @@
+<map id="srv_ble_scan_param_t" name="srv_ble_scan_param_t">
+<area shape="rect" id="node1" title="BLE scan parameters." alt="" coords="83,109,236,136"/>
+<area shape="rect" id="node2" href="$structsrv__ble__scan__param__report__t.html" title="Describe what we expect in the report." alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node3" href="$structsrv__ble__scan__param__filter__t.html" title="Filter to be applied on scanned beacons." alt="" coords="172,5,315,47"/>
+</map>

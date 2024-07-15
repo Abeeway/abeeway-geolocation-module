@@ -1,0 +1,8 @@
+<map id="aos&#45;core/aos/aos_timer.h" name="aos&#45;core/aos/aos_timer.h">
+<area shape="rect" id="node1" title="Timers based on the RTC alarm." alt="" coords="5,5,173,32"/>
+<area shape="rect" id="node2" href="$aos__rtc_8h.html" title="RTC (Real Time Clock)." alt="" coords="12,80,167,107"/>
+<area shape="rect" id="node3" href="$srv__gnss__mt3333_8h.html" title="GNSS service using the MT3333." alt="" coords="13,229,166,271"/>
+<area shape="rect" id="node6" href="$srv__gnss_8h.html" title="GNSS service." alt="" coords="67,155,231,181"/>
+<area shape="rect" id="node4" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="8,319,171,360"/>
+<area shape="rect" id="node5" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="8,408,171,449"/>
+</map>

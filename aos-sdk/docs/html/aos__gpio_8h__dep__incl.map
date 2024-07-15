@@ -1,0 +1,12 @@
+<map id="aos&#45;core/aos/aos_gpio.h" name="aos&#45;core/aos/aos_gpio.h">
+<area shape="rect" id="node1" title="GPIO driver." alt="" coords="279,5,443,32"/>
+<area shape="rect" id="node2" href="$aos__adc_8h.html" title="Analog to Digital Converter (ADC)" alt="" coords="5,87,167,114"/>
+<area shape="rect" id="node3" href="$aos__calib__hsi_8h.html" title="HSI calibration." alt="" coords="191,80,347,121"/>
+<area shape="rect" id="node4" href="$aos__lr1110__mgr_8h.html" title="LR1110 manager." alt="" coords="371,80,534,121"/>
+<area shape="rect" id="node10" href="$aos__rf__switch_8h.html" title="RF switch driver." alt="" coords="559,80,696,121"/>
+<area shape="rect" id="node5" href="$srv__gnss__lr1110_8h.html" title="GNSS LR1110 service." alt="" coords="203,169,356,211"/>
+<area shape="rect" id="node8" href="$srv__wifi__scan_8h.html" title="WIFI scan service." alt="" coords="380,169,525,211"/>
+<area shape="rect" id="node9" href="$srv__lora_8h.html" title="LoRa service." alt="" coords="550,177,707,203"/>
+<area shape="rect" id="node6" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="285,259,447,300"/>
+<area shape="rect" id="node7" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="285,348,447,389"/>
+</map>

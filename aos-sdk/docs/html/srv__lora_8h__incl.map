@@ -1,0 +1,17 @@
+<map id="aos&#45;services/srv_lora.h" name="aos&#45;services/srv_lora.h">
+<area shape="rect" id="node1" title="LoRa service." alt="" coords="585,5,742,32"/>
+<area shape="rect" id="node2" href="$aos__lr1110__mgr_8h.html" title="LR1110 manager." alt="" coords="602,80,725,107"/>
+<area shape="rect" id="node3" href="$aos__wifi_8h.html" title="Basic LR1110 WIFI scan driver." alt="" coords="789,229,871,256"/>
+<area shape="rect" id="node9" href="$aos__lr1110__gnss_8h.html" title="Basic LR1110 GNSS scan driver." alt="" coords="598,229,729,256"/>
+<area shape="rect" id="node11" href="$aos__gpio_8h.html" title="GPIO driver." alt="" coords="239,155,325,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="360,379,425,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="626,304,701,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="960,304,1095,331"/>
+<area shape="rect" id="node7" title=" " alt="" coords="799,304,935,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="725,304,775,331"/>
+<area shape="rect" id="node10" href="$aos__gnss__common_8h.html" title="Common GNSS definition (shared between drivers and application)" alt="" coords="455,304,602,331"/>
+<area shape="rect" id="node12" href="$aos__common_8h.html" title="Common definitions." alt="" coords="5,304,116,331"/>
+<area shape="rect" id="node13" href="$aos__system_8h.html" title="System management and ISR to background process deferring." alt="" coords="230,229,334,256"/>
+<area shape="rect" id="node14" title=" " alt="" coords="234,304,330,331"/>
+<area shape="rect" id="node15" title=" " alt="" coords="141,304,210,331"/>
+</map>

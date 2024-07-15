@@ -1,0 +1,10 @@
+<map id="aos&#45;core/aos/aos_adc.h" name="aos&#45;core/aos/aos_adc.h">
+<area shape="rect" id="node1" title="Analog to Digital Converter (ADC)" alt="" coords="20,5,181,32"/>
+<area shape="rect" id="node2" href="$aos__common_8h.html" title="Common definitions." alt="" coords="5,229,116,256"/>
+<area shape="rect" id="node4" href="$aos__gpio_8h.html" title="GPIO driver." alt="" coords="98,80,183,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="75,304,140,331"/>
+<area shape="rect" id="node5" href="$aos__system_8h.html" title="System management and ISR to background process deferring." alt="" coords="169,155,273,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="191,229,266,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="290,229,386,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="410,229,479,256"/>
+</map>

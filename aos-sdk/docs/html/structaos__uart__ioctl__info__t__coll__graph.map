@@ -1,0 +1,4 @@
+<map id="aos_uart_ioctl_info_t" name="aos_uart_ioctl_info_t">
+<area shape="rect" id="node1" title="Information block belonging to an IO request." alt="" coords="5,95,148,121"/>
+<area shape="rect" id="node2" href="$structaos__uart__stats__t.html" title="Structure containing the UART statistics." alt="" coords="17,5,136,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="aos_ble_app_data_t" name="aos_ble_app_data_t">
+<area shape="rect" id="node1" title="Application data to send to the BLE to update characteristic data." alt="" coords="174,377,313,404"/>
+<area shape="rect" id="node2" href="$structaos__ble__core__fw__version__t.html" title="BLE stack and FUS versions." alt="" coords="5,281,185,307"/>
+<area shape="rect" id="node3" href="$structbuffer__t.html" title="Buffer data type." alt="" coords="210,281,277,307"/>
+<area shape="rect" id="node4" href="$structble__custom__srvc__init__data__t.html" title="BLE custom services and characteristics initialization data, data needed to update a custom service a..." alt="" coords="301,273,447,315"/>
+<area shape="rect" id="node5" href="$structble__char__init__data__t.html" title="BLE Characteristic initialization data, data needed to initialize/configure a characteristic." alt="" coords="213,184,351,211"/>
+<area shape="rect" id="node6" href="$structuuid__type__t.html" title="Definition of uuid_type_t struct." alt="" coords="321,95,411,121"/>
+<area shape="rect" id="node8" href="$structble__service__init__data__t.html" title="BLE custom service initialization data, data needed to initialize/configure a custom service." alt="" coords="375,184,530,211"/>
+<area shape="rect" id="node7" href="$unionuuid__t.html" title="Definition of uuid_t struct, to hold UUID on 16 Bits or 128 bits." alt="" coords="337,5,395,32"/>
+</map>

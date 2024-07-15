@@ -1,0 +1,29 @@
+<map id="aos&#45;core/aos/aos_common.h" name="aos&#45;core/aos/aos_common.h">
+<area shape="rect" id="node1" title="Common definitions." alt="" coords="1265,5,1456,32"/>
+<area shape="rect" id="node2" href="$aos__adc_8h.html" title="Analog to Digital Converter (ADC)" alt="" coords="5,266,167,293"/>
+<area shape="rect" id="node3" href="$aos__gpio_8h.html" title="GPIO driver." alt="" coords="308,177,472,203"/>
+<area shape="rect" id="node4" href="$aos__calib__hsi_8h.html" title="HSI calibration." alt="" coords="191,259,347,300"/>
+<area shape="rect" id="node12" href="$aos__system_8h.html" title="System management and ISR to background process deferring." alt="" coords="748,87,931,114"/>
+<area shape="rect" id="node19" href="$aos__flash_8h.html" title="Flash memory interface API." alt="" coords="1565,87,1733,114"/>
+<area shape="rect" id="node20" href="$aos__i2c_8h.html" title="I2C driver." alt="" coords="1757,87,1914,114"/>
+<area shape="rect" id="node21" href="$aos__pwm_8h.html" title="PWM (Pulse Width Modulated) driver." alt="" coords="1938,87,2106,114"/>
+<area shape="rect" id="node22" href="$aos__ble__common_8h.html" title="common types and const for BLE module" alt="" coords="1343,80,1490,121"/>
+<area shape="rect" id="node23" href="$aos__ble__core_8h.html" title="BLE core related API (connectivity, advertisement, scan ...)" alt="" coords="1351,169,1498,211"/>
+<area shape="rect" id="node24" href="$aos__ble__services_8h.html" title="BLE services related API." alt="" coords="1690,169,1837,211"/>
+<area shape="rect" id="node26" href="$srv__ble__scan_8h.html" title="BLE scan service." alt="" coords="1184,169,1327,211"/>
+<area shape="rect" id="node27" href="$srv__ble__beaconing_8h.html" title="BLE beaconing service." alt="" coords="2131,80,2273,121"/>
+<area shape="rect" id="node5" href="$aos__lr1110__mgr_8h.html" title="LR1110 manager." alt="" coords="533,259,695,300"/>
+<area shape="rect" id="node11" href="$aos__rf__switch_8h.html" title="RF switch driver." alt="" coords="371,259,508,300"/>
+<area shape="rect" id="node6" href="$srv__gnss__lr1110_8h.html" title="GNSS LR1110 service." alt="" coords="717,348,871,389"/>
+<area shape="rect" id="node9" href="$srv__wifi__scan_8h.html" title="WIFI scan service." alt="" coords="365,348,511,389"/>
+<area shape="rect" id="node10" href="$srv__lora_8h.html" title="LoRa service." alt="" coords="535,355,693,382"/>
+<area shape="rect" id="node7" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="770,437,933,479"/>
+<area shape="rect" id="node8" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="770,527,933,568"/>
+<area shape="rect" id="node13" href="$aos__nmea__parser_8h.html" title=" " alt="" coords="548,169,709,211"/>
+<area shape="rect" id="node14" href="$aos__uart_8h.html" title="UART driver." alt="" coords="946,177,1109,203"/>
+<area shape="rect" id="node15" href="$aos__usb__cdc_8h.html" title="USB driver (serial communication support &#45; CDC&#45; only)." alt="" coords="1072,259,1223,300"/>
+<area shape="rect" id="node17" href="$srv__gnss__mt3333_8h.html" title="GNSS service using the MT3333." alt="" coords="720,259,873,300"/>
+<area shape="rect" id="node18" href="$srv__gnss_8h.html" title="GNSS service." alt="" coords="757,177,921,203"/>
+<area shape="rect" id="node16" href="$srv__cli_8h.html" title="Command Line Interface service." alt="" coords="898,266,1047,293"/>
+<area shape="rect" id="node25" href="$srv__ble__connectivity_8h.html" title="BLE connectivity service." alt="" coords="1523,169,1665,211"/>
+</map>

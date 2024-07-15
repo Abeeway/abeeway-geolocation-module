@@ -1,0 +1,8 @@
+<map id="srv_ble_scan_beacon_info_t" name="srv_ble_scan_beacon_info_t">
+<area shape="rect" id="node1" title="Scanned beacon informations." alt="" coords="327,136,475,177"/>
+<area shape="rect" id="node2" href="$structsrv__ble__scan__eddystone__info__t.html" title="Eddystone beacon information fields." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node3" href="$structsrv__ble__scan__exposure__info__t.html" title="exposure beacon information fields" alt="" coords="9,71,168,112"/>
+<area shape="rect" id="node4" href="$structsrv__ble__scan__custom__info__t.html" title="Custom beacon information field." alt="" coords="14,136,163,177"/>
+<area shape="rect" id="node5" href="$structsrv__ble__scan__altbeacon__info__t.html" title="Altbeacon beacon information fields." alt="" coords="7,201,170,243"/>
+<area shape="rect" id="node6" href="$structsrv__ble__scan__ibeacon__info__t.html" title="Ibeacon beacon information fields." alt="" coords="13,267,164,308"/>
+</map>

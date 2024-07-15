@@ -1,0 +1,9 @@
+<map id="nmea_parsing_cb_param_t" name="nmea_parsing_cb_param_t">
+<area shape="rect" id="node1" title="callback information used for the parsing" alt="" coords="34,317,213,344"/>
+<area shape="rect" id="node2" href="$structnmea__parsing__cb__param__ack__t.html" title="Callback parameter used once the NMEA ACK has been received." alt="" coords="5,213,172,255"/>
+<area shape="rect" id="node3" href="$structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application." alt="" coords="197,213,327,255"/>
+<area shape="rect" id="node4" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite." alt="" coords="135,109,266,151"/>
+<area shape="rect" id="node5" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats." alt="" coords="290,117,439,143"/>
+<area shape="rect" id="node6" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="183,5,359,47"/>
+<area shape="rect" id="node7" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="383,13,530,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="uuid_type_t" name="uuid_type_t">
+<area shape="rect" id="node1" title="Definition of uuid_type_t struct." alt="" coords="5,95,95,121"/>
+<area shape="rect" id="node2" href="$unionuuid__t.html" title="Definition of uuid_t struct, to hold UUID on 16 Bits or 128 bits." alt="" coords="21,5,79,32"/>
+</map>

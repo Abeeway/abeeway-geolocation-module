@@ -1,0 +1,5 @@
+<map id="aos_gnss_time_info_t" name="aos_gnss_time_info_t">
+<area shape="rect" id="node1" title="GNSS time info with multiple formats." alt="" coords="111,109,260,136"/>
+<area shape="rect" id="node2" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="5,5,181,47"/>
+<area shape="rect" id="node3" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="205,13,352,39"/>
+</map>

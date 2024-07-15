@@ -1,0 +1,4 @@
+<map id="srv_gnss_mt3333_query_info_t" name="srv_gnss_mt3333_query_info_t">
+<area shape="rect" id="node1" title="Data belonging to the answer of a query." alt="" coords="19,109,183,151"/>
+<area shape="rect" id="node2" href="$structaos__gnss__almanac__standard__entry__t.html" title="Entry of a standard almanac." alt="" coords="5,5,196,47"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="aos&#45;core/aos/aos_lr1110_gnss.h" name="aos&#45;core/aos/aos_lr1110_gnss.h">
+<area shape="rect" id="node1" title="Basic LR1110 GNSS scan driver." alt="" coords="181,5,343,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,71,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="95,95,170,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="194,95,330,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="354,95,405,121"/>
+<area shape="rect" id="node6" href="$aos__gnss__common_8h.html" title="Common GNSS definition (shared between drivers and application)" alt="" coords="429,95,575,121"/>
+</map>
