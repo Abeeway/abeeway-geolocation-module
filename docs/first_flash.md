@@ -85,7 +85,7 @@ If you have not yet installed the software, you can get it from
 Once installed, connect the EVK on the ST-link USB3 interface and open
 STM32CubeProgrammer. The figure below shows the minimum configuration to
 program the geoloc module with USB cable connected to USB3. See the User
-Manual of the [EVK board](UM-EVB-V2.4)
+Manual of the [EVK board](UM-EVB-V2.4.pdf)
 for further details of the board set-up
 
 <img src="images/image2.png" width="600">
