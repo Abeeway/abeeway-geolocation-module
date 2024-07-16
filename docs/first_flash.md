@@ -1,9 +1,8 @@
 <img src="images/image1.png" width="600">
 
-Abeeway EVK Board initial FW flashing
-====================================
+# Abeeway EVK Board initial FW flashing
 
-# Table of Contents
+## Table of Contents
 
 [1 INTRODUCTION](#introduction)
 
@@ -39,9 +38,9 @@ Abeeway EVK Board initial FW flashing
 
 [3.4 FW update of the MT3333 chipset](#fw-update-of-the-mt3333-chipset)
 
-# 1 INTRODUCTION
+## 1 INTRODUCTION
 
-## 1.1 Purpose
+### 1.1 Purpose
 
 The goal of this document is to provide a simple guide on how to flash
 and test the functionality of the Geolocation Module LBEU5ZZ1WL-633 or
@@ -54,12 +53,12 @@ Cortex M0 and the application firmware for cortex M4 MCU. The document
 also describes the FW update operations for the LR1110 and MT3333
 chipsets.
 
-## 1.2 Intended Audience
+### 1.2 Intended Audience
 
 The intended audience for this document is for the hardware, test, and
 production teams.
 
-## 1.3 Minimum requirements
+### 1.3 Minimum requirements
 
 To follow this tutorial, you should have:
 
@@ -70,9 +69,9 @@ To follow this tutorial, you should have:
   - [Tera Term](https://teratermproject.github.io/index-en.html) on Windows or minicom
     on Linux
 
-# 2. PREPARING THE EVB BOARD AND FLASHING STM32WB
+## 2. PREPARING THE EVB BOARD AND FLASHING STM32WB
 
-## 2.1 First flashing operation of the STM32WB
+### 2.1 First flashing operation of the STM32WB
 
 To flash custom firmware, we first need to flash STMicroelectronic's
 firmware. It consists of two parts:
@@ -80,7 +79,7 @@ firmware. It consists of two parts:
 - Firmware Upgrade Service ("FUS")
 - BLE Stack firmware
 
-## 2.2 STM32CubeProgrammer with ST-Link
+### 2.2 STM32CubeProgrammer with ST-Link
 
 If you have not yet installed the software, you can get it from
 [here](https://www.st.com/en/development-tools/stm32cubeprog.html).
@@ -119,7 +118,7 @@ icon, version used is shown below:
 
 <p align="center"><i>Figure 3: ST-Link update if needed</i></p>
 
-## 2.3 Flash FUS and BLE stack Firmware upgrade
+### 2.3 Flash FUS and BLE stack Firmware upgrade
 
 When ST-Link connected, go to the firmware upgrade services (FUS)
 interface by clicking on the "radio type button" and initialize the FUS
@@ -158,7 +157,7 @@ See section 4 REFERENCES, to see the latest version of the firmware.
 
 <p align="center"><i>Figure 6: Update the BLE Stack V1.13.0</i></p>
 
-## 2.4 Flashing the Bootloader
+### 2.4 Flashing the Bootloader
 
 The next step is to flash the Bootloader firmware. This is a small piece
 of code starting at address ***0x08000000** (beginning of the user flash
@@ -176,9 +175,9 @@ Note: It is possible to do a full chip erase prior to flash the
 bootloader to erase any old application firmware (Item 0), BLE stack and
 FUS will not get removed.
 
-## 2.5 Flashing an application firmware
+### 2.5 Flashing an application firmware
 
-### 2.5.1 Flashing with the bootloader
+#### 2.5.1 Flashing with the bootloader
 
 At power up when no application software is installed, the bootloader is
 directly accessible via the STM32 USB port (USB2 connector on EVK board)
@@ -213,7 +212,7 @@ Steps are:
 
 <p align="center"><img src="images/image12.png" width="300"></p>
 
-### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
+#### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
 
 For experienced users, the application firmware can be uploaded via
 STM32 software, and the user must ensure that the binary is correctly
@@ -224,9 +223,9 @@ must ensure that the user configuration parameter page is correctly set.
 Running an application with corrupted parameters may prevent the program
 to work properly.
 
-# 3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
+## 3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
 
-## 3.1 Manufacturing firmware application (MFG)
+### 3.1 Manufacturing firmware application (MFG)
 
 The MFG application firmware enables various features of the geoloc
 module, configures the LoRaWAN credentials, updates 3^rd^ party
@@ -260,7 +259,7 @@ they remain unambiguous.
 - LR11xx version is available with command: `lr11 firm version <RET>`
 - LoRa info (Mac, Region, DEVEUI...) is available with command: `lora information <RET>`
 
-## 3.2 Update of the LR1110
+### 3.2 Update of the LR1110
 
 To change the LR1110 FW version you need to login as a super user with password `456`.
 
@@ -320,7 +319,7 @@ Under lr1110 menu you can:
 
 <p align="center"><i>Figure 8: Update LR1110 embedded firmware.</i></p>
 
-## 3.3 LoRa provisioning
+### 3.3 LoRa provisioning
 
 During production, the module is pre-provisioned with LoRa parameters
 saved in the LR1110 chip. These parameters include DEVEUI, JOINEUI,
@@ -340,7 +339,7 @@ the module mapping the advised QR code of the lora alliance will get
 obsolete. For provisioning the lora parameters see the manufacturing
 application documentation
 
-## 3.4 FW update of the MT3333 chipset
+### 3.4 FW update of the MT3333 chipset
 
 The GNSS chipset FW is also updated with a proprietary FW to support the
 AGPS feature as well as the standard GNSS functions of the MT3333.
