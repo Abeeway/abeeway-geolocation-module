@@ -1,6 +1,8 @@
 
 # Abeeway Geolocation Module example project
 
+**VERSION: v0.5-0**
+
 ## Project components
 
 This project is built from the following components:
