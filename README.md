@@ -32,11 +32,11 @@ This project is utilizing the following components:
 2. Compile the code by clicking on the **_Project > Build Project_** menu item.
 3. Connect the Evaluation Board to your computer with an USB cable through USB_3 port.
 4. Write the compiled firmware to the Abeeway Geolocation Module through the module's built-in ST-Link debugger by clicking on the **_Run > Run_** menu item.
-5. Check that after the download has been finished, the device restarted and LED_3 is Blinking.
-6. Use a Serial Terminal tool (e.g.: minicom (on Linux), Teraterm or Putty (on Windows), etc.) to connect your computer to the board and see the command line interface
+5. After the download has been finished and the device restarted check if LED_3 is blinking.
+6. Use a Serial Terminal tool (e.g.: minicom (on Linux), TeraTerm or Putty (on Windows), etc.) to connect your computer to the board and see the command line interface.
    - The serial port must be set to 57600 bauds, 8 data bits, no parity, one stop bit (8N1).
    - The login pin is either `123` or `456`, The former provides normal user access, the latter provides super-user access, making different sets of CLI commands available.
    - Use the `help` command to see the available command/parameter options. Commands may be abbreviated as long as they remain unambiguous.
 7. Study the source code of the app by having a look at the `README.md` and `src/main.c` files of the `demo1` project.
-8. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](../aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file to start browsing.
+8. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file to start browsing.
 9. Optionally, you may repeat the above steps with the `demo2` and `demo3` projects too. (Please note that LED_3 blinks only in case of the `demo1` app.)
