@@ -204,9 +204,8 @@ Steps are:
    remove the user configuration parameters)
 2. Enter command: `ABWu`
 3. Load the [`abw-bootloader-release_v3.0.bin`](../firmware-binaries/bootloader) file to transfer with XMODEM
-   - Minicom: CTRL-A + S -> Xmodem -> Select `.bin` file
-   - Teraterm : Menu -> Transfer -> Xmodem -> Send + select `.bin`
-     file
+   - Minicom: **CTRL-A S -> Xmodem** and select the `.bin` file
+   - TeraTerm : **Menu -> Transfer -> Xmodem -> Send** and select the `.bin` file
 
 4. Enter command: `r` to reset the device.
 

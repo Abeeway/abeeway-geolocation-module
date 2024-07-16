@@ -1,9 +1,9 @@
 
 # Abeeway Geolocation Module
 
-## First Flash
+## Firmware update
 
-Before starting any development on the Abeeway EVK board, please verify if all components of the module has the latest firmware installed and update the firmware if necessary. Please follow the instructions of the [Abeeway EVK Board initial FW flashing](docs/first_flash.md) user guide.
+Before starting any development on the Abeeway EVK board, please verify if all components of the module have the latest firmware installed and update the firmware if necessary. Please follow the instructions of the [Abeeway EVK Board initial FW flashing](docs/first_flash.md) user guide.
 
 ## Set up the Development Environment
 
@@ -15,7 +15,7 @@ Before starting any development on the Abeeway EVK board, please verify if all c
    - Click on the **_File > Import > Existing Project Into Workspace_** menu item
    - Select the following folder of the cloned repo: `abeeway-geolocation-module/apps/community/abeeway-demo`
 
-## Compile the `demo1`/`demo2`/`demo3` apps and install one of them the Module
+## Compile the demo apps and install one of them on the Module
 
 1. Open the `abeeway-demo` folder in the Project Explorer and select the `demo1` project
 2. Compile the code by clicking on the **_Project > Build Project_** menu item.
