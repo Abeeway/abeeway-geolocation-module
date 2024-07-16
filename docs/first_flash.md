@@ -2,60 +2,43 @@ Geolocation Module flashing Operation
 
 AN-Geoloc Module initial FW flashing
 
-![](images/image1.png){width="5.9291830708661415in"
-height="2.3854166666666665in"}
-
+<img src="images/image1.png" width="600">
 
 # Table of Contents {#table-of-contents .list-paragraph .TOC-Heading}
 
-[1 INTRODUCTION [4](#introduction)](#introduction)
+[1 INTRODUCTION](#introduction)
 
-[1.1 Purpose [4](#purpose)](#purpose)
+[1.1 Purpose](#purpose)
 
-[1.2 Intended Audience [4](#intended-audience)](#intended-audience)
+[1.2 Intended Audience](#intended-audience)
 
-[1.3 Minimum requirements
-[4](#minimum-requirements)](#minimum-requirements)
+[1.3 Minimum requirements](#minimum-requirements)
 
-[2 PREPARING THE EVB BOARD AND FLASHING STM32WB
-[4](#preparing-the-evb-board-and-flashing-stm32wb)](#preparing-the-evb-board-and-flashing-stm32wb)
+[2 PREPARING THE EVB BOARD AND FLASHING STM32WB](#preparing-the-evb-board-and-flashing-stm32wb)
 
-[2.1 First flashing operation of the STM32WB
-[4](#first-flashing-operation-of-the-stm32wb)](#first-flashing-operation-of-the-stm32wb)
+[2.1 First flashing operation of the STM32WB](#first-flashing-operation-of-the-stm32wb)
 
-[2.2 STM32CubeProgrammer with ST-Link
-[4](#stm32cubeprogrammer-with-st-link)](#stm32cubeprogrammer-with-st-link)
+[2.2 STM32CubeProgrammer with ST-Link](#stm32cubeprogrammer-with-st-link)
 
-[2.3 Flash FUS and BLE stack Firmware upgrade
-[6](#flash-fus-and-ble-stack-firmware-upgrade)](#flash-fus-and-ble-stack-firmware-upgrade)
+[2.3 Flash FUS and BLE stack Firmware upgrade](#flash-fus-and-ble-stack-firmware-upgrade)
 
-[2.4 Flashing the Bootloader
-[8](#flashing-the-bootloader)](#flashing-the-bootloader)
+[2.4 Flashing the Bootloader](#flashing-the-bootloader)
 
-[2.5 Flashing an application firmware
-[9](#flashing-an-application-firmware)](#flashing-an-application-firmware)
+[2.5 Flashing an application firmware](#flashing-an-application-firmware)
 
-[2.5.1 Flashing with the bootloader
-[9](#flashing-with-the-bootloader)](#flashing-with-the-bootloader)
+[2.5.1 Flashing with the bootloader](#flashing-with-the-bootloader)
 
-[2.5.2 Flashing with STM32Programmer or STM32CubeIDE
-[9](#flashing-with-stm32programmer-or-stm32cubeide)](#flashing-with-stm32programmer-or-stm32cubeide)
+[2.5.2 Flashing with STM32Programmer or STM32CubeIDE](#flashing-with-stm32programmer-or-stm32cubeide)
 
-[3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
-[10](#geoloc-module-configuration-and-middleware-update)](#geoloc-module-configuration-and-middleware-update)
+[3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE](#geoloc-module-configuration-and-middleware-update)
 
-[3.1 Manufacturing firmware application (MFG)
-[10](#manufacturing-firmware-application-mfg)](#manufacturing-firmware-application-mfg)
+[3.1 Manufacturing firmware application (MFG)](#manufacturing-firmware-application-mfg)
 
-[3.2 Update of the LR1110
-[10](#update-of-the-lr1110)](#update-of-the-lr1110)
+[3.2 Update of the LR1110](#update-of-the-lr1110)
 
-[3.3 LoRa provisioning [11](#lora-provisioning)](#lora-provisioning)
+[3.3 LoRa provisioning](#lora-provisioning)
 
-[3.4 FW update of the MT3333 chipset
-[12](#fw-update-of-the-mt3333-chipset)](#fw-update-of-the-mt3333-chipset)
-
-[4 REFERENCES [13](#references)](#references)
+[3.4 FW update of the MT3333 chipset](#fw-update-of-the-mt3333-chipset)
 
 # INTRODUCTION
 
@@ -114,8 +97,7 @@ Manual of the [EVK
 board](https://actilitysa.sharepoint.com/:f:/t/aby/EiX2Y8y8xhFCnn4DE78bWtkBpk2KVE9mOXlT7qOH0DFyyA?e=YS9t6h)
 for further details of the board set-up
 
-![](images/image2.png){width="5.2226706036745405in"
-height="3.5186253280839894in"}
+<img src="images/image2.png" width="600">
 
 Figure 1: Default EVB setting in red. Module supplied with 5V USB
 (J1,J5) and GNSS power up (J4, J15, J2)
@@ -124,12 +106,11 @@ To interface with the module for debugging and programming, select
 ST-LINK protocol and click on the "Connect" button on the right-hand
 side, as shown below:
 
-![Une image contenant texte, capture d'écran, moniteur, écran
-Description générée
-automatiquement](images/image3.png){width="2.0213123359580054in"
-height="4.601813210848644in"}
-![](images/image4.png){width="2.141813210848644in"
-height="4.59346675415573in"}
+
+<img src="images/image3.png" width="250">
+=>
+<img src="images/image4.png" width="250">
+
 
 Figure 2: Connect the EVB via the ST-Link
 
@@ -137,8 +118,7 @@ If the software asks for upgrading the firmware of the ST-LINK, accept
 and upgrade the firmware, then click on the Firmware Upgrade Service
 icon, version used is shown below:
 
-![](images/image5.png){width="5.261065179352581in"
-height="2.4310389326334207in"}
+<img src="images/image5.png" width="600">
 
 Figure 3: ST-Link update if needed
 
@@ -148,18 +128,14 @@ When ST-Link connected, go to the firmware upgrade services (FUS)
 interface by clicking on the "radio type button" and initialize the FUS
 by clicking on Start FUS. See log at the bottom of the windows
 
-![Une image contenant texte, capture d'écran, moniteur, ordinateur
-Description générée
-automatiquement](images/image6.png){width="6.3in"
-height="3.6305555555555555in"}
+<img src="images/image6.png" width="600">
 
 Figure 4: Start the FUS
 
 Read the FUS version by clicking on Read FUS info. The initial version
 is V1.0.2.0 and the FUS can be updated to version 1.2.0
 
-![](images/image7.png){width="2.1230139982502187in"
-height="1.8049825021872266in"}
+<img src="images/image7.png" width="600">
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
 with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
@@ -167,13 +143,7 @@ with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
 
 You can check again the FUS version with Read FUS info.
 
-![Une image contenant texte, capture d'écran, moniteur, ordinateur
-Description générée
-automatiquement](images/image6.png){width="4.76468394575678in"
-height="2.7457852143482064in"} ![Une image contenant texte Description
-générée
-automatiquement](images/image8.png){width="1.1784317585301838in"
-height="2.141451224846894in"}
+<img src="images/image6.png" width="600">
 
 Figure 5: Update FUS to version 1.2.0.0
 
@@ -187,10 +157,7 @@ Note: FUS needs to be activated to flash BLE firmware.
 
 See section 4 REFERENCES, to see the latest version of the firmware.
 
-![Une image contenant texte, capture d'écran, moniteur, portable
-Description générée
-automatiquement](images/image9.png){width="5.834150262467191in"
-height="3.6212631233595802in"}
+<img src="images/image9.png" width="600">
 
 Figure 6: Update the BLE Stack V1.13.0
 
@@ -204,9 +171,7 @@ The purpose of the bootloader is to check whether it should wait for an
 application binary download via USB2 port or jump to the loaded
 application firmware.
 
-![](images/image10.png){width="6.823611111111111in"
-height="2.9270833333333335in"}![](images/image11.png){width="0.10937554680664917in"
-height="0.12364173228346456in"}
+<img src="images/image10.png" width="600">
 
 Figure 7: Flashing Bootloader
 
@@ -255,9 +220,7 @@ Steps are:
 
 4.  Enter command: *r* to reset the device.
 
-> ![A screenshot of a computer Description automatically
-> generated](images/image12.png){width="2.261745406824147in"
-> height="1.7747976815398074in"}
+<img src="images/image12.png" width="250">
 
 ### Flashing with STM32Programmer or STM32CubeIDE
 
@@ -321,10 +284,7 @@ Under lr1110 menu you can:
 -   Check the LR1110 version with this command: *lr11xx firmware
     version*
 
-> ![Une image contenant texte, capture d'écran, Police Description
-> générée
-> automatiquement](images/image13.png){width="4.760416666666667in"
-> height="1.0520833333333333in"}
+<img src="images/image13.png" width="400">
 
 -   Update the LR1110 FW in bridge mode. With the command: *lr11xx
     firmware update bridge \<serial interface\> \<speed\>*
@@ -372,13 +332,9 @@ Under lr1110 menu you can:
 4.  when done return the speed to 57600 bauds and you can check the FW
     version (see picture below)
 
-![Une image contenant texte, Appareils électroniques, capture d'écran,
-logiciel Description générée
-automatiquement](images/image14.png){width="2.60871719160105in"
-height="2.759119641294838in"} ![Une image contenant texte, capture
-d'écran, Police Description générée
-automatiquement](images/image15.png){width="2.6553543307086613in"
-height="0.5491885389326334in"}
+<img src="images/image14.png" width="400">
+
+<img src="images/image15.png" width="400">
 
 Figure 7: Update LR1110 embedded firmware.
 
@@ -434,18 +390,12 @@ The steps to download the MT33xx FW are
 
 -   Command "gnss version" can be used to display the ROM FW version
 
-![Une image contenant texte Description générée
-automatiquement](images/image16.png){width="3.026988188976378in"
-height="2.172145669291339in"} ![Une image contenant texte Description
-générée
-automatiquement](images/image17.png){width="3.019063867016623in"
-height="2.1980719597550307in"}
+<img src="images/image16.png" width="400">
+<img src="images/image17.png" width="400">
 
 Figure 8: Mediatek tool to flash the MT3333
 
-![Une image contenant texte Description générée
-automatiquement](images/image18.png){width="3.8229166666666665in"
-height="1.5104166666666667in"}
+<img src="images/image18.png" width="300">
 
 Figure 9: Command line to enable the GNSS and after programming, open
 the UART link between STM32 and MT3333
