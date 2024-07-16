@@ -1,0 +1,10 @@
+<map id="aos&#45;core/aos/aos_usb_cdc.h" name="aos&#45;core/aos/aos_usb_cdc.h">
+<area shape="rect" id="node1" title="USB driver (serial communication support &#45; CDC&#45; only)." alt="" coords="320,5,470,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="205,319,270,345"/>
+<area shape="rect" id="node3" title=" " alt="" coords="475,244,550,271"/>
+<area shape="rect" id="node4" href="$aos__system_8h.html" title="System management and ISR to background process deferring." alt="" coords="292,169,396,196"/>
+<area shape="rect" id="node8" href="$aos__uart_8h.html" title="UART driver." alt="" coords="390,95,472,121"/>
+<area shape="rect" id="node5" href="$aos__common_8h.html" title="Common definitions." alt="" coords="289,244,400,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="168,244,264,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="24,244,94,271"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="aos_lr1110_gnss_query_result_t" name="aos_lr1110_gnss_query_result_t">
+<area shape="rect" id="node1" title="Data belonging to the answer of a query." alt="" coords="19,109,178,151"/>
+<area shape="rect" id="node2" href="$structaos__gnss__almanac__reduced__entry__t.html" title="Entry of a reduced almanac." alt="" coords="5,5,192,47"/>
+</map>

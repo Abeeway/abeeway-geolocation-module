@@ -1,0 +1,10 @@
+<map id="aos&#45;core/aos/aos_rf_switch.h" name="aos&#45;core/aos/aos_rf_switch.h">
+<area shape="rect" id="node1" title="RF switch driver." alt="" coords="56,5,193,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="44,319,109,345"/>
+<area shape="rect" id="node3" title=" " alt="" coords="420,244,495,271"/>
+<area shape="rect" id="node4" href="$aos__gpio_8h.html" title="GPIO driver." alt="" coords="82,95,167,121"/>
+<area shape="rect" id="node5" href="$aos__common_8h.html" title="Common definitions." alt="" coords="21,244,132,271"/>
+<area shape="rect" id="node6" href="$aos__system_8h.html" title="System management and ISR to background process deferring." alt="" coords="160,169,264,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="207,244,303,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="327,244,396,271"/>
+</map>

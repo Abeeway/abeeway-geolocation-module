@@ -1,0 +1,5 @@
+<map id="aos&#45;core/aos/aos_cli_parser.h" name="aos&#45;core/aos/aos_cli_parser.h">
+<area shape="rect" id="node1" title="Command Line Interface parser module. Parse commands and call associated user callbacks." alt="" coords="68,5,211,47"/>
+<area shape="rect" id="node2" href="$aos__cli_8h.html" title="Common Line Interface low layer." alt="" coords="5,95,159,121"/>
+<area shape="rect" id="node3" href="$srv__cli_8h.html" title="Command Line Interface service." alt="" coords="65,169,214,196"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="aos_gnss_track_data_t" name="aos_gnss_track_data_t">
+<area shape="rect" id="node1" title="Tracking data." alt="" coords="5,109,163,136"/>
+<area shape="rect" id="node2" href="$structaos__gnss__satellite__info__t.html" title="Satellite information for tracking data." alt="" coords="19,5,149,47"/>
+</map>

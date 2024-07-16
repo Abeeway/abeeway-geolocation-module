@@ -1,0 +1,5 @@
+<map id="aos&#45;core/aos/aos_uart.h" name="aos&#45;core/aos/aos_uart.h">
+<area shape="rect" id="node1" title="UART driver." alt="" coords="86,5,249,32"/>
+<area shape="rect" id="node2" href="$aos__usb__cdc_8h.html" title="USB driver (serial communication support &#45; CDC&#45; only)." alt="" coords="5,80,156,121"/>
+<area shape="rect" id="node3" href="$srv__cli_8h.html" title="Command Line Interface service." alt="" coords="181,87,330,114"/>
+</map>

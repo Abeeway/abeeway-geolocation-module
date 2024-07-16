@@ -1,0 +1,7 @@
+<map id="cli_config_param_t" name="cli_config_param_t">
+<area shape="rect" id="node1" title="CLI configuration parameters." alt="" coords="5,184,136,211"/>
+<area shape="rect" id="node2" href="$structaos__uart__config__t.html" title="Structure containing the UART configuration parameters." alt="" coords="81,95,207,121"/>
+<area shape="rect" id="node3" href="$structaos__uart__driver__t.html" title="Driver access." alt="" coords="160,184,283,211"/>
+<area shape="rect" id="node4" href="$structaos__uart__ioctl__info__t.html" title="Information block belonging to an IO request." alt="" coords="231,95,374,121"/>
+<area shape="rect" id="node5" href="$structaos__uart__stats__t.html" title="Structure containing the UART statistics." alt="" coords="243,5,362,32"/>
+</map>

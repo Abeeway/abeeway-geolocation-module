@@ -1,0 +1,4 @@
+<map id="aos_wifi_scan_result_data_t" name="aos_wifi_scan_result_data_t">
+<area shape="rect" id="node1" title="WIFI data available to the user." alt="" coords="12,109,156,151"/>
+<area shape="rect" id="node2" href="$structaos__wifi__scan__channel__result__t.html" title="Basic MAC, type, channel result structure." alt="" coords="5,5,163,47"/>
+</map>

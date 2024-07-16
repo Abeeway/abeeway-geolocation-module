@@ -1,0 +1,12 @@
+<map id="srv_gnss_mt3333_event_info_t" name="srv_gnss_mt3333_event_info_t">
+<area shape="rect" id="node1" title="Event sent to the user." alt="" coords="864,96,1028,137"/>
+<area shape="rect" id="node2" href="$structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application." alt="" coords="607,37,738,79"/>
+<area shape="rect" id="node3" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite." alt="" coords="338,5,469,47"/>
+<area shape="rect" id="node4" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats." alt="" coords="329,85,478,111"/>
+<area shape="rect" id="node10" href="$structaos__gnss__fix__info__t.html" title="GNSS fix information." alt="" coords="603,103,742,130"/>
+<area shape="rect" id="node5" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="5,48,181,89"/>
+<area shape="rect" id="node6" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="20,114,167,141"/>
+<area shape="rect" id="node7" href="$structsrv__gnss__mt3333__track__info__t.html" title="Data for fix timeout." alt="" coords="592,155,753,196"/>
+<area shape="rect" id="node8" href="$structaos__rtc__systime__t.html" title="Structure holding the system time in seconds and milliseconds." alt="" coords="339,155,468,182"/>
+<area shape="rect" id="node9" href="$structsrv__gnss__mt3333__sat__track__info__t.html" title="Data for one satellite upon timeout." alt="" coords="328,207,479,248"/>
+</map>

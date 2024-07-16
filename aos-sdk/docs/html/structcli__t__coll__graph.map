@@ -1,0 +1,4 @@
+<map id="cli_t" name="cli_t">
+<area shape="rect" id="node1" title="The cli_t structure should be private/opaque, really. But since we are doing plain C and don&#39;t have d..." alt="" coords="40,95,87,121"/>
+<area shape="rect" id="node2" href="$structcli__notification__t.html" title="Notification sent to the CLI user." alt="" coords="5,5,121,32"/>
+</map>

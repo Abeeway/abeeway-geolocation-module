@@ -1,0 +1,5 @@
+<map id="srv_gnss_mt3333_configuration_t" name="srv_gnss_mt3333_configuration_t">
+<area shape="rect" id="node1" title="Basic GNSS configuration." alt="" coords="56,109,273,136"/>
+<area shape="rect" id="node2" href="$structsrv__gnss__mt3333__cfg__local__info__t.html" title="Local information to be sent to the GNSS chip to speedup the first fix." alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node3" href="$structaos__gnss__cfg__prn__t.html" title="Pseudo&#45;range setting." alt="" coords="181,13,319,39"/>
+</map>

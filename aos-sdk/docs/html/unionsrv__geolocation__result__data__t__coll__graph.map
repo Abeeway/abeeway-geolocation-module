@@ -1,0 +1,21 @@
+<map id="srv_geolocation_result_data_t" name="srv_geolocation_result_data_t">
+<area shape="rect" id="node1" title="Geolocation result data." alt="" coords="1444,111,1596,152"/>
+<area shape="rect" id="node2" href="$structaos__wifi__scan__result__data__t.html" title="WIFI data available to the user." alt="" coords="1193,15,1337,56"/>
+<area shape="rect" id="node3" href="$structaos__wifi__scan__channel__result__t.html" title="Basic MAC, type, channel result structure." alt="" coords="875,5,1032,47"/>
+<area shape="rect" id="node4" href="$structaos__lr1110__gnss__result__t.html" title="GNSS data available to the user." alt="" coords="1180,89,1349,115"/>
+<area shape="rect" id="node5" href="$structaos__lr1110__gnss__scan__data__t.html" title="Result for a single scan." alt="" coords="876,71,1031,112"/>
+<area shape="rect" id="node6" href="$structaos__lr1110__gnss__nav__data__t.html" title="LR1110 GNSS scan result: navigation data." alt="" coords="599,71,746,112"/>
+<area shape="rect" id="node7" href="$structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application." alt="" coords="607,147,738,188"/>
+<area shape="rect" id="node15" href="$structsrv__gnss__mt3333__event__info__t.html" title="Event sent to the user." alt="" coords="871,267,1035,308"/>
+<area shape="rect" id="node8" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite." alt="" coords="338,125,469,167"/>
+<area shape="rect" id="node9" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats." alt="" coords="329,205,478,231"/>
+<area shape="rect" id="node19" href="$structaos__gnss__fix__info__t.html" title="GNSS fix information." alt="" coords="603,223,742,250"/>
+<area shape="rect" id="node10" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="5,168,181,209"/>
+<area shape="rect" id="node11" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="20,234,167,261"/>
+<area shape="rect" id="node12" href="$structsrv__ble__scan__report__t.html" title="Scan report. Built from requested filtering (refer to srv_ble_scan_param_report_t)" alt="" coords="1189,143,1340,170"/>
+<area shape="rect" id="node13" href="$structsrv__ble__scan__long__beacon__info__t.html" title="Long beacon id information." alt="" coords="864,136,1043,177"/>
+<area shape="rect" id="node14" href="$structsrv__ble__scan__short__beacon__info__t.html" title="Short beacon id information." alt="" coords="886,201,1021,243"/>
+<area shape="rect" id="node16" href="$structsrv__gnss__mt3333__track__info__t.html" title="Data for fix timeout." alt="" coords="592,275,753,316"/>
+<area shape="rect" id="node17" href="$structaos__rtc__systime__t.html" title="Structure holding the system time in seconds and milliseconds." alt="" coords="339,275,468,302"/>
+<area shape="rect" id="node18" href="$structsrv__gnss__mt3333__sat__track__info__t.html" title="Data for one satellite upon timeout." alt="" coords="328,327,479,368"/>
+</map>

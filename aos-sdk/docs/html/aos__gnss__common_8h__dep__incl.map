@@ -1,0 +1,14 @@
+<map id="aos&#45;core/aos/aos_gnss_common.h" name="aos&#45;core/aos/aos_gnss_common.h">
+<area shape="rect" id="node1" title="Common GNSS definition (shared between drivers and application)" alt="" coords="376,5,533,47"/>
+<area shape="rect" id="node2" href="$aos__gnss__driver_8h.html" title="Top level API for the GNSS drivers." alt="" coords="5,95,163,136"/>
+<area shape="rect" id="node3" href="$aos__lr1110__gnss_8h.html" title="Basic LR1110 GNSS scan driver." alt="" coords="187,95,349,136"/>
+<area shape="rect" id="node10" href="$aos__nmea__parser_8h.html" title=" " alt="" coords="374,95,535,136"/>
+<area shape="rect" id="node11" href="$srv__gnss__mt3333_8h.html" title="GNSS service using the MT3333." alt="" coords="534,184,687,225"/>
+<area shape="rect" id="node12" href="$srv__gnss_8h.html" title="GNSS service." alt="" coords="635,102,799,129"/>
+<area shape="rect" id="node4" href="$aos__lr1110__mgr_8h.html" title="LR1110 manager." alt="" coords="205,184,368,225"/>
+<area shape="rect" id="node5" href="$srv__gnss__lr1110_8h.html" title="GNSS LR1110 service." alt="" coords="69,273,222,315"/>
+<area shape="rect" id="node8" href="$srv__wifi__scan_8h.html" title="WIFI scan service." alt="" coords="246,273,391,315"/>
+<area shape="rect" id="node9" href="$srv__lora_8h.html" title="LoRa service." alt="" coords="416,281,573,307"/>
+<area shape="rect" id="node6" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="237,363,400,404"/>
+<area shape="rect" id="node7" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="237,452,400,493"/>
+</map>

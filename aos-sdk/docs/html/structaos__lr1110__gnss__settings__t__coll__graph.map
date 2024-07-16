@@ -1,0 +1,4 @@
+<map id="aos_lr1110_gnss_settings_t" name="aos_lr1110_gnss_settings_t">
+<area shape="rect" id="node1" title="LR1110 GNSS scan configuration." alt="" coords="5,109,188,136"/>
+<area shape="rect" id="node2" href="$structaos__lr1110__gnss__local__position__t.html" title="Local information: current position." alt="" coords="20,5,173,47"/>
+</map>

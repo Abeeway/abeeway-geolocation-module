@@ -1,0 +1,4 @@
+<map id="srv_config_flash_info_t" name="srv_config_flash_info_t">
+<area shape="rect" id="node1" title="general Information structure" alt="" coords="16,95,172,121"/>
+<area shape="rect" id="node2" href="$structsrv__config__flash__version__t.html" title="Version of the parameters stored in the flash." alt="" coords="5,5,183,32"/>
+</map>

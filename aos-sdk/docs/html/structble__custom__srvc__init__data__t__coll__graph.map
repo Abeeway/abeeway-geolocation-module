@@ -1,0 +1,7 @@
+<map id="ble_custom_srvc_init_data_t" name="ble_custom_srvc_init_data_t">
+<area shape="rect" id="node1" title="BLE custom services and characteristics initialization data, data needed to update a custom service a..." alt="" coords="86,273,231,315"/>
+<area shape="rect" id="node2" href="$structble__char__init__data__t.html" title="BLE Characteristic initialization data, data needed to initialize/configure a characteristic." alt="" coords="5,184,144,211"/>
+<area shape="rect" id="node3" href="$structuuid__type__t.html" title="Definition of uuid_type_t struct." alt="" coords="114,95,203,121"/>
+<area shape="rect" id="node5" href="$structble__service__init__data__t.html" title="BLE custom service initialization data, data needed to initialize/configure a custom service." alt="" coords="168,184,323,211"/>
+<area shape="rect" id="node4" href="$unionuuid__t.html" title="Definition of uuid_t struct, to hold UUID on 16 Bits or 128 bits." alt="" coords="130,5,187,32"/>
+</map>

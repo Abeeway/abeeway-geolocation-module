@@ -1,0 +1,5 @@
+<map id="srv_gnss_mt3333_track_info_t" name="srv_gnss_mt3333_track_info_t">
+<area shape="rect" id="node1" title="Data for fix timeout." alt="" coords="71,109,232,151"/>
+<area shape="rect" id="node2" href="$structaos__rtc__systime__t.html" title="Structure holding the system time in seconds and milliseconds." alt="" coords="5,13,135,39"/>
+<area shape="rect" id="node3" href="$structsrv__gnss__mt3333__sat__track__info__t.html" title="Data for one satellite upon timeout." alt="" coords="159,5,309,47"/>
+</map>

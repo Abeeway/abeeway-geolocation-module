@@ -1,0 +1,6 @@
+<map id="aos_gnss_ioctl_t" name="aos_gnss_ioctl_t">
+<area shape="rect" id="node1" title="IO control information sent to the driver via IO requests." alt="" coords="195,95,315,121"/>
+<area shape="rect" id="node2" href="$structaos__gnss__counters__t.html" title="GNSS Statistics." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node3" href="$structaos__gnss__cfg__period__t.html" title="Configure the period of the reported data from the chip." alt="" coords="177,5,333,32"/>
+<area shape="rect" id="node4" href="$structaos__gnss__cfg__prn__t.html" title="Pseudo&#45;range setting." alt="" coords="357,5,496,32"/>
+</map>

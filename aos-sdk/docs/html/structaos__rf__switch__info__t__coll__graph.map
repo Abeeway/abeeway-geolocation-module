@@ -1,0 +1,4 @@
+<map id="aos_rf_switch_info_t" name="aos_rf_switch_info_t">
+<area shape="rect" id="node1" title="Information related to a RF switch." alt="" coords="5,109,148,136"/>
+<area shape="rect" id="node2" href="$structaos__rf__switch__user__info__t.html" title="User information." alt="" coords="9,5,144,47"/>
+</map>

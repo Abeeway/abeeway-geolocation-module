@@ -1,0 +1,6 @@
+<map id="aos_uart_driver_t" name="aos_uart_driver_t">
+<area shape="rect" id="node1" title="Driver access." alt="" coords="15,184,138,211"/>
+<area shape="rect" id="node4" href="$structaos__uart__config__t.html" title="Structure containing the UART configuration parameters." alt="" coords="14,273,139,300"/>
+<area shape="rect" id="node2" href="$structaos__uart__ioctl__info__t.html" title="Information block belonging to an IO request." alt="" coords="5,95,148,121"/>
+<area shape="rect" id="node3" href="$structaos__uart__stats__t.html" title="Structure containing the UART statistics." alt="" coords="17,5,136,32"/>
+</map>

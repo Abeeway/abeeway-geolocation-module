@@ -1,0 +1,9 @@
+<map id="aos&#45;core/aos/aos_lr1110_gnss.h" name="aos&#45;core/aos/aos_lr1110_gnss.h">
+<area shape="rect" id="node1" title="Basic LR1110 GNSS scan driver." alt="" coords="86,5,249,47"/>
+<area shape="rect" id="node2" href="$aos__lr1110__mgr_8h.html" title="LR1110 manager." alt="" coords="159,95,322,136"/>
+<area shape="rect" id="node3" href="$srv__gnss__lr1110_8h.html" title="GNSS LR1110 service." alt="" coords="5,184,159,225"/>
+<area shape="rect" id="node6" href="$srv__wifi__scan_8h.html" title="WIFI scan service." alt="" coords="183,184,328,225"/>
+<area shape="rect" id="node7" href="$srv__lora_8h.html" title="LoRa service." alt="" coords="353,191,510,218"/>
+<area shape="rect" id="node4" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="87,273,250,315"/>
+<area shape="rect" id="node5" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="87,363,250,404"/>
+</map>

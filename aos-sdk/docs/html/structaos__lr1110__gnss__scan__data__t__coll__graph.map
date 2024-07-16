@@ -1,0 +1,9 @@
+<map id="aos_lr1110_gnss_scan_data_t" name="aos_lr1110_gnss_scan_data_t">
+<area shape="rect" id="node1" title="Result for a single scan." alt="" coords="56,317,211,359"/>
+<area shape="rect" id="node2" href="$structaos__lr1110__gnss__nav__data__t.html" title="LR1110 GNSS scan result: navigation data." alt="" coords="5,213,152,255"/>
+<area shape="rect" id="node3" href="$structaos__gnss__satellite__prn__report__t.html" title="Pseudo range report sent to the application." alt="" coords="176,213,307,255"/>
+<area shape="rect" id="node4" href="$structaos__gnss__satellite__prn__t.html" title="Pseudo range information for a given satellite." alt="" coords="115,109,245,151"/>
+<area shape="rect" id="node5" href="$structaos__gnss__time__info__t.html" title="GNSS time info with multiple formats." alt="" coords="269,117,419,143"/>
+<area shape="rect" id="node6" href="$structaos__gnss__week__tow__time__info__t.html" title="GPS time provided in week number and Time Of Week (TOW)" alt="" coords="163,5,339,47"/>
+<area shape="rect" id="node7" href="$structaos__gnss__utc__time__t.html" title="GPS time provided in UTC format." alt="" coords="363,13,509,39"/>
+</map>

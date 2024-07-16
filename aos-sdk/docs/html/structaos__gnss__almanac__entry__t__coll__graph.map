@@ -1,0 +1,5 @@
+<map id="aos_gnss_almanac_entry_t" name="aos_gnss_almanac_entry_t">
+<area shape="rect" id="node1" title="Generic almanac entry." alt="" coords="115,109,296,136"/>
+<area shape="rect" id="node2" href="$structaos__gnss__almanac__reduced__entry__t.html" title="Entry of a reduced almanac." alt="" coords="5,5,192,47"/>
+<area shape="rect" id="node3" href="$structaos__gnss__almanac__standard__entry__t.html" title="Entry of a standard almanac." alt="" coords="217,5,407,47"/>
+</map>

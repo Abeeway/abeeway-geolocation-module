@@ -1,0 +1,9 @@
+<map id="aos&#45;core/aos_ble/aos_ble_common.h" name="aos&#45;core/aos_ble/aos_ble_common.h">
+<area shape="rect" id="node1" title="common types and const for BLE module" alt="" coords="260,5,407,47"/>
+<area shape="rect" id="node2" href="$aos__ble__core_8h.html" title="BLE core related API (connectivity, advertisement, scan ...)" alt="" coords="5,95,152,136"/>
+<area shape="rect" id="node3" href="$aos__ble__services_8h.html" title="BLE services related API." alt="" coords="176,95,323,136"/>
+<area shape="rect" id="node4" href="$srv__ble__connectivity_8h.html" title="BLE connectivity service." alt="" coords="347,95,490,136"/>
+<area shape="rect" id="node5" href="$srv__ble__scan_8h.html" title="BLE scan service." alt="" coords="514,95,657,136"/>
+<area shape="rect" id="node6" href="$srv__geoloc__common_8h.html" title="Common definition to all geolocation engines." alt="" coords="504,184,667,225"/>
+<area shape="rect" id="node7" href="$srv__geoloc__basic_8h.html" title="Geolocation engine using the fallback method. Geolocation technologies are scheduled and results are ..." alt="" coords="504,273,667,315"/>
+</map>

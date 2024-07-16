@@ -1,0 +1,4 @@
+<map id="aos_gnss_raw_data_t" name="aos_gnss_raw_data_t">
+<area shape="rect" id="node1" title="Data in raw format (or pre&#45;parsed) of frames received by the GNSS chip." alt="" coords="5,95,155,121"/>
+<area shape="rect" id="node2" href="$structnmea__parse__msg__t.html" title="NMEA pre&#45;parsed message. All fields are separated by a NULL byte." alt="" coords="12,5,148,32"/>
+</map>
