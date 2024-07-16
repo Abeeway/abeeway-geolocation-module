@@ -134,8 +134,8 @@ is V1.0.2.0 and the FUS can be updated to version 1.2.0
 <p align="center"><img src="images/image7.png" width="350"></p>
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
-with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
-**0x080EC000** and click on Firmware upgrade.
+with the correct file: [`stm32wb5x_FUS_fw.bin`](../../firmware-binaries/ble)
+and set the start address to **0x080EC000** and click on Firmware upgrade.
 
 You can check again the FUS version with Read FUS info.
 
@@ -144,7 +144,7 @@ You can check again the FUS version with Read FUS info.
 <p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
 The Bluetooth® LE Stack can be updated in the same way as the FUS.
-Complete the path with the file: **stm32wb5x_BLE_Stack_full_fw.bin**,
+Complete the path with the file: `stm32wb5x_BLE_Stack_full_fw.bin`,
 set the start address to **0x080CE000** and click on "First install"
 checkbox if this is the first time you are installing the stack. Then
 press Firmware upgrade button.
@@ -228,7 +228,7 @@ to work properly.
 ### 3.1 Manufacturing firmware application (MFG)
 
 The MFG application firmware enables various features of the geoloc
-module, configures the LoRaWAN credentials, updates 3^rd^ party
+module, configures the LoRaWAN credentials, updates 3rd party
 middleware for the MT3333 and LR11xx and enables some radio features for
 testing and certification. This tool requires a terminal emulator such
 as Teraterm for WS or Minicom for Linux (port must set to 57600 bauds, 8
@@ -254,10 +254,10 @@ invalid command or omitting a command option will usually show the
 available commands or options. Commands can be abbreviated as long as
 they remain unambiguous.
 
-- FW version is available with command: `sys version <RET>`
-- BLE and FUS version is available with command: `ble version <RET>`
-- LR11xx version is available with command: `lr11 firm version <RET>`
-- LoRa info (Mac, Region, DEVEUI...) is available with command: `lora information <RET>`
+- FW version is available with command: `sys version`
+- BLE and FUS version is available with command: `ble version`
+- LR11xx version is available with command: `lr11 firm version`
+- LoRa info (Mac, Region, DEVEUI...) is available with command: `lora information`
 
 ### 3.2 Update of the LR1110
 
