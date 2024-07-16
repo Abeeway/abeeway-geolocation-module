@@ -1,6 +1,18 @@
 
 # Abeeway Geolocation Module
 
+## Introduction
+
+The Type1WL EVK (version V2.4) is the evaluation kit for the ultra-low power geolocation
+module co-developed by Murata and Abeeway.
+
+The EVB is a complete development kit so the developers can have a full access to all the
+functionalities of the module, select various power management schemes, digital interfaces
+and features like LEDs, buttons, Flash memory and sensors. 3 micro-USB connectors are also
+available to interface with digital lines (UART, LPUART) and the built-in ST-link V2.
+
+For more details please refer to the [Type1WL EVK User Manual](docs/UM-EVB-V2.4.pdf).
+
 ## Firmware update
 
 Before starting any development on the Abeeway EVK board, please verify if all components of the module have the latest firmware installed and update the firmware if necessary. Please follow the instructions of the [Abeeway EVK Board initial FW flashing](docs/first_flash.md) user guide.
