@@ -134,7 +134,7 @@ is V1.0.2.0 and the FUS can be updated to version 1.2.0
 <p align="center"><img src="images/image7.png" width="350"></p>
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
-with the correct file: [`stm32wb5x_FUS_fw.bin`](../../firmware-binaries/ble)
+with the correct file: [`stm32wb5x_FUS_fw.bin`](../firmware-binaries/ble)
 and set the start address to **0x080EC000** and click on Firmware upgrade.
 
 You can check again the FUS version with Read FUS info.
