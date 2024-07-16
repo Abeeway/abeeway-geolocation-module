@@ -1,4 +1,4 @@
-<img src="images/image1.png" width="600">
+<img src="images/image1.png" width="300">
 
 # Abeeway EVK Board initial FW flashing
 
