@@ -1,5 +1,8 @@
 <img src="images/image1.png" width="600">
 
+Abeeway EVK Board initial FW flashing
+====================================
+
 # Table of Contents
 
 [1 INTRODUCTION](#introduction)
@@ -365,6 +368,7 @@ The steps to download the MT33xx FW are
 
 <p align="center">
   <img src="images/image16.png" width="400">
+  &nbsp
   <img src="images/image17.png" width="400">
 </p>
 
