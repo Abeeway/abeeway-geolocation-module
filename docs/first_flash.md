@@ -144,7 +144,7 @@ You can check again the FUS version with Read FUS info.
 <p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
 The Bluetooth® LE Stack can be updated in the same way as the FUS.
-Complete the path with the file: `stm32wb5x_BLE_Stack_full_fw.bin`,
+Complete the path with the file: [`stm32wb5x_BLE_Stack_full_fw.bin`](../firmware-binaries/ble),
 set the start address to **0x080CE000** and click on "First install"
 checkbox if this is the first time you are installing the stack. Then
 press Firmware upgrade button.
@@ -203,7 +203,7 @@ Steps are:
 1. Enter command: `ABWe` (if flashing a new application FW in order to
    remove the user configuration parameters)
 2. Enter command: `ABWu`
-3. Load the `.bin` file to transfer with XMODEM
+3. Load the [`abw-bootloader-release_v3.0.bin`](../firmware-binaries/bootloader) file to transfer with XMODEM
    - Minicom: CTRL-A + S -> Xmodem -> Select `.bin` file
    - Teraterm : Menu -> Transfer -> Xmodem -> Send + select `.bin`
      file
@@ -240,9 +240,9 @@ the bootloader as described in section 2.5.
 
 For the EVK board, 2 versions of the MFG firmware are available:
 
-- `mfg-usb-evk-debug.bin` (default version): CLI using the STM32 USB
+- [`mfg-usb-evk-debug.bin`](../firmware-binaries/mfg) (default version): CLI using the STM32 USB
   interface (USB2 connector).
-- `mfg-serial-evk-debug.bin`: CLI using the LPUART and data is available
+- [`mfg-serial-evk-debug.bin`](../firmware-binaries/mfg): CLI using the LPUART and data is available
   from USB3. This version is useful to measure the low quiescent
   current since the USB function is disabled.
 
@@ -305,7 +305,8 @@ Under lr1110 menu you can:
     interface -- USB2)
 2. change Tera Term (or your terminal application. Exp: minicom) speed
     to 230400 bauds 8N1
-3. start ***lr1110_transceiver_0308.bin*** (actual LR1110 version)
+3. start [`lr1110_transceiver_0308.bin`](../firmware-binaries/lr11xx/lr1110_transceiver_0308/)
+   (actual LR1110 version)
     transfer with XMODEM to transfer the firmware.
 4. when done return the speed to 57600 bauds and you can check the FW
     version (see picture below)
