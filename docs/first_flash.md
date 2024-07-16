@@ -88,8 +88,8 @@ program the geoloc module with USB cable connected to USB3. See the User
 Manual of the [EVK board](UM-EVB-V2.4.pdf)
 for further details of the board set-up
 
-<p style="text-align:center">
-<img src="images/image2.png" width="600">
+<p align="center">
+  <img src="images/image2.png" width="600">
 </p>
 _Figure 1: Default EVB setting in red. Module supplied with 5V USB
 (J1,J5) and GNSS power up (J4, J15, J2)_
