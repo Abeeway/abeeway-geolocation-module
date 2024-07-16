@@ -1,22 +1,11 @@
 
 # Abeeway Geolocation Module
 
-## Project components
+## First Flash
 
-This project is utilizing the following components:
+Before starting any development on the Abeeway EVK board, please verify if all components of the module has the latest firmware installed and update the firmware if necessary. Please follow the instructions of the [Abeeway EVK Board initial FW flashing](docs/first_flash.md) user guide.
 
-- Abeeway Geolocation Module Evaluation Board
-  - *Please find its user manual in the `docs` folder*
-- STM32CubeIDE development environment
-  - *Please download it from [here](https://www.st.com/en/development-tools/stm32cubeide.html)*
-- Abeeway Operating System SDK (aos-sdk)
-  - Please find its compiled binary files in the `aos-sdk` folder
-- Example Applications
-  - Please find example source codes in the `apps` folder.
-
-## Installing the Development Environment
-
-### Collect the project files and set up the STM32CubeIDE project on your computer
+## Set up the Development Environment
 
 1. Install [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html) on your computer
 2. Clone this repository:  
@@ -26,7 +15,7 @@ This project is utilizing the following components:
    - Click on the **_File > Import > Existing Project Into Workspace_** menu item
    - Select the following folder of the cloned repo: `abeeway-geolocation-module/apps/community/abeeway-demo`
 
-### Compile the `demo1`/`demo2`/`demo3` apps and install one of them the Module
+## Compile the `demo1`/`demo2`/`demo3` apps and install one of them the Module
 
 1. Open the `abeeway-demo` folder in the Project Explorer and select the `demo1` project
 2. Compile the code by clicking on the **_Project > Build Project_** menu item.
