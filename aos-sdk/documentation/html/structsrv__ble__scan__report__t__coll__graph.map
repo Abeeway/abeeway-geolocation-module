@@ -1,4 +1,0 @@
-<map id="srv_ble_scan_report_t" name="srv_ble_scan_report_t">
-<area shape="rect" id="node2" href="$structsrv__ble__scan__long__beacon__info__t.html" title="Long beacon id information. " alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node3" href="$structsrv__ble__scan__short__beacon__info__t.html" title="Short beacon id information. " alt="" coords="209,5,343,47"/>
-</map>
