@@ -100,21 +100,21 @@ To interface with the module for debugging and programming, select
 ST-LINK protocol and click on the "Connect" button on the right-hand
 side, as shown below:
 
-<center>
-<img src="images/image3.png" width="250">
-=>
-<img src="images/image4.png" width="250">
-</center>
+<p align="center">
+  <img src="images/image3.png" width="250">
+  =>
+  <img src="images/image4.png" width="250">
+</p>
 
-_<center>Figure 2: Connect the EVB via the ST-Link</center>_
+<p align="center"><i>Figure 2: Connect the EVB via the ST-Link</i></p>
 
 If the software asks for upgrading the firmware of the ST-LINK, accept
 and upgrade the firmware, then click on the Firmware Upgrade Service
 icon, version used is shown below:
 
-<center><img src="images/image5.png" width="600"></center>
+<p align="center"><img src="images/image5.png" width="600"></p>
 
-_<center>Figure 3: ST-Link update if needed</center>_
+<p align="center"><i>Figure 3: ST-Link update if needed</i></p>
 
 ## 2.3 Flash FUS and BLE stack Firmware upgrade
 
@@ -122,14 +122,14 @@ When ST-Link connected, go to the firmware upgrade services (FUS)
 interface by clicking on the "radio type button" and initialize the FUS
 by clicking on Start FUS. See log at the bottom of the windows
 
-<center><img src="images/image6.png" width="600"></center>
+<p align="center"><img src="images/image6.png" width="600"></p>
 
-_<center>Figure 4: Start the FUS</center>_
+<p align="center"><i>Figure 4: Start the FUS</i></p>
 
 Read the FUS version by clicking on Read FUS info. The initial version
 is V1.0.2.0 and the FUS can be updated to version 1.2.0
 
-<center><img src="images/image7.png" width="350"></center>
+<p align="center"><img src="images/image7.png" width="350"></p>
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
 with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
@@ -137,9 +137,9 @@ with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
 
 You can check again the FUS version with Read FUS info.
 
-<center><img src="images/image6.png" width="600"></center>
+<p align="center"><img src="images/image6.png" width="600"></p>
 
-_<center>Figure 5: Update FUS to version 1.2.0.0</center>_
+<p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
 The Bluetooth® LE Stack can be updated in the same way as the FUS.
 Complete the path with the file: **stm32wb5x_BLE_Stack_full_fw.bin**,
@@ -151,9 +151,9 @@ Note: FUS needs to be activated to flash BLE firmware.
 
 See section 4 REFERENCES, to see the latest version of the firmware.
 
-<center><img src="images/image9.png" width="600"></center>
+<p align="center"><img src="images/image9.png" width="600"></p>
 
-_<center>Figure 6: Update the BLE Stack V1.13.0</center>_
+<p align="center"><i>Figure 6: Update the BLE Stack V1.13.0</i></p>
 
 ## 2.4 Flashing the Bootloader
 
@@ -165,9 +165,9 @@ The purpose of the bootloader is to check whether it should wait for an
 application binary download via USB2 port or jump to the loaded
 application firmware.
 
-<center><img src="images/image10.png" width="600"></center>
+<p align="center"><img src="images/image10.png" width="600"></p>
 
-_<center>Figure 7: Flashing Bootloader</center>_
+<p align="center"><i>Figure 7: Flashing Bootloader</i></p>
 
 Note: It is possible to do a full chip erase prior to flash the
 bootloader to erase any old application firmware (Item 0), BLE stack and
@@ -208,7 +208,7 @@ Steps are:
 
 4. Enter command: `r` to reset the device.
 
-<center><img src="images/image12.png" width="300"></center>
+<p align="center"><img src="images/image12.png" width="300"></p>
 
 ### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
 
@@ -267,7 +267,7 @@ Under lr1110 menu you can:
 
   `lr11xx firmware version`
 
-<center><img src="images/image13.png" width="450"></center>
+<p align="center"><img src="images/image13.png" width="450"></p>
 
 - Update the LR1110 FW in bridge mode. With the command:
 
@@ -308,13 +308,14 @@ Under lr1110 menu you can:
 4. when done return the speed to 57600 bauds and you can check the FW
     version (see picture below)
 
-<center>
-<img src="images/image14.png" width="400">
+<p align="center">
+  <img src="images/image14.png" width="400">
+</p>
+<p align="center">
+  <img src="images/image15.png" width="400">
+</p>
 
-<img src="images/image15.png" width="400">
-</center>
-
-_<center>Figure 8: Update LR1110 embedded firmware.</center>_
+<p align="center"><i>Figure 8: Update LR1110 embedded firmware.</i></p>
 
 ## 3.3 LoRa provisioning
 
@@ -362,14 +363,14 @@ The steps to download the MT33xx FW are
   chipset with the STM32 via the cli command "gnss open"
 - Command "gnss version" can be used to display the ROM FW version
 
-<center>
-<img src="images/image16.png" width="400">
-<img src="images/image17.png" width="400">
-</center>
+<p align="center">
+  <img src="images/image16.png" width="400">
+  <img src="images/image17.png" width="400">
+</p>
 
-_<center>Figure 9: Mediatek tool to flash the MT3333</center>_
+<p align="center"><i>Figure 9: Mediatek tool to flash the MT3333</i></p>
 
-<center><img src="images/image18.png" width="350"></center>
+<p align="center"><img src="images/image18.png" width="350"></p>
 
-_<center>Figure 10: Command line to enable the GNSS and after programming, open
-the UART link between STM32 and MT3333</center>_
+<p align="center"><i>Figure 10: Command line to enable the GNSS and after programming, open
+the UART link between STM32 and MT3333</i></p>
