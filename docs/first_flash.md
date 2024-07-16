@@ -91,9 +91,11 @@ for further details of the board set-up
 <p align="center">
   <img src="images/image2.png" width="600">
 </p>
+
+<p align="center">
 _Figure 1: Default EVB setting in red. Module supplied with 5V USB
 (J1,J5) and GNSS power up (J4, J15, J2)_
-
+</p>
 
 To interface with the module for debugging and programming, select
 ST-LINK protocol and click on the "Connect" button on the right-hand
