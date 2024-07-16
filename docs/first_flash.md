@@ -193,15 +193,15 @@ Bootloader commands are:
 
 Steps are:
 
-1. Enter command: ABWe (if flashing a new application FW in order to
+1. Enter command: `ABWe` (if flashing a new application FW in order to
    remove the user configuration parameters)
-2. Enter command: *ABWu*
-3. Load the .bin file to transfer with XMODEM
-   - Minicom: CTRL A +S -\> Xmodem -\> Select .bin file
-   - Teraterm : Menu -\> Transfer -\> Xmodem -\> Send + select .bin
+2. Enter command: `ABWu`
+3. Load the `.bin` file to transfer with XMODEM
+   - Minicom: CTRL-A + S -> Xmodem -> Select `.bin` file
+   - Teraterm : Menu -> Transfer -> Xmodem -> Send + select `.bin`
      file
 
-4. Enter command: *r* to reset the device.
+4. Enter command: `r` to reset the device.
 
 <img src="images/image12.png" width="300">
 
@@ -233,79 +233,68 @@ the bootloader as described in section 2.5.
 
 For the EVK board, 2 versions of the MFG firmware are available:
 
-- mfg-usb-evk-debug.bin (default version) : CLI using the STM32 USB
+- `mfg-usb-evk-debug.bin` (default version): CLI using the STM32 USB
   interface (USB2 connector).
-- mfg-serial-evk-debug.bin: CLI using the LPUART and data is available
+- `mfg-serial-evk-debug.bin`: CLI using the LPUART and data is available
   from USB3. This version is useful to measure the low quiescent
   current since the USB function is disabled.
 
 At power-up a prompt requests for a password. Log in with the pin code
-\'123\' or \'456\'. The former provides normal user access, the latter
+`123` or `456`. The former provides normal user access, the latter
 provides super-user access, making different sets of CLI commands
-available. The \'help\' command is available throughout but typing any
+available. The `help` command is available throughout but typing any
 invalid command or omitting a command option will usually show the
 available commands or options. Commands can be abbreviated as long as
 they remain unambiguous.
 
-- FW version is available with command: sys version \<RET\>
-- BLE and FUS version is available with command: ble version \<RET\>
-- LR11xx version is available with command: lr11 firm version \<RET\>
-- LoRa info (Mac, Region, DEVEUI...) is available with command: : lora
-  information \<RET\>
+- FW version is available with command: `sys version <RET>`
+- BLE and FUS version is available with command: `ble version <RET>`
+- LR11xx version is available with command: `lr11 firm version <RET>`
+- LoRa info (Mac, Region, DEVEUI...) is available with command: `lora information <RET>`
 
 ## 3.2 Update of the LR1110
 
-To change the LR1110 FW version you need to login as a super user with
-password 456.
+To change the LR1110 FW version you need to login as a super user with password `456`.
 
 Under lr1110 menu you can:
 
 - Check the LR1110 version with this command:
 
-  ```bash
-  lr11xx firmware version
-  ```
+  `lr11xx firmware version`
 
 <img src="images/image13.png" width="450">
 
-- Update the LR1110 FW in bridge mode. With the command: 
+- Update the LR1110 FW in bridge mode. With the command:
 
-  ```bash
-  lr11xx firmware update bridge \<serial interface\> \<speed\>
-  ```
+  `lr11xx firmware update bridge <serial interface> <speed>`
 
 > the MCU will push the LR1110 transceiver binary file to LR1110 and
 > then reboot the chip. Parameters are:
 
 - Serial interface:
 
-  -----------------------------------------------------------------------
-  0             LPUART (USB3 connector)
-  ------------- ---------------------------------------------------------
-  2             USB (USB2 connector)
+    |   |                          |   |   |
+    |---|--------------------------|---|---|
+    |0  | LPUART (USB3 connector)  |   |   |
+    |2  | LPUART (USB3 connector)  |   |   |
+    |   |                          |   |   |
 
-  -----------------------------------------------------------------------
 
 - Speed:
 
-+-----------------------------------+-----------------------------------+
-|   ------------------------------  |   ------------------------------  |
-|   0     1200 bauds                |   5     38400 bauds               |
-|   ----- ------------------------  |   ----- ------------------------  |
-|   1     2400 bauds                |   6     57600 bauds               |
-|                                   |                                   |
-|   2     4800 bauds                |   7     115200 bauds              |
-|                                   |                                   |
-|   3     9600 bauds                |   8     230400 bauds              |
-|                                   |                                   |
-|   4     19200 bauds               |   9     460800 bauds              |
-|   ------------------------------  |   ------------------------------  |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+    |   |            | |   |               |
+    |---|------------|-|---|---------------|
+    |0  | 1200 bauds | |5  | 38400 bauds   |
+    |1  | 2400 bauds | |6  | 57600 bauds   |
+    |2  | 4800 bauds | |7  | 115200 bauds  |
+    |3  | 9600 bauds | |8  | 230400 bauds  |
+    |4  | 9200 bauds | |9  | 460800 bauds  |
+    |   |            | |   |               |
+
 
 > The steps to take are:
 
-1. Enter command: *lr11xx firmware update bridge 2 8* (using the USB
+1. Enter command: `lr11xx firmware update bridge 2 8` (using the USB
     interface -- USB2)
 2. change Tera Term (or your terminal application. Exp: minicom) speed
     to 230400 bauds 8N1
@@ -328,8 +317,10 @@ APPKEY, Region, and additional parameters related to the module PCB ID.
 The current values of these parameters can be displayed using the
 following commands:
 
-- prov system display
-- prov lora display
+```bash
+prov system display
+prov lora display
+```
 
 It is important to note that these parameters can also be modified using
 the set command. However, altering these parameters may prevent the
