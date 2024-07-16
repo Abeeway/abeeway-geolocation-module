@@ -88,28 +88,30 @@ program the geoloc module with USB cable connected to USB3. See the User
 Manual of the [EVK board](UM-EVB-V2.4.pdf)
 for further details of the board set-up
 
-<img src="images/image2.png" width="600">
+<center><img src="images/image2.png" width="600"></center>
 
-Figure 1: Default EVB setting in red. Module supplied with 5V USB
-(J1,J5) and GNSS power up (J4, J15, J2)
+_<center>Figure 1: Default EVB setting in red. Module supplied with 5V USB
+(J1,J5) and GNSS power up (J4, J15, J2)</center>_
 
 To interface with the module for debugging and programming, select
 ST-LINK protocol and click on the "Connect" button on the right-hand
 side, as shown below:
 
+<center>
 <img src="images/image3.png" width="250">
 =>
 <img src="images/image4.png" width="250">
+</center>
 
-Figure 2: Connect the EVB via the ST-Link
+_<center>Figure 2: Connect the EVB via the ST-Link</center>_
 
 If the software asks for upgrading the firmware of the ST-LINK, accept
 and upgrade the firmware, then click on the Firmware Upgrade Service
 icon, version used is shown below:
 
-<img src="images/image5.png" width="600">
+<center><img src="images/image5.png" width="600"></center>
 
-Figure 3: ST-Link update if needed
+_<center>Figure 3: ST-Link update if needed</center>_
 
 ## 2.3 Flash FUS and BLE stack Firmware upgrade
 
@@ -117,14 +119,14 @@ When ST-Link connected, go to the firmware upgrade services (FUS)
 interface by clicking on the "radio type button" and initialize the FUS
 by clicking on Start FUS. See log at the bottom of the windows
 
-<img src="images/image6.png" width="600">
+<center><img src="images/image6.png" width="600"></center>
 
-Figure 4: Start the FUS
+_<center>Figure 4: Start the FUS</center>_
 
 Read the FUS version by clicking on Read FUS info. The initial version
 is V1.0.2.0 and the FUS can be updated to version 1.2.0
 
-<img src="images/image7.png" width="350">
+<center><img src="images/image7.png" width="350"></center>
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
 with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
@@ -132,9 +134,9 @@ with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
 
 You can check again the FUS version with Read FUS info.
 
-<img src="images/image6.png" width="600">
+<center><img src="images/image6.png" width="600"></center>
 
-Figure 5: Update FUS to version 1.2.0.0
+_<center>Figure 5: Update FUS to version 1.2.0.0</center>_
 
 The Bluetooth® LE Stack can be updated in the same way as the FUS.
 Complete the path with the file: **stm32wb5x_BLE_Stack_full_fw.bin**,
@@ -146,9 +148,9 @@ Note: FUS needs to be activated to flash BLE firmware.
 
 See section 4 REFERENCES, to see the latest version of the firmware.
 
-<img src="images/image9.png" width="600">
+<center><img src="images/image9.png" width="600"></center>
 
-Figure 6: Update the BLE Stack V1.13.0
+_<center>Figure 6: Update the BLE Stack V1.13.0</center>_
 
 ## 2.4 Flashing the Bootloader
 
@@ -160,9 +162,9 @@ The purpose of the bootloader is to check whether it should wait for an
 application binary download via USB2 port or jump to the loaded
 application firmware.
 
-<img src="images/image10.png" width="600">
+<center><img src="images/image10.png" width="600"></center>
 
-Figure 7: Flashing Bootloader
+_<center>Figure 7: Flashing Bootloader</center>_
 
 Note: It is possible to do a full chip erase prior to flash the
 bootloader to erase any old application firmware (Item 0), BLE stack and
@@ -203,7 +205,7 @@ Steps are:
 
 4. Enter command: `r` to reset the device.
 
-<img src="images/image12.png" width="300">
+<center><img src="images/image12.png" width="300"></center>
 
 ### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
 
@@ -262,7 +264,7 @@ Under lr1110 menu you can:
 
   `lr11xx firmware version`
 
-<img src="images/image13.png" width="450">
+<center><img src="images/image13.png" width="450"></center>
 
 - Update the LR1110 FW in bridge mode. With the command:
 
@@ -303,11 +305,13 @@ Under lr1110 menu you can:
 4. when done return the speed to 57600 bauds and you can check the FW
     version (see picture below)
 
+<center>
 <img src="images/image14.png" width="400">
 
 <img src="images/image15.png" width="400">
+</center>
 
-Figure 7: Update LR1110 embedded firmware.
+_<center>Figure 8: Update LR1110 embedded firmware.</center>_
 
 ## 3.3 LoRa provisioning
 
@@ -335,11 +339,11 @@ The GNSS chipset FW is also updated with a proprietary FW to support the
 AGPS feature as well as the standard GNSS functions of the MT3333.
 
 To flash the MT3333 with the MediaTek tool MTK Flash Tool, the GNSS
-device must be enabled with the CLI command "gnss on" as shown in figure
-10 and supplied as shown in figure 1 (pin 30: VDD_GNSS and pin 32:
+device must be enabled with the CLI command `gnss on` as shown in _Figure
+10_ and supplied as shown in _Figure 1_ (pin 30: VDD_GNSS and pin 32:
 VDD_GNSS_BU set to 3.3V -- Jumpers 2,4,15). Flashing the MT3333 is then
 possible via the GNSS UART interface accessible from USB1 connector via
-the FTDI chip and selector J7
+the FTDI chip and selector J7.
 
 The steps to download the MT33xx FW are
 
@@ -355,12 +359,14 @@ The steps to download the MT33xx FW are
   chipset with the STM32 via the cli command "gnss open"
 - Command "gnss version" can be used to display the ROM FW version
 
+<center>
 <img src="images/image16.png" width="400">
 <img src="images/image17.png" width="400">
+</center>
 
-Figure 8: Mediatek tool to flash the MT3333
+_<center>Figure 9: Mediatek tool to flash the MT3333</center>_
 
-<img src="images/image18.png" width="350">
+<center><img src="images/image18.png" width="350"></center>
 
-Figure 9: Command line to enable the GNSS and after programming, open
-the UART link between STM32 and MT3333
+_<center>Figure 10: Command line to enable the GNSS and after programming, open
+the UART link between STM32 and MT3333</center>_
