@@ -131,7 +131,7 @@ Figure 4: Start the FUS
 Read the FUS version by clicking on Read FUS info. The initial version
 is V1.0.2.0 and the FUS can be updated to version 1.2.0
 
-<img src="images/image7.png" width="600">
+<img src="images/image7.png" width="350">
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
 with the correct file: stm32wb5x_FUS_fw.bin and set the start address to
