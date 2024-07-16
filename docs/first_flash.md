@@ -1,10 +1,6 @@
-Geolocation Module flashing Operation
-
-AN-Geoloc Module initial FW flashing
-
 <img src="images/image1.png" width="600">
 
-# Table of Contents {#table-of-contents .list-paragraph .TOC-Heading}
+# Table of Contents
 
 [1 INTRODUCTION](#introduction)
 
@@ -220,7 +216,7 @@ Steps are:
 
 4.  Enter command: *r* to reset the device.
 
-<img src="images/image12.png" width="250">
+<img src="images/image12.png" width="300">
 
 ### Flashing with STM32Programmer or STM32CubeIDE
 
@@ -284,7 +280,7 @@ Under lr1110 menu you can:
 -   Check the LR1110 version with this command: *lr11xx firmware
     version*
 
-<img src="images/image13.png" width="400">
+<img src="images/image13.png" width="450">
 
 -   Update the LR1110 FW in bridge mode. With the command: *lr11xx
     firmware update bridge \<serial interface\> \<speed\>*
@@ -395,7 +391,7 @@ The steps to download the MT33xx FW are
 
 Figure 8: Mediatek tool to flash the MT3333
 
-<img src="images/image18.png" width="300">
+<img src="images/image18.png" width="350">
 
 Figure 9: Command line to enable the GNSS and after programming, open
 the UART link between STM32 and MT3333
