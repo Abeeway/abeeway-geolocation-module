@@ -26,6 +26,13 @@ Before starting any development on the Abeeway EVK board, please verify if all c
    - The serial port must be set to 57600 bauds, 8 data bits, no parity, one stop bit (8N1).
    - The login pin is either `123` or `456`, The former provides normal user access, the latter provides super-user access, making different sets of CLI commands available.
    - Use the `help` command to see the available command/parameter options. Commands may be abbreviated as long as they remain unambiguous.
-7. Study the source code of the app by having a look at the `README.md` and `src/main.c` files of the `demo1` project.
-8. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file to start browsing.
-9. Optionally, you may repeat the above steps with the `demo2` and `demo3` projects too. (Please note that LED_3 blinks only in case of the `demo1` app.)
+7. Optionally, you may repeat the above steps with the `demo2` and `demo3` projects too. (Please note that LED_3 blinks only in case of the `demo1` app.)
+
+## Study the sourcce code
+
+1. Study the source code of the apps by having a look at the `README.md` and `src/main.c` files of the appropriate project.
+   - [demo1/README.md](apps/abeeway-demo/demo1/README.md),
+   - [demo2/README.md](apps/abeeway-demo/demo2/README.md),
+   - [demo3/README.md](apps/abeeway-demo/demo1/README.md)
+2. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file with your favorite web browser to start reading.
+

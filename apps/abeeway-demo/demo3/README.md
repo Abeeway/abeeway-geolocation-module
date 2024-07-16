@@ -2,27 +2,6 @@
 
 This example demonstrates the use of the geolocation
 
-
-## Environment instruction
-The IDE of choice is STM32CubeIDE, available freely from https://www.st.com/.
-The current supported version is  1.15.1.
-
-The IDE provides a build system as well as an integrated debugger.
-
-To create your working environment, follow the steps:
-1. Get the official SDK version tarball and extract it. This create a directory **aos-sdk_vx.y-z**,which contains:
-- A manuals directory containing the documentation
-- The AOS-SDK-public directory containing the SDK and include files.
-2. Create a working directory. Example: **abw-module-user**.
-3. Under the working directory, copy the **AOS-SDK-public** directory.
-4. Under the working directory,  Clone the **abw-app-demo** or extract the demo tarball.
-5. Start the IDE and create a new workspace pointing to **abw-module-user**.
-6. Finally, from the IDE import the project **abw-app-demo**
-Now, the environment is ready.
-
-Note that the **manuals/html** contains the API description.
-To read it it, double click on the file index.html. This will open your favorite WEB browser with the documentation.
-
 ## Demonstration purpose
 This example demonstrates the following:
 - Use of the CLI service
