@@ -1,6 +1,8 @@
 
 # Abeeway Geolocation Module
 
+**VERSION: v1.1-0** (Latest) - [Other versions](https://github.com/Abeeway/abeeway-geolocation-module) 
+
 ## Introduction
 
 The Type1WL EVK (version V2.4) is the evaluation kit for the ultra-low power geolocation
