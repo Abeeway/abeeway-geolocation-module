@@ -28,7 +28,7 @@ Before starting any development on the Abeeway EVK board, please verify if all c
    - Use the `help` command to see the available command/parameter options. Commands may be abbreviated as long as they remain unambiguous.
 7. Optionally, you may repeat the above steps with the `demo2` and `demo3` projects too. (Please note that LED_3 blinks only in case of the `demo1` app.)
 
-## Study the sourcce code
+## Study the source code
 
 1. Study the source code of the apps by having a look at the `README.md` and `src/main.c` files of the appropriate project.
    - [demo1/README.md](apps/abeeway-demo/demo1/README.md),
