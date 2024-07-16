@@ -36,9 +36,9 @@
 
 [3.4 FW update of the MT3333 chipset](#fw-update-of-the-mt3333-chipset)
 
-# INTRODUCTION
+# 1 INTRODUCTION
 
-## Purpose
+## 1.1 Purpose
 
 The goal of this document is to provide a simple guide on how to flash
 and test the functionality of the Geolocation Module LBEU5ZZ1WL-633 or
@@ -51,46 +51,41 @@ Cortex M0 and the application firmware for cortex M4 MCU. The document
 also describes the FW update operations for the LR1110 and MT3333
 chipsets.
 
-## Intended Audience
+## 1.2 Intended Audience
 
 The intended audience for this document is for the hardware, test, and
 production teams.
 
-## Minimum requirements
+## 1.3 Minimum requirements
 
 To follow this tutorial, you should have:
 
--   A EVK board of the Geoloc Module i.e EVK v2.3 or v2.4, P/N:
+- A EVK board of the Geoloc Module i.e EVK v2.3 or v2.4, P/N:
     LBEU5ZZ1WL-633EVB
+- A computer with the following software installed:
+  - [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
+  - [Tera Term](https://teratermproject.github.io/index-en.html) on Windows or minicom
+    on Linux
 
--   A computer with the following software installed:
+# 2. PREPARING THE EVB BOARD AND FLASHING STM32WB
 
-    -   [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
-
-    -   Tera Term (<https://ttssh2.osdn.jp/index.html.en>) or minicom
-        under linux
-
-# PREPARING THE EVB BOARD AND FLASHING STM32WB
-
-## First flashing operation of the STM32WB
+## 2.1 First flashing operation of the STM32WB
 
 To flash custom firmware, we first need to flash STMicroelectronic's
 firmware. It consists of two parts:
 
--   Firmware Upgrade Service ("FUS")
+- Firmware Upgrade Service ("FUS")
+- BLE Stack firmware
 
--   BLE Stack firmware
+## 2.2 STM32CubeProgrammer with ST-Link
 
-## STM32CubeProgrammer with ST-Link
-
-If you have not yet installed the software, you can get it (for free)
-here: <https://www.st.com/en/development-tools/stm32cubeprog.html>.
+If you have not yet installed the software, you can get it from
+[here](https://www.st.com/en/development-tools/stm32cubeprog.html).
 
 Once installed, connect the EVK on the ST-link USB3 interface and open
 STM32CubeProgrammer. The figure below shows the minimum configuration to
 program the geoloc module with USB cable connected to USB3. See the User
-Manual of the [EVK
-board](https://actilitysa.sharepoint.com/:f:/t/aby/EiX2Y8y8xhFCnn4DE78bWtkBpk2KVE9mOXlT7qOH0DFyyA?e=YS9t6h)
+Manual of the [EVK board](UM-EVB-V2.4)
 for further details of the board set-up
 
 <img src="images/image2.png" width="600">
@@ -102,11 +97,9 @@ To interface with the module for debugging and programming, select
 ST-LINK protocol and click on the "Connect" button on the right-hand
 side, as shown below:
 
-
 <img src="images/image3.png" width="250">
 =>
 <img src="images/image4.png" width="250">
-
 
 Figure 2: Connect the EVB via the ST-Link
 
@@ -118,7 +111,7 @@ icon, version used is shown below:
 
 Figure 3: ST-Link update if needed
 
-## Flash FUS and BLE stack Firmware upgrade
+## 2.3 Flash FUS and BLE stack Firmware upgrade
 
 When ST-Link connected, go to the firmware upgrade services (FUS)
 interface by clicking on the "radio type button" and initialize the FUS
@@ -157,7 +150,7 @@ See section 4 REFERENCES, to see the latest version of the firmware.
 
 Figure 6: Update the BLE Stack V1.13.0
 
-## Flashing the Bootloader
+## 2.4 Flashing the Bootloader
 
 The next step is to flash the Bootloader firmware. This is a small piece
 of code starting at address ***0x08000000** (beginning of the user flash
@@ -175,9 +168,9 @@ Note: It is possible to do a full chip erase prior to flash the
 bootloader to erase any old application firmware (Item 0), BLE stack and
 FUS will not get removed.
 
-## Flashing an application firmware
+## 2.5 Flashing an application firmware
 
-### Flashing with the bootloader
+### 2.5.1 Flashing with the bootloader
 
 At power up when no application software is installed, the bootloader is
 directly accessible via the STM32 USB port (USB2 connector on EVK board)
@@ -190,35 +183,29 @@ application program.
 
 Bootloader commands are:
 
-> *ABWu: xModem transfer*
->
-> *ABWe: erase user config*
->
-> *v: version*
->
-> *r: reset*
->
-> *?: help*
+```bash
+*ABWu: xModem transfer*
+*ABWe: erase user config*
+*v: version*
+*r: reset*
+*?: help*
+```
 
 Steps are:
 
-1.  Enter command: ABWe (if flashing a new application FW in order to
-    remove the user configuration parameters)
+1. Enter command: ABWe (if flashing a new application FW in order to
+   remove the user configuration parameters)
+2. Enter command: *ABWu*
+3. Load the .bin file to transfer with XMODEM
+   - Minicom: CTRL A +S -\> Xmodem -\> Select .bin file
+   - Teraterm : Menu -\> Transfer -\> Xmodem -\> Send + select .bin
+     file
 
-2.  Enter command: *ABWu*
-
-3.  Load the .bin file to transfer with XMODEM
-
-    a.  Minicom: CTRL A +S -\> Xmodem -\> Select .bin file
-
-    b.  Teraterm : Menu -\> Transfer -\> Xmodem -\> Send + select .bin
-        file
-
-4.  Enter command: *r* to reset the device.
+4. Enter command: *r* to reset the device.
 
 <img src="images/image12.png" width="300">
 
-### Flashing with STM32Programmer or STM32CubeIDE
+### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
 
 For experienced users, the application firmware can be uploaded via
 STM32 software, and the user must ensure that the binary is correctly
@@ -229,9 +216,9 @@ must ensure that the user configuration parameter page is correctly set.
 Running an application with corrupted parameters may prevent the program
 to work properly.
 
-# GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
+# 3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
 
-## Manufacturing firmware application (MFG)
+## 3.1 Manufacturing firmware application (MFG)
 
 The MFG application firmware enables various features of the geoloc
 module, configures the LoRaWAN credentials, updates 3^rd^ party
@@ -246,12 +233,11 @@ the bootloader as described in section 2.5.
 
 For the EVK board, 2 versions of the MFG firmware are available:
 
--   mfg-usb-evk-debug.bin (default version) : CLI using the STM32 USB
-    interface (USB2 connector).
-
--   mfg-serial-evk-debug.bin: CLI using the LPUART and data is available
-    from USB3. This version is useful to measure the low quiescent
-    current since the USB function is disabled.
+- mfg-usb-evk-debug.bin (default version) : CLI using the STM32 USB
+  interface (USB2 connector).
+- mfg-serial-evk-debug.bin: CLI using the LPUART and data is available
+  from USB3. This version is useful to measure the low quiescent
+  current since the USB function is disabled.
 
 At power-up a prompt requests for a password. Log in with the pin code
 \'123\' or \'456\'. The former provides normal user access, the latter
@@ -261,34 +247,37 @@ invalid command or omitting a command option will usually show the
 available commands or options. Commands can be abbreviated as long as
 they remain unambiguous.
 
--   FW version is available with command: sys version \<RET\>
+- FW version is available with command: sys version \<RET\>
+- BLE and FUS version is available with command: ble version \<RET\>
+- LR11xx version is available with command: lr11 firm version \<RET\>
+- LoRa info (Mac, Region, DEVEUI...) is available with command: : lora
+  information \<RET\>
 
--   BLE and FUS version is available with command: ble version \<RET\>
-
--   LR11xx version is available with command: lr11 firm version \<RET\>
-
--   LoRa info (Mac, Region, DEVEUI...) is available with command: : lora
-    information \<RET\>
-
-## Update of the LR1110
+## 3.2 Update of the LR1110
 
 To change the LR1110 FW version you need to login as a super user with
 password 456.
 
 Under lr1110 menu you can:
 
--   Check the LR1110 version with this command: *lr11xx firmware
-    version*
+- Check the LR1110 version with this command:
+
+  ```bash
+  lr11xx firmware version
+  ```
 
 <img src="images/image13.png" width="450">
 
--   Update the LR1110 FW in bridge mode. With the command: *lr11xx
-    firmware update bridge \<serial interface\> \<speed\>*
+- Update the LR1110 FW in bridge mode. With the command: 
+
+  ```bash
+  lr11xx firmware update bridge \<serial interface\> \<speed\>
+  ```
 
 > the MCU will push the LR1110 transceiver binary file to LR1110 and
 > then reboot the chip. Parameters are:
 
--   Serial interface:
+- Serial interface:
 
   -----------------------------------------------------------------------
   0             LPUART (USB3 connector)
@@ -297,7 +286,7 @@ Under lr1110 menu you can:
 
   -----------------------------------------------------------------------
 
--   Speed:
+- Speed:
 
 +-----------------------------------+-----------------------------------+
 |   ------------------------------  |   ------------------------------  |
@@ -316,16 +305,13 @@ Under lr1110 menu you can:
 
 > The steps to take are:
 
-1.  Enter command: *lr11xx firmware update bridge 2 8* (using the USB
+1. Enter command: *lr11xx firmware update bridge 2 8* (using the USB
     interface -- USB2)
-
-2.  change Tera Term (or your terminal application. Exp: minicom) speed
+2. change Tera Term (or your terminal application. Exp: minicom) speed
     to 230400 bauds 8N1
-
-3.  start ***lr1110_transceiver_0308.bin*** (actual LR1110 version)
+3. start ***lr1110_transceiver_0308.bin*** (actual LR1110 version)
     transfer with XMODEM to transfer the firmware.
-
-4.  when done return the speed to 57600 bauds and you can check the FW
+4. when done return the speed to 57600 bauds and you can check the FW
     version (see picture below)
 
 <img src="images/image14.png" width="400">
@@ -334,7 +320,7 @@ Under lr1110 menu you can:
 
 Figure 7: Update LR1110 embedded firmware.
 
-## LoRa provisioning
+## 3.3 LoRa provisioning
 
 During production, the module is pre-provisioned with LoRa parameters
 saved in the LR1110 chip. These parameters include DEVEUI, JOINEUI,
@@ -342,9 +328,8 @@ APPKEY, Region, and additional parameters related to the module PCB ID.
 The current values of these parameters can be displayed using the
 following commands:
 
--   prov system display
-
--   prov lora display
+- prov system display
+- prov lora display
 
 It is important to note that these parameters can also be modified using
 the set command. However, altering these parameters may prevent the
@@ -353,7 +338,7 @@ the module mapping the advised QR code of the lora alliance will get
 obsolete. For provisioning the lora parameters see the manufacturing
 application documentation
 
-## FW update of the MT3333 chipset
+## 3.4 FW update of the MT3333 chipset
 
 The GNSS chipset FW is also updated with a proprietary FW to support the
 AGPS feature as well as the standard GNSS functions of the MT3333.
@@ -367,24 +352,17 @@ the FTDI chip and selector J7
 
 The steps to download the MT33xx FW are
 
--   Select the COM port connected to the USB1
-
--   Select the right baud rate (default: 115200)
-
--   Select the download agent (DA) file. Program to receive the firmware
-    and write it to the flash
-
--   Select the firmware to download in the ROM area
-
--   Click download and Go to start downloading
-
--   Download operations are shown with a red bar for DA file and blue
-    bar for ROM file. A green circle is drawn when complete.
-
--   When complete, after a reset (module or MT3333), enable the GNSS
-    chipset with the STM32 via the cli command "gnss open"
-
--   Command "gnss version" can be used to display the ROM FW version
+- Select the COM port connected to the USB1
+- Select the right baud rate (default: 115200)
+- Select the download agent (DA) file. Program to receive the firmware
+  and write it to the flash
+- Select the firmware to download in the ROM area
+- Click download and Go to start downloading
+- Download operations are shown with a red bar for DA file and blue
+  bar for ROM file. A green circle is drawn when complete.
+- When complete, after a reset (module or MT3333), enable the GNSS
+  chipset with the STM32 via the cli command "gnss open"
+- Command "gnss version" can be used to display the ROM FW version
 
 <img src="images/image16.png" width="400">
 <img src="images/image17.png" width="400">
