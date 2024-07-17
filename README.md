@@ -1,7 +1,7 @@
 
 # Abeeway Geolocation Module example project
 
-**VERSION: v0.5-0** (Deprecated) - [Other versions](https://github.com/Abeeway/abeeway-geolocation-module) 
+**VERSION: v0.5-0** (Deprecated) -> [back to master branch](https://github.com/Abeeway/abeeway-geolocation-module)
 
 ## Project components
 
