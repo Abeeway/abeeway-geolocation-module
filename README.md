@@ -43,9 +43,9 @@ The following chapters explain how to start software development on the Type1WL 
 
 ## Read the detailed user guide and study the source code
 
-1. Read the [AOS User Guide](docs/AOS_user_guide.pdf)
+1. Read the [AOS User Guide](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0/docs/AOS_user_guide.pdf)
 2. Study the source code of the apps by having a look at the `README.md` and `src/main.c` files of the appropriate project.
-   - [demo1/README.md](apps/abeeway-demo/demo1/README.md),
-   - [demo2/README.md](apps/abeeway-demo/demo2/README.md),
-   - [demo3/README.md](apps/abeeway-demo/demo3/README.md)
-3. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file with your favorite web browser to start reading.
+   - [demo1/README.md](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0/apps/abeeway-demo/demo1/README.md),
+   - [demo2/README.md](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0/apps/abeeway-demo/demo2/README.md),
+   - [demo3/README.md](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0/apps/abeeway-demo/demo3/README.md)
+3. Study the auto-generated API documentation of the aos-sdk in the [aos-sdk/docs/html](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0/aos-sdk/docs/html) folder. After you cloned this repository, you can open the `index.html` file with your favorite web browser to start reading.
