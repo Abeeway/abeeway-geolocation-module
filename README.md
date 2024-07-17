@@ -14,7 +14,10 @@ and features like LEDs, buttons, Flash memory and sensors. 3 micro-USB connector
 available to interface with digital lines (UART, LPUART) and the built-in
 [ST-link V2](https://www.st.com/en/development-tools/st-link-v2.html).
 
-For more details please refer to the [Type1WL EVB User Manual](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf).
+For more details please refer to the following documents:
+
+- [Type1WL EVB User Manual](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
+- [Type1WL Schematics](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_v2_4_20221014-1_abw.pdf)
 
 ## Firmware
 
