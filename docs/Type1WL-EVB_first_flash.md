@@ -4,39 +4,39 @@
 
 ## Table of Contents
 
-[1 INTRODUCTION](#introduction)
+[1 INTRODUCTION](#1-introduction)
 
-[1.1 Purpose](#purpose)
+[1.1 Purpose](#11-purpose)
 
-[1.2 Intended Audience](#intended-audience)
+[1.2 Intended Audience](#12-intended-audience)
 
-[1.3 Minimum requirements](#minimum-requirements)
+[1.3 Minimum requirements](#13-minimum-requirements)
 
-[2 PREPARING THE EVB BOARD AND FLASHING STM32WB](#preparing-the-evb-board-and-flashing-stm32wb)
+[2 PREPARING THE EVB BOARD AND FLASHING STM32WB](#2-preparing-the-evb-board-and-flashing-stm32wb)
 
-[2.1 First flashing operation of the STM32WB](#first-flashing-operation-of-the-stm32wb)
+[2.1 First flashing operation of the STM32WB](#21-first-flashing-operation-of-the-stm32wb)
 
-[2.2 STM32CubeProgrammer with ST-Link](#stm32cubeprogrammer-with-st-link)
+[2.2 STM32CubeProgrammer with ST-Link](#22-stm32cubeprogrammer-with-st-link)
 
-[2.3 Flash FUS and BLE stack Firmware upgrade](#flash-fus-and-ble-stack-firmware-upgrade)
+[2.3 Flash FUS and BLE stack Firmware upgrade](#23-flash-fus-and-ble-stack-firmware-upgrade)
 
-[2.4 Flashing the Bootloader](#flashing-the-bootloader)
+[2.4 Flashing the Bootloader](#24-flashing-the-bootloader)
 
-[2.5 Flashing an application firmware](#flashing-an-application-firmware)
+[2.5 Flashing an application firmware](#25-flashing-an-application-firmware)
 
-[2.5.1 Flashing with the bootloader](#flashing-with-the-bootloader)
+[2.5.1 Flashing with the bootloader](#251-flashing-with-the-bootloader)
 
-[2.5.2 Flashing with STM32Programmer or STM32CubeIDE](#flashing-with-stm32programmer-or-stm32cubeide)
+[2.5.2 Flashing with STM32Programmer or STM32CubeIDE](#252-flashing-with-stm32programmer-or-stm32cubeide)
 
-[3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE](#geoloc-module-configuration-and-middleware-update)
+[3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE](#3-geoloc-module-configuration-and-middleware-update)
 
-[3.1 Manufacturing firmware application (MFG)](#manufacturing-firmware-application-mfg)
+[3.1 Manufacturing firmware application (MFG)](#31-manufacturing-firmware-application-mfg)
 
-[3.2 Update of the LR1110](#update-of-the-lr1110)
+[3.2 Update of the LR1110](#32-update-of-the-lr1110)
 
-[3.3 LoRa provisioning](#lora-provisioning)
+[3.3 LoRa provisioning](#33-lora-provisioning)
 
-[3.4 FW update of the MT3333 chipset](#fw-update-of-the-mt3333-chipset)
+[3.4 FW update of the MT3333 chipset](#34-fw-update-of-the-mt3333-chipset)
 
 ## 1 INTRODUCTION
 
@@ -87,7 +87,7 @@ If you have not yet installed the software, you can get it from
 Once installed, connect the EVK on the ST-link USB3 interface and open
 STM32CubeProgrammer. The figure below shows the minimum configuration to
 program the geoloc module with USB cable connected to USB3. See the User
-Manual of the [EVK board](UM-EVB-V2.4.pdf)
+Manual of the [EVK board](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
 for further details of the board set-up
 
 <p align="center">
@@ -134,7 +134,7 @@ is V1.0.2.0 and the FUS can be updated to version 1.2.0
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image7.png" width="350"></p>
 
 The FUS can be updated to version 1.2.0.0, by completing the file path
-with the correct file: [`stm32wb5x_FUS_fw.bin`](../firmware-binaries/ble)
+with the correct file: [`stm32wb5x_FUS_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble)
 and set the start address to **0x080EC000** and click on Firmware upgrade.
 
 You can check again the FUS version with Read FUS info.
@@ -144,7 +144,7 @@ You can check again the FUS version with Read FUS info.
 <p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
 The Bluetooth® LE Stack can be updated in the same way as the FUS.
-Complete the path with the file: [`stm32wb5x_BLE_Stack_full_fw.bin`](../firmware-binaries/ble),
+Complete the path with the file: [`stm32wb5x_BLE_Stack_full_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble),
 set the start address to **0x080CE000** and click on "First install"
 checkbox if this is the first time you are installing the stack. Then
 press Firmware upgrade button.
@@ -203,7 +203,7 @@ Steps are:
 1. Enter command: `ABWe` (if flashing a new application FW in order to
    remove the user configuration parameters)
 2. Enter command: `ABWu`
-3. Load the [`abw-bootloader-release_v3.0.bin`](../firmware-binaries/bootloader) file to transfer with XMODEM
+3. Load the [`abw-bootloader-release_v3.0.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/bootloader) file to transfer with XMODEM
    - Minicom: **CTRL-A S -> Xmodem** and select the `.bin` file
    - TeraTerm : **Menu -> Transfer -> Xmodem -> Send** and select the `.bin` file
 
@@ -239,9 +239,9 @@ the bootloader as described in section 2.5.
 
 For the EVK board, 2 versions of the MFG firmware are available:
 
-- [`mfg-usb-evk-debug.bin`](../firmware-binaries/mfg) (default version): CLI using the STM32 USB
+- [`mfg-usb-evk-debug.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mfg) (default version): CLI using the STM32 USB
   interface (USB2 connector).
-- [`mfg-serial-evk-debug.bin`](../firmware-binaries/mfg): CLI using the LPUART and data is available
+- [`mfg-serial-evk-debug.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mfg): CLI using the LPUART and data is available
   from USB3. This version is useful to measure the low quiescent
   current since the USB function is disabled.
 
@@ -304,7 +304,7 @@ Under lr1110 menu you can:
     interface -- USB2)
 2. change Tera Term (or your terminal application. Exp: minicom) speed
     to 230400 bauds 8N1
-3. start [`lr1110_transceiver_0308.bin`](../firmware-binaries/lr11xx/lr1110_transceiver_0308/)
+3. start [`lr1110_transceiver_0308.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/lr11xx/lr1110_transceiver_0308/)
    (actual LR1110 version)
     transfer with XMODEM to transfer the firmware.
 4. when done return the speed to 57600 bauds and you can check the FW
