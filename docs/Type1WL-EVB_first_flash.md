@@ -344,9 +344,10 @@ application documentation
 The GNSS chipset FW is also updated with a proprietary FW to support the
 AGPS feature as well as the standard GNSS functions of the MT3333.
 
-To flash the MT3333 with the MediaTek tool MTK Flash Tool, the GNSS
-device must be enabled with the CLI command `gnss on` as shown in _Figure
-10_ and supplied as shown in _Figure 1_ (pin 30: VDD_GNSS and pin 32:
+To flash the MT3333 with the
+[MediaTek Flash Tool](https://github.com/Abeeway/abeeway-geolocation-module/blob/master/firmware-binaries/mt33xx/FlashTool_exe_v4.1.0.zip)
+, the GNSS device must be enabled with the CLI command `gnss on` as shown in
+*Figure 10* and supplied as shown in *Figure 1* (pin 30: VDD_GNSS and pin 32:
 VDD_GNSS_BU set to 3.3V -- Jumpers 2,4,15). Flashing the MT3333 is then
 possible via the GNSS UART interface accessible from USB1 connector via
 the FTDI chip and selector J7.
@@ -357,7 +358,9 @@ The steps to download the MT33xx FW are
 - Select the right baud rate (default: 115200)
 - Select the download agent (DA) file. Program to receive the firmware
   and write it to the flash
-- Select the firmware to download in the ROM area
+- Select the
+  [firmware](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
+  to download in the ROM area
 - Click download and Go to start downloading
 - Download operations are shown with a red bar for DA file and blue
   bar for ROM file. A green circle is drawn when complete.
