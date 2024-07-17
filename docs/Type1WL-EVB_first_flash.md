@@ -86,8 +86,8 @@ If you have not yet installed the software, you can get it from
 
 Once installed, connect the EVK on the ST-link USB3 interface and open
 STM32CubeProgrammer. The figure below shows the minimum configuration to
-program the geoloc module with USB cable connected to USB3. See the User
-Manual of the [EVK board](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
+program the geoloc module with USB cable connected to USB3. See the 
+[Type1WL EVB User Manual](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
 for further details of the board set-up
 
 <p align="center">
