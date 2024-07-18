@@ -45,9 +45,9 @@
 The goal of this document is to provide a simple guide on how to flash
 and test the functionality of the Geolocation Module LBEU5ZZ1WL-633 or
 LBEU5ZZ1WL-857 using the EVK. The module with the latter part number
-LBEU5ZZ1WL-857 does not include the MediaTek MT3333 GNSS chipset
+LBEU5ZZ1WL-857 does not include the MediaTek MT3333 GNSS chipset.
 
-This includes the software components running on STM32WB MCUs such as
+The scope includes the software components running on STM32WB MCUs such as
 the firmware Upgrade Service (FUS) and the Bluetooth LE stack for the
 Cortex M0 and the application firmware for cortex M4 MCU. The document
 also describes the FW update operations for the LR1110 and MT3333
@@ -62,7 +62,7 @@ production teams.
 
 To follow this tutorial, you should have:
 
-- A EVK board of the Geoloc Module i.e EVK v2.3 or v2.4, P/N:
+- An EVK board of the Geoloc Module i.e EVK v2.3 or v2.4, P/N:
     LBEU5ZZ1WL-633EVB
 - A computer with the following software installed:
   - [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
@@ -81,14 +81,9 @@ firmware. It consists of two parts:
 
 ### 2.2 STM32CubeProgrammer with ST-Link
 
-If you have not yet installed the software, you can get it from
-[here](https://www.st.com/en/development-tools/stm32cubeprog.html).
-
-Once installed, connect the EVK on the ST-link USB3 interface and open
-STM32CubeProgrammer. The figure below shows the minimum configuration to
-program the geoloc module with USB cable connected to USB3. See the 
+The figure below shows the minimum configuration to program the geoloc module with [`STM32CubeProgrammer`](https://www.st.com/en/development-tools/stm32cubeprog.html) trough an USB cable connected to the USB3 port. See the
 [Type1WL EVB User Manual](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
-for further details of the board set-up
+for further details of the board set-up.
 
 <p align="center">
   <img src="Type1WL-EVB_first_flash_images/image2.png" width="600">
@@ -98,8 +93,10 @@ for further details of the board set-up
   Figure 1: Default EVB setting in red. Module supplied with 5V USB (J1,J5) and GNSS power up (J4, J15, J2)
 </i></p>
 
+Connect the EVB through the USB3 interface to your computer and open the `STM32CubeProgrammer` application.
+
 To interface with the module for debugging and programming, select
-ST-LINK protocol and click on the "Connect" button on the right-hand
+ST-LINK protocol and click on the ***Connect*** button on the right-hand
 side, as shown below:
 
 <p align="center">
@@ -110,48 +107,48 @@ side, as shown below:
 
 <p align="center"><i>Figure 2: Connect the EVB via the ST-Link</i></p>
 
-If the software asks for upgrading the firmware of the ST-LINK, accept
-and upgrade the firmware, then click on the Firmware Upgrade Service
-icon, version used is shown below:
+If the software asks for upgrading the firmware of the ST-Link debugger, accept and upgrade the ST-Link firmware and then click on ***Firmware Upgrade Service***. Please note that the actual version of the ST-Link Firmware is shown on the left side above the ***Upgrade*** button.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image5.png" width="600"></p>
 
-<p align="center"><i>Figure 3: ST-Link update if needed</i></p>
+<p align="center"><i>Figure 3: ST-Link upgrade if needed</i></p>
 
 ### 2.3 Flash FUS and BLE stack Firmware upgrade
 
-When ST-Link connected, go to the firmware upgrade services (FUS)
-interface by clicking on the "radio type button" and initialize the FUS
-by clicking on Start FUS. See log at the bottom of the windows
+When ST-Link is connected, go to the firmware upgrade services (FUS)
+interface by clicking on the ***Firmware Upgrade Services*** button on the left menu bar and initialize the FUS by clicking on ***Start FUS*** button. See the logs at the bottom of the window.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image6.png" width="600"></p>
 
 <p align="center"><i>Figure 4: Start the FUS</i></p>
 
 Read the FUS version by clicking on Read FUS info. The initial version
-is V1.0.2.0 and the FUS can be updated to version 1.2.0
+is v1.0.2.0 and the FUS can be updated to v1.2.0.0.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image7.png" width="350"></p>
 
-The FUS can be updated to version 1.2.0.0, by completing the file path
-with the correct file: [`stm32wb5x_FUS_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble)
-and set the start address to **0x080EC000** and click on Firmware upgrade.
+To upgrade FUS to version 1.2.0.0
 
-You can check again the FUS version with Read FUS info.
+- download the [`stm32wb5x_FUS_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble) file in a separate window,
+- click on the ***Browse*** button and select the downloaded file,
+- set the ***Start address*** field to `0x080EC000`
+- and click on ***Firmware upgrade***.
+
+You can check the FUS version again by clicking on the ***Read FUS infos*** button.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image6.png" width="600"></p>
 
 <p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
-The Bluetooth® LE Stack can be updated in the same way as the FUS.
-Complete the path with the file: [`stm32wb5x_BLE_Stack_full_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble),
-set the start address to **0x080CE000** and click on "First install"
-checkbox if this is the first time you are installing the stack. Then
-press Firmware upgrade button.
+To upgradde the Bluetooth® LE Stack
+
+- download the [`stm32wb5x_BLE_Stack_full_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble) file in a separate window,
+- click on the ***Browse*** button and select the downloaded file,
+- set the ***Start address*** field to `0x080CE000`,
+- check the ***First Install*** checkbox if this is the first time you are installing the stack,
+- and click on ***Firmware upgrade***.
 
 Note: FUS needs to be activated to flash BLE firmware.
-
-See section 4 REFERENCES, to see the latest version of the firmware.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image9.png" width="600"></p>
 
@@ -160,8 +157,8 @@ See section 4 REFERENCES, to see the latest version of the firmware.
 ### 2.4 Flashing the Bootloader
 
 The next step is to flash the Bootloader firmware. This is a small piece
-of code starting at address ***0x08000000** (beginning of the user flash
-space)*.
+of code starting at address `0x08000000` (at the beginning of the user flash
+space).
 
 The purpose of the bootloader is to check whether it should wait for an
 application binary download via USB2 port or jump to the loaded
