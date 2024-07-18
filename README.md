@@ -8,14 +8,13 @@ The `Type1WL Evaluation Board - version V2.4` is the Evaluation Board (EVB) of t
 ultra-low power geolocation module co-developed by
 [Murata](https://www.murata.com) and [Abeeway](https://www.abeeway.com/).
 
-The EVB is a complete development kit so the developers can have a full access to all the functionalities of the module and select
+The EVB is a complete development kit allowing developers to have full access to all functionalities of the module and select
 
 - various power management schemes,
 - digital interfaces
 - and features like Buzzer, LEDs, Buttons, Flash memory and Sensors.
 
-3 micro-USB connectors are also
-available to interface with digital lines (UART, LPUART) and the built-in
+3 micro-USB connectors are available to interface with digital lines (UART, LPUART) and the built-in
 [ST-link V2](https://www.st.com/en/development-tools/st-link-v2.html).
 
 For more details please refer to the following documents:
