@@ -368,7 +368,7 @@ The steps to download the MT33xx FW are
 - Select the download agent (DA) file. Program to receive the firmware
   and write it to the flash
 - Select the
-  [firmware](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
+  [MT3333 firmware](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
   to download in the ROM area
 - Click download and Go to start downloading
 - Download operations are shown with a red bar for DA file and blue
