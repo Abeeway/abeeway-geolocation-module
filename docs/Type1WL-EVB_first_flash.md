@@ -118,6 +118,7 @@ If the software asks for upgrading the firmware of the ST-Link debugger, accept 
 When ST-Link is connected, go to the firmware upgrade services (FUS)
 interface by clicking on the ***Firmware Upgrade Services*** button on the left menu bar and initialize the FUS by clicking on ***Start FUS*** button. See the logs at the bottom of the window.
 
+
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image6.png" width="600"></p>
 
 <p align="center"><i>Figure 4: Start the FUS</i></p>
@@ -125,34 +126,38 @@ interface by clicking on the ***Firmware Upgrade Services*** button on the left 
 Read the FUS version by clicking on Read FUS info. The initial version
 is v1.0.2.0 and the FUS can be updated to v1.2.0.0.
 
-<p align="center"><img src="Type1WL-EVB_first_flash_images/image7.png" width="350"></p>
+<p align="center"><img src="Type1WL-EVB_first_flash_images/image7.png" width="300"></p>
+
+*Note: The names of buttons on the left menubar are shown only if you click on the top left icon of the window. It will expand the menu bar and show the button's descriptions.*
 
 To upgrade FUS to version 1.2.0.0
 
+- select the ***Firmware Upgrade Services*** button on the left menu bar,
 - download the [`stm32wb5x_FUS_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble) file in a separate window,
 - click on the ***Browse*** button and select the downloaded file,
 - set the ***Start address*** field to `0x080EC000`
 - and click on ***Firmware upgrade***.
 
-You can check the FUS version again by clicking on the ***Read FUS infos*** button.
-
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image6.png" width="600"></p>
 
 <p align="center"><i>Figure 5: Update FUS to version 1.2.0.0</i></p>
 
+*Note: You can check the FUS version again by clicking on the ***Read FUS infos*** button.*
+
 To upgradde the Bluetooth® LE Stack
 
+- select the ***Firmware Upgrade Services*** button on the left menu bar,
 - download the [`stm32wb5x_BLE_Stack_full_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble) file in a separate window,
 - click on the ***Browse*** button and select the downloaded file,
 - set the ***Start address*** field to `0x080CE000`,
 - check the ***First Install*** checkbox if this is the first time you are installing the stack,
 - and click on ***Firmware upgrade***.
 
-Note: FUS needs to be activated to flash BLE firmware.
-
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image9.png" width="600"></p>
 
 <p align="center"><i>Figure 6: Update the BLE Stack V1.13.0</i></p>
+
+*Note: FUS needs to be activated to flash BLE firmware.*
 
 ### 2.4 Flashing the Bootloader
 
@@ -160,32 +165,33 @@ The next step is to flash the Bootloader firmware. This is a small piece
 of code starting at address `0x08000000` (at the beginning of the user flash
 space).
 
-The purpose of the bootloader is to check whether it should wait for an
-application binary download via USB2 port or jump to the loaded
-application firmware.
+The purpose of the bootloader is to check whether it should wait for an application binary download via USB2 port or jump to the loaded application firmware.
+
+To flash the Bootloader
+
+- select the ***Erasing & programing*** button on the left menu bar,
+- download the [`abw-bootloader-release_v3.0.bin`](https://github.com/Abeeway/abeeway-geolocation-module/blob/master/firmware-binaries/bootloader) file in a separate window,
+- click on the ***Browse*** button and select the downloaded file,
+- set the ***Start address*** field to `0x08000000`,
+- check the ***First Install*** checkbox if this is the first time you are installing the stack,
+- and click on ***Firmware upgrade***.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image10.png" width="600"></p>
 
 <p align="center"><i>Figure 7: Flashing Bootloader</i></p>
 
-Note: It is possible to do a full chip erase prior to flash the
-bootloader to erase any old application firmware (Item 0), BLE stack and
-FUS will not get removed.
+*Note: It is possible to do a full chip erase prior to flash the bootloader to erase any old application firmware (Item 0), BLE stack and FUS will not get removed.*
 
 ### 2.5 Flashing an application firmware
 
 #### 2.5.1 Flashing with the bootloader
 
-At power up when no application software is installed, the bootloader is
-directly accessible via the STM32 USB port (USB2 connector on EVK board)
-using a terminal emulator (minicom or Teraterm) set to 57600 baud --
-8N1. With an application, a CLI command allows to switch the MCU to
-bootloader mode.
+At power up when no application software is installed, the bootloader is directly accessible via the STM32 USB port (USB2 connector on EVK board) using a terminal emulator (minicom or Tera Term) set to 57600 baud 8N1.
+With an application, a CLI command allows to switch the MCU to bootloader mode.
 
-Note that the bootloader have a 60sec time out to switch back to the
-application program.
+*Note that the bootloader have a 60sec time out to switch back to the application program.*
 
-Bootloader commands are:
+The Bootloader commands are:
 
 ```bash
 *ABWu: xModem transfer*
@@ -195,29 +201,33 @@ Bootloader commands are:
 *?: help*
 ```
 
-Steps are:
+The steps to flash an application firmware with the Bootloader are the following:
 
-1. Enter command: `ABWe` (if flashing a new application FW in order to
-   remove the user configuration parameters)
-2. Enter command: `ABWu`
-3. Load the [`abw-bootloader-release_v3.0.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/bootloader) file to transfer with XMODEM
-   - Minicom: **CTRL-A S -> Xmodem** and select the `.bin` file
-   - TeraTerm : **Menu -> Transfer -> Xmodem -> Send** and select the `.bin` file
-
-4. Enter command: `r` to reset the device.
+- Enter command: `ABWe` (in order to remove the user configuration parameters if flashing a new application firmware )
+- Enter command: `ABWu`
+- Load the application binary file (with `.bin` extension) to transfer with XMODEM
+  - Minicom: **CTRL-A S -> Xmodem** and select the `.bin` file
+  - TeraTerm : **Menu -> Transfer -> Xmodem -> Send** and select the `.bin` file
+- Enter command: `r` to reset the device.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image12.png" width="300"></p>
 
-#### 2.5.2 Flashing with STM32Programmer or STM32CubeIDE
+#### 2.5.2 Flashing with STM32Programmer
 
-For experienced users, the application firmware can be uploaded via
-STM32 software, and the user must ensure that the binary is correctly
-uploaded at address: ***0x08006000.***
+For experienced users, the application firmware can be uploaded via STM32 software, and the user must ensure that the binary is correctly
+uploaded at address: `0x08006000`.
 
-Warning: When an application is loaded directly to the flash, the user
+The steps to flash an application firmware with the STM32Programmer are the following:
+
+- select the ***Erasing & programing*** button on the left menu bar,
+- click on the ***Browse*** button and select the application binary file,
+- set the ***Start address*** field to `0x08006000`,
+- and click on ***Set Programming***.
+
+*Warning: When an application is loaded directly to the flash, the user
 must ensure that the user configuration parameter page is correctly set.
 Running an application with corrupted parameters may prevent the program
-to work properly.
+to work properly.*
 
 ## 3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE
 
