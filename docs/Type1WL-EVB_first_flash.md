@@ -26,7 +26,7 @@
 
 [2.5.1 Flashing with the bootloader](#251-flashing-with-the-bootloader)
 
-[2.5.2 Flashing with STM32Programmer or STM32CubeIDE](#252-flashing-with-stm32programmer-or-stm32cubeide)
+[2.5.2 Flashing with STM32Programmer or STM32CubeIDE](#252-flashing-with-stm32programmer)
 
 [3 GEOLOC MODULE CONFIGURATION AND MIDDLEWARE UPDATE](#3-geoloc-module-configuration-and-middleware-update)
 
