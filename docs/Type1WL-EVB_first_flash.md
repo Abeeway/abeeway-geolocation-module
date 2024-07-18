@@ -252,6 +252,8 @@ For the EVK board, 2 versions of the MFG firmware are available:
   from USB3. This version is useful to measure the low quiescent
   current since the USB function is disabled.
 
+You can flash the MFG firmware by following the instructions written in *Chapter 2.5 - Flashong Application Firmware*.
+
 At power-up a prompt requests for a password. Log in with the pin code
 `123` or `456`. The former provides normal user access, the latter
 provides super-user access, making different sets of CLI commands
