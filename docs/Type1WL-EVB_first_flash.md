@@ -373,7 +373,7 @@ The steps to download the MT33xx FW are
 - Click the **Download** button and **Go** to start downloading
 - Download operations are shown with a red bar for the DA file and blue bar for the ROM file. A green circle is drawn when the process is completed.
 - After the download has been completed, remove the USB cable from USB1 port and plug it into the USB2 port of the board.
-- Connect to the CLI of the MFG Firmware and execute the `gnss mt3333 version` again to see if the firmware has been updated.
+- Connect to the CLI of the MFG Firmware and execute the `gnss mt3333 version` command again to see if the firmware has been updated.
 
 <p align="center">
   <img src="Type1WL-EVB_first_flash_images/image16.png" width="400">
