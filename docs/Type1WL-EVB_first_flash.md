@@ -356,11 +356,11 @@ AGPS feature as well as the standard GNSS functions of the [MT3333](https://www.
 
 To flash the MT3333 with the
 [MediaTek Flash Tool](https://github.com/Abeeway/abeeway-geolocation-module/blob/master/firmware-binaries/mt33xx/FlashTool_exe_v4.1.0.zip)
-, the GNSS device must be enabled with the CLI command `gnss on` as shown in
-*Figure 10* and supplied as shown in *Figure 1* (pin 30: VDD_GNSS and pin 32:
-VDD_GNSS_BU set to 3.3V -- Jumpers 2,4,15). Flashing the MT3333 is then
-possible via the GNSS UART interface accessible from USB1 connector via
-the FTDI chip and selector J7.
+, the GNSS device must be enabled with the CLI command `gnss mt3333 on` as shown in *Figure 9* and supplied as shown in *Figure 1* (pin 30: VDD_GNSS and pin 32: VDD_GNSS_BU set to 3.3V -- Jumpers 2,4,15). Flashing the MT3333 is then possible via the GNSS UART interface accessible from USB1 connector via the FTDI chip and selector J7.
+
+<p align="center"><img src="Type1WL-EVB_first_flash_images/image18.png" width="350"></p>
+
+<p align="center"><i>Figure 9: Command line to enable the GNSS and after programming, open the UART link between STM32 and MT3333</i></p>
 
 The steps to download the MT33xx FW are
 
@@ -381,9 +381,6 @@ The steps to download the MT33xx FW are
   <img src="Type1WL-EVB_first_flash_images/image17.png" width="400">
 </p>
 
-<p align="center"><i>Figure 9: Mediatek tool to flash the MT3333</i></p>
+<p align="center"><i>Figure 10: Mediatek tool to flash the MT3333</i></p>
 
-<p align="center"><img src="Type1WL-EVB_first_flash_images/image18.png" width="350"></p>
 
-<p align="center"><i>Figure 10: Command line to enable the GNSS and after programming, open
-the UART link between STM32 and MT3333</i></p>
