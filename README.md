@@ -23,7 +23,7 @@ For more details please refer to the following documents:
 - [Type1WL Schematics](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_v2_4_20221014-1_abw.pdf)
 
 
-## Firmware Update and Configuration
+## Firmware Update
 
 The Type1WL Evaluation Board is delivered with a pre-installed Manufacturing Firmware (MFG) that enables various features of the geoloc module, configures the LoRaWAN credentials, updates 3rd party middleware for the MT3333 and LR11xx and enables some radio features for testing and certification.
 
@@ -81,7 +81,7 @@ Before starting any development on the Abeeway EVB, please connect to the Comman
 
 If any of the firmware components of your boards is not the same as printed above then follow the instructions of the [Abeeway EVB initial FW flashing](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_first_flash.md) user guide.
 
-## LoRaWAN Parameters
+## Checking / Configuring LoRaWAN Parameters
 
 If you don't know the LoRaWAN EUIs and Keys of your board, check the `provis lora` and `lora info` commands.
 
@@ -121,7 +121,7 @@ If you don't know the LoRaWAN EUIs and Keys of your board, check the `provis lor
    super>
    ```
 
-After the EVB is configured through the Command Line Interface (CLI) of the MFG firmware, you can replace it with your own application or with one of the Demo Applications provided together with the Abeeway Software Development Kit.  
+After the EVB is configured through the Command Line Interface (CLI) of the MFG firmware, you can replace the MFG with your own application or with one of the Demo Applications provided together with the Abeeway Software Development Kit.  
 
 ## Software Development Kit (SDK)
 
