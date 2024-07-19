@@ -364,7 +364,7 @@ To flash the MT3333 with the
 
 Flashing the MT3333 is then possible via the GNSS UART interface accessible from USB1 connector via the FTDI chip and selector J7.
 
-The steps to download the MT33xx FW are
+The steps to download the MT33xx FW are the following
 
 - Connect your computer to the USB1 port of the board
 - Select the right baud rate (default: 115200)
@@ -374,15 +374,18 @@ The steps to download the MT33xx FW are
   firmware file to download in the ROM area.
 - Click the **Download** button and **Go** to start downloading
 - Download operations are shown with a red bar for the DA file and blue bar for the ROM file. A green circle is drawn when the process is completed.
+
+  <p align="center">
+    <img src="Type1WL-EVB_first_flash_images/image16.png" width="400">
+    &nbsp
+    <img src="Type1WL-EVB_first_flash_images/image17.png" width="400">
+  </p>
+
+  <p align="center"><i>Figure 10: Mediatek tool to flash the MT3333</i></p>
+
 - After the download has been completed, remove the USB cable from USB1 port and plug it into the USB2 port of the board.
 - Connect to the CLI of the MFG Firmware and execute the `gnss mt3333 version` command again to see if the firmware has been updated.
 
-<p align="center">
-  <img src="Type1WL-EVB_first_flash_images/image16.png" width="400">
-  &nbsp
-  <img src="Type1WL-EVB_first_flash_images/image17.png" width="400">
-</p>
 
-<p align="center"><i>Figure 10: Mediatek tool to flash the MT3333</i></p>
 
 
