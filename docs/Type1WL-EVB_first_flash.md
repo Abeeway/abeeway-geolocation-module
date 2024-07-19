@@ -366,11 +366,11 @@ The steps to download the MT33xx FW are
 
 - Select the COM port connected to the USB1
 - Select the right baud rate (default: 115200)
-- Select the download agent (DA) file. Program to receive the firmware
-  and write it to the flash
+- Click on the **Download Agent** button and select the [MTK_AllInOne_DA_MT3333_MP.BIN](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx) agent file. Program to receive the firmware
+  and write it to the flash.
 - Select the
-  [MT3333 firmware](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
-  to download in the ROM area
+  [20190417_GENERAL_Module_AXN5.1.7_C33_SDK_11.bin](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
+  firmware file to download in the ROM area
 - Click download and Go to start downloading
 - Download operations are shown with a red bar for DA file and blue
   bar for ROM file. A green circle is drawn when complete.
