@@ -262,10 +262,11 @@ invalid command or omitting a command option will usually show the
 available commands or options. Commands can be abbreviated as long as
 they remain unambiguous.
 
-- FW version is available with command: `sys version`
-- BLE and FUS version is available with command: `ble version`
-- LR11xx version is available with command: `lr11 firm version`
-- LoRa info (Mac, Region, DEVEUI...) is available with command: `lora information`
+- MFG Application version is available with command: `system version`
+- BLE and FUS versions are available with command: `ble version`
+- LR11xx version is available with command: `lr11xx firmware version`
+- MT3333 version is available with command: `gnss mt3333 version`
+- LoRa info (Mac, Region, DEVEUI...) is available with command: `lora info`
 
 ### 3.2 Update of the LR1110
 
@@ -337,8 +338,8 @@ The current values of these parameters can be displayed using the
 following commands:
 
 ```bash
-prov system display
-prov lora display
+provis system display
+provis lora display
 ```
 
 It is important to note that these parameters can also be modified using
@@ -351,7 +352,7 @@ application documentation
 ### 3.4 FW update of the MT3333 chipset
 
 The GNSS chipset FW is also updated with a proprietary FW to support the
-AGPS feature as well as the standard GNSS functions of the MT3333.
+AGPS feature as well as the standard GNSS functions of the [MT3333](https://www.mediatek.com/products/location-intelligence/mt3333).
 
 To flash the MT3333 with the
 [MediaTek Flash Tool](https://github.com/Abeeway/abeeway-geolocation-module/blob/master/firmware-binaries/mt33xx/FlashTool_exe_v4.1.0.zip)
