@@ -364,19 +364,16 @@ the FTDI chip and selector J7.
 
 The steps to download the MT33xx FW are
 
-- Select the COM port connected to the USB1
+- Connect your computer to the USB1 port of the board
 - Select the right baud rate (default: 115200)
-- Click on the **Download Agent** button and select the [MTK_AllInOne_DA_MT3333_MP.BIN](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx) agent file. Program to receive the firmware
-  and write it to the flash.
-- Select the
+- Click on the **Download Agent** button and select the [MTK_AllInOne_DA_MT3333_MP.BIN](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx) download agent (DA) program to receive the firmware and write it to the flash.
+- Click on the **ROM** text in the 1st column of the table and select the
   [20190417_GENERAL_Module_AXN5.1.7_C33_SDK_11.bin](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/mt33xx)
-  firmware file to download in the ROM area
-- Click download and Go to start downloading
-- Download operations are shown with a red bar for DA file and blue
-  bar for ROM file. A green circle is drawn when complete.
-- When complete, after a reset (module or MT3333), enable the GNSS
-  chipset with the STM32 via the cli command "gnss open"
-- Command "gnss version" can be used to display the ROM FW version
+  firmware file to download in the ROM area.
+- Click the **Download** button and **Go** to start downloading
+- Download operations are shown with a red bar for the DA file and blue bar for the ROM file. A green circle is drawn when the process is completed.
+- After the download has been completed, remove the USB cable from USB1 port and plug it into the USB2 port of the board.
+- Connect to the CLI of the MFG Firmware and execute the `gnss mt3333 version` again to see if the firmware has been updated.
 
 <p align="center">
   <img src="Type1WL-EVB_first_flash_images/image16.png" width="400">
