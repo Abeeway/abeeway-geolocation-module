@@ -73,10 +73,11 @@ Before starting any development on the Abeeway EVB, please connect to the Comman
 
     ```bash
     super> gnss mt3333 version
-    0d,05:46:49.285. (GNSS) MT. Started
+    0d,00:02:40.340. (GNSS) MT. Started
     OK
-    super> MT3333 version : MT3333_AXN5.1.9_MODULE_STD_F0
-    0d,05:46:50.187. (GNSS) MT. Power down
+    super> MT3333 version : AXN_5.1.7_3333_19041711
+    0d,00:02:41.087. (GNSS) MT. Power down
+    super>   
     ```
 
 If any of the firmware components of your boards is not the same as printed above then follow the instructions of the [Abeeway EVB initial FW flashing](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_first_flash.md) user guide.
