@@ -33,7 +33,7 @@ The following chapters explain how to start software development on the Type1WL 
 1. Open the `abeeway-demo` folder in the Project Explorer and select the `demo1` project
 2. Compile the code by clicking on the **_Project > Build Project_** menu item.
 3. Connect the Evaluation Board to your computer with an USB cable through USB_3 port.
-4. Write the compiled firmware to the Abeeway Geolocation Module through the module's built-in ST-Link debugger by clicking on the **_Run > Run_** menu item.
+4. Write the compiled firmware to the Abeeway Geolocation Module through the module's built-in ST-Link debugger by clicking on the **_Run > Run_** menu item. The compiled binary files are in \abeeway-geolocation-module\apps\abeeway-demo\demo1\demo1-evk-debug\demo1-evk-debug.bin. You can also flash the binary file using STM32Cube programmer or the Abeeway bootlloader. Please follow the instructions here, TBD...
 5. After the download has been finished and the device restarted check if LED_3 is blinking.
 6. Use a Serial Terminal tool (e.g.: minicom (on Linux), TeraTerm or Putty (on Windows), etc.) to connect your computer to the board and see the command line interface.
    - The serial port must be set to 57600 bauds, 8 data bits, no parity, one stop bit (8N1).
