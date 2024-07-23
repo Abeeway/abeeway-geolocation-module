@@ -81,7 +81,7 @@ firmware. It consists of two parts:
 
 ### 2.2 STM32CubeProgrammer with ST-Link
 
-The figure below shows the minimum configuration to program the geoloc module with [`STM32CubeProgrammer`](https://www.st.com/en/development-tools/stm32cubeprog.html) trough an USB cable connected to the USB3 port. See the
+The figure below shows the minimum configuration to program the geoloc module with [`STM32CubeProgrammer`](https://www.st.com/en/development-tools/stm32cubeprog.html) through an USB cable connected to the USB3 port. See the
 [Type1WL EVB User Manual](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/docs/Type1WL-EVB_user_manual.pdf)
 for further details of the board set-up.
 
@@ -252,7 +252,7 @@ For the EVK board, 2 versions of the MFG firmware are available:
   from USB3. This version is useful to measure the low quiescent
   current since the USB function is disabled.
 
-You can flash the MFG firmware by following the instructions written in *Chapter 2.5 - Flashong Application Firmware*.
+You can flash the MFG firmware by following the instructions written in *Chapter 2.5 - Flashing Application Firmware*.
 
 At power-up a prompt requests for a password. Log in with the pin code
 `123` or `456`. The former provides normal user access, the latter
