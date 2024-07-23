@@ -26,7 +26,7 @@ The following chapters explain how to start software development on the Type1WL 
 3. Start the STM32CubeIDE and select the cloned repo as the workspace directory
 4. Import the project into STM32CubeIDE
    - Click on the **_File > Import > General > Existing Project Into Workspace_** menu item
-   - Select the following folder of the cloned repo: `abeeway-geolocation-module/apps/community/abeeway-demo`
+   - Select the following folder of the cloned repo: `abeeway-geolocation-module/apps/abeeway-demo`
 
 ## Compile the demo apps and install one of them on the Module
 
