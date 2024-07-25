@@ -32,11 +32,13 @@
 
 [3.1 Manufacturing firmware application (MFG)](#31-manufacturing-firmware-application-mfg)
 
-[3.2 Update of the LR1110](#32-update-of-the-lr1110)
+[3.2 Hardware watchdog settings](#32-hardware-watchdog-settings)
 
-[3.3 LoRa provisioning](#33-lora-provisioning)
+[3.3 Update of the LR1110](#33-update-of-the-lr1110)
 
-[3.4 FW update of the MT3333 chipset](#34-fw-update-of-the-mt3333-chipset)
+[3.4 LoRa provisioning](#34-lora-provisioning)
+
+[3.5 FW update of the MT3333 chipset](#35-fw-update-of-the-mt3333-chipset)
 
 ## 1 INTRODUCTION
 
