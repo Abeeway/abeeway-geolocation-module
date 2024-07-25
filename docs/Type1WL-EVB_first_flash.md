@@ -268,7 +268,35 @@ they remain unambiguous.
 - MT3333 version is available with command: `gnss mt3333 version`
 - LoRa info (Mac, Region, DEVEUI...) is available with command: `lora info`
 
-### 3.2 Update of the LR1110
+### 3.2 Hardware watchdog settings
+
+The SDK uses the Independent watchdog (IWDG). It can be either hardware or software. This selection is done via the option register of the Flash register. This register is usually written via the MFG and its value is preserved across reset. The difference between hardware/software resides in the watchdog behavior:
+
+- Hardware: The watchdog starts automatically when the MCU is powered on.
+- Software: The watchdog starts only when the software enables it,
+
+When the hardware watchdog is used and starts, the refresh period is set to 0.5 seconds by default. Then the bootloader v2 and v3 modifies the watchdog period to 30 seconds (max value)
+
+**Configuration of the watchdog:**
+
+The option register of the Flash register must be initialized with the correct value. This is accomplished using the `STM32CubeProgrammer`, via the OB tab. The user configuration should be opened, and the following flags should be modified:
+
+- IWGDSTDBY flag: Must be unchecked.
+- IWDGSTOP: Must be unchecked
+- IWDGSW: Must be unchecked (hardware) for customer platforms and checked (software) if you want to use the debugger.
+
+<p align="center"><img src="Type1WL-EVB_first_flash_images/image_stm32_programmer_option_bytes.png" width="600"></p>
+
+Due to the small refresh period supported by the watchdog and to prevent the system doing wake-up just to refresh it, the watchdog is frozen when sleeping (STOP and STANDBY modes).
+
+The watchdog configuration can be set with the mfg firmware with the following command: “sys param set watchdog <options>” and the options are :
+- Customer : hardware watchdog set defined above
+- Developer : watchdog stopped in debugger mode enabled
+- Default: factory default 
+
+In the application program, the  OS  can be initialised with the watchdog enabled `aos_system_init`(true). This means that the AOS resets the watchdog period when the MCU is running. In this mode, the user option bytes IWGDSTDBY and IWDGSTOP must be reset. The watchdog can be disabled with `aos_system_init`(false)
+
+### 3.3 Update of the LR1110
 
 To change the LR1110 FW version you need to login as a super user with password `456`.
 
@@ -329,7 +357,7 @@ Under lr1110 menu you can:
 
 <p align="center"><i>Figure 8: Update LR1110 embedded firmware.</i></p>
 
-### 3.3 LoRa provisioning
+### 3.4 LoRa provisioning
 
 During production, the module is pre-provisioned with LoRa parameters
 saved in the LR1110 chip. These parameters include DEVEUI, JOINEUI,
@@ -349,7 +377,7 @@ the module mapping the advised QR code of the lora alliance will get
 obsolete. For provisioning the lora parameters see the manufacturing
 application documentation
 
-### 3.4 FW update of the MT3333 chipset
+### 3.5 FW update of the MT3333 chipset
 
 The GNSS chipset FW is also updated with a proprietary FW to support the
 AGPS feature as well as the standard GNSS functions of the [MT3333](https://www.mediatek.com/products/location-intelligence/mt3333).
