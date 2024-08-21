@@ -107,6 +107,8 @@
 
 #define configTIMER_SERVICE_TASK_NAME			"RTOS timers"
 
+#define pdMS_TO_TICKS(xTimeInMs) 				(xTimeInMs)	 // Do not use the standard definition since it overflows for large timeout values
+
 /* The following flag must be enabled only when using newlib */
 #define configUSE_NEWLIB_REENTRANT          1
 

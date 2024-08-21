@@ -40,6 +40,7 @@ typedef enum {
 	aos_wifi_scan_event_success     = (1 << 0),  //!< The scan operation has been successfully completed
 	aos_wifi_scan_event_error  		= (1 << 1),  //!< The scan operation has failed for an unknown reason
 	aos_wifi_scan_event_cancel		= (1 << 2),  //!< The scan operation has been aborted by the user
+	aos_wifi_scan_event_abort		= (1 << 3),  //!< The scan operation has been aborted by the radio planner
 } aos_wifi_scan_event_type_t;
 
 /*!

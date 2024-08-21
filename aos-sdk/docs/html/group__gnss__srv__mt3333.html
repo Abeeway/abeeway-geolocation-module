@@ -208,9 +208,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga14304b6bcaafd548b0b40bdac6be07cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__gnss__common.html#gaad9775fa2cbc5e7cff49dbe0f3a3ab07">aos_gnss_power_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gnss__srv__mt3333.html#ga14304b6bcaafd548b0b40bdac6be07cf">srv_gnss_mt3333_get_power</a> (void)</td></tr>
 <tr class="memdesc:ga14304b6bcaafd548b0b40bdac6be07cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current power state.  <a href="group__gnss__srv__mt3333.html#ga14304b6bcaafd548b0b40bdac6be07cf">More...</a><br /></td></tr>
 <tr class="separator:ga14304b6bcaafd548b0b40bdac6be07cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga451cdb24015172e2750f216ccbacdb6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gnss__srv__mt3333.html#ga451cdb24015172e2750f216ccbacdb6c">srv_gnss_mt3333_set_power</a> (<a class="el" href="group__gnss__common.html#gaad9775fa2cbc5e7cff49dbe0f3a3ab07">aos_gnss_power_t</a> power)</td></tr>
-<tr class="memdesc:ga451cdb24015172e2750f216ccbacdb6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power.  <a href="group__gnss__srv__mt3333.html#ga451cdb24015172e2750f216ccbacdb6c">More...</a><br /></td></tr>
-<tr class="separator:ga451cdb24015172e2750f216ccbacdb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga688a2acc6db5696b6a441d24c92af99b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gnss__srv__mt3333.html#ga688a2acc6db5696b6a441d24c92af99b">srv_gnss_mt3333_set_power</a> (<a class="el" href="group__gnss__common.html#gaad9775fa2cbc5e7cff49dbe0f3a3ab07">aos_gnss_power_t</a> power, uint32_t standby_timeout)</td></tr>
+<tr class="memdesc:ga688a2acc6db5696b6a441d24c92af99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power.  <a href="group__gnss__srv__mt3333.html#ga688a2acc6db5696b6a441d24c92af99b">More...</a><br /></td></tr>
+<tr class="separator:ga688a2acc6db5696b6a441d24c92af99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2176d1c3e28257712a2339da0c29fbc4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structaos__gnss__counters__t.html">aos_gnss_counters_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gnss__srv__mt3333.html#ga2176d1c3e28257712a2339da0c29fbc4">srv_gnss_mt3333_get_stats</a> (void)</td></tr>
 <tr class="memdesc:ga2176d1c3e28257712a2339da0c29fbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the GNSS statistics.  <a href="group__gnss__srv__mt3333.html#ga2176d1c3e28257712a2339da0c29fbc4">More...</a><br /></td></tr>
 <tr class="separator:ga2176d1c3e28257712a2339da0c29fbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -924,8 +924,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 
 </div>
 </div>
-<a id="ga451cdb24015172e2750f216ccbacdb6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga451cdb24015172e2750f216ccbacdb6c">&#9670;&nbsp;</a></span>srv_gnss_mt3333_set_power()</h2>
+<a id="ga688a2acc6db5696b6a441d24c92af99b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga688a2acc6db5696b6a441d24c92af99b">&#9670;&nbsp;</a></span>srv_gnss_mt3333_set_power()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -934,8 +934,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
           <td class="memname"><a class="el" href="group__aos__system.html#gad3ecdc146fcc76996620c96df43c1b3f">aos_result_t</a> srv_gnss_mt3333_set_power </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__gnss__common.html#gaad9775fa2cbc5e7cff49dbe0f3a3ab07">aos_gnss_power_t</a>&#160;</td>
-          <td class="paramname"><em>power</em></td><td>)</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>standby_timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -943,7 +953,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <p>Set the power. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">power</td><td>Power to set</td></tr>
+    <tr><td class="paramname">power</td><td>Power to set </td></tr>
+    <tr><td class="paramname">standby_timeout</td><td>standby max duration in seconds (cannot be null)</td></tr>
   </table>
   </dd>
 </dl>

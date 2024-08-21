@@ -42,7 +42,7 @@ extern "C"
 #define EXP_NOTIF_SERVICE_VERSION      0x00       //!< Exposure beacon notification service version
 #define SERIAL_NUMBER_ID_LEN           AOS_PROVISIONING_EUI_SIZE    //!< The actual size of the field serial number string in DIS service
 
-#define BLE_MAC_ADDR_SIZE              BD_ADDR_SIZE
+#define BLE_MAC_ADDR_SIZE              BD_ADDR_SIZE		//!< Size of the BLE MAC address
 
 /*!
  * \brief BLE services bit mask
@@ -176,8 +176,6 @@ typedef struct {
 } ble_custom_srvc_init_data_t;
 
 /*!
- * \typedef void (*aos_ble_std_services_callback_t)(aos_ble_std_services_req_t req, void* arg, uint8_t* len)
- *
  * \brief BLE standard services callback. bridge between app layer and aos standard ble services
  *
  * \param req BLE standard services request type
@@ -194,7 +192,6 @@ typedef struct {
 typedef void (*aos_ble_std_services_callback_t)(aos_ble_std_services_req_t req, void* arg, uint8_t* len);
 
 /*!
- * \typedef void custom_srvc_char_value_init_cb_t(ble_custom_srvc_init_data_t* app_info)
  *
  * \brief Call back function for custom characteristics value initialization.
  *        In the AOS this function is called, when the BLE is initialized,

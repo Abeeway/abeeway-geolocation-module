@@ -34,14 +34,16 @@ extern "C" {
 #include "aos_common.h"
 
 
-#define SRV_BLE_BEACONING_EXPOSURE_RPI_LEN 16				//!< Length of the RPI field (exposure beacons)
-#define SRV_BLE_BEACONING_EXPOSURE_METADATA_LEN 4			//!< Length of the meta data
+#define SRV_BLE_BEACONING_EXPOSURE_RPI_LEN				16	//!< Length of the RPI field (exposure beacons)
+#define SRV_BLE_BEACONING_EXPOSURE_METADATA_LEN			4	//!< Length of the meta data
 #define SRV_BLE_BEACONING_IBEACON_COMPANY_UUID_LEN		16  //!< Length of the company identifier (iBeacons beacons)
 #define SRV_BLE_BEACONING_ALTBEACON_MANUF_ID_LEN		4	//!< Manufacturer Identifier length
 #define SRV_BLE_BEACONING_ALTBEACON_BEACON_ID_LEN		20	//!< Beacon identifier
 #define SRV_BLE_BEACONING_EDDYSTONE_UUID_NAME_SPACE_LEN	10	//!< Eddystone UUID. name space field length
 #define SRV_BLE_BEACONING_EDDYSTONE_UUID_INSTANCE_LEN	6	//!< Eddystone UUID.instance field length
 #define SRV_BLE_BEACONING_QUUPPA_ID_LEN					6	//!< QUUPPA identifier length
+#define SRV_BLE_BEACONING_CUSTOM_BEACON_ID_MAX_LEN		24	//!< Custom beacon identifier maximum length
+#define SRV_BLE_BEACONING_CUSTOM_BEACON_ID_MIN_LEN		16	//!< Custom beacon identifier minimum length
 
 /*!
  * \enum srv_ble_beacon_type_t
@@ -49,6 +51,7 @@ extern "C" {
  * \brief Beaconing emulation
  */
 typedef enum {
+	srv_ble_beacon_type_disabled,       //!< Beaconing disabled
 	srv_ble_beacon_type_eddy_uuid,      //!< Eddystone UUID beacon emulation
 	srv_ble_beacon_type_ibeacon,        //!< IBeacon emulation
 	srv_ble_beacon_type_altbeacon,      //!< AltBeacon emulation
@@ -125,6 +128,7 @@ typedef struct {
 		srv_ble_beaconing_altbeacon_data_t alt_beacon;	//!< altBeacon Data to advertise
 		srv_ble_beaconing_quuppa_data_t quuppa;			//!< quuppa data to adverise
 		srv_ble_beaconing_exposure_data_t exposure;		//!< Exposure Data to advertise
+		uint8_t data[SRV_BLE_BEACONING_CUSTOM_BEACON_ID_MAX_LEN]; //!< Beaconing data to advertise
   };
 } srv_ble_beaconing_param_t;
 

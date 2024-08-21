@@ -463,14 +463,15 @@ aos_result_t srv_gnss_mt3333_convert_almanac_gps_entry(aos_gnss_almanac_entry_t*
 aos_gnss_power_t srv_gnss_mt3333_get_power(void);
 
 /*!
- * \fn aos_result_t srv_gnss_mt3333_set_power(aos_gnss_power_t power)
+ * \fn aos_result_t srv_gnss_mt3333_set_power(aos_gnss_power_t power, uint32_t standby_timeout)
  *
  * \brief Set the power
  * \param power Power to set
+ * \param standby_timeout standby max duration in seconds (cannot be null)
  *
  * \return The power
  */
-aos_result_t srv_gnss_mt3333_set_power(aos_gnss_power_t power);
+aos_result_t srv_gnss_mt3333_set_power(aos_gnss_power_t power, uint32_t standby_timeout);
 
 /*!
  * \fn  aos_gnss_counters_t* srv_gnss_mt3333_get_stats(void)
