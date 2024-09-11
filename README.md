@@ -122,6 +122,40 @@ If you don't know the LoRaWAN EUIs and Keys of your board, check the `provis lor
    super>
    ```
 
+*Note: The `provis lora display` command won't show the Keys, but you can reate new keys with the `provis lora set` command.*
+
+   ```bash
+   super> provis lora factory                                    
+   OK
+   super> provis lora set appkey 00000000000000000000000000000000
+   OK
+   super> provis lora display
+   Provisioning data (unsaved):
+                  MAC Region :          0 (EU868)
+                  Activation :          0 (OTAA)
+                  Device EUI : 20-63-5f-01-f0-01-99-4f
+                    Join EUI : 20-63-5f-00-00-00-00-01
+              nwkkey defined :      false
+              appkey defined :       true
+                 Parameter 0 : 0x00000000
+                 Parameter 1 : 0x00000000
+                 Parameter 2 : 0x00000000
+                 Parameter 3 : 0x00000000
+                 Parameter 4 : 0x00000000
+                 Parameter 5 : 0x00000000
+                 Parameter 6 : 0x00000000
+                 Parameter 7 : 0x00000000
+                 Parameter 8 : 0x00000000
+                 Parameter 9 : 0x00000000
+                Parameter 10 : 0x00000000
+                Parameter 11 : 0x00000000
+                Parameter 12 : 0x00000000
+                Parameter 13 : 0x00000000
+                Parameter 14 : 0x00000000
+                Parameter 15 : 0x00000000
+   super>
+   ```
+
 After the EVB is configured through the Command Line Interface (CLI) of the MFG firmware, you can replace the MFG with your own application or with one of the Demo Applications provided together with the Abeeway Software Development Kit.  
 
 ## Software Development Kit (SDK)
