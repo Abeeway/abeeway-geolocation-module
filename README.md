@@ -129,6 +129,8 @@ If you don't know the LoRaWAN EUIs and Keys of your board, check the `provis lor
    OK
    super> provis lora set appkey 00000000000000000000000000000000
    OK
+   super> provis lora save
+   OK
    super> provis lora display
    Provisioning data (unsaved):
                   MAC Region :          0 (EU868)
