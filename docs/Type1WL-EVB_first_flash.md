@@ -292,9 +292,9 @@ The option register of the Flash register must be initialized with the correct v
 Due to the small refresh period supported by the watchdog and to prevent the system doing wake-up just to refresh it, the watchdog is frozen when sleeping (STOP and STANDBY modes).
 
 The watchdog configuration can be set with the mfg firmware with the following command: `sys param set watchdog` and the options are :
-- Customer : hardware watchdog set defined above
-- Developer : watchdog stopped in debugger mode enabled
-- Default: factory default 
+- `customer`: hardware watchdog set defined above
+- `developer`: watchdog stopped in debugger mode enabled
+- `default`: factory default 
 
 In the application program, the  OS  can be initialised with the watchdog enabled `aos_system_init`(true). This means that the AOS resets the watchdog period when the MCU is running. In this mode, the user option bytes IWGDSTDBY and IWDGSTOP must be reset. The watchdog can be disabled with `aos_system_init`(false)
 
