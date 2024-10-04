@@ -162,9 +162,15 @@ After the EVB is configured through the Command Line Interface (CLI) of the MFG 
 
 ## Software Development Kit (SDK)
 
-This Git repository collects all releases of the SDK provided for the `Type1WL Evaluation Board`.
-Each release is placed in a diffferent branch as listed below:
+The following Git repository collects all releases of the SDK provided for the `Type1WL Evaluation Board`.
+Each release is marked by a different Git tag.
 
-- [aos-sdk_v1.2-1](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.2-1) (Latest)
-- [aos-sdk_v1.1-0](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk_v1.1-0) (Deprecated)
-- [aos-sdk-v0.5-0](https://github.com/Abeeway/abeeway-geolocation-module/tree/aos-sdk-release-V0.5-0-2023.02.24) (Deprecated)
+- [aos-sdk](https://github.com/Abeeway/aos-sdk)
+
+
+## Demo Applications
+
+The following Git repository presents a few example applications utilizing the AOS-SDK as a git submodule.
+
+- [aos-demo-app](https://github.com/Abeeway/aos-demo-app)
+  
