@@ -137,7 +137,7 @@ To upgrade FUS to version 1.2.0.0
 - select the ***Firmware Upgrade Services*** button on the left menu bar,
 - download the [`stm32wb5x_FUS_fw.bin`](https://github.com/Abeeway/abeeway-geolocation-module/tree/master/firmware-binaries/ble) file in a separate window,
 - click on the ***Browse*** button and select the downloaded file,
-- set the ***Start address*** field to `0x080EC000`
+- set the ***Start address*** field to `0x080CE000`
 - and click on ***Firmware upgrade***.
 
 <p align="center"><img src="Type1WL-EVB_first_flash_images/image6.png" width="600"></p>
